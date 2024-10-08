@@ -1,8 +1,10 @@
 package tempRunner;
 
-import Controlador.FrmLoginControlador;
 import javax.swing.UIManager;
+
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkOrangeIJTheme;
+
+import Controlador.FrmLoginControlador;
 
 public class App {
 
@@ -24,5 +26,6 @@ public class App {
 
 		// METODO QUE CARGA EL JFRAME INICIAL (LA VENTANA)
 		controladorLogin.iniciar();
+
 	}
 }

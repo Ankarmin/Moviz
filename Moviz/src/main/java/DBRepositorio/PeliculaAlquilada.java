@@ -1,23 +1,20 @@
 package DBRepositorio;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PeliculaAlquilada extends Entidades {
-
 	private int idPrestamo;
-	private int idPelicula; // Misma idPelicula de la entidad Pelicula
-	private String usuario; // Mismo Usuario de la entidad Usuario
-	private String fechaAlquiler;
-	private String fechaDevolucion;
+	private int idPelicula;
+	private String usuario;
+	private Date fechaAlquiler;
+	private Date fechaDevolucion;
 
 	public PeliculaAlquilada() {
-
 	}
 
-	public PeliculaAlquilada(int idPrestamo, int idPelicula, String usuario, String fechaAlquiler,
-			String fechaDevolucion) {
-		super();
+	public PeliculaAlquilada(int idPrestamo, int idPelicula, String usuario, Date fechaAlquiler, Date fechaDevolucion) {
 		this.idPrestamo = idPrestamo;
 		this.idPelicula = idPelicula;
 		this.usuario = usuario;
@@ -33,17 +30,16 @@ public class PeliculaAlquilada extends Entidades {
 
 	public static PeliculaAlquilada toPeliculaAlquilada(List<Object> datos) {
 		return new PeliculaAlquilada((Integer) datos.get(0), (Integer) datos.get(1), (String) datos.get(2),
-				(String) datos.get(3), (String) datos.get(4));
+				(Date) datos.get(3), (Date) datos.get(4));
 	}
 
 	public static List<String> getColumnas() {
 		List<String> columnas = new ArrayList<>();
-		columnas.add("Id Prestamo");
+		columnas.add("Id Préstamo");
 		columnas.add("Id Película");
 		columnas.add("Usuario");
 		columnas.add("Fecha de Alquiler");
-		columnas.add("Fecha de Devolución");
-
+		columnas.add("Fecha de Devolucion");
 		return columnas;
 	}
 
@@ -71,20 +67,19 @@ public class PeliculaAlquilada extends Entidades {
 		this.usuario = usuario;
 	}
 
-	public String getFechaAlquiler() {
+	public Date getFechaAlquiler() {
 		return fechaAlquiler;
 	}
 
-	public void setFechaAlquiler(String fechaAlquiler) {
+	public void setFechaAlquiler(Date fechaAlquiler) {
 		this.fechaAlquiler = fechaAlquiler;
 	}
 
-	public String getFechaDevolucion() {
+	public Date getFechaDevolucion() {
 		return fechaDevolucion;
 	}
 
-	public void setFechaDevolucion(String fechaDevolucion) {
+	public void setFechaDevolucion(Date fechaDevolucion) {
 		this.fechaDevolucion = fechaDevolucion;
 	}
-
 }

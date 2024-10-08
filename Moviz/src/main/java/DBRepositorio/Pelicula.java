@@ -9,15 +9,16 @@ public class Pelicula extends Entidades {
 	private String nombre;
 	private int añoEstreno;
 	private String genero;
-	private int duracion;
+	private String duracion;
 	private int puntuacion;
 	private String sinopsis;
+	private byte[] imagen;
 
 	public Pelicula() {
 	}
 
-	public Pelicula(int idPelicula, String nombre, int añoEstreno, String genero, int duracion, int puntuacion,
-			String sinopsis) {
+	public Pelicula(int idPelicula, String nombre, int añoEstreno, String genero, String duracion, int puntuacion,
+			String sinopsis, byte[] imagen) {
 		this.idPelicula = idPelicula;
 		this.nombre = nombre;
 		this.añoEstreno = añoEstreno;
@@ -25,38 +26,40 @@ public class Pelicula extends Entidades {
 		this.duracion = duracion;
 		this.puntuacion = puntuacion;
 		this.sinopsis = sinopsis;
+		this.imagen = imagen;
 	}
 
 	@Override
 	public Object[] toArray() {
-		return new Object[] { getId(), getNombre(), getAñoEstreno(), getGenero(), getDuracion(), getPuntuacion(),
-				getSinopsis() };
+		return new Object[] { getIdPelicula(), getNombre(), getAñoEstreno(), getGenero(), getDuracion(),
+				getPuntuacion(), getSinopsis(), getImagen() };
 	}
 
 	public static Pelicula toPelicula(List<Object> datos) {
 		return new Pelicula((Integer) datos.get(0), (String) datos.get(1), (Integer) datos.get(2),
-				(String) datos.get(3), (Integer) datos.get(4), (Integer) datos.get(5), (String) datos.get(6));
+				(String) datos.get(3), (String) datos.get(4), (Integer) datos.get(5), (String) datos.get(6),
+				(byte[]) datos.get(7));
 	}
 
 	public static List<String> getColumnas() {
 		List<String> columnas = new ArrayList<>();
-		columnas.add("Id de Película");
-		columnas.add("Película");
-		columnas.add("Año de Estreno");
+		columnas.add("Id Pelicula");
+		columnas.add("Nombre");
+		columnas.add("Año Estreno");
 		columnas.add("Género");
 		columnas.add("Duración");
 		columnas.add("Puntuación");
 		columnas.add("Sinopsis");
-
+		columnas.add("Imagen");
 		return columnas;
 	}
 
-	public int getId() {
+	public int getIdPelicula() {
 		return idPelicula;
 	}
 
-	public void setId(int id) {
-		this.idPelicula = id;
+	public void setIdPelicula(int idPelicula) {
+		this.idPelicula = idPelicula;
 	}
 
 	public String getNombre() {
@@ -83,15 +86,15 @@ public class Pelicula extends Entidades {
 		this.genero = genero;
 	}
 
-	public int getDuracion() {
+	public String getDuracion() {
 		return duracion;
 	}
 
-	public void setDuracion(int duracion) {
+	public void setDuracion(String duracion) {
 		this.duracion = duracion;
 	}
 
-	public float getPuntuacion() {
+	public int getPuntuacion() {
 		return puntuacion;
 	}
 
@@ -107,4 +110,11 @@ public class Pelicula extends Entidades {
 		this.sinopsis = sinopsis;
 	}
 
+	public byte[] getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(byte[] imagen) {
+		this.imagen = imagen;
+	}
 }

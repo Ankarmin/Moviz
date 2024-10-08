@@ -3,60 +3,48 @@ package DBRepositorio;
 import java.util.ArrayList;
 import java.util.List;
 
-//HEREDA DE ENTIDADES (ENTIDADES ES UNA CLASE ABSTRACTA)
 public class Administrador extends Entidades {
 
-	// LOS ATRIBUTOS PRIVADOS REPRESENTAN CADA COLUMNA DE LA TABLA DE LIBROS
-	private String user;
-	private String password;
+	private int idAdmin;
+	private int idUsuario;
 
-	// CONSTRUCTOR POR DEFAULT (SE USA EN LOS REPOSITORIOS)
 	public Administrador() {
 	}
 
-	// CONSTRUCTOR PARAMETRIZADO
-	public Administrador(String user, String password) {
-		this.user = user;
-		this.password = password;
+	public Administrador(int idAdmin, int idUsuario) {
+		this.idAdmin = idAdmin;
+		this.idUsuario = idUsuario;
 	}
 
-	// IMPLEMENTACION DEL METODO TO ARRAY (SE USA EN LLENARTABLA)
 	@Override
 	public Object[] toArray() {
-		return new Object[] { getUser(), getPassword() };
+		return new Object[] { getIdAdmin(), getIdUsuario() };
 	}
 
-	// MÉTODO ESTÁTICO PARA CONVERTIR UN ARRAY DE OBJETOS A ADMIN (UN ARRAY DE
-	// OBJETOS ES COMO UN COMODIN, LITERALEMENTE UN OBJETO
-	// OBJECT PUEDE REPRESENTAR CUALQUIER TIPO DE DATO) Y LOS DEVUELVE
 	public static Administrador toAdministrador(List<Object> datos) {
-		return new Administrador((String) datos.get(0), (String) datos.get(1));
+		return new Administrador((Integer) datos.get(0), (Integer) datos.get(1));
 	}
 
-	// MÉTODO ESTÁTICO PARA CONSEGUIR LAS COLUMNAS DE LA TABLA QUE LE CORRESPONDE A
-	// LA ENTIDAD
 	public static List<String> getColumnas() {
 		List<String> columnas = new ArrayList<>();
-		columnas.add("Usuario");
-		columnas.add("Contraseña");
+		columnas.add("Id Admin");
+		columnas.add("Id Usuario");
 		return columnas;
 	}
 
-    // GETTERS Y SETTERS
-	public String getUser() {
-		return user;
+	public int getIdAdmin() {
+		return idAdmin;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setIdAdmin(int idAdmin) {
+		this.idAdmin = idAdmin;
 	}
 
-	public String getPassword() {
-		return password;
+	public int getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
-
 }
