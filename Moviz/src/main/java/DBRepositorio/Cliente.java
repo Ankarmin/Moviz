@@ -7,20 +7,20 @@ public class Cliente extends Entidades {
 
 	private int idCliente;
 	private int idUsuario;
-	private String phoneNumber;
+	private String email;
 
 	public Cliente() {
 	}
 
-	public Cliente(int idCliente, int idUsuario, String phoneNumber) {
+	public Cliente(int idCliente, int idUsuario, String email) {
 		this.idCliente = idCliente;
 		this.idUsuario = idUsuario;
-		this.phoneNumber = phoneNumber;
+		this.email = email;
 	}
 
 	@Override
 	public Object[] toArray() {
-		return new Object[] { getIdCliente(), getIdUsuario(), getPhoneNumber() };
+		return new Object[] { getIdCliente(), getIdUsuario(), getEmail() };
 	}
 
 	public static Cliente toCliente(List<Object> datos) {
@@ -31,7 +31,7 @@ public class Cliente extends Entidades {
 		List<String> columnas = new ArrayList<>();
 		columnas.add("Id Cliente");
 		columnas.add("Id Usuario");
-		columnas.add("Número de teléfono");
+		columnas.add("Email");
 		return columnas;
 	}
 
@@ -51,11 +51,11 @@ public class Cliente extends Entidades {
 		this.idUsuario = idUsuario;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setEmail(String phoneNumber) {
+		this.email = phoneNumber;
 	}
 }

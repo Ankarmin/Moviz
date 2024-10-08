@@ -4,7 +4,7 @@ import javax.swing.UIManager;
 
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkOrangeIJTheme;
 
-import Controlador.FrmLoginControlador;
+import Controlador.FrameControlador;
 
 public class App {
 
@@ -22,7 +22,7 @@ public class App {
 		UIManager.put("Component.focusWidth", 0);
 
 		// INSTANCIACION DEL CONTROLADOR MAESTRO
-		FrmLoginControlador controladorLogin = new FrmLoginControlador();
+		FrameControlador controladorLogin = new FrameControlador();
 
 		// METODO QUE CARGA EL JFRAME INICIAL (LA VENTANA)
 		controladorLogin.iniciar();

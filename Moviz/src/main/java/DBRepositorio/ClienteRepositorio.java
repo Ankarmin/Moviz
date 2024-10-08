@@ -11,10 +11,10 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 
 	public ClienteRepositorio(Connection openConexion) {
 		super(openConexion);
-		this.insertQuery = "INSERT INTO cliente (idCliente, idUsuario, phoneNumber) VALUES (?, ?, ?)";
+		this.insertQuery = "INSERT INTO cliente (idCliente, idUsuario, email) VALUES (?, ?, ?)";
 		this.searchIDQuery = "SELECT * FROM cliente WHERE idCliente = ?";
 		this.searchAllQuery = "SELECT * FROM cliente";
-		this.updateRowQuery = "UPDATE cliente SET idUsuario = ?, phoneNumber = ? WHERE idCliente = ?";
+		this.updateRowQuery = "UPDATE cliente SET idUsuario = ?, email = ? WHERE idCliente = ?";
 		this.deleteRowQuery = "DELETE FROM cliente WHERE idCliente = ?";
 	}
 
@@ -24,7 +24,7 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 			try (PreparedStatement pst = conexion.prepareStatement(insertQuery)) {
 				pst.setInt(1, filaNueva.getIdCliente());
 				pst.setInt(2, filaNueva.getIdUsuario());
-				pst.setString(3, filaNueva.getPhoneNumber());
+				pst.setString(3, filaNueva.getEmail());
 				pst.executeUpdate();
 			}
 			return true;
@@ -45,7 +45,7 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 					encontrado = new Cliente();
 					encontrado.setIdCliente(rs.getInt("idCliente"));
 					encontrado.setIdUsuario(rs.getInt("idUsuario"));
-					encontrado.setPhoneNumber(rs.getString("phoneNumber"));
+					encontrado.setEmail(rs.getString("email"));
 				}
 			}
 			rs.close();
@@ -64,7 +64,7 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 				rs = pst.executeQuery();
 				while (rs.next()) {
 					Cliente cliente = new Cliente(rs.getInt("idCliente"), rs.getInt("idUsuario"),
-							rs.getString("phoneNumber"));
+							rs.getString("email"));
 					clientes.add(cliente);
 				}
 			}
@@ -79,7 +79,7 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 		try {
 			try (PreparedStatement pst = conexion.prepareStatement(updateRowQuery)) {
 				pst.setInt(1, filaActualizada.getIdUsuario());
-				pst.setString(2, filaActualizada.getPhoneNumber());
+				pst.setString(2, filaActualizada.getEmail());
 				pst.setInt(3, filaActualizada.getIdCliente());
 				pst.executeUpdate();
 			}
