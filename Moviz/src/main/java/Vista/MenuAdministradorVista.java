@@ -29,6 +29,7 @@ public class MenuAdministradorVista extends JPanel {
 
 
 	public MenuAdministradorVista() {
+		setBackground(new Color(66, 72, 93));
 		setBorder(null);
 		setLayout(null); // IMPORTANTE
 		setBounds(0, 0, 1140, 640); // IMPORTANTE
