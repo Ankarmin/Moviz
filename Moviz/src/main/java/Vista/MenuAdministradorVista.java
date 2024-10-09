@@ -24,11 +24,7 @@ public class MenuAdministradorVista extends JPanel {
 	public JButton btnEliminarPelicula;
 	public JLabel lblComentarios;
 	public JButton btnEliminarComentario;
-	public JTextField txtBuscar;
 	public JButton btnAgregarPelicula;
-	public JButton btnHistorial;
-	public JButton btnPeliculas;
-	public JLabel lblBusqueda;
 	public JLabel lblIconoLogo;
 	public JLabel lblPeliculas;
 	public JPanel pnlLineaBlanca;
@@ -52,35 +48,16 @@ public class MenuAdministradorVista extends JPanel {
 		btnSalir.setBounds(1054, 15, 42, 46);
 		add(btnSalir);
 
-		btnHistorial = new JButton("HISTORIAL");
-		btnHistorial.setBounds(878, 19, 120, 35);
-		add(btnHistorial);
-
-		btnPeliculas = new JButton("PELICULAS");
-		btnPeliculas.setBounds(748, 19, 120, 35);
-		add(btnPeliculas);
-
-		lblBusqueda = DefaultComponentFactory.getInstance().createLabel("");
-		lblBusqueda.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png")));
-		lblBusqueda.setBounds(312, 156, 40, 40);
-		add(lblBusqueda);
-
 		lblIconoLogo = DefaultComponentFactory.getInstance().createLabel("");
 		lblIconoLogo.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacionAdministrador.png")));
 		lblIconoLogo.setBounds(4, 6, 578, 56);
 		add(lblIconoLogo);
 
-		txtBuscar = new JTextField();
-		txtBuscar.setText("Buscar");
-		txtBuscar.setBounds(354, 160, 462, 32);
-		add(txtBuscar);
-		txtBuscar.setColumns(10);
-
 		btnAgregarPelicula = new JButton("Agregar Película");
 		btnAgregarPelicula.setForeground(new Color(255, 255, 255));
 		btnAgregarPelicula.setFont(new Font("Microsoft YaHei", Font.BOLD, 15));
 		btnAgregarPelicula.setBackground(new Color(247, 114, 15));
-		btnAgregarPelicula.setBounds(171, 322, 283, 38);
+		btnAgregarPelicula.setBounds(171, 299, 283, 38);
 		add(btnAgregarPelicula);
 
 		btnEliminarPelicula = new JButton("Eliminar Película");
@@ -92,20 +69,20 @@ public class MenuAdministradorVista extends JPanel {
 
 		lblPeliculas = new JLabel("Películas");
 		lblPeliculas.setFont(new Font("Microsoft YaHei", Font.BOLD, 25));
-		lblPeliculas.setBounds(253, 267, 109, 21);
+		lblPeliculas.setBounds(253, 231, 109, 21);
 		add(lblPeliculas);
 
 		lblComentarios = new JLabel("Comentarios");
 		lblComentarios.setHorizontalAlignment(SwingConstants.CENTER);
 		lblComentarios.setFont(new Font("Microsoft YaHei", Font.BOLD, 25));
-		lblComentarios.setBounds(748, 257, 183, 40);
+		lblComentarios.setBounds(748, 221, 183, 40);
 		add(lblComentarios);
 
 		btnEliminarComentario = new JButton("Eliminar comentario");
 		btnEliminarComentario.setForeground(new Color(255, 255, 255));
 		btnEliminarComentario.setFont(new Font("Microsoft YaHei", Font.BOLD, 15));
 		btnEliminarComentario.setBackground(new Color(255, 128, 0));
-		btnEliminarComentario.setBounds(697, 322, 283, 38);
+		btnEliminarComentario.setBounds(694, 332, 283, 38);
 		add(btnEliminarComentario);
 
 		pnlCabecera = new JPanel();
@@ -119,19 +96,19 @@ public class MenuAdministradorVista extends JPanel {
 		add(pnlLineaBlanca);
 
 		lblMenuAdministrador = DefaultComponentFactory.getInstance().createLabel("Menu administrador");
-		lblMenuAdministrador.setFont(new Font("Microsoft YaHei", Font.PLAIN, 13));
+		lblMenuAdministrador.setFont(new Font("Microsoft YaHei", Font.BOLD, 21));
 		lblMenuAdministrador.setForeground(new Color(255, 255, 255));
-		lblMenuAdministrador.setBounds(26, 123, 135, 14);
+		lblMenuAdministrador.setBounds(26, 108, 227, 29);
 		add(lblMenuAdministrador);
 
 		pnlLineaBlanca_1 = new JPanel();
 		pnlLineaBlanca_1.setBackground(Color.WHITE);
-		pnlLineaBlanca_1.setBounds(115, 299, 400, 2);
+		pnlLineaBlanca_1.setBounds(120, 263, 400, 2);
 		add(pnlLineaBlanca_1);
 
 		pnlLineaBlanca_1_1 = new JPanel();
 		pnlLineaBlanca_1_1.setBackground(Color.WHITE);
-		pnlLineaBlanca_1_1.setBounds(649, 299, 400, 2);
+		pnlLineaBlanca_1_1.setBounds(642, 263, 400, 2);
 		add(pnlLineaBlanca_1_1);
 
 		initStyles();
