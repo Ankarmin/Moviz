@@ -24,6 +24,7 @@ public class FrameControlador {
 	private final PnlMenuUsuarioControlador menuUsuarioControlador;
 	private final PnlMenuAdministradorControlador menuAdministradorControlador;
 	private final PnlHistorialControlador historialControlador;
+	private final PnlPeliculaControlador peliculaControlador;
 	private final PnlAgregarPeliculaControlador agregarPeliculaControlador;
 	private final PnlEliminarPeliculaControlador eliminarPeliculaControlador;	
 	// CONSTRUCTOR DEL CONTROLADOR DEL FRAME LoginVista
@@ -41,6 +42,7 @@ public class FrameControlador {
 		menuPeliculaControlador = new PnlMenuPeliculaControlador(openConexion, this);
 		menuUsuarioControlador = new PnlMenuUsuarioControlador(openConexion, this);
 		historialControlador = new PnlHistorialControlador(openConexion, this);
+		peliculaControlador = new PnlPeliculaControlador(openConexion, this);
 		agregarPeliculaControlador = new PnlAgregarPeliculaControlador(openConexion, this);
 		eliminarPeliculaControlador = new PnlEliminarPeliculaControlador(openConexion, this);
 		menuAdministradorControlador = new PnlMenuAdministradorControlador(openConexion, this);
@@ -84,6 +86,10 @@ public class FrameControlador {
 	
 	public PnlHistorialControlador getHistorialControlador() {
 		return historialControlador;
+	}
+	
+	public PnlPeliculaControlador getPeliculaControlador() {
+		return peliculaControlador;
 	}
 	
 	public PnlRegistrarControlador getRegistrarControlador() {
