@@ -24,10 +24,14 @@ public class LoginVista extends JPanel {
 	private JLabel lblAnNoTienes;
 
 	public LoginVista() {
+		setBackground(new Color(66, 72, 93));
 		setLayout(null); // IMPORTANTE
 		setBounds(0, 0, 1140, 640); // IMPORTANTE
 
 		btnRegistrar = new JButton("REGISTRAR");
+		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnRegistrar.setForeground(new Color(255, 255, 255));
+		btnRegistrar.setBackground(new Color(255, 128, 0));
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -36,23 +40,28 @@ public class LoginVista extends JPanel {
 		add(btnRegistrar);
 
 		btnIngresar = new JButton("INGRESAR");
+		btnIngresar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnIngresar.setBackground(new Color(255, 128, 0));
+		btnIngresar.setForeground(new Color(255, 255, 255));
 		btnIngresar.setBounds(920, 433, 125, 50);
 		add(btnIngresar);
 
 		txtUser = new JTextField();
-		txtUser.setBounds(446, 243, 599, 38);
+		txtUser.setText("Ingresar usuario");
+		txtUser.setBounds(500, 243, 545, 38);
 		add(txtUser);
 		txtUser.setColumns(10);
 
 		txtPassword = new JTextField();
+		txtPassword.setText("**********");
 		txtPassword.setColumns(10);
-		txtPassword.setBounds(446, 377, 599, 38);
+		txtPassword.setBounds(500, 377, 545, 38);
 		add(txtPassword);
 		
 		JLabel Fondo = DefaultComponentFactory.getInstance().createLabel("");
 		Fondo.setBackground(new Color(13, 17, 28));
 		Fondo.setIcon(new ImageIcon(getClass().getResource("/Images/ImagenAcompañante.png")));
-		Fondo.setBounds(0, 0, 366, 640);
+		Fondo.setBounds(0, -11, 366, 640);
 		add(Fondo);
 		
 		JLabel LogoApp = DefaultComponentFactory.getInstance().createLabel("");
@@ -81,8 +90,18 @@ public class LoginVista extends JPanel {
 		lblAnNoTienes = new JLabel("Aún no tienes cuenta?");
 		lblAnNoTienes.setForeground(Color.WHITE);
 		lblAnNoTienes.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
-		lblAnNoTienes.setBounds(491, 510, 333, 43);
+		lblAnNoTienes.setBounds(491, 515, 333, 43);
 		add(lblAnNoTienes);
+		
+		JLabel lblNewJgoodiesTitle = DefaultComponentFactory.getInstance().createTitle("");
+		lblNewJgoodiesTitle.setIcon(new ImageIcon(getClass().getResource("/Images/UsuarioIcono.png")));
+		lblNewJgoodiesTitle.setBounds(446, 240, 40, 40);
+		add(lblNewJgoodiesTitle);
+		
+		JLabel lblNewJgoodiesTitle_1 = DefaultComponentFactory.getInstance().createTitle("");
+		lblNewJgoodiesTitle_1.setIcon(new ImageIcon(getClass().getResource("/Images/PasswordIcono.png")));
+		lblNewJgoodiesTitle_1.setBounds(446, 373, 40, 40);
+		add(lblNewJgoodiesTitle_1);
 		
 		initStyles();
 		
