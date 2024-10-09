@@ -28,6 +28,10 @@ public class PnlMenuUsuarioControlador {
 		vista.btnPeliculas.addActionListener((e) -> {
 			irAMenuPeliculas();
 		});
+		
+		vista.btnHistorial.addActionListener((e) -> {
+			irAHistorial();
+		});
 	}
 
 	public void mostrar() {
@@ -43,6 +47,10 @@ public class PnlMenuUsuarioControlador {
 
 	private void irAMenuPeliculas() {
 		frameControlador.getMenuPeliculaControlador().mostrar();
+	}
+
+	private void irAHistorial() {
+		frameControlador.getHistorialControlador().mostrar();
 	}
 
 }

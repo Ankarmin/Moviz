@@ -48,7 +48,7 @@ public class MenuPeliculasVista extends JPanel {
 		lblNewJgoodiesLabel1 = DefaultComponentFactory.getInstance().createLabel("Buscar por");
 		lblNewJgoodiesLabel1.setFont(new Font("Microsoft YaHei", Font.PLAIN, 13));
 		lblNewJgoodiesLabel1.setForeground(new Color(255, 255, 255));
-		lblNewJgoodiesLabel1.setBounds(26, 90, 135, 14);
+		lblNewJgoodiesLabel1.setBounds(26, 98, 135, 14);
 		add(lblNewJgoodiesLabel1);
 		
 		btnSalir = new JButton("");
