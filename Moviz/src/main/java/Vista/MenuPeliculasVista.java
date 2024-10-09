@@ -1,5 +1,4 @@
 package Vista;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,10 +12,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
-import java.awt.FlowLayout;
 
 public class MenuPeliculasVista extends JPanel {
 
@@ -106,7 +105,16 @@ public class MenuPeliculasVista extends JPanel {
 			
 			// Añadir una imagen
 			JLabel labelImagen = new JLabel();
-			labelImagen.setIcon(new ImageIcon(getClass().getResource("/Images/ImagenPelicula.png")));  // Cambia por la imagen que corresponda
+			ImageIcon originalIcon = new ImageIcon(getClass().getResource("/Images/ImagenPelicula.png"));
+
+			// Escalar la imagen a 26x156 píxeles
+			Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(140, 176, Image.SCALE_SMOOTH);
+
+			// Crear un nuevo ImageIcon con la imagen redimensionada
+			ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+			// Asignar el icono redimensionado al JLabel
+			labelImagen.setIcon(iconoRedimensionado);
 			labelImagen.setHorizontalAlignment(SwingConstants.CENTER);
 			
 			// Añadir un título debajo de la imagen
