@@ -24,13 +24,11 @@ public class PnlMenuUsuarioControlador {
 		vista.btnSalir.addActionListener((e) -> {
 			irALogin();
 		});
-		
-		//Este codigo lo agrege pal boton
-	    vista.BotonPeliculas.addActionListener((e) -> {
-	        irAMenuPeliculas();
-	    });
+
+		vista.btnPeliculas.addActionListener((e) -> {
+			irAMenuPeliculas();
+		});
 	}
-	
 
 	public void mostrar() {
 		frameControlador.getFrameVista().pnlContenido.removeAll();
@@ -42,8 +40,7 @@ public class PnlMenuUsuarioControlador {
 	private void irALogin() {
 		frameControlador.getLoginControlador().mostrar();
 	}
-	
-	//este void tmb lo agrege
+
 	private void irAMenuPeliculas() {
 		frameControlador.getMenuPeliculaControlador().mostrar();
 	}

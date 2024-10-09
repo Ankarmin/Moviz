@@ -11,7 +11,6 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-
 public class LoginVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -24,6 +23,9 @@ public class LoginVista extends JPanel {
 	private JLabel lblAnNoTienes;
 	private JLabel logoApp;
 	private JLabel lblTitulo;
+	private JLabel lblFondo;
+	private JLabel lblIconoUsuario;
+	private JLabel lblIconoPassword;
 
 	public LoginVista() {
 		setBackground(new Color(66, 72, 93));
@@ -55,56 +57,57 @@ public class LoginVista extends JPanel {
 		txtPassword.setColumns(10);
 		txtPassword.setBounds(500, 377, 545, 38);
 		add(txtPassword);
-		
-		JLabel Fondo = DefaultComponentFactory.getInstance().createLabel("");
-		Fondo.setBackground(new Color(13, 17, 28));
-		Fondo.setIcon(new ImageIcon(getClass().getResource("/Images/ImagenAcompañante.png")));
-		Fondo.setBounds(0, -11, 366, 640);
-		add(Fondo);
-		
+
+		lblFondo = DefaultComponentFactory.getInstance().createLabel("");
+		lblFondo.setBackground(new Color(13, 17, 28));
+		lblFondo.setIcon(new ImageIcon(getClass().getResource("/Images/ImagenAcompañante.png")));
+		lblFondo.setBounds(0, -11, 366, 640);
+		add(lblFondo);
+
 		logoApp = DefaultComponentFactory.getInstance().createLabel("");
 		logoApp.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
 		logoApp.setBounds(602, 51, 285, 69);
 		add(logoApp);
-		
+
 		lblTitulo = new JLabel("Inicia Sesión en Moviz");
 		lblTitulo.setForeground(Color.WHITE);
 		lblTitulo.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
 		lblTitulo.setBounds(573, 131, 333, 36);
 		add(lblTitulo);
-		
+
 		lblUsuario = new JLabel("Contraseña");
 		lblUsuario.setForeground(Color.WHITE);
 		lblUsuario.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
 		lblUsuario.setBounds(446, 328, 333, 36);
 		add(lblUsuario);
-		
+
 		lblContrasea = new JLabel("Usuario");
 		lblContrasea.setForeground(Color.WHITE);
 		lblContrasea.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
 		lblContrasea.setBounds(446, 189, 213, 43);
 		add(lblContrasea);
-		
+
 		lblAnNoTienes = new JLabel("Aún no tienes cuenta?");
 		lblAnNoTienes.setForeground(Color.WHITE);
 		lblAnNoTienes.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
 		lblAnNoTienes.setBounds(491, 515, 333, 43);
 		add(lblAnNoTienes);
-		
-		JLabel lblNewJgoodiesTitle = DefaultComponentFactory.getInstance().createTitle("");
-		lblNewJgoodiesTitle.setIcon(new ImageIcon(getClass().getResource("/Images/UsuarioIcono.png")));
-		lblNewJgoodiesTitle.setBounds(446, 240, 40, 40);
-		add(lblNewJgoodiesTitle);
-		
-		JLabel lblNewJgoodiesTitle_1 = DefaultComponentFactory.getInstance().createTitle("");
-		lblNewJgoodiesTitle_1.setIcon(new ImageIcon(getClass().getResource("/Images/PasswordIcono.png")));
-		lblNewJgoodiesTitle_1.setBounds(446, 373, 40, 40);
-		add(lblNewJgoodiesTitle_1);
-		
-		// Utilizar el siguiente codigo para poner la imagen que desees:  setIcon(new ImageIcon(getClass().getResource("/Images/NOMBREDETUIMAGEN.png"))
-		// Esa imagen tuvo que haber sido subida en la carpeta Moviz\src\main\resources\Images
+
+		lblIconoUsuario = DefaultComponentFactory.getInstance().createTitle("");
+		lblIconoUsuario.setIcon(new ImageIcon(getClass().getResource("/Images/UsuarioIcono.png")));
+		lblIconoUsuario.setBounds(446, 240, 40, 40);
+		add(lblIconoUsuario);
+
+		lblIconoPassword = DefaultComponentFactory.getInstance().createTitle("");
+		lblIconoPassword.setIcon(new ImageIcon(getClass().getResource("/Images/PasswordIcono.png")));
+		lblIconoPassword.setBounds(446, 373, 40, 40);
+		add(lblIconoPassword);
+
+		// Utilizar el siguiente codigo para poner la imagen que desees: setIcon(new
+		// ImageIcon(getClass().getResource("/Images/NOMBREDETUIMAGEN.png"))
+		// Esa imagen tuvo que haber sido subida en la carpeta
+		// Moviz\src\main\resources\Images
 		initStyles();
-		
 	}
 
 	private void initStyles() {

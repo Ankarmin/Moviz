@@ -5,25 +5,26 @@ import Vista.MenuPeliculasVista;
 
 public class PnlMenuPeliculaControlador {
 
-    private final FrameControlador frameControlador;
-    private final MenuPeliculasVista vista;
+	private final FrameControlador frameControlador;
+	private final MenuPeliculasVista vista;
 
-    public PnlMenuPeliculaControlador(Connection openConexion, FrameControlador frameControlador) {
-        this.frameControlador = frameControlador;
-        this.vista = new MenuPeliculasVista(); 
+	public PnlMenuPeliculaControlador(Connection openConexion, FrameControlador frameControlador) {
+		this.frameControlador = frameControlador;
 
-        setEvents();
-    }
+		vista = new MenuPeliculasVista();
+		// INSTACIA MODELO FUTURO
 
-    public final void setEvents() {
+		setEvents();
+	}
 
-    }
+	public final void setEvents() {
 
-    public void mostrar() {
-        frameControlador.getFrameVista().pnlContenido.removeAll();
-        frameControlador.getFrameVista().pnlContenido.add(vista);
-        frameControlador.getFrameVista().pnlContenido.revalidate();
-        frameControlador.getFrameVista().pnlContenido.repaint();
-    }
+	}
+
+	public void mostrar() {
+		frameControlador.getFrameVista().pnlContenido.removeAll();
+		frameControlador.getFrameVista().pnlContenido.add(vista);
+		frameControlador.getFrameVista().pnlContenido.revalidate();
+		frameControlador.getFrameVista().pnlContenido.repaint();
+	}
 }
-

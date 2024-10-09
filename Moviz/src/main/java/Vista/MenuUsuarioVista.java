@@ -17,25 +17,57 @@ import javax.swing.JTextArea;
 public class MenuUsuarioVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public JButton btnSalir, BotonHistorial, BotonPeliculas,BotonHistorialSecundario, BotonPeliculaSecundario;
-	public JTextField txtBuscar;
-	public JLabel PosterPelicula1, PosterPelicula2, PosterPelicula3,PosterPelicula4, PosterPelicula5, PosterPelicula6;
-	
-	public JTextArea Titulo1_1,Titulo2_1,Titulo3,titulo4, titulo5, titulo6, 
-	TiempoHoras1,TiempoHoras2,TiempoHoras3,tiempoHoras4,tiempoHoras5,tiempoHoras6; 
-	
-	private JLabel Busqueda, IconoLogo, TextoBienvenido, lblNewJgoodiesLabel,lblNewJgoodiesLabel1, lblNewJgoodiesLabel3;
-	private JPanel panel,LineaBlanca, LineaBlanca1;
-	private JTextArea textohorassmall1,textohorassmall2,  textohorassmall3,textohorassmall4,textohorassmall5, textohorassmall6;;
-	private JTextArea textoduracion1, textoduracion2, textoduracion3, textoduracion4, textoduracion5, textoduracion6;
+	public JButton btnSalir;
+	public JButton btnHistorial;
+	public JButton btnPeliculas;
+	public JButton btnHistorialSecundario;
+	public JButton btnPeliculaSecundario;
+	private JTextField txtBuscar;
+	private JLabel posterPelicula1;
+	private JLabel posterPelicula2;
+	private JLabel posterPelicula3;
+	private JLabel posterPelicula4;
+	private JLabel posterPelicula5;
+	private JLabel posterPelicula6;
+	private JTextArea titulo1_1;
+	private JTextArea titulo2_1;
+	private JTextArea titulo3;
+	private JTextArea titulo4;
+	private JTextArea titulo5;
+	private JTextArea titulo6;
+	private JTextArea tiempoHoras1;
+	private JTextArea tiempoHoras2;
+	private JTextArea tiempoHoras3;
+	private JTextArea tiempoHoras4;
+	private JTextArea tiempoHoras5;
+	private JTextArea tiempoHoras6;
+	private JLabel Busqueda;
+	private JLabel IconoLogo;
+	private JLabel TextoBienvenido;
+	private JLabel lblNewJgoodiesLabel;
+	private JLabel lblNewJgoodiesLabel1;
+	private JLabel lblNewJgoodiesLabel3;
+	private JPanel panel;
+	private JPanel LineaBlanca;
+	private JPanel LineaBlanca1;
+	private JTextArea textohorassmall1;
+	private JTextArea textohorassmall2;
+	private JTextArea textohorassmall3;
+	private JTextArea textohorassmall4;
+	private JTextArea textohorassmall5;
+	private JTextArea textohorassmall6;
+	private JTextArea textoduracion1;
+	private JTextArea textoduracion2;
+	private JTextArea textoduracion3;
+	private JTextArea textoduracion4;
+	private JTextArea textoduracion5;
+	private JTextArea textoduracion6;
 
-
-	
 	public MenuUsuarioVista() {
 		setBackground(new Color(66, 72, 93));
 		setLayout(null); // IMPORTANTE
 		setBounds(0, 0, 1140, 640); // IMPORTANTE
-		
+
 		textohorassmall2 = new JTextArea();
 		textohorassmall2.setWrapStyleWord(true);
 		textohorassmall2.setText("horas");
@@ -47,7 +79,7 @@ public class MenuUsuarioVista extends JPanel {
 		textohorassmall2.setBackground(new Color(66, 72, 93));
 		textohorassmall2.setBounds(570, 311, 67, 26);
 		add(textohorassmall2);
-		     
+
 		textohorassmall1 = new JTextArea();
 		textohorassmall1.setWrapStyleWord(true);
 		textohorassmall1.setText("horas");
@@ -59,177 +91,168 @@ public class MenuUsuarioVista extends JPanel {
 		textohorassmall1.setBackground(new Color(66, 72, 93));
 		textohorassmall1.setBounds(220, 311, 67, 26);
 		add(textohorassmall1);
-		
+
 		btnSalir = new JButton("");
 		btnSalir.setIcon(new ImageIcon(MenuUsuarioVista.class.getResource("/Images/iconosalida.png")));
 		btnSalir.setBounds(1065, 12, 42, 46);
 		add(btnSalir);
-		
-		BotonHistorial = new JButton("HISTORIAL");
-		BotonHistorial.setBounds(878, 19, 120, 35);
-		add(BotonHistorial);
-		
-		BotonPeliculas = new JButton("PELICULAS");
-		BotonPeliculas.setBounds(748, 19, 120, 35);
-		add(BotonPeliculas);
-		
+
+		btnHistorial = new JButton("HISTORIAL");
+		btnHistorial.setBounds(878, 19, 120, 35);
+		add(btnHistorial);
+
+		btnPeliculas = new JButton("PELICULAS");
+		btnPeliculas.setBounds(748, 19, 120, 35);
+		add(btnPeliculas);
+
 		Busqueda = DefaultComponentFactory.getInstance().createLabel("");
 		Busqueda.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png")));
 		Busqueda.setBounds(280, 17, 40, 40);
 		add(Busqueda);
 
-		
 		IconoLogo = DefaultComponentFactory.getInstance().createLabel("");
 		IconoLogo.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
 		IconoLogo.setBounds(4, 6, 283, 56);
 		add(IconoLogo);
-		
+
 		txtBuscar = new JTextField();
 		txtBuscar.setText("Buscar");
 		txtBuscar.setBounds(322, 21, 407, 32);
 		add(txtBuscar);
 		txtBuscar.setColumns(10);
-		
+
 		panel = new JPanel();
-		
+
 		panel.setBackground(new Color(56, 59, 74));
 		panel.setBounds(0, 0, 1225, 69);
 		add(panel);
-		
-		TextoBienvenido = DefaultComponentFactory.getInstance().createLabel("Bienvenido de nuevo Diegote, esto es lo que estuviste viendo... ");
+
+		TextoBienvenido = DefaultComponentFactory.getInstance()
+				.createLabel("Bienvenido de nuevo Diegote, esto es lo que estuviste viendo... ");
 		TextoBienvenido.setForeground(new Color(255, 255, 255));
 		TextoBienvenido.setFont(new Font("Microsoft YaHei", Font.PLAIN, 22));
 		TextoBienvenido.setBackground(new Color(255, 255, 255));
 		TextoBienvenido.setHorizontalAlignment(SwingConstants.CENTER);
 		TextoBienvenido.setBounds(142, 78, 824, 47);
 		add(TextoBienvenido);
-		
+
 		LineaBlanca = new JPanel();
-		LineaBlanca.setBackground(Color.WHITE); 
+		LineaBlanca.setBackground(Color.WHITE);
 		LineaBlanca.setBounds(26, 143, 1060, 2);
 		add(LineaBlanca);
-		
+
 		lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("Ver lista en:");
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewJgoodiesLabel.setFont(new Font("Microsoft YaHei", Font.PLAIN, 13));
 		lblNewJgoodiesLabel.setForeground(new Color(255, 255, 255));
 		lblNewJgoodiesLabel.setBounds(860, 123, 125, 14);
 		add(lblNewJgoodiesLabel);
-		
+
 		lblNewJgoodiesLabel1 = DefaultComponentFactory.getInstance().createLabel("Peliculas Recientes");
 		lblNewJgoodiesLabel1.setFont(new Font("Microsoft YaHei", Font.PLAIN, 13));
 		lblNewJgoodiesLabel1.setForeground(new Color(255, 255, 255));
 		lblNewJgoodiesLabel1.setBounds(26, 123, 135, 14);
 		add(lblNewJgoodiesLabel1);
-		
-		BotonHistorialSecundario = new JButton("HISTORIAL");
-		BotonHistorialSecundario.setBounds(995, 115, 89, 23);
-		add(BotonHistorialSecundario);
+
+		btnHistorialSecundario = new JButton("HISTORIAL");
+		btnHistorialSecundario.setBounds(995, 115, 89, 23);
+		add(btnHistorialSecundario);
 
 		LineaBlanca1 = new JPanel();
-		LineaBlanca1.setBackground(Color.WHITE); 
+		LineaBlanca1.setBackground(Color.WHITE);
 		LineaBlanca1.setBounds(26, 373, 1060, 2);
 		add(LineaBlanca1);
-		
+
 		lblNewJgoodiesLabel3 = DefaultComponentFactory.getInstance().createLabel("Peliculas Favoritas");
 		lblNewJgoodiesLabel3.setFont(new Font("Microsoft YaHei", Font.PLAIN, 13));
 		lblNewJgoodiesLabel3.setForeground(new Color(255, 255, 255));
 		lblNewJgoodiesLabel3.setBounds(26, 353, 135, 14);
 		add(lblNewJgoodiesLabel3);
-		
-		BotonPeliculaSecundario = new JButton("BUSCAR PELICULAS");
-		BotonPeliculaSecundario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		BotonPeliculaSecundario.setBounds(949, 345, 135, 23);
-		add(BotonPeliculaSecundario);
-		
-		//IMAGENES DE HISTORIAL
-			//Aqui se va a redimensionar la imagen y utilizar como ejemplo		
-			PosterPelicula1 = DefaultComponentFactory.getInstance().createLabel("");
-			PosterPelicula2 = DefaultComponentFactory.getInstance().createLabel("");
-			PosterPelicula3 = DefaultComponentFactory.getInstance().createLabel("");
-			// Cargar la imagen original
-			ImageIcon originalIcon = new ImageIcon(MenuUsuarioVista.class.getResource("/Images/ImagenPelicula.png"));
-			// Redimensionar la imagen a 140x176 píxeles para que coincida con el tamaño del JLabel
-			Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(140, 176, Image.SCALE_SMOOTH);
-			// Crear un nuevo ImageIcon con la imagen redimensionada
-			ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
-			// Asignar el icono redimensionado al JLabel
-			PosterPelicula1.setIcon(iconoRedimensionado);
-			PosterPelicula1.setBackground(new Color(255, 255, 255));
-			PosterPelicula1.setForeground(new Color(255, 255, 255));
-			PosterPelicula1.setBounds(26, 156, 140, 176); // Mantener el tamaño original del JLabel
-			add(PosterPelicula1);
-	
-			PosterPelicula2.setIcon(iconoRedimensionado);
-			PosterPelicula2.setBackground(new Color(255, 255, 255));
-			PosterPelicula2.setForeground(new Color(255, 255, 255));
-			PosterPelicula2.setBounds(376, 156, 140, 176); // Mantener el tamaño original del JLabel
-			add(PosterPelicula2);
-			
-			PosterPelicula3.setIcon(iconoRedimensionado);
-			PosterPelicula3.setBackground(new Color(255, 255, 255));
-			PosterPelicula3.setForeground(new Color(255, 255, 255));
-			PosterPelicula3.setBounds(726, 156, 140, 176); // Mantener el tamaño original del JLabel
-			add(PosterPelicula3);
 
-			//IMAGENES DE RECIENTES
-			//Aqui se va a redimensionar la imagen y utilizar como ejemplo		
-			PosterPelicula4 = DefaultComponentFactory.getInstance().createLabel("");
-			PosterPelicula5 = DefaultComponentFactory.getInstance().createLabel("");
-			PosterPelicula6 = DefaultComponentFactory.getInstance().createLabel("");
-		
-			//ImageIcon originalIcon = new ImageIcon(MenuUsuarioVista.class.getResource("/Images/ImagenPelicula.png"));
-		
-			//Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(140, 176, Image.SCALE_SMOOTH);
-		
-			//ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
-			
-			PosterPelicula4.setIcon(iconoRedimensionado);
-			PosterPelicula4.setBackground(new Color(255, 255, 255));
-			PosterPelicula4.setForeground(new Color(255, 255, 255));
-			PosterPelicula4.setBounds(26, 386, 140, 176); // Mantener el tamaño original del JLabel
-			add(PosterPelicula4);
-	
-			PosterPelicula5.setIcon(iconoRedimensionado);
-			PosterPelicula5.setBackground(new Color(255, 255, 255));
-			PosterPelicula5.setForeground(new Color(255, 255, 255));
-			PosterPelicula5.setBounds(376, 386, 140, 176); // Mantener el tamaño original del JLabel
-			add(PosterPelicula5);
-			
-			PosterPelicula6.setIcon(iconoRedimensionado);
-			PosterPelicula6.setBackground(new Color(255, 255, 255));
-			PosterPelicula6.setForeground(new Color(255, 255, 255));
-			PosterPelicula6.setBounds(726, 386, 140, 176); // Mantener el tamaño original del JLabel
-			add(PosterPelicula6);		
-		
-		
-		Titulo1_1 = new JTextArea();
-		Titulo1_1.setBackground(new Color(66, 72, 93));
-		Titulo1_1.setForeground(new Color(255, 255, 255));
-		Titulo1_1.setWrapStyleWord(true);
-		Titulo1_1.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
-		Titulo1_1.setTabSize(10);
-		Titulo1_1.setLineWrap(true);
-		Titulo1_1.setRows(3);
-		Titulo1_1.setText("Minions: Nace un villano");
-		Titulo1_1.setBounds(176, 156, 135, 97);
-		add(Titulo1_1);
-		
-		TiempoHoras1 = new JTextArea();
-		TiempoHoras1.setWrapStyleWord(true);
-		TiempoHoras1.setText("1:30 ");
-		TiempoHoras1.setTabSize(10);
-		TiempoHoras1.setRows(3);
-		TiempoHoras1.setLineWrap(true);
-		TiempoHoras1.setForeground(Color.WHITE);
-		TiempoHoras1.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
-		TiempoHoras1.setBackground(new Color(66, 72, 93));
-		TiempoHoras1.setBounds(176, 307, 49, 26);
-		add(TiempoHoras1);
-		
+		btnPeliculaSecundario = new JButton("BUSCAR PELICULAS");
+		btnPeliculaSecundario.setBounds(949, 345, 135, 23);
+		add(btnPeliculaSecundario);
+
+		// IMAGENES DE HISTORIAL
+		posterPelicula1 = DefaultComponentFactory.getInstance().createLabel("");
+		posterPelicula2 = DefaultComponentFactory.getInstance().createLabel("");
+		posterPelicula3 = DefaultComponentFactory.getInstance().createLabel("");
+		ImageIcon originalIcon = new ImageIcon(MenuUsuarioVista.class.getResource("/Images/ImagenPelicula.png"));
+		Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(140, 176, Image.SCALE_SMOOTH);
+		ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+		posterPelicula1.setIcon(iconoRedimensionado);
+		posterPelicula1.setBackground(new Color(255, 255, 255));
+		posterPelicula1.setForeground(new Color(255, 255, 255));
+		posterPelicula1.setBounds(26, 156, 140, 176);
+		add(posterPelicula1);
+
+		posterPelicula2.setIcon(iconoRedimensionado);
+		posterPelicula2.setBackground(new Color(255, 255, 255));
+		posterPelicula2.setForeground(new Color(255, 255, 255));
+		posterPelicula2.setBounds(376, 156, 140, 176);
+		add(posterPelicula2);
+
+		posterPelicula3.setIcon(iconoRedimensionado);
+		posterPelicula3.setBackground(new Color(255, 255, 255));
+		posterPelicula3.setForeground(new Color(255, 255, 255));
+		posterPelicula3.setBounds(726, 156, 140, 176);
+		add(posterPelicula3);
+
+		// IMAGENES DE RECIENTES
+		posterPelicula4 = DefaultComponentFactory.getInstance().createLabel("");
+		posterPelicula5 = DefaultComponentFactory.getInstance().createLabel("");
+		posterPelicula6 = DefaultComponentFactory.getInstance().createLabel("");
+
+		// ImageIcon originalIcon = new
+		// ImageIcon(MenuUsuarioVista.class.getResource("/Images/ImagenPelicula.png"));
+
+		// Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(140,
+		// 176, Image.SCALE_SMOOTH);
+
+		// ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+		posterPelicula4.setIcon(iconoRedimensionado);
+		posterPelicula4.setBackground(new Color(255, 255, 255));
+		posterPelicula4.setForeground(new Color(255, 255, 255));
+		posterPelicula4.setBounds(26, 386, 140, 176);
+		add(posterPelicula4);
+
+		posterPelicula5.setIcon(iconoRedimensionado);
+		posterPelicula5.setBackground(new Color(255, 255, 255));
+		posterPelicula5.setForeground(new Color(255, 255, 255));
+		posterPelicula5.setBounds(376, 386, 140, 176);
+		add(posterPelicula5);
+
+		posterPelicula6.setIcon(iconoRedimensionado);
+		posterPelicula6.setBackground(new Color(255, 255, 255));
+		posterPelicula6.setForeground(new Color(255, 255, 255));
+		posterPelicula6.setBounds(726, 386, 140, 176);
+		add(posterPelicula6);
+
+		titulo1_1 = new JTextArea();
+		titulo1_1.setBackground(new Color(66, 72, 93));
+		titulo1_1.setForeground(new Color(255, 255, 255));
+		titulo1_1.setWrapStyleWord(true);
+		titulo1_1.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
+		titulo1_1.setTabSize(10);
+		titulo1_1.setLineWrap(true);
+		titulo1_1.setRows(3);
+		titulo1_1.setText("Minions: Nace un villano");
+		titulo1_1.setBounds(176, 156, 135, 97);
+		add(titulo1_1);
+
+		tiempoHoras1 = new JTextArea();
+		tiempoHoras1.setWrapStyleWord(true);
+		tiempoHoras1.setText("1:30 ");
+		tiempoHoras1.setTabSize(10);
+		tiempoHoras1.setRows(3);
+		tiempoHoras1.setLineWrap(true);
+		tiempoHoras1.setForeground(Color.WHITE);
+		tiempoHoras1.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
+		tiempoHoras1.setBackground(new Color(66, 72, 93));
+		tiempoHoras1.setBounds(176, 307, 49, 26);
+		add(tiempoHoras1);
+
 		textoduracion1 = new JTextArea();
 		textoduracion1.setWrapStyleWord(true);
 		textoduracion1.setText("Duración:");
@@ -241,7 +264,7 @@ public class MenuUsuarioVista extends JPanel {
 		textoduracion1.setBackground(new Color(66, 72, 93));
 		textoduracion1.setBounds(176, 280, 98, 24);
 		add(textoduracion1);
-		
+
 		textoduracion2 = new JTextArea();
 		textoduracion2.setWrapStyleWord(true);
 		textoduracion2.setText("Duración:");
@@ -253,31 +276,31 @@ public class MenuUsuarioVista extends JPanel {
 		textoduracion2.setBackground(new Color(66, 72, 93));
 		textoduracion2.setBounds(526, 280, 98, 24);
 		add(textoduracion2);
-		
-		TiempoHoras2 = new JTextArea();
-		TiempoHoras2.setWrapStyleWord(true);
-		TiempoHoras2.setText("1:30 ");
-		TiempoHoras2.setTabSize(10);
-		TiempoHoras2.setRows(3);
-		TiempoHoras2.setLineWrap(true);
-		TiempoHoras2.setForeground(Color.WHITE);
-		TiempoHoras2.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
-		TiempoHoras2.setBackground(new Color(66, 72, 93));
-		TiempoHoras2.setBounds(526, 307, 49, 26);
-		add(TiempoHoras2);
-		
-		Titulo2_1 = new JTextArea();
-		Titulo2_1.setWrapStyleWord(true);
-		Titulo2_1.setText("Minions: Nace un villano");
-		Titulo2_1.setTabSize(10);
-		Titulo2_1.setRows(3);
-		Titulo2_1.setLineWrap(true);
-		Titulo2_1.setForeground(Color.WHITE);
-		Titulo2_1.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
-		Titulo2_1.setBackground(new Color(66, 72, 93));
-		Titulo2_1.setBounds(526, 156, 135, 97);
-		add(Titulo2_1);
-		
+
+		tiempoHoras2 = new JTextArea();
+		tiempoHoras2.setWrapStyleWord(true);
+		tiempoHoras2.setText("1:30 ");
+		tiempoHoras2.setTabSize(10);
+		tiempoHoras2.setRows(3);
+		tiempoHoras2.setLineWrap(true);
+		tiempoHoras2.setForeground(Color.WHITE);
+		tiempoHoras2.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
+		tiempoHoras2.setBackground(new Color(66, 72, 93));
+		tiempoHoras2.setBounds(526, 307, 49, 26);
+		add(tiempoHoras2);
+
+		titulo2_1 = new JTextArea();
+		titulo2_1.setWrapStyleWord(true);
+		titulo2_1.setText("Minions: Nace un villano");
+		titulo2_1.setTabSize(10);
+		titulo2_1.setRows(3);
+		titulo2_1.setLineWrap(true);
+		titulo2_1.setForeground(Color.WHITE);
+		titulo2_1.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
+		titulo2_1.setBackground(new Color(66, 72, 93));
+		titulo2_1.setBounds(526, 156, 135, 97);
+		add(titulo2_1);
+
 		textohorassmall3 = new JTextArea();
 		textohorassmall3.setWrapStyleWord(true);
 		textohorassmall3.setText("horas");
@@ -289,19 +312,19 @@ public class MenuUsuarioVista extends JPanel {
 		textohorassmall3.setBackground(new Color(66, 72, 93));
 		textohorassmall3.setBounds(922, 311, 67, 26);
 		add(textohorassmall3);
-		
-		TiempoHoras3 = new JTextArea();
-		TiempoHoras3.setWrapStyleWord(true);
-		TiempoHoras3.setText("1:30 ");
-		TiempoHoras3.setTabSize(10);
-		TiempoHoras3.setRows(3);
-		TiempoHoras3.setLineWrap(true);
-		TiempoHoras3.setForeground(Color.WHITE);
-		TiempoHoras3.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
-		TiempoHoras3.setBackground(new Color(66, 72, 93));
-		TiempoHoras3.setBounds(878, 307, 49, 26);
-		add(TiempoHoras3);
-		
+
+		tiempoHoras3 = new JTextArea();
+		tiempoHoras3.setWrapStyleWord(true);
+		tiempoHoras3.setText("1:30 ");
+		tiempoHoras3.setTabSize(10);
+		tiempoHoras3.setRows(3);
+		tiempoHoras3.setLineWrap(true);
+		tiempoHoras3.setForeground(Color.WHITE);
+		tiempoHoras3.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
+		tiempoHoras3.setBackground(new Color(66, 72, 93));
+		tiempoHoras3.setBounds(878, 307, 49, 26);
+		add(tiempoHoras3);
+
 		textoduracion3 = new JTextArea();
 		textoduracion3.setWrapStyleWord(true);
 		textoduracion3.setText("Duración:");
@@ -313,19 +336,19 @@ public class MenuUsuarioVista extends JPanel {
 		textoduracion3.setBackground(new Color(66, 72, 93));
 		textoduracion3.setBounds(878, 280, 98, 24);
 		add(textoduracion3);
-		
-		Titulo3 = new JTextArea();
-		Titulo3.setWrapStyleWord(true);
-		Titulo3.setText("Minions: Nace un villano");
-		Titulo3.setTabSize(10);
-		Titulo3.setRows(3);
-		Titulo3.setLineWrap(true);
-		Titulo3.setForeground(Color.WHITE);
-		Titulo3.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
-		Titulo3.setBackground(new Color(66, 72, 93));
-		Titulo3.setBounds(878, 156, 135, 97);
-		add(Titulo3);
-		
+
+		titulo3 = new JTextArea();
+		titulo3.setWrapStyleWord(true);
+		titulo3.setText("Minions: Nace un villano");
+		titulo3.setTabSize(10);
+		titulo3.setRows(3);
+		titulo3.setLineWrap(true);
+		titulo3.setForeground(Color.WHITE);
+		titulo3.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
+		titulo3.setBackground(new Color(66, 72, 93));
+		titulo3.setBounds(878, 156, 135, 97);
+		add(titulo3);
+
 		textohorassmall6 = new JTextArea();
 		textohorassmall6.setWrapStyleWord(true);
 		textohorassmall6.setText("horas");
@@ -337,7 +360,7 @@ public class MenuUsuarioVista extends JPanel {
 		textohorassmall6.setBackground(new Color(66, 72, 93));
 		textohorassmall6.setBounds(922, 541, 67, 26);
 		add(textohorassmall6);
-		
+
 		tiempoHoras6 = new JTextArea();
 		tiempoHoras6.setWrapStyleWord(true);
 		tiempoHoras6.setText("1:30 ");
@@ -349,7 +372,7 @@ public class MenuUsuarioVista extends JPanel {
 		tiempoHoras6.setBackground(new Color(66, 72, 93));
 		tiempoHoras6.setBounds(878, 537, 49, 26);
 		add(tiempoHoras6);
-		
+
 		textoduracion6 = new JTextArea();
 		textoduracion6.setWrapStyleWord(true);
 		textoduracion6.setText("Duración:");
@@ -361,7 +384,7 @@ public class MenuUsuarioVista extends JPanel {
 		textoduracion6.setBackground(new Color(66, 72, 93));
 		textoduracion6.setBounds(878, 510, 98, 24);
 		add(textoduracion6);
-		
+
 		titulo6 = new JTextArea();
 		titulo6.setWrapStyleWord(true);
 		titulo6.setText("Minions: Nace un villano");
@@ -373,7 +396,7 @@ public class MenuUsuarioVista extends JPanel {
 		titulo6.setBackground(new Color(66, 72, 93));
 		titulo6.setBounds(878, 386, 135, 97);
 		add(titulo6);
-	
+
 		textohorassmall5 = new JTextArea();
 		textohorassmall5.setWrapStyleWord(true);
 		textohorassmall5.setText("horas");
@@ -385,7 +408,7 @@ public class MenuUsuarioVista extends JPanel {
 		textohorassmall5.setBackground(new Color(66, 72, 93));
 		textohorassmall5.setBounds(570, 541, 67, 26);
 		add(textohorassmall5);
-		
+
 		tiempoHoras5 = new JTextArea();
 		tiempoHoras5.setWrapStyleWord(true);
 		tiempoHoras5.setText("1:30 ");
@@ -397,7 +420,7 @@ public class MenuUsuarioVista extends JPanel {
 		tiempoHoras5.setBackground(new Color(66, 72, 93));
 		tiempoHoras5.setBounds(526, 537, 49, 26);
 		add(tiempoHoras5);
-		
+
 		textoduracion5 = new JTextArea();
 		textoduracion5.setWrapStyleWord(true);
 		textoduracion5.setText("Duración:");
@@ -409,7 +432,7 @@ public class MenuUsuarioVista extends JPanel {
 		textoduracion5.setBackground(new Color(66, 72, 93));
 		textoduracion5.setBounds(526, 510, 98, 24);
 		add(textoduracion5);
-		
+
 		titulo5 = new JTextArea();
 		titulo5.setWrapStyleWord(true);
 		titulo5.setText("Minions: Nace un villano");
@@ -421,7 +444,7 @@ public class MenuUsuarioVista extends JPanel {
 		titulo5.setBackground(new Color(66, 72, 93));
 		titulo5.setBounds(526, 386, 135, 97);
 		add(titulo5);
-		
+
 		tiempoHoras4 = new JTextArea();
 		tiempoHoras4.setWrapStyleWord(true);
 		tiempoHoras4.setText("1:30 ");
@@ -433,7 +456,7 @@ public class MenuUsuarioVista extends JPanel {
 		tiempoHoras4.setBackground(new Color(66, 72, 93));
 		tiempoHoras4.setBounds(176, 537, 49, 26);
 		add(tiempoHoras4);
-		
+
 		textohorassmall4 = new JTextArea();
 		textohorassmall4.setWrapStyleWord(true);
 		textohorassmall4.setText("horas");
@@ -445,7 +468,7 @@ public class MenuUsuarioVista extends JPanel {
 		textohorassmall4.setBackground(new Color(66, 72, 93));
 		textohorassmall4.setBounds(220, 541, 67, 26);
 		add(textohorassmall4);
-		
+
 		textoduracion4 = new JTextArea();
 		textoduracion4.setWrapStyleWord(true);
 		textoduracion4.setText("Duración:");
@@ -457,7 +480,7 @@ public class MenuUsuarioVista extends JPanel {
 		textoduracion4.setBackground(new Color(66, 72, 93));
 		textoduracion4.setBounds(176, 510, 98, 24);
 		add(textoduracion4);
-		
+
 		titulo4 = new JTextArea();
 		titulo4.setWrapStyleWord(true);
 		titulo4.setText("Minions: Nace un villano");
@@ -469,7 +492,7 @@ public class MenuUsuarioVista extends JPanel {
 		titulo4.setBackground(new Color(66, 72, 93));
 		titulo4.setBounds(176, 386, 135, 97);
 		add(titulo4);
-		
+
 		initStyles();
 	}
 
