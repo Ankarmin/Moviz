@@ -22,6 +22,8 @@ public class LoginVista extends JPanel {
 	private JLabel lblUsuario;
 	private JLabel lblContrasea;
 	private JLabel lblAnNoTienes;
+	private JLabel logoApp;
+	private JLabel lblTitulo;
 
 	public LoginVista() {
 		setBackground(new Color(66, 72, 93));
@@ -64,12 +66,12 @@ public class LoginVista extends JPanel {
 		Fondo.setBounds(0, -11, 366, 640);
 		add(Fondo);
 		
-		JLabel LogoApp = DefaultComponentFactory.getInstance().createLabel("");
-		LogoApp.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
-		LogoApp.setBounds(602, 51, 285, 69);
-		add(LogoApp);
+		logoApp = DefaultComponentFactory.getInstance().createLabel("");
+		logoApp.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
+		logoApp.setBounds(602, 51, 285, 69);
+		add(logoApp);
 		
-		JLabel lblTitulo = new JLabel("Inicia Sesión en Moviz");
+		lblTitulo = new JLabel("Inicia Sesión en Moviz");
 		lblTitulo.setForeground(Color.WHITE);
 		lblTitulo.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
 		lblTitulo.setBounds(573, 131, 333, 36);
