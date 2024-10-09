@@ -1,21 +1,21 @@
 package Vista;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
-
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.JTextArea;
 
 public class MenuPeliculasVista extends JPanel {
 
@@ -32,6 +32,8 @@ public class MenuPeliculasVista extends JPanel {
 	private JPanel panel_1;
 	private JTextField txtAsdfasdfasdf;
 	private JLabel lblNewLabel;
+	private JComboBox<String> comboBox_2;
+	private JTextArea txtrPuntuacin;
 	
 	public MenuPeliculasVista() {
 		setBackground(new Color(66, 72, 93));
@@ -40,10 +42,10 @@ public class MenuPeliculasVista extends JPanel {
 		
 		LineaBlanca = new JPanel();
 		LineaBlanca.setBackground(Color.WHITE); 
-		LineaBlanca.setBounds(26, 110, 1060, 2);
+		LineaBlanca.setBounds(26, 123, 1060, 2);
 		add(LineaBlanca);
 		
-		lblNewJgoodiesLabel1 = DefaultComponentFactory.getInstance().createLabel("Peliculas Recientes");
+		lblNewJgoodiesLabel1 = DefaultComponentFactory.getInstance().createLabel("Buscar por");
 		lblNewJgoodiesLabel1.setFont(new Font("Microsoft YaHei", Font.PLAIN, 13));
 		lblNewJgoodiesLabel1.setForeground(new Color(255, 255, 255));
 		lblNewJgoodiesLabel1.setBounds(26, 90, 135, 14);
@@ -97,6 +99,91 @@ public class MenuPeliculasVista extends JPanel {
 		panel_1.setLayout(new GridLayout(3, 4, 10, 10));  // 3 filas, 4 columnas, con 10px de espacio entre celdas
 		scrollPane.setViewportView(panel_1);
 		
+		// Crear un JComboBox para las opciones desplegables
+		String[] generos = { "Todos", "Acción", "Aventura", "Animación", "Comedia", "Crimen", 
+		                     "Documental", "Drama", "Familia", "Fantasía", "Historia", "Terror", 
+		                     "Música", "Misterio", "Romance", "Ciencia Ficción", "Película de TV", 
+		                     "Suspense", "Bélico", "Western" };
+		
+		// Crear un JComboBox para las opciones desplegables
+		String[] año = { "Todos", "2020s", "2010s", "2000s", "1990s", "1980s", 
+		                     "1970s", "1960s", "1950s", "1940s", "1930s", "1920s", 
+		                     "1910s", "1900s", "1890s"};
+		
+		String[] puntuacion = { "Todos", "5-4", "4-3", "3-2", "2-1", "0-1"};
+		
+		JComboBox<String> comboBoxGenero = new JComboBox<>(generos);
+		comboBoxGenero.setBounds(254, 81, 150, 35);  // Posiciona el JComboBox
+		add(comboBoxGenero);
+		
+		JComboBox<String> comboBoxAño = new JComboBox<String>(año);
+		comboBoxAño.setBounds(491, 81, 150, 35);
+		add(comboBoxAño);
+		
+		JComboBox<String> comboBoxPuntuacion = new JComboBox<String>(puntuacion);
+		comboBoxPuntuacion.setBounds(794, 81, 150, 35);
+		add(comboBoxPuntuacion);
+		
+		// Agregar ActionListener al comboBox de género
+		comboBoxGenero.addActionListener(e -> {
+		    String opcionSeleccionada = (String) comboBoxGenero.getSelectedItem();	    
+		    if (!opcionSeleccionada.equals("Todos")) {
+		        JOptionPane.showMessageDialog(null, "Seleccionaste género: " + opcionSeleccionada);
+		    }
+		});
+
+		// Agregar ActionListener al comboBox de año
+		comboBoxAño.addActionListener(e -> {
+		    String opcionSeleccionada = (String) comboBoxAño.getSelectedItem();
+		    JOptionPane.showMessageDialog(null, "Seleccionaste año: " + opcionSeleccionada);
+		});
+
+		// Agregar ActionListener al comboBox de puntuación
+		comboBoxPuntuacion.addActionListener(e -> {
+		    String opcionSeleccionada = (String) comboBoxPuntuacion.getSelectedItem();
+		    JOptionPane.showMessageDialog(null, "Seleccionaste puntuación: " + opcionSeleccionada);
+		});
+		
+		JTextArea txtGenero = new JTextArea();
+		txtGenero.setWrapStyleWord(true);
+		txtGenero.setText("Genero:");
+		txtGenero.setTabSize(10);
+		txtGenero.setRows(3);
+		txtGenero.setLineWrap(true);
+		txtGenero.setForeground(Color.WHITE);
+		txtGenero.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
+		txtGenero.setBackground(new Color(66, 72, 93));
+		txtGenero.setBounds(167, 86, 98, 24);
+		add(txtGenero);
+
+		
+		JTextArea txtGenero_1 = new JTextArea();
+		txtGenero_1.setWrapStyleWord(true);
+		txtGenero_1.setText("Año:");
+		txtGenero_1.setTabSize(10);
+		txtGenero_1.setRows(3);
+		txtGenero_1.setLineWrap(true);
+		txtGenero_1.setForeground(Color.WHITE);
+		txtGenero_1.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
+		txtGenero_1.setBackground(new Color(66, 72, 93));
+		txtGenero_1.setBounds(431, 85, 77, 24);
+		add(txtGenero_1);
+		
+
+		
+		txtrPuntuacin = new JTextArea();
+		txtrPuntuacin.setWrapStyleWord(true);
+		txtrPuntuacin.setText("Puntuación:");
+		txtrPuntuacin.setTabSize(10);
+		txtrPuntuacin.setRows(3);
+		txtrPuntuacin.setLineWrap(true);
+		txtrPuntuacin.setForeground(Color.WHITE);
+		txtrPuntuacin.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
+		txtrPuntuacin.setBackground(new Color(66, 72, 93));
+		txtrPuntuacin.setBounds(669, 85, 135, 24);
+		add(txtrPuntuacin);
+
+	
 		// Añadir 12 elementos (4 columnas y 3 filas) con una imagen y un título en cada celda
 		for (int i = 1; i <= 12; i++) {
 			// Crear un panel para cada celda
@@ -128,6 +215,7 @@ public class MenuPeliculasVista extends JPanel {
 			
 			// Añadir el panelItem al panel_1 (el GridLayout)
 			panel_1.add(panelItem);
+			
 		}
 		
 		initStyles();
@@ -136,5 +224,4 @@ public class MenuPeliculasVista extends JPanel {
 	private void initStyles() {
 
 	}
-
 }
