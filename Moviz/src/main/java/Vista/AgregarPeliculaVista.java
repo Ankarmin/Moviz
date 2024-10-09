@@ -11,6 +11,7 @@ public class AgregarPeliculaVista extends JPanel {
     // Todos los componentes son públicos según tu convención
     public JButton btnSalir;
     public JButton btnAñadirPelicula;
+    public JButton btnVolver; // Nuevo botón "Volver"
     public JLabel lblTituloSeccion;
     public JLabel lblGenero;
     public JLabel lblAnioPublicacion;
@@ -35,6 +36,14 @@ public class AgregarPeliculaVista extends JPanel {
         btnSalir.setIcon(new ImageIcon(getClass().getResource("/Images/iconosalida.png")));
         btnSalir.setBounds(1054, 15, 42, 46);
         add(btnSalir);
+
+        // Botón "Volver" en la esquina superior derecha
+        btnVolver = new JButton("Volver");
+        btnVolver.setFont(new Font("Tahoma", Font.BOLD, 14));
+        btnVolver.setBackground(new Color(255, 128, 0));
+        btnVolver.setForeground(new Color(255, 255, 255));
+        btnVolver.setBounds(966, 102, 120, 35);
+        add(btnVolver);
 
         // Icono del Logo
         lblIconoLogo = DefaultComponentFactory.getInstance().createLabel("");
@@ -72,6 +81,7 @@ public class AgregarPeliculaVista extends JPanel {
         // Campo de texto "Título"
         txtTitulo = new JTextField();
         txtTitulo.setBounds(350, 180, 400, 30);
+        txtTitulo.setBackground(new Color(70, 76, 90)); // Fondo oscuro
         add(txtTitulo);
 
         // Botón estilizado para "Género"
@@ -86,7 +96,8 @@ public class AgregarPeliculaVista extends JPanel {
         cmbGenero = new JComboBox<>();
         cmbGenero.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
         cmbGenero.setBounds(350, 240, 400, 30);
-        cmbGenero.setBackground(Color.WHITE);
+        cmbGenero.setBackground(new Color(70, 76, 90)); 
+        cmbGenero.setForeground(Color.WHITE); // Texto en blanco
 
         // Agregar los géneros actualizados al ComboBox
         cmbGenero.addItem("Todos");
@@ -123,7 +134,8 @@ public class AgregarPeliculaVista extends JPanel {
         cmbAnioPublicacion = new JComboBox<>();
         cmbAnioPublicacion.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
         cmbAnioPublicacion.setBounds(350, 300, 400, 30);
-        cmbAnioPublicacion.setBackground(Color.WHITE);
+        cmbAnioPublicacion.setBackground(new Color(70, 76, 90));
+        cmbAnioPublicacion.setForeground(Color.WHITE); // Texto en blanco
 
         // Agregar los rangos de años al ComboBox
         cmbAnioPublicacion.addItem("Todos");
@@ -137,7 +149,7 @@ public class AgregarPeliculaVista extends JPanel {
         // Botón estilizado para "Duración Aprox"
         JButton btnDuracionAprox = new JButton("Duración Aprox");
         btnDuracionAprox.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
-        btnDuracionAprox.setBackground(new Color(224, 224, 224));
+        btnDuracionAprox.setBackground(new Color(66, 72, 93));
         btnDuracionAprox.setBounds(100, 360, 200, 30);
         btnDuracionAprox.setEnabled(false); // Botón deshabilitado
         add(btnDuracionAprox);
@@ -145,13 +157,16 @@ public class AgregarPeliculaVista extends JPanel {
         // Campo de texto "Duración Aprox"
         txtDuracionAprox = new JTextField();
         txtDuracionAprox.setBounds(350, 360, 400, 30);
+        txtDuracionAprox.setBackground(new Color(70, 76, 90)); 
+        txtDuracionAprox.setForeground(Color.WHITE); // Texto en blanco
         add(txtDuracionAprox);
 
-        // Botón "Añadir Película"
+        // Botón "Añadir Película" con estilo naranja
         btnAñadirPelicula = new JButton("Añadir");
-        btnAñadirPelicula.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
-        btnAñadirPelicula.setBackground(new Color(224, 224, 224));
-        btnAñadirPelicula.setBounds(350, 440, 200, 40);
+        btnAñadirPelicula.setFont(new Font("Tahoma", Font.BOLD, 14));
+        btnAñadirPelicula.setForeground(new Color(255, 255, 255));
+        btnAñadirPelicula.setBackground(new Color(255, 128, 0));
+        btnAñadirPelicula.setBounds(811, 513, 125, 50); // Estilo naranja
         add(btnAñadirPelicula);
 
         initStyles();
