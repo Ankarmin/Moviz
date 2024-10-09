@@ -12,7 +12,7 @@ public class PeliculaAlquiladaRepositorio extends IConectar<PeliculaAlquilada, I
 
 	public PeliculaAlquiladaRepositorio(Connection openConexion) {
 		super(openConexion);
-		this.insertQuery = "INSERT INTO peliculaalquilada (idPrestamo, idPelicula, usuario, fechaAlquiler, fechaDevolucion) VALUES (?, ?, ?, ?, ?)";
+		this.insertQuery = "INSERT INTO peliculaalquilada (idPelicula, usuario, fechaAlquiler, fechaDevolucion) VALUES (?, ?, ?, ?)";
 		this.searchIDQuery = "SELECT * FROM peliculaalquilada WHERE idPrestamo = ?";
 		this.searchAllQuery = "SELECT * FROM peliculaalquilada";
 		this.updateRowQuery = "UPDATE peliculaalquilada SET idPelicula = ?, usuario = ?, fechaAlquiler = ?, fechaDevolucion = ? WHERE idPrestamo = ?";
@@ -23,11 +23,10 @@ public class PeliculaAlquiladaRepositorio extends IConectar<PeliculaAlquilada, I
 	public boolean agregar(PeliculaAlquilada filaNueva) {
 		try {
 			try (PreparedStatement pst = conexion.prepareStatement(insertQuery)) {
-				pst.setInt(1, filaNueva.getIdPrestamo());
-				pst.setInt(2, filaNueva.getIdPelicula());
-				pst.setString(3, filaNueva.getUsuario());
-				pst.setDate(4, new Date(filaNueva.getFechaAlquiler().getTime()));
-				pst.setDate(5, new Date(filaNueva.getFechaDevolucion().getTime()));
+				pst.setInt(1, filaNueva.getIdPelicula());
+				pst.setString(2, filaNueva.getUsuario());
+				pst.setDate(3, new Date(filaNueva.getFechaAlquiler().getTime()));
+				pst.setDate(4, new Date(filaNueva.getFechaDevolucion().getTime()));
 				pst.executeUpdate();
 			}
 			return true;

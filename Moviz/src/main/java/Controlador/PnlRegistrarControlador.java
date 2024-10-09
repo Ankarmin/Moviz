@@ -52,9 +52,40 @@ public class PnlRegistrarControlador {
 	}
 
 	private void registrar() {
-	    String username = vista.txtUser.getText();
-	    String password = vista.txtPassword.getText();
-	    String email = vista.txtEmail.getText();
+		// OBTENER DATOS DE LA VISTA
+		String username = vista.txtUser.getText();
+		String password = vista.txtPassword.getText();
+		String email = vista.txtEmail.getText();
+
+		// CREAR EL OBJETO USUARIO
+		Usuario usuario = new Usuario();
+		usuario.setUser(username);
+		usuario.setPassword(password);
+
+		// INTENTAR AGREGAR EL USUARIO EN LA BASE DE DATOS
+		boolean usuarioRegistrado = registrarModelo.agregarUsuario(usuario);
+
+		if (usuarioRegistrado) {
+			// SI EL USUARIO SE REGISTRA CORRECTAMENTE, OBTENEMOS SU ID
+			int idUsuario = usuario.getId(); // ESTE ID DEBE HABER SIDO ASIGNADO EN EL REPOSITORIO AL USUARIO
+
+			// CREAR EL OBJETO CLIENTE CON EL ID DEL USUARIO
+			Cliente cliente = new Cliente();
+			cliente.setIdUsuario(idUsuario);
+			cliente.setEmail(email);
+
+			// INTENTAR AGREGAR EL CLIENTE EN LA BASE DE DATOS
+			boolean clienteRegistrado = registrarModelo.agregarCliente(cliente);
+
+			if (clienteRegistrado) {
+				System.out.println("Usuario y Cliente registrados con éxito.");
+				limpiar(); // LIMPIAR LOS CAMPOS SI TODO VA BIEN
+			} else {
+				System.out.println("Error al registar el Cliente.");
+			}
+		} else {
+			System.out.println("Error al registar el Usuario.");
+		}
 	}
 
 	private void irLogin() {

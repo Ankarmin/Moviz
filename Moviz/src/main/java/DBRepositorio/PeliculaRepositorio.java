@@ -11,7 +11,7 @@ public class PeliculaRepositorio extends IConectar<Pelicula, Integer> {
 
 	public PeliculaRepositorio(Connection openConexion) {
 		super(openConexion);
-		this.insertQuery = "INSERT INTO pelicula (idPelicula, nombre, añoEstreno, genero, duracion, puntuacion, sinopsis, imagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		this.insertQuery = "INSERT INTO pelicula (nombre, añoEstreno, genero, duracion, puntuacion, sinopsis, imagen) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		this.searchIDQuery = "SELECT * FROM pelicula WHERE idPelicula = ?";
 		this.searchAllQuery = "SELECT * FROM pelicula";
 		this.updateRowQuery = "UPDATE pelicula SET nombre = ?, añoEstreno = ?, genero = ?, duracion = ?, puntuacion = ?, sinopsis = ?, imagen = ? WHERE idPelicula = ?";
@@ -22,14 +22,13 @@ public class PeliculaRepositorio extends IConectar<Pelicula, Integer> {
 	public boolean agregar(Pelicula filaNueva) {
 		try {
 			try (PreparedStatement pst = conexion.prepareStatement(insertQuery)) {
-				pst.setInt(1, filaNueva.getIdPelicula());
-				pst.setString(2, filaNueva.getNombre());
-				pst.setInt(3, filaNueva.getAñoEstreno());
-				pst.setString(4, filaNueva.getGenero());
-				pst.setString(5, filaNueva.getDuracion());
-				pst.setInt(6, filaNueva.getPuntuacion());
-				pst.setString(7, filaNueva.getSinopsis());
-				pst.setBytes(8, filaNueva.getImagen());
+				pst.setString(1, filaNueva.getNombre());
+				pst.setInt(2, filaNueva.getAñoEstreno());
+				pst.setString(3, filaNueva.getGenero());
+				pst.setString(4, filaNueva.getDuracion());
+				pst.setInt(5, filaNueva.getPuntuacion());
+				pst.setString(6, filaNueva.getSinopsis());
+				pst.setBytes(7, filaNueva.getImagen());
 				pst.executeUpdate();
 			}
 			return true;

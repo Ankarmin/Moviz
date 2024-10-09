@@ -11,7 +11,7 @@ public class AdministradorRepositorio extends IConectar<Administrador, Integer> 
 
     public AdministradorRepositorio(Connection openConexion) {
         super(openConexion);
-        this.insertQuery = "INSERT INTO administrador (idAdmin, idUsuario) VALUES (?, ?)";
+        this.insertQuery = "INSERT INTO administrador (idUsuario) VALUES (?)";
         this.searchIDQuery = "SELECT * FROM administrador WHERE idAdmin = ?";
         this.searchAllQuery = "SELECT * FROM administrador";
         this.updateRowQuery = "UPDATE administrador SET idUsuario = ? WHERE idAdmin = ?";
@@ -22,8 +22,7 @@ public class AdministradorRepositorio extends IConectar<Administrador, Integer> 
     public boolean agregar(Administrador filaNueva) {
         try {
             try (PreparedStatement pst = conexion.prepareStatement(insertQuery)) {
-                pst.setInt(1, filaNueva.getIdAdmin());
-                pst.setInt(2, filaNueva.getIdUsuario());
+                pst.setInt(1, filaNueva.getIdUsuario());
                 pst.executeUpdate();
             }
             System.out.println("Administrador registrado con éxito en la BD");

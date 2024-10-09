@@ -11,7 +11,7 @@ public class UsuarioRepositorio extends IConectar<Usuario, Integer> {
 
 	public UsuarioRepositorio(Connection openConexion) {
 		super(openConexion);
-		this.insertQuery = "INSERT INTO usuario (id, user, password) VALUES (?, ?, ?)";
+		this.insertQuery = "INSERT INTO usuario (user, password) VALUES (?, ?)";
 		this.searchIDQuery = "SELECT * FROM usuario WHERE id = ?";
 		this.searchAllQuery = "SELECT * FROM usuario";
 		this.updateRowQuery = "UPDATE usuario SET user = ?, password = ? WHERE id = ?";
@@ -20,14 +20,23 @@ public class UsuarioRepositorio extends IConectar<Usuario, Integer> {
 
 	@Override
 	public boolean agregar(Usuario filaNueva) {
+		String insertQuery = "INSERT INTO usuario (user, password) VALUES (?, ?)";
 		try {
-			try (PreparedStatement pst = conexion.prepareStatement(insertQuery)) {
-				pst.setInt(1, filaNueva.getId());
-				pst.setString(2, filaNueva.getUser());
-				pst.setString(3, filaNueva.getPassword());
+			try (PreparedStatement pst = conexion.prepareStatement(insertQuery,
+					PreparedStatement.RETURN_GENERATED_KEYS)) {
+				pst.setString(1, filaNueva.getUser());
+				pst.setString(2, filaNueva.getPassword());
 				pst.executeUpdate();
+
+				// OBTENER EL ID GENREADO AUTOMATICAMENTE
+				try (ResultSet generatedKeys = pst.getGeneratedKeys()) {
+					if (generatedKeys.next()) {
+						int generatedId = generatedKeys.getInt(1);
+						filaNueva.setId(generatedId); // ASIGNO EL ID AL OBJETO USUARIO
+					}
+				}
 			}
-			System.out.println("Usuario registrado con exito en la BD");
+			System.out.println("Usuario registrado con éxito en la BD");
 			return true;
 		} catch (SQLException e) {
 			System.out.println("Error al registrar en la BD: " + e.getMessage());
