@@ -22,6 +22,11 @@ public class MenuUsuarioVista extends JPanel {
 		setLayout(null); // IMPORTANTE
 		setBounds(0, 0, 1140, 640); // IMPORTANTE
 		
+		JButton btnSalir_1 = new JButton("");
+		btnSalir_1.setIcon(new ImageIcon(MenuUsuarioVista.class.getResource("/Images/iconosalida.png")));
+		btnSalir_1.setBounds(1093, 12, 42, 46);
+		add(btnSalir_1);
+		
 		JButton BotonHistorial = new JButton("Historial");
 		BotonHistorial.setBounds(878, 19, 120, 35);
 		add(BotonHistorial);

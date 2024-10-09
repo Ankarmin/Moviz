@@ -9,9 +9,6 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
 import java.awt.FlowLayout;
 
 public class MenuAdministradorVista extends JPanel {
