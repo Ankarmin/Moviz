@@ -19,6 +19,8 @@ public class FrameControlador {
 
 	// TODOS LOS DEMÁS CONTROLADORES
 	private final PnlLoginControlador loginControlador;
+	//Este codigo lo agrege pal boto
+	private final PnlMenuPeliculaControlador menuPeliculaControlador;
 	private final PnlRegistrarControlador registrarControlador;
 	private final PnlMenuUsuarioControlador menuUsuarioControlador;
 	private final PnlMenuAdministradorControlador menuAdministradorControlador;
@@ -35,6 +37,8 @@ public class FrameControlador {
 		// INSTANCIAMOS LOS DEMAS CONTROLADORES
 		registrarControlador = new PnlRegistrarControlador(openConexion, this);
 		loginControlador = new PnlLoginControlador(openConexion, this);
+		//Este codigo lo agrege pal boto
+		menuPeliculaControlador = new PnlMenuPeliculaControlador(openConexion, this);
 		menuUsuarioControlador = new PnlMenuUsuarioControlador(openConexion, this);
 		menuAdministradorControlador = new PnlMenuAdministradorControlador(openConexion, this);
 	}
@@ -62,7 +66,12 @@ public class FrameControlador {
 	public PnlLoginControlador getLoginControlador() {
 		return loginControlador;
 	}
-
+	
+	//ESte codigo tmb lo agrege
+	public PnlMenuPeliculaControlador getMenuPeliculaControlador() {
+		return menuPeliculaControlador;
+	}
+	
 	public PnlRegistrarControlador getRegistrarControlador() {
 		return registrarControlador;
 	}

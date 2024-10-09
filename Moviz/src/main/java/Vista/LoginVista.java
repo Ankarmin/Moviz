@@ -34,10 +34,6 @@ public class LoginVista extends JPanel {
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnRegistrar.setForeground(new Color(255, 255, 255));
 		btnRegistrar.setBackground(new Color(255, 128, 0));
-		//btnRegistrar.addActionListener(new ActionListener() {
-		//	public void actionPerformed(ActionEvent e) {
-		//	}
-		//});
 		btnRegistrar.setBounds(811, 513, 125, 50);
 		add(btnRegistrar);
 

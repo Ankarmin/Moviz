@@ -5,11 +5,11 @@ import java.awt.Color;
 
 
 
-public class PeliculasVista extends JPanel {
+public class MenuPeliculasVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	public PeliculasVista() {
+	public MenuPeliculasVista() {
 		setBackground(new Color(66, 72, 93));
 		setLayout(null); // IMPORTANTE
 		setBounds(0, 0, 1140, 640); // IMPORTANTE
