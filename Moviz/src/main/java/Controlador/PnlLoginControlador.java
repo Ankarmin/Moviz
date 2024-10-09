@@ -1,6 +1,8 @@
 package Controlador;
 
 import java.sql.Connection;
+
+import DBRepositorio.AdministradorRepositorio;
 import DBRepositorio.ClienteRepositorio;
 import DBRepositorio.UsuarioRepositorio;
 import Modelo.LoginModelo;
@@ -10,14 +12,15 @@ public class PnlLoginControlador {
 
 	private final FrameControlador frameControlador;
 	private final LoginVista vista;
-	private final LoginModelo loginModelo;
+	private final LoginModelo modelo;
 
 	public PnlLoginControlador(Connection openConexion, FrameControlador frameControlador) {
 
 		this.frameControlador = frameControlador;
 
 		vista = new LoginVista();
-		loginModelo = new LoginModelo(new UsuarioRepositorio(openConexion), new ClienteRepositorio(openConexion));
+		modelo = new LoginModelo(new UsuarioRepositorio(openConexion), new ClienteRepositorio(openConexion),
+				new AdministradorRepositorio(openConexion));
 
 		vista.btnIngresar.addActionListener((e) -> {
 			iniciarSesion();
@@ -38,10 +41,18 @@ public class PnlLoginControlador {
 	}
 
 	private void limpiar() {
+		vista.txtUser.setText("");
+		vista.txtPassword.setText("");
 	}
 
 	private void iniciarSesion() {
+		String user = vista.txtUser.getText();
 
+		if (user.equals("usuario")) {
+			frameControlador.getMenuUsuarioControlador().mostrar();
+		} else if (user.equals("admin")) {
+			frameControlador.getMenuAdministradorControlador().mostrar();
+		}
 	}
 
 	private void irARegistrar() {

@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import javax.swing.JPanel;
-
 import Vista.FrameVista;
 
 public class FrameControlador {
@@ -22,6 +20,8 @@ public class FrameControlador {
 	// TODOS LOS DEMÁS CONTROLADORES
 	private final PnlLoginControlador loginControlador;
 	private final PnlRegistrarControlador registrarControlador;
+	private final PnlMenuUsuarioControlador menuUsuarioControlador;
+	private final PnlMenuAdministradorControlador menuAdministradorControlador;
 
 	// CONSTRUCTOR DEL CONTROLADOR DEL FRAME LoginVista
 	public FrameControlador() {
@@ -35,6 +35,8 @@ public class FrameControlador {
 		// INSTANCIAMOS LOS DEMAS CONTROLADORES
 		registrarControlador = new PnlRegistrarControlador(openConexion, this);
 		loginControlador = new PnlLoginControlador(openConexion, this);
+		menuUsuarioControlador = new PnlMenuUsuarioControlador(openConexion, this);
+		menuAdministradorControlador = new PnlMenuAdministradorControlador(openConexion, this);
 	}
 
 	private void Conectar() {
@@ -63,5 +65,13 @@ public class FrameControlador {
 
 	public PnlRegistrarControlador getRegistrarControlador() {
 		return registrarControlador;
+	}
+
+	public PnlMenuUsuarioControlador getMenuUsuarioControlador() {
+		return menuUsuarioControlador;
+	}
+
+	public PnlMenuAdministradorControlador getMenuAdministradorControlador() {
+		return menuAdministradorControlador;
 	}
 }
