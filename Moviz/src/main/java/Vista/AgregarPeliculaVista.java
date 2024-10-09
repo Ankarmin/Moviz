@@ -12,7 +12,6 @@ public class AgregarPeliculaVista extends JPanel {
     public JButton btnSalir;
     public JButton btnAñadirPelicula;
     public JLabel lblTituloSeccion;
-    public JLabel lblTitulo;
     public JLabel lblGenero;
     public JLabel lblAnioPublicacion;
     public JLabel lblDuracionAprox;
@@ -61,13 +60,6 @@ public class AgregarPeliculaVista extends JPanel {
         pnlLineaBlanca.setBackground(Color.WHITE);
         pnlLineaBlanca.setBounds(26, 143, 1060, 2);
         add(pnlLineaBlanca);
-
-        // Etiqueta "Título"
-        lblTitulo = new JLabel("Título");
-        lblTitulo.setFont(new Font("Microsoft YaHei", Font.PLAIN, 15));
-        lblTitulo.setForeground(new Color(255, 255, 255));
-        lblTitulo.setBounds(150, 180, 150, 30);
-        add(lblTitulo);
 
         // Botón estilizado para "Título"
         JButton btnTitulo = new JButton("Título");

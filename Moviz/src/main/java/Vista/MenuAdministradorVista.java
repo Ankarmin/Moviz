@@ -21,9 +21,10 @@ public class MenuAdministradorVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public JButton btnSalir;
-	private JButton btnNewButton_1;
+	public JButton btnEliminarP;
 	private JLabel lblNewLabel_2;
 	private JButton btnNewButton_2;
+	public JButton btnAgregarP;
 
 
 	public MenuAdministradorVista() {
@@ -49,27 +50,27 @@ public class MenuAdministradorVista extends JPanel {
 
 
 		
-		JButton btnNewButton = new JButton("Agregar Película");
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setFont(new Font("Microsoft YaHei", Font.BOLD, 15));
-		btnNewButton.setBackground(new Color(247, 114, 15));
-		btnNewButton.addActionListener(new ActionListener() {
+		btnAgregarP = new JButton("Agregar Película");
+		btnAgregarP.setForeground(new Color(255, 255, 255));
+		btnAgregarP.setFont(new Font("Microsoft YaHei", Font.BOLD, 15));
+		btnAgregarP.setBackground(new Color(247, 114, 15));
+		btnAgregarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(171, 322, 283, 38);
-		add(btnNewButton);
+		btnAgregarP.setBounds(171, 322, 283, 38);
+		add(btnAgregarP);
 		
-		btnNewButton_1 = new JButton("Eliminar Película");
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setFont(new Font("Microsoft YaHei", Font.BOLD, 15));
-		btnNewButton_1.setBackground(new Color(255, 128, 0));
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnEliminarP = new JButton("Eliminar Película");
+		btnEliminarP.setForeground(new Color(255, 255, 255));
+		btnEliminarP.setFont(new Font("Microsoft YaHei", Font.BOLD, 15));
+		btnEliminarP.setBackground(new Color(255, 128, 0));
+		btnEliminarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(171, 382, 283, 38);
-		add(btnNewButton_1);
+		btnEliminarP.setBounds(171, 382, 283, 38);
+		add(btnEliminarP);
 		
 		JLabel lblNewLabel_1 = new JLabel("Películas");
 		lblNewLabel_1.setFont(new Font("Microsoft YaHei", Font.BOLD, 25));

@@ -23,6 +23,12 @@ public class PnlMenuAdministradorControlador {
 		vista.btnSalir.addActionListener((e) -> {
 			irALogin();
 		});
+		vista.btnAgregarP.addActionListener((e) -> {
+			agregarP();
+		});
+		vista.btnEliminarP.addActionListener((e) -> {
+			eliminarP();
+		});
 	}
 
 	public void mostrar() {
@@ -36,4 +42,11 @@ public class PnlMenuAdministradorControlador {
 		frameControlador.getLoginControlador().mostrar();
 	}
 
+	private void agregarP() {
+		frameControlador.getAgregarPeliculaControlador().mostrar();
+	}
+	
+	private void eliminarP() {
+		frameControlador.getEliminarPeliculaControlador().mostrar();
+	}
 }
