@@ -103,10 +103,9 @@ public class LoginVista extends JPanel {
 		lblNewJgoodiesTitle_1.setBounds(446, 373, 40, 40);
 		add(lblNewJgoodiesTitle_1);
 		
+		// Utilizar el siguiente codigo para poner la imagen que desees:  setIcon(new ImageIcon(getClass().getResource("/Images/NOMBREDETUIMAGEN.png"))
+		// Esa imagen tuvo que haber sido subida en la carpeta Moviz\src\main\resources\Images
 		initStyles();
-		
-		
-		
 		
 	}
 
