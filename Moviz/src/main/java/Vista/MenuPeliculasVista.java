@@ -1,4 +1,5 @@
 package Vista;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,30 +21,58 @@ import javax.swing.JTextArea;
 public class MenuPeliculasVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JLabel Busqueda;
-	private JLabel IconoLogo;
-	private JTextField txtBuscar;
-	private JPanel panel;
-	private JButton btnSalir;
-	private JButton BtnHistorial;
-	private JButton BotonPeliculas;
-	private JPanel LineaBlanca;
-	private JLabel lblNewJgoodiesLabel1;
-	private JPanel panel_1;
-	private JTextField txtAsdfasdfasdf;
-	private JLabel lblNewLabel;
-	private JComboBox<String> comboBox_2;
-	private JTextArea txtrPuntuacin;
 	
+	// Variables JLabel
+	public JLabel lblBusqueda;
+	public JLabel lblIconoLogo;
+	public JLabel lblNewJgoodiesLabel1;
+	public JLabel lblNewLabel;
+	public JLabel lblImagen;
+	public JLabel lblTitulo;
+	
+	// Variables JTextField
+	public JTextField txtBuscar;
+	public JTextField txtAsdfasdfasdf;
+	
+	// Variables JButton
+	public JButton btnSalir;
+	public JButton btnHistorial;
+	public JButton btnPeliculas;
+	
+	// Variables JPanel
+	public JPanel pnlPrincipal;
+	public JPanel pnlGrid;
+	public JPanel pnlLineaBlanca;
+	public JPanel panel_1;
+	public JPanel panelItem;
+	
+	// Variables JScrollPane
+	public JScrollPane spTablaPeliculas;
+	
+	// Variables JComboBox
+	public JComboBox<String> comboBoxGenero;
+	public JComboBox<String> comboBoxAño;
+	public JComboBox<String> comboBoxPuntuacion;
+	
+	// Variables JTextArea
+	public JTextArea txtrPuntuacion;
+	public JTextArea txtGenero;
+	public JTextArea txtGenero_1;
+	
+	// Variables relacionadas con imágenes
+	public ImageIcon originalIcon;
+	public Image imagenRedimensionada;
+	public ImageIcon iconoRedimensionado;
+
 	public MenuPeliculasVista() {
 		setBackground(new Color(66, 72, 93));
 		setLayout(null); // IMPORTANTE
 		setBounds(0, 0, 1140, 640);
 		
-		LineaBlanca = new JPanel();
-		LineaBlanca.setBackground(Color.WHITE); 
-		LineaBlanca.setBounds(26, 123, 1060, 2);
-		add(LineaBlanca);
+		pnlLineaBlanca = new JPanel();
+		pnlLineaBlanca.setBackground(Color.WHITE); 
+		pnlLineaBlanca.setBounds(26, 123, 1060, 2);
+		add(pnlLineaBlanca);
 		
 		lblNewJgoodiesLabel1 = DefaultComponentFactory.getInstance().createLabel("Buscar por");
 		lblNewJgoodiesLabel1.setFont(new Font("Microsoft YaHei", Font.PLAIN, 13));
@@ -56,24 +85,24 @@ public class MenuPeliculasVista extends JPanel {
 		btnSalir.setBounds(1065, 12, 42, 46);
 		add(btnSalir);
 		
-		BtnHistorial = new JButton("HISTORIAL");
-		BtnHistorial.setBounds(878, 19, 120, 35);
-		add(BtnHistorial);
+		btnHistorial = new JButton("HISTORIAL");
+		btnHistorial.setBounds(878, 19, 120, 35);
+		add(btnHistorial);
 		
-		BotonPeliculas = new JButton("PELICULAS");
-		BotonPeliculas.setBounds(748, 19, 120, 35);
-		add(BotonPeliculas);
+		btnPeliculas = new JButton("PELICULAS");
+		btnPeliculas.setBounds(748, 19, 120, 35);
+		add(btnPeliculas);
 		
-		Busqueda = DefaultComponentFactory.getInstance().createLabel("");
-		Busqueda.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png")));
-		Busqueda.setBounds(280, 17, 40, 40);
-		add(Busqueda);
+		lblBusqueda = DefaultComponentFactory.getInstance().createLabel("");
+		lblBusqueda.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png")));
+		lblBusqueda.setBounds(280, 17, 40, 40);
+		add(lblBusqueda);
 
 		
-		IconoLogo = DefaultComponentFactory.getInstance().createLabel("");
-		IconoLogo.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
-		IconoLogo.setBounds(4, 6, 283, 56);
-		add(IconoLogo);
+		lblIconoLogo = DefaultComponentFactory.getInstance().createLabel("");
+		lblIconoLogo.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
+		lblIconoLogo.setBounds(4, 6, 283, 56);
+		add(lblIconoLogo);
 		
 		txtBuscar = new JTextField();
 		txtBuscar.setText("Buscar");
@@ -81,23 +110,22 @@ public class MenuPeliculasVista extends JPanel {
 		add(txtBuscar);
 		txtBuscar.setColumns(10);
 		
-		panel = new JPanel();
-		
-		panel.setBackground(new Color(56, 59, 74));
-		panel.setBounds(0, 0, 1225, 69);
-		add(panel);
+		pnlPrincipal = new JPanel();
+		pnlPrincipal.setBackground(new Color(56, 59, 74));
+		pnlPrincipal.setBounds(0, 0, 1225, 69);
+		add(pnlPrincipal);
 		
 		// Configurar el JScrollPane
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(26, 136, 1060, 437);
-		add(scrollPane);
+		spTablaPeliculas = new JScrollPane();
+		spTablaPeliculas.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		spTablaPeliculas.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		spTablaPeliculas.setBounds(26, 136, 1060, 437);
+		add(spTablaPeliculas);
 		
 		// Crear el panel que contendrá la cuadrícula
-		panel_1 = new JPanel();
-		panel_1.setLayout(new GridLayout(3, 4, 10, 10));  // 3 filas, 4 columnas, con 10px de espacio entre celdas
-		scrollPane.setViewportView(panel_1);
+		pnlGrid = new JPanel();
+		pnlGrid.setLayout(new GridLayout(3, 4, 10, 10));  // 3 filas, 4 columnas, con 10px de espacio entre celdas
+		spTablaPeliculas.setViewportView(pnlGrid);
 		
 		// Crear un JComboBox para las opciones desplegables
 		String[] generos = { "Todos", "Acción", "Aventura", "Animación", "Comedia", "Crimen", 
@@ -105,22 +133,23 @@ public class MenuPeliculasVista extends JPanel {
 		                     "Música", "Misterio", "Romance", "Ciencia Ficción", "Película de TV", 
 		                     "Suspense", "Bélico", "Western" };
 		
-		// Crear un JComboBox para las opciones desplegables
+		// Crear un JComboBox para las opciones desplegables de año
 		String[] año = { "Todos", "2020s", "2010s", "2000s", "1990s", "1980s", 
 		                     "1970s", "1960s", "1950s", "1940s", "1930s", "1920s", 
 		                     "1910s", "1900s", "1890s"};
 		
+		// Opciones de puntuación
 		String[] puntuacion = { "Todos", "5-4", "4-3", "3-2", "2-1", "0-1"};
 		
-		JComboBox<String> comboBoxGenero = new JComboBox<>(generos);
+		comboBoxGenero = new JComboBox<>(generos);
 		comboBoxGenero.setBounds(254, 81, 150, 35);  // Posiciona el JComboBox
 		add(comboBoxGenero);
 		
-		JComboBox<String> comboBoxAño = new JComboBox<String>(año);
+		comboBoxAño = new JComboBox<String>(año);
 		comboBoxAño.setBounds(491, 81, 150, 35);
 		add(comboBoxAño);
 		
-		JComboBox<String> comboBoxPuntuacion = new JComboBox<String>(puntuacion);
+		comboBoxPuntuacion = new JComboBox<String>(puntuacion);
 		comboBoxPuntuacion.setBounds(794, 81, 150, 35);
 		add(comboBoxPuntuacion);
 		
@@ -144,7 +173,7 @@ public class MenuPeliculasVista extends JPanel {
 		    JOptionPane.showMessageDialog(null, "Seleccionaste puntuación: " + opcionSeleccionada);
 		});
 		
-		JTextArea txtGenero = new JTextArea();
+		txtGenero = new JTextArea();
 		txtGenero.setWrapStyleWord(true);
 		txtGenero.setText("Genero:");
 		txtGenero.setTabSize(10);
@@ -157,7 +186,7 @@ public class MenuPeliculasVista extends JPanel {
 		add(txtGenero);
 
 		
-		JTextArea txtGenero_1 = new JTextArea();
+		txtGenero_1 = new JTextArea();
 		txtGenero_1.setWrapStyleWord(true);
 		txtGenero_1.setText("Año:");
 		txtGenero_1.setTabSize(10);
@@ -169,52 +198,49 @@ public class MenuPeliculasVista extends JPanel {
 		txtGenero_1.setBounds(431, 85, 77, 24);
 		add(txtGenero_1);
 		
+		txtrPuntuacion = new JTextArea();
+		txtrPuntuacion.setWrapStyleWord(true);
+		txtrPuntuacion.setText("Puntuación:");
+		txtrPuntuacion.setTabSize(10);
+		txtrPuntuacion.setRows(3);
+		txtrPuntuacion.setLineWrap(true);
+		txtrPuntuacion.setForeground(Color.WHITE);
+		txtrPuntuacion.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
+		txtrPuntuacion.setBackground(new Color(66, 72, 93));
+		txtrPuntuacion.setBounds(669, 85, 135, 24);
+		add(txtrPuntuacion);
 
-		
-		txtrPuntuacin = new JTextArea();
-		txtrPuntuacin.setWrapStyleWord(true);
-		txtrPuntuacin.setText("Puntuación:");
-		txtrPuntuacin.setTabSize(10);
-		txtrPuntuacin.setRows(3);
-		txtrPuntuacin.setLineWrap(true);
-		txtrPuntuacin.setForeground(Color.WHITE);
-		txtrPuntuacin.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
-		txtrPuntuacin.setBackground(new Color(66, 72, 93));
-		txtrPuntuacin.setBounds(669, 85, 135, 24);
-		add(txtrPuntuacin);
-
-	
 		// Añadir 12 elementos (4 columnas y 3 filas) con una imagen y un título en cada celda
 		for (int i = 1; i <= 12; i++) {
 			// Crear un panel para cada celda
-			JPanel panelItem = new JPanel();
+			panelItem = new JPanel();
 			panelItem.setLayout(new BorderLayout());
 			
 			// Añadir una imagen
-			JLabel labelImagen = new JLabel();
-			ImageIcon originalIcon = new ImageIcon(getClass().getResource("/Images/ImagenPelicula.png"));
+			lblImagen = new JLabel();
+			originalIcon = new ImageIcon(getClass().getResource("/Images/ImagenPelicula.png"));
 
 			// Escalar la imagen a 26x156 píxeles
-			Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(140, 176, Image.SCALE_SMOOTH);
+			imagenRedimensionada = originalIcon.getImage().getScaledInstance(140, 176, Image.SCALE_SMOOTH);
 
 			// Crear un nuevo ImageIcon con la imagen redimensionada
-			ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+			iconoRedimensionado = new ImageIcon(imagenRedimensionada);
 
 			// Asignar el icono redimensionado al JLabel
-			labelImagen.setIcon(iconoRedimensionado);
-			labelImagen.setHorizontalAlignment(SwingConstants.CENTER);
+			lblImagen.setIcon(iconoRedimensionado);
+			lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
 			
 			// Añadir un título debajo de la imagen
-			JLabel labelTitulo = new JLabel("Título " + i);
-			labelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-			labelTitulo.setForeground(Color.WHITE);
+			lblTitulo = new JLabel("Título " + i);
+			lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+			lblTitulo.setForeground(Color.WHITE);
 			
 			// Añadir imagen y título al panelItem
-			panelItem.add(labelImagen, BorderLayout.CENTER);
-			panelItem.add(labelTitulo, BorderLayout.SOUTH);
+			panelItem.add(lblImagen, BorderLayout.CENTER);
+			panelItem.add(lblTitulo, BorderLayout.SOUTH);
 			
 			// Añadir el panelItem al panel_1 (el GridLayout)
-			panel_1.add(panelItem);
+			pnlGrid.add(panelItem);
 			
 		}
 		
