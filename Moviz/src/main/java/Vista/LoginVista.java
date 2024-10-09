@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.Font;
 
 
 public class LoginVista extends JPanel {
@@ -30,13 +31,13 @@ public class LoginVista extends JPanel {
 		add(btnIngresar);
 
 		txtUser = new JTextField();
-		txtUser.setBounds(587, 135, 181, 38);
+		txtUser.setBounds(640, 190, 181, 38);
 		add(txtUser);
 		txtUser.setColumns(10);
 
 		txtPassword = new JTextField();
 		txtPassword.setColumns(10);
-		txtPassword.setBounds(587, 211, 181, 38);
+		txtPassword.setBounds(608, 269, 181, 38);
 		add(txtPassword);
 		
 		JLabel Fondo = DefaultComponentFactory.getInstance().createLabel("");
@@ -46,9 +47,15 @@ public class LoginVista extends JPanel {
 		add(Fondo);
 		
 		JLabel LogoApp = DefaultComponentFactory.getInstance().createLabel("");
-		LogoApp.setIcon(new ImageIcon(getClass().getResource("/Images/Aplicacion.png")));
+		LogoApp.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
 		LogoApp.setBounds(602, 51, 285, 69);
 		add(LogoApp);
+		
+		JLabel lblTitulo = new JLabel("Inicia Sesión en Moviz");
+		lblTitulo.setForeground(Color.WHITE);
+		lblTitulo.setFont(new Font("Monospaced", Font.BOLD, 27));
+		lblTitulo.setBounds(550, 131, 445, 36);
+		add(lblTitulo);
 		
 		initStyles();
 		
