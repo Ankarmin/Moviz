@@ -14,7 +14,7 @@ public class RegistrarVista extends JPanel {
 	public JButton btnIniciarSesion;
 
 	public RegistrarVista() {
-		setLayout(null);
+		setLayout(null); // IMPORTANTE
 		setBounds(0, 0, 1140, 640); // IMPORTANTE
 
 		txtUser = new JTextField();
@@ -35,15 +35,15 @@ public class RegistrarVista extends JPanel {
 		btnRegistrar = new JButton("REGISTRAR");
 		btnRegistrar.setBounds(199, 396, 125, 50);
 		add(btnRegistrar);
-		
+
 		btnIniciarSesion = new JButton("INICIAR SESIÓN");
 		btnIniciarSesion.setBounds(199, 476, 125, 50);
 		add(btnIniciarSesion);
 
 		initStyles();
 	}
-	
+
 	private void initStyles() {
-		
+
 	}
 }

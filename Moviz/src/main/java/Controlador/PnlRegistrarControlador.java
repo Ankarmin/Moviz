@@ -13,27 +13,26 @@ public class PnlRegistrarControlador {
 
 	private final FrameControlador frameControlador;
 	private final RegistrarVista vista;
-	private final RegistrarModelo registrarModelo;
+	private final RegistrarModelo modelo;
 
 	public PnlRegistrarControlador(Connection openConexion, FrameControlador frameControlador) {
 
 		this.frameControlador = frameControlador;
 
 		vista = new RegistrarVista();
-		registrarModelo = new RegistrarModelo(new UsuarioRepositorio(openConexion),
-				new ClienteRepositorio(openConexion));
+		modelo = new RegistrarModelo(new UsuarioRepositorio(openConexion), new ClienteRepositorio(openConexion));
 
 		setEvents();
 	}
 
 	// MÉTODO QUE CONFIGURA LOS EVENTOS DE CLICK DE LOS BOTONES DE BIBLIOTECAVISTA
-	public void setEvents() {
+	public final void setEvents() {
 		vista.btnRegistrar.addActionListener((e) -> {
 			registrar();
 		});
 
 		vista.btnIniciarSesion.addActionListener((e) -> {
-			irLogin();
+			irALogin();
 			limpiar();
 		});
 	}
@@ -63,7 +62,7 @@ public class PnlRegistrarControlador {
 		usuario.setPassword(password);
 
 		// INTENTAR AGREGAR EL USUARIO EN LA BASE DE DATOS
-		boolean usuarioRegistrado = registrarModelo.agregarUsuario(usuario);
+		boolean usuarioRegistrado = modelo.agregarUsuario(usuario);
 
 		if (usuarioRegistrado) {
 			// SI EL USUARIO SE REGISTRA CORRECTAMENTE, OBTENEMOS SU ID
@@ -75,7 +74,7 @@ public class PnlRegistrarControlador {
 			cliente.setEmail(email);
 
 			// INTENTAR AGREGAR EL CLIENTE EN LA BASE DE DATOS
-			boolean clienteRegistrado = registrarModelo.agregarCliente(cliente);
+			boolean clienteRegistrado = modelo.agregarCliente(cliente);
 
 			if (clienteRegistrado) {
 				System.out.println("Usuario y Cliente registrados con éxito.");
@@ -88,7 +87,7 @@ public class PnlRegistrarControlador {
 		}
 	}
 
-	private void irLogin() {
+	private void irALogin() {
 		frameControlador.getLoginControlador().mostrar();
 	}
 
