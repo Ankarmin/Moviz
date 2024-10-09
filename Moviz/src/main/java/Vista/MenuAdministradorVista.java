@@ -42,16 +42,6 @@ public class MenuAdministradorVista extends JPanel {
 		add(btnSalir);
 		
 		
-
-		JButton BotonHistorial = new JButton("Historial");
-		BotonHistorial.setBounds(878, 19, 120, 35);
-		add(BotonHistorial);
-		
-		JButton BotonPeliculas = new JButton("PELICULAS");
-		BotonPeliculas.setBounds(748, 19, 120, 35);
-		add(BotonPeliculas);
-		
-		
 		JLabel IconoLogo = DefaultComponentFactory.getInstance().createLabel("");
 		IconoLogo.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacionAdministrador.png")));
 		IconoLogo.setBounds(4, 6, 578, 56);
