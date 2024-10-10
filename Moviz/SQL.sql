@@ -1,5 +1,3 @@
--- Crear el esquema de la base de datos con UTF-8
-CREATE SCHEMA `db_moviz` DEFAULT CHARACTER SET utf8;
 USE db_moviz;
 
 -- Tabla usuario
@@ -35,7 +33,7 @@ CREATE TABLE pelicula (
   añoEstreno YEAR NOT NULL,
   genero VARCHAR(50) NOT NULL,
   duracion INT NOT NULL,
-  puntuacion TINYINT NOT NULL CHECK (puntuacion BETWEEN 1 AND 5),
+  puntuacion TINYINT NOT NULL DEFAULT 0 CHECK (puntuacion BETWEEN 0 AND 5),
   sinopsis TEXT,
   imagen LONGBLOB,
   PRIMARY KEY (idPelicula),
