@@ -1,26 +1,17 @@
 package Vista;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
+import javax.swing.*;
+import java.awt.*;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class RegistrarVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
 	public JTextField txtUser;
-	public JTextField txtPassword;
+	public JPasswordField txtPassword; // Cambiado a JPasswordField
 	public JTextField txtEmail;
 
 	public JButton btnRegistrar;
@@ -35,34 +26,42 @@ public class RegistrarVista extends JPanel {
 	private JLabel fondo;
 	private JLabel lblNewJgoodiesTitle;
 	private JLabel lblNewJgoodiesTitle_1;
-	private JLabel iconoTelefono;;
+	private JLabel iconoTelefono;
 
 	public RegistrarVista() {
 		setBackground(new Color(66, 72, 93));
 		setLayout(null); // IMPORTANTE
 		setBounds(0, 0, 1140, 640); // IMPORTANTE
 
-		txtUser = new JTextField();
+		// Campo de usuario con placeholder
+		txtUser = new JTextField("Ingresar usuario");
 		txtUser.setBounds(499, 198, 545, 38);
+		txtUser.setForeground(Color.GRAY); // Placeholder color
 		add(txtUser);
 		txtUser.setColumns(10);
 
-		txtPassword = new JTextField();
+		// Campo de contraseña con placeholder
+		txtPassword = new JPasswordField("**********");
 		txtPassword.setColumns(10);
 		txtPassword.setBounds(499, 294, 545, 38);
+		txtPassword.setForeground(Color.GRAY); // Placeholder color
 		add(txtPassword);
 
-		txtEmail = new JTextField();
+		// Campo de correo electrónico con placeholder
+		txtEmail = new JTextField("Ingresar correo electrónico");
 		txtEmail.setColumns(10);
 		txtEmail.setBounds(499, 389, 545, 38);
+		txtEmail.setForeground(Color.GRAY); // Placeholder color
 		add(txtEmail);
 
+		// Botón "Registrar"
 		btnRegistrar = new JButton("REGISTRAR");
 		btnRegistrar.setForeground(new Color(255, 255, 255));
 		btnRegistrar.setBackground(new Color(255, 128, 0));
 		btnRegistrar.setBounds(919, 438, 125, 50);
 		add(btnRegistrar);
 
+		// Botón "Iniciar Sesión"
 		btnIniciarSesion = new JButton("INICIAR SESIÓN");
 		btnIniciarSesion.setForeground(new Color(255, 255, 255));
 		btnIniciarSesion.setBackground(new Color(255, 128, 0));
@@ -126,10 +125,62 @@ public class RegistrarVista extends JPanel {
 		iconoTelefono.setBounds(446, 388, 40, 40);
 		add(iconoTelefono);
 
+		// Añadir los listeners de focus para simular los placeholders
 		initStyles();
 	}
 
 	private void initStyles() {
+		// Placeholder para el campo de usuario
+		txtUser.addFocusListener(new FocusAdapter() {
+			public void focusGained(FocusEvent e) {
+				if (txtUser.getText().equals("Ingresar usuario")) {
+					txtUser.setText(""); // Elimina el placeholder cuando el usuario hace clic
+					txtUser.setForeground(Color.BLACK); // Cambia el texto a negro
+				}
+			}
 
+			public void focusLost(FocusEvent e) {
+				if (txtUser.getText().isEmpty()) {
+					txtUser.setForeground(Color.GRAY);
+					txtUser.setText("Ingresar usuario"); // Restaura el placeholder si está vacío
+				}
+			}
+		});
+
+		// Placeholder para el campo de contraseña
+		txtPassword.addFocusListener(new FocusAdapter() {
+			public void focusGained(FocusEvent e) {
+				String password = new String(txtPassword.getPassword());
+				if (password.equals("**********")) {
+					txtPassword.setText(""); // Elimina el placeholder cuando el usuario hace clic
+					txtPassword.setForeground(Color.BLACK); // Cambia el texto a negro
+				}
+			}
+
+			public void focusLost(FocusEvent e) {
+				String password = new String(txtPassword.getPassword());
+				if (password.isEmpty()) {
+					txtPassword.setForeground(Color.GRAY);
+					txtPassword.setText("**********"); // Restaura el placeholder si está vacío
+				}
+			}
+		});
+
+		// Placeholder para el campo de correo electrónico
+		txtEmail.addFocusListener(new FocusAdapter() {
+			public void focusGained(FocusEvent e) {
+				if (txtEmail.getText().equals("Ingresar correo electrónico")) {
+					txtEmail.setText(""); // Elimina el placeholder cuando el usuario hace clic
+					txtEmail.setForeground(Color.BLACK); // Cambia el texto a negro
+				}
+			}
+
+			public void focusLost(FocusEvent e) {
+				if (txtEmail.getText().isEmpty()) {
+					txtEmail.setForeground(Color.GRAY);
+					txtEmail.setText("Ingresar correo electrónico"); // Restaura el placeholder si está vacío
+				}
+			}
+		});
 	}
 }
