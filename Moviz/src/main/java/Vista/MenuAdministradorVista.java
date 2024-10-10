@@ -74,7 +74,7 @@ public class MenuAdministradorVista extends JPanel {
 		
 		JLabel lblNewLabel_1 = new JLabel("Películas");
 		lblNewLabel_1.setFont(new Font("Microsoft YaHei", Font.BOLD, 25));
-		lblNewLabel_1.setBounds(253, 267, 109, 21);
+		lblNewLabel_1.setBounds(253, 267, 168, 21);
 		add(lblNewLabel_1);
 		
 		lblNewLabel_2 = new JLabel("Comentarios");
