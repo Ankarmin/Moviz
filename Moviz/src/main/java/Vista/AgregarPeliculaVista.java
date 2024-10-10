@@ -29,11 +29,12 @@ public class AgregarPeliculaVista extends JPanel {
 	public JTextField txtTitulo;
 	public JTextField txtDuracionAprox;
 	public JTextField txtRutaImagen;
+	public JTextField txtAnioPublicacion;
 	public JTextArea txtSinopsis;
+
 	public JScrollPane scrollSinopsis; // ScrollPane para la sinopsis
 
 	public JComboBox<String> cmbGenero;
-	public JComboBox<String> cmbAnioPublicacion;
 
 	public AgregarPeliculaVista() {
 		setBackground(new Color(66, 72, 93));
@@ -112,7 +113,7 @@ public class AgregarPeliculaVista extends JPanel {
 		cmbGenero.setForeground(Color.WHITE); // Texto en blanco
 
 		// Agregar los géneros actualizados al ComboBox
-		cmbGenero.addItem("Todos");
+		cmbGenero.addItem("-Seleccionar-");
 		cmbGenero.addItem("Acción");
 		cmbGenero.addItem("Aventura");
 		cmbGenero.addItem("Animación");
@@ -141,30 +142,6 @@ public class AgregarPeliculaVista extends JPanel {
 		btnAnioPublicacion.setBounds(100, 300, 200, 30);
 		btnAnioPublicacion.setEnabled(false); // Botón deshabilitado
 		add(btnAnioPublicacion);
-
-		// ComboBox para "Año de Publicación" con los años actualizados
-		cmbAnioPublicacion = new JComboBox<>();
-		cmbAnioPublicacion.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
-		cmbAnioPublicacion.setBounds(350, 300, 400, 30);
-		cmbAnioPublicacion.setBackground(new Color(70, 76, 90));
-		cmbAnioPublicacion.setForeground(Color.WHITE); // Texto en blanco
-
-		// Agregar los años correctos al ComboBox
-		cmbAnioPublicacion.addItem("2020s");
-		cmbAnioPublicacion.addItem("2010s");
-		cmbAnioPublicacion.addItem("2000s");
-		cmbAnioPublicacion.addItem("1990s");
-		cmbAnioPublicacion.addItem("1980s");
-		cmbAnioPublicacion.addItem("1970s");
-		cmbAnioPublicacion.addItem("1960s");
-		cmbAnioPublicacion.addItem("1950s");
-		cmbAnioPublicacion.addItem("1940s");
-		cmbAnioPublicacion.addItem("1930s");
-		cmbAnioPublicacion.addItem("1920s");
-		cmbAnioPublicacion.addItem("1910s");
-		cmbAnioPublicacion.addItem("1900s");
-		cmbAnioPublicacion.addItem("1890s");
-		add(cmbAnioPublicacion);
 
 		// Botón estilizado para "Duración Aprox"
 		btnDuracionAprox = new JButton("Duración Aprox");
@@ -217,7 +194,6 @@ public class AgregarPeliculaVista extends JPanel {
 		btnSubirImagen.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
 		btnSubirImagen.setBackground(new Color(224, 224, 224));
 		btnSubirImagen.setBounds(100, 540, 200, 30);
-		btnSubirImagen.setEnabled(false); // Botón deshabilitado
 		add(btnSubirImagen);
 
 		// Campo de texto para ingresar la ruta de la imagen
@@ -225,8 +201,15 @@ public class AgregarPeliculaVista extends JPanel {
 		txtRutaImagen.setBounds(350, 540, 400, 30);
 		txtRutaImagen.setBackground(new Color(70, 76, 90));
 		txtRutaImagen.setForeground(Color.WHITE);
-		txtRutaImagen.setBorder(BorderFactory.createLineBorder(new Color(56, 59, 74))); // Borde oscuro
+		txtRutaImagen.setBorder(BorderFactory.createLineBorder(new Color(56, 59, 74)));
 		add(txtRutaImagen);
+
+		txtAnioPublicacion = new JTextField();
+		txtAnioPublicacion.setForeground(Color.WHITE);
+		txtAnioPublicacion.setBorder(BorderFactory.createLineBorder(new Color(56, 59, 74)));
+		txtAnioPublicacion.setBackground(new Color(70, 76, 90));
+		txtAnioPublicacion.setBounds(350, 300, 400, 30);
+		add(txtAnioPublicacion);
 
 		initStyles();
 	}

@@ -1,5 +1,6 @@
 package DBRepositorio;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,21 +8,21 @@ public class Pelicula extends Entidades {
 
 	private int idPelicula;
 	private String nombre;
-	private int añoEstreno;
+	private int anioEstreno;
 	private String genero;
 	private String duracion;
 	private int puntuacion;
 	private String sinopsis;
-	private byte[] imagen;
+	private FileInputStream imagen;
 
 	public Pelicula() {
 	}
 
 	public Pelicula(int idPelicula, String nombre, int añoEstreno, String genero, String duracion, int puntuacion,
-			String sinopsis, byte[] imagen) {
+			String sinopsis, FileInputStream imagen) {
 		this.idPelicula = idPelicula;
 		this.nombre = nombre;
-		this.añoEstreno = añoEstreno;
+		this.anioEstreno = añoEstreno;
 		this.genero = genero;
 		this.duracion = duracion;
 		this.puntuacion = puntuacion;
@@ -31,14 +32,14 @@ public class Pelicula extends Entidades {
 
 	@Override
 	public Object[] toArray() {
-		return new Object[] { getIdPelicula(), getNombre(), getAñoEstreno(), getGenero(), getDuracion(),
+		return new Object[] { getIdPelicula(), getNombre(), getAnioEstreno(), getGenero(), getDuracion(),
 				getPuntuacion(), getSinopsis(), getImagen() };
 	}
 
 	public static Pelicula toPelicula(List<Object> datos) {
 		return new Pelicula((Integer) datos.get(0), (String) datos.get(1), (Integer) datos.get(2),
 				(String) datos.get(3), (String) datos.get(4), (Integer) datos.get(5), (String) datos.get(6),
-				(byte[]) datos.get(7));
+				(FileInputStream) datos.get(7));
 	}
 
 	public static List<String> getColumnas() {
@@ -70,12 +71,12 @@ public class Pelicula extends Entidades {
 		this.nombre = nombre;
 	}
 
-	public int getAñoEstreno() {
-		return añoEstreno;
+	public int getAnioEstreno() {
+		return anioEstreno;
 	}
 
-	public void setAñoEstreno(int añoEstreno) {
-		this.añoEstreno = añoEstreno;
+	public void setAnioEstreno(int añoEstreno) {
+		this.anioEstreno = añoEstreno;
 	}
 
 	public String getGenero() {
@@ -110,11 +111,11 @@ public class Pelicula extends Entidades {
 		this.sinopsis = sinopsis;
 	}
 
-	public byte[] getImagen() {
+	public FileInputStream getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(byte[] imagen) {
+	public void setImagen(FileInputStream imagen) {
 		this.imagen = imagen;
 	}
 }

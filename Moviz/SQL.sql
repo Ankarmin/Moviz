@@ -32,7 +32,7 @@ CREATE TABLE pelicula (
   nombre VARCHAR(50) NOT NULL,
   añoEstreno YEAR NOT NULL,
   genero VARCHAR(50) NOT NULL,
-  duracion INT NOT NULL,
+  duracion TIME NOT NULL,
   puntuacion TINYINT NOT NULL DEFAULT 0 CHECK (puntuacion BETWEEN 0 AND 5),
   sinopsis TEXT,
   imagen LONGBLOB,
