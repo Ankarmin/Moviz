@@ -167,7 +167,7 @@ public class EliminarComentariosVista extends JPanel {
 
         // Configuración del JScrollPane que contiene la tabla de comentarios
         spTablaComentarios = new JScrollPane(tblComentarios);
-        spTablaComentarios.setBounds(436, 231, 527, 300); // Ajusta la posición y tamaño
+        spTablaComentarios.setBounds(436, 231, 650, 300); // Ajusta la posición y tamaño
         spTablaComentarios.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // Añadir scroll vertical
         add(spTablaComentarios); // Añadimos el JScrollPane (que contiene la JTable) al panel
 
@@ -176,7 +176,7 @@ public class EliminarComentariosVista extends JPanel {
         btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
         btnEliminar.setForeground(Color.WHITE);
         btnEliminar.setBackground(new Color(255, 128, 0));
-        btnEliminar.setBounds(850, 550, 120, 35); // Colocación del botón
+        btnEliminar.setBounds(966, 553, 120, 35); // Colocación del botón
         add(btnEliminar);
 
         initStyles();
