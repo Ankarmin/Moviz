@@ -100,4 +100,24 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 			return false;
 		}
 	}
+
+	public Cliente obtenerPorIdUsuario(int idUsuario) {
+		Cliente encontrado = null;
+		String query = "SELECT * FROM cliente WHERE idUsuario = ?";
+		try {
+			ResultSet rs;
+			try (PreparedStatement pst = conexion.prepareStatement(query)) {
+				pst.setInt(1, idUsuario);
+				rs = pst.executeQuery();
+				if (rs.next()) {
+					encontrado = new Cliente(rs.getInt("idCliente"), rs.getInt("idUsuario"), rs.getString("email"));
+				}
+			}
+			rs.close();
+			return encontrado;
+		} catch (SQLException e) {
+			System.out.println("Error al buscar cliente por idUsuario: " + e.getMessage());
+			return null;
+		}
+	}
 }

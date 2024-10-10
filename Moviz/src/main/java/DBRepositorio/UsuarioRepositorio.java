@@ -118,4 +118,28 @@ public class UsuarioRepositorio extends IConectar<Usuario, Integer> {
 			return false;
 		}
 	}
+
+	public Usuario obtenerPorUsuarioYPassword(String username, String password) {
+		Usuario encontrado = null;
+		String query = "SELECT * FROM usuario WHERE user = ? AND password = ?";
+		try {
+			ResultSet rs;
+			try (PreparedStatement pst = conexion.prepareStatement(query)) {
+				pst.setString(1, username);
+				pst.setString(2, password);
+				rs = pst.executeQuery();
+				if (rs.next()) {
+					encontrado = new Usuario();
+					encontrado.setId(rs.getInt("id"));
+					encontrado.setUser(rs.getString("user"));
+					encontrado.setPassword(rs.getString("password"));
+				}
+			}
+			rs.close();
+			return encontrado;
+		} catch (SQLException e) {
+			System.out.println("Error al buscar por username y password: " + e.getMessage());
+			return null;
+		}
+	}
 }

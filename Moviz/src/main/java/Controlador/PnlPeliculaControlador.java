@@ -19,7 +19,11 @@ public class PnlPeliculaControlador {
 
 	public final void setEvents() {
 		vista.btnComentarios.addActionListener((e) -> {
-			frameControlador.getComentariosControlador().mostrar();
+			irAComentarios();
+		});
+
+		vista.btnSalir.addActionListener((e) -> {
+			irALogin();
 		});
 	}
 
@@ -28,5 +32,13 @@ public class PnlPeliculaControlador {
 		frameControlador.getFrameVista().pnlContenido.add(vista);
 		frameControlador.getFrameVista().pnlContenido.revalidate();
 		frameControlador.getFrameVista().pnlContenido.repaint();
+	}
+
+	private void irALogin() {
+		frameControlador.getLoginControlador().mostrar();
+	}
+
+	private void irAComentarios() {
+		frameControlador.getComentariosControlador().mostrar();
 	}
 }

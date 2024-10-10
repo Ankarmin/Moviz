@@ -8,9 +8,9 @@ public class EliminarPeliculaVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	// Todos los componentes son públicos según tu convención
+	// TODOS LOS COMPONENTES SON PÚBLICOS SEGÚN TU CONVENCIÓN
 	public JButton btnSalir;
-	public JButton btnVolver; // Nuevo botón "Volver"
+	public JButton btnVolver;
 	public JButton btnEliminarPelicula;
 
 	public JLabel lblTituloSeccion;
@@ -29,20 +29,21 @@ public class EliminarPeliculaVista extends JPanel {
 	public JTable tblPeliculas;
 	public JScrollPane spTabla;
 
+	// CONSTRUCTOR PARA CONFIGURAR LA VISTA
 	public EliminarPeliculaVista() {
-		// Configuración del panel
+		// CONFIGURACIÓN DEL PANEL
 		setBackground(new Color(66, 72, 93));
 		setBorder(null);
 		setLayout(null); // IMPORTANTE
 		setBounds(0, 0, 1140, 640); // IMPORTANTE
 
-		// Botón "Salir" con Icono
+		// BOTÓN "SALIR" CON ICONO
 		btnSalir = new JButton("");
 		btnSalir.setIcon(new ImageIcon(getClass().getResource("/Images/iconosalida.png")));
 		btnSalir.setBounds(1054, 15, 42, 46);
 		add(btnSalir);
 
-		// Botón "Volver" en la esquina superior derecha
+		// BOTÓN "VOLVER" EN LA ESQUINA SUPERIOR DERECHA
 		btnVolver = new JButton("Volver");
 		btnVolver.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnVolver.setBackground(new Color(255, 128, 0));
@@ -50,32 +51,32 @@ public class EliminarPeliculaVista extends JPanel {
 		btnVolver.setBounds(966, 102, 120, 35);
 		add(btnVolver);
 
-		// Icono del Logo
+		// ICONO DEL LOGO
 		lblIconoLogo = DefaultComponentFactory.getInstance().createLabel("");
 		lblIconoLogo.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacionAdministrador.png")));
 		lblIconoLogo.setBounds(4, 6, 578, 56);
 		add(lblIconoLogo);
 
-		// Panel de Cabecera
+		// PANEL DE CABECERA
 		pnlCabecera = new JPanel();
 		pnlCabecera.setBackground(new Color(56, 59, 74));
 		pnlCabecera.setBounds(-85, 0, 1225, 69);
 		add(pnlCabecera);
 
-		// Título de la sección "Eliminar Películas"
+		// TÍTULO DE LA SECCIÓN "ELIMINAR PELÍCULAS"
 		lblTituloSeccion = new JLabel("Eliminar Películas");
 		lblTituloSeccion.setFont(new Font("Microsoft YaHei", Font.BOLD, 21));
 		lblTituloSeccion.setForeground(new Color(255, 255, 255));
 		lblTituloSeccion.setBounds(26, 108, 227, 29);
 		add(lblTituloSeccion);
 
-		// Línea divisoria
+		// LÍNEA DIVISORIA
 		pnlLineaBlanca = new JPanel();
 		pnlLineaBlanca.setBackground(Color.WHITE);
 		pnlLineaBlanca.setBounds(26, 143, 1060, 2);
 		add(pnlLineaBlanca);
 
-		// Campo de búsqueda
+		// CAMPO DE BÚSQUEDA
 		txtBuscar = new JTextField();
 		txtBuscar.setText("Buscar");
 		txtBuscar.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
@@ -83,34 +84,34 @@ public class EliminarPeliculaVista extends JPanel {
 		txtBuscar.setColumns(10);
 		add(txtBuscar);
 
-		// Etiqueta de icono de búsqueda
+		// ETIQUETA DE ICONO DE BÚSQUEDA
 		Busqueda = DefaultComponentFactory.getInstance().createLabel("");
-		Busqueda.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png"))); // Icono de búsqueda
+		Busqueda.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png"))); // ICONO DE BÚSQUEDA
 		Busqueda.setBounds(37, 180, 42, 30);
 		add(Busqueda);
 
-		// Etiqueta para el nombre de la película
+		// ETIQUETA PARA EL NOMBRE DE LA PELÍCULA
 		lblNombrePelicula = new JLabel("Nombre película");
 		lblNombrePelicula.setFont(new Font("Microsoft YaHei", Font.BOLD, 24));
 		lblNombrePelicula.setForeground(new Color(255, 140, 0));
 		lblNombrePelicula.setBounds(436, 181, 400, 30);
 		add(lblNombrePelicula);
 
-		// Imagen de la película (placeholder)
+		// IMAGEN DE LA PELÍCULA (PLACEHOLDER)
 		lblImagenPelicula = new JLabel("");
 		lblImagenPelicula.setOpaque(true);
 		lblImagenPelicula.setBackground(Color.LIGHT_GRAY);
 		lblImagenPelicula.setBounds(436, 231, 200, 300);
 		add(lblImagenPelicula);
 
-		// Etiqueta "Sinopsis"
+		// ETIQUETA "SINOPSIS"
 		lblSinopsis = new JLabel("Sinopsis:");
 		lblSinopsis.setFont(new Font("Microsoft YaHei", Font.BOLD, 16));
 		lblSinopsis.setForeground(new Color(255, 255, 255));
 		lblSinopsis.setBounds(686, 231, 100, 30);
 		add(lblSinopsis);
 
-		// Área de texto para la sinopsis
+		// ÁREA DE TEXTO PARA LA SINOPSIS
 		txtSinopsis = new JTextArea();
 		txtSinopsis.setWrapStyleWord(true);
 		txtSinopsis.setLineWrap(true);
@@ -122,7 +123,7 @@ public class EliminarPeliculaVista extends JPanel {
 		txtSinopsis.setBounds(686, 271, 400, 150);
 		add(txtSinopsis);
 
-		// Botón "Eliminar"
+		// BOTÓN "ELIMINAR"
 		btnEliminarPelicula = new JButton("Eliminar");
 		btnEliminarPelicula.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
 		btnEliminarPelicula.setBackground(new Color(255, 128, 0));
@@ -130,32 +131,34 @@ public class EliminarPeliculaVista extends JPanel {
 		btnEliminarPelicula.setBounds(686, 451, 150, 40);
 		add(btnEliminarPelicula);
 
-		// Configuración de la tabla
+		// CONFIGURACIÓN DE LA TABLA
 		String[] columnNames = { "Lista Películas" };
 		Object[][] data = { { "Título 1" }, { "Título 2" }, { "Título 3" }, { "Título 4" }, { "Título 5" },
 				{ "Título 6" }, { "Título 7" }, { "Título 8" }, { "Título 9" }, { "Título 10" }, { "Título 11" },
 				{ "Título 12" } };
 
-		// Creación de la tabla con los títulos
+		// CREACIÓN DE LA TABLA CON LOS TÍTULOS
 		tblPeliculas = new JTable(data, columnNames);
 		tblPeliculas.setFillsViewportHeight(true);
-		tblPeliculas.setRowHeight(30); // Ajusta la altura de las filas para que se vea más compacta
+		tblPeliculas.setRowHeight(30); // AJUSTA LA ALTURA DE LAS FILAS PARA QUE SE VEA MÁS COMPACTA
 		tblPeliculas.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
 		tblPeliculas.setBackground(new Color(70, 76, 90));
-		tblPeliculas.setForeground(Color.WHITE); // Texto en blanco
+		tblPeliculas.setForeground(Color.WHITE); // TEXTO EN BLANCO
 
-		// Desactiva la edición de las celdas
+		// DESACTIVA LA EDICIÓN DE LAS CELDAS
 		tblPeliculas.setDefaultEditor(Object.class, null);
 
-		// Configuración del JScrollPane que contiene la tabla
+		// CONFIGURACIÓN DEL JSCROLLPANE QUE CONTIENE LA TABLA
 		spTabla = new JScrollPane(tblPeliculas);
-		spTabla.setBounds(50, 231, 300, 300); // Ajusta la posición y tamaño
-		add(spTabla); // Añadimos el JScrollPane (que contiene la JTable) al panel
+		spTabla.setBounds(50, 231, 300, 300); // AJUSTA LA POSICIÓN Y TAMAÑO
+		add(spTabla); // AÑADIMOS EL JSCROLLPANE (QUE CONTIENE LA JTABLE) AL PANEL
 
+		// INICIALIZAR LOS ESTILOS
 		initStyles();
 	}
 
+	// MÉTODO PARA INICIALIZAR LOS ESTILOS (OPCIONAL)
 	public void initStyles() {
-		// Aquí podrías agregar más personalizaciones si es necesario.
+		// AQUÍ PODRÍAS AGREGAR MÁS PERSONALIZACIONES SI ES NECESARIO.
 	}
 }

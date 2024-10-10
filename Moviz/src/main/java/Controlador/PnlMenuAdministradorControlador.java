@@ -2,19 +2,19 @@ package Controlador;
 
 import java.sql.Connection;
 
-import Modelo.MenuAdministradorModelo;
+//import Modelo.MenuAdministradorModelo;
 import Vista.MenuAdministradorVista;
 
 public class PnlMenuAdministradorControlador {
 
 	private final FrameControlador frameControlador;
 	private final MenuAdministradorVista vista;
-	private final MenuAdministradorModelo modelo;
+	// private final MenuAdministradorModelo modelo;
 
 	public PnlMenuAdministradorControlador(Connection openConexion, FrameControlador frameControlador) {
 		this.frameControlador = frameControlador;
 		vista = new MenuAdministradorVista();
-		modelo = new MenuAdministradorModelo();
+		// modelo = new MenuAdministradorModelo();
 
 		setEvents();
 	}

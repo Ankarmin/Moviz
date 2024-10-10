@@ -2,6 +2,8 @@ package Controlador;
 
 import java.sql.Connection;
 
+import javax.swing.JOptionPane;
+
 import DBRepositorio.AdministradorRepositorio;
 import DBRepositorio.ClienteRepositorio;
 import DBRepositorio.UsuarioRepositorio;
@@ -47,11 +49,21 @@ public class PnlLoginControlador {
 
 	private void iniciarSesion() {
 		String user = vista.txtUser.getText();
+		String password = new String(vista.txtPassword.getPassword());
 
-		if (user.equals("usuario")) {
-			frameControlador.getMenuUsuarioControlador().mostrar();
-		} else if (user.equals("admin")) {
-			frameControlador.getMenuAdministradorControlador().mostrar();
+		// LLAMO A MI MÉTODO LOGIN DEL MODELO PARA SABER EL ROL
+		String rol = modelo.login(user, password);
+
+		if (rol != null) {
+			if (rol.equals("cliente")) {
+				frameControlador.getMenuUsuarioControlador().mostrar();
+			} else if (rol.equals("administrador")) {
+				frameControlador.getMenuAdministradorControlador().mostrar();
+			}
+		} else {
+			// SI NO ENCUENTRA USUARIO
+			JOptionPane.showMessageDialog(vista, "Usuario o contraseña incorrectos", "Error",
+					JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

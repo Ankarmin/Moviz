@@ -28,7 +28,7 @@ public class PnlAgregarPeliculaControlador {
 
 	public final void setEvents() {
 		vista.btnVolver.addActionListener((e) -> {
-			frameControlador.getMenuAdministradorControlador().mostrar();
+			irAMenuAdministrador();
 		});
 
 		vista.btnAñadirPelicula.addActionListener((e) -> {
@@ -36,12 +36,11 @@ public class PnlAgregarPeliculaControlador {
 		});
 
 		vista.btnSubirImagen.addActionListener((e) -> {
-			JFileChooser jfc = new JFileChooser();
-			int ap = jfc.showOpenDialog(vista);
-			if (ap == JFileChooser.APPROVE_OPTION) {
-				String ruta = jfc.getSelectedFile().getAbsolutePath();
-				vista.txtRutaImagen.setText(ruta);
-			}
+			subirImagen();
+		});
+
+		vista.btnSalir.addActionListener((e) -> {
+			irALogin();
 		});
 	}
 
@@ -80,6 +79,15 @@ public class PnlAgregarPeliculaControlador {
 		}
 	}
 
+	private void subirImagen() {
+		JFileChooser jfc = new JFileChooser();
+		int ap = jfc.showOpenDialog(vista);
+		if (ap == JFileChooser.APPROVE_OPTION) {
+			String ruta = jfc.getSelectedFile().getAbsolutePath();
+			vista.txtRutaImagen.setText(ruta);
+		}
+	}
+
 	private void limpiar() {
 		vista.txtTitulo.setText("");
 		vista.txtAnioPublicacion.setText("");
@@ -94,5 +102,13 @@ public class PnlAgregarPeliculaControlador {
 		frameControlador.getFrameVista().pnlContenido.add(vista);
 		frameControlador.getFrameVista().pnlContenido.revalidate();
 		frameControlador.getFrameVista().pnlContenido.repaint();
+	}
+
+	private void irALogin() {
+		frameControlador.getLoginControlador().mostrar();
+	}
+
+	private void irAMenuAdministrador() {
+		frameControlador.getMenuAdministradorControlador().mostrar();
 	}
 }

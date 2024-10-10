@@ -18,7 +18,11 @@ public class PnlEliminarComentarioControlador {
 
 	public final void setEvents() {
 		vista.btnVolver.addActionListener((e) -> {
-			frameControlador.getMenuAdministradorControlador().mostrar();
+			irAMenuAdministrador();
+		});
+
+		vista.btnSalir.addActionListener((e) -> {
+			irALogin();
 		});
 	}
 
@@ -27,5 +31,13 @@ public class PnlEliminarComentarioControlador {
 		frameControlador.getFrameVista().pnlContenido.add(vista);
 		frameControlador.getFrameVista().pnlContenido.revalidate();
 		frameControlador.getFrameVista().pnlContenido.repaint();
+	}
+
+	private void irALogin() {
+		frameControlador.getLoginControlador().mostrar();
+	}
+
+	private void irAMenuAdministrador() {
+		frameControlador.getMenuAdministradorControlador().mostrar();
 	}
 }

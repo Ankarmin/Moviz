@@ -18,7 +18,13 @@ public class PnlHistorialControlador {
 	}
 
 	public final void setEvents() {
+		vista.btnPeliculas.addActionListener((e) -> {
+			irAMenuPeliculas();
+		});
 
+		vista.btnSalir.addActionListener((e) -> {
+			irALogin();
+		});
 	}
 
 	public void mostrar() {
@@ -26,5 +32,13 @@ public class PnlHistorialControlador {
 		frameControlador.getFrameVista().pnlContenido.add(vista);
 		frameControlador.getFrameVista().pnlContenido.revalidate();
 		frameControlador.getFrameVista().pnlContenido.repaint();
+	}
+
+	private void irALogin() {
+		frameControlador.getLoginControlador().mostrar();
+	}
+
+	private void irAMenuPeliculas() {
+		frameControlador.getMenuPeliculaControlador().mostrar();
 	}
 }

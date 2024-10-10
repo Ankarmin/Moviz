@@ -10,7 +10,7 @@ public class ComentariosVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	// Parte superior (logo, búsqueda, botones, salir)
+	// PARTE SUPERIOR (LOGO, BÚSQUEDA, BOTONES, SALIR)
 	public JButton btnSalir;
 	public JButton btnVolver;
 	public JButton btnHistorial;
@@ -20,71 +20,72 @@ public class ComentariosVista extends JPanel {
 	private JLabel IconoLogo;
 	private JPanel panel;
 
-	// Sección de comentarios
+	// SECCIÓN DE COMENTARIOS
 	public JLabel lblTituloSeccion;
-	public JLabel lblAgregarComentario;
+	public JLabel lblAgregarPuntuacion;
 	public JComboBox<String> comboBoxPuntuacion;
 	public JTextArea txtNuevoComentario;
 	public JButton btnComentar;
 	public JTable tablaComentarios;
 	public JScrollPane scrollTablaComentarios;
 
+	// CONSTRUCTOR PARA CONFIGURAR LA VISTA
 	public ComentariosVista() {
-		// Configuración del panel
+		// CONFIGURACIÓN DEL PANEL
 		setBackground(new Color(66, 72, 93));
 		setBorder(null);
 		setLayout(null); // IMPORTANTE
 		setBounds(0, 0, 1140, 640); // IMPORTANTE
 
-		// Botón "Salir" con Icono
+		// BOTÓN "SALIR" CON ICONO
 		btnSalir = new JButton("");
 		btnSalir.setIcon(new ImageIcon(MenuUsuarioVista.class.getResource("/Images/iconosalida.png")));
 		btnSalir.setBounds(1065, 12, 42, 46);
 		add(btnSalir);
 
-		// Botón "Historial"
+		// BOTÓN "HISTORIAL"
 		btnHistorial = new JButton("HISTORIAL");
 		btnHistorial.setBounds(878, 19, 120, 35);
 		add(btnHistorial);
 
-		// Botón "Películas"
+		// BOTÓN "PELICULAS"
 		btnPeliculas = new JButton("PELICULAS");
 		btnPeliculas.setBounds(748, 19, 120, 35);
 		add(btnPeliculas);
 
-		// Icono de búsqueda
+		// ICONO DE BÚSQUEDA
 		Busqueda = DefaultComponentFactory.getInstance().createLabel("");
 		Busqueda.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png")));
 		Busqueda.setBounds(280, 17, 40, 40);
 		add(Busqueda);
 
-		// Icono del logo
+		// ICONO DEL LOGO
 		IconoLogo = DefaultComponentFactory.getInstance().createLabel("");
 		IconoLogo.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
 		IconoLogo.setBounds(4, 6, 283, 56);
 		add(IconoLogo);
 
-		// Campo de búsqueda
+		// CAMPO DE BÚSQUEDA
 		txtBuscar = new JTextField();
 		txtBuscar.setText("Buscar");
 		txtBuscar.setBounds(322, 21, 407, 32);
 		add(txtBuscar);
 		txtBuscar.setColumns(10);
 
-		// Panel para la cabecera (fondo gris oscuro)
+		// PANEL PARA LA CABECERA (FONDO GRIS OSCURO)
 		panel = new JPanel();
 		panel.setBackground(new Color(56, 59, 74));
 		panel.setBounds(0, 0, 1225, 69);
 		add(panel);
 
-		// Título de la sección "Comentarios"
+		// TÍTULO DE LA SECCIÓN "COMENTARIOS"
 		lblTituloSeccion = new JLabel("Comentarios");
 		lblTituloSeccion.setFont(new Font("Microsoft YaHei", Font.BOLD, 28));
 		lblTituloSeccion.setForeground(new Color(255, 255, 255));
 		lblTituloSeccion.setBounds(26, 80, 200, 30);
 		add(lblTituloSeccion);
 
-		// Botón "Volver" en la esquina superior derecha
+		// BOTÓN "VOLVER" EN LA ESQUINA SUPERIOR DERECHA
 		btnVolver = new JButton("Volver");
 		btnVolver.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnVolver.setBackground(new Color(255, 128, 0));
@@ -92,21 +93,21 @@ public class ComentariosVista extends JPanel {
 		btnVolver.setBounds(930, 80, 120, 35);
 		add(btnVolver);
 
-		// Etiqueta "Agregar comentario"
-		lblAgregarComentario = new JLabel("Agregar comentario:");
-		lblAgregarComentario.setFont(new Font("Microsoft YaHei", Font.PLAIN, 18));
-		lblAgregarComentario.setForeground(new Color(255, 255, 255));
-		lblAgregarComentario.setBounds(26, 130, 200, 30);
-		add(lblAgregarComentario);
+		// ETIQUETA "AGREGAR COMENTARIO"
+		lblAgregarPuntuacion = new JLabel("Agregar puntuación:");
+		lblAgregarPuntuacion.setFont(new Font("Microsoft YaHei", Font.PLAIN, 18));
+		lblAgregarPuntuacion.setForeground(new Color(255, 255, 255));
+		lblAgregarPuntuacion.setBounds(26, 130, 200, 30);
+		add(lblAgregarPuntuacion);
 
-		// ComboBox para la puntuación
+		// COMBOBOX PARA LA PUNTUACIÓN
 		String[] puntuaciones = { "1/5", "2/5", "3/5", "4/5", "5/5" };
 		comboBoxPuntuacion = new JComboBox<>(puntuaciones);
 		comboBoxPuntuacion.setFont(new Font("Microsoft YaHei", Font.PLAIN, 18));
 		comboBoxPuntuacion.setBounds(230, 130, 100, 30);
 		add(comboBoxPuntuacion);
 
-		// TextArea para ingresar nuevo comentario
+		// TEXTAREA PARA INGRESAR NUEVO COMENTARIO
 		txtNuevoComentario = new JTextArea();
 		txtNuevoComentario.setLineWrap(true);
 		txtNuevoComentario.setWrapStyleWord(true);
@@ -114,7 +115,7 @@ public class ComentariosVista extends JPanel {
 		txtNuevoComentario.setBounds(26, 180, 850, 60);
 		add(txtNuevoComentario);
 
-		// Botón "Comentar"
+		// BOTÓN "COMENTAR"
 		btnComentar = new JButton("Comentar");
 		btnComentar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnComentar.setBackground(new Color(255, 128, 0));
@@ -122,7 +123,7 @@ public class ComentariosVista extends JPanel {
 		btnComentar.setBounds(900, 200, 150, 40);
 		add(btnComentar);
 
-		// Configuración de la tabla de comentarios
+		// CONFIGURACIÓN DE LA TABLA DE COMENTARIOS
 		String[] columnComentarios = { "Comentario" };
 		Object[][] dataComentarios = { {
 				"Usuario 1 - (3/5) - 18/07/24\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate commodo lectus..." },
@@ -138,20 +139,20 @@ public class ComentariosVista extends JPanel {
 		tablaComentarios.setFont(new Font("Microsoft YaHei", Font.PLAIN, 16));
 		tablaComentarios.setBackground(new Color(66, 72, 93));
 		tablaComentarios.setForeground(Color.WHITE);
-		tablaComentarios.setRowHeight(60); // Ajusta la altura de las filas
-		tablaComentarios.setShowGrid(false); // Oculta las líneas de la tabla
-		tablaComentarios.setIntercellSpacing(new Dimension(0, 0)); // Remueve el espacio entre celdas
-		tablaComentarios.setEnabled(false); // Desactiva la edición de la tabla
+		tablaComentarios.setRowHeight(60); // AJUSTA LA ALTURA DE LAS FILAS
+		tablaComentarios.setShowGrid(false); // OCULTA LAS LÍNEAS DE LA TABLA
+		tablaComentarios.setIntercellSpacing(new Dimension(0, 0)); // REMUEVE EL ESPACIO ENTRE CELDAS
+		tablaComentarios.setEnabled(false); // DESACTIVA LA EDICIÓN DE LA TABLA
 
-		// Ocultar el encabezado de la tabla
+		// OCULTAR EL ENCABEZADO DE LA TABLA
 		JTableHeader header = tablaComentarios.getTableHeader();
-		header.setVisible(false); // Oculta el encabezado
-		tablaComentarios.setTableHeader(null); // Remueve completamente el encabezado
+		header.setVisible(false); // OCULTA EL ENCABEZADO
+		tablaComentarios.setTableHeader(null); // REMUEVE COMPLETAMENTE EL ENCABEZADO
 
-		// Configuración del JScrollPane que contiene la tabla de comentarios
+		// CONFIGURACIÓN DEL JSCROLLPANE QUE CONTIENE LA TABLA DE COMENTARIOS
 		scrollTablaComentarios = new JScrollPane(tablaComentarios);
 		scrollTablaComentarios.setBounds(26, 270, 1020, 300);
 		scrollTablaComentarios.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		add(scrollTablaComentarios); // Añadimos el JScrollPane (que contiene la JTable) al panel
+		add(scrollTablaComentarios); // AÑADIMOS EL JSCROLLPANE (QUE CONTIENE LA JTABLE) AL PANEL
 	}
 }

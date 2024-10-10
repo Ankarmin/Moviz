@@ -53,7 +53,7 @@ public class PnlRegistrarControlador {
 	private void registrar() {
 		// OBTENER DATOS DE LA VISTA
 		String username = vista.txtUser.getText();
-		String password = vista.txtPassword.getText();
+		String password = new String(vista.txtPassword.getPassword());
 		String email = vista.txtEmail.getText();
 
 		// CREAR EL OBJETO USUARIO

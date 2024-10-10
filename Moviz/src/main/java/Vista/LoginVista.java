@@ -8,141 +8,143 @@ import java.awt.event.FocusEvent;
 
 public class LoginVista extends JPanel {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    public JButton btnRegistrar;
-    public JButton btnIngresar;
+	public JButton btnRegistrar;
+	public JButton btnIngresar;
 
-    public JTextField txtUser;
-    public JPasswordField txtPassword; // Cambiar JTextField a JPasswordField para las contraseñas
+	public JTextField txtUser;
+	public JPasswordField txtPassword;
 
-    private JLabel lblUsuario;
-    private JLabel lblContrasea;
-    private JLabel lblAnNoTienes;
-    private JLabel logoApp;
-    private JLabel lblTitulo;
-    private JLabel lblFondo;
-    private JLabel lblIconoUsuario;
-    private JLabel lblIconoPassword;
+	private JLabel lblUsuario;
+	private JLabel lblContrasea;
+	private JLabel lblAnNoTienes;
+	private JLabel logoApp;
+	private JLabel lblTitulo;
+	private JLabel lblFondo;
+	private JLabel lblIconoUsuario;
+	private JLabel lblIconoPassword;
 
-    public LoginVista() {
-        setBackground(new Color(66, 72, 93));
-        setLayout(null); // IMPORTANTE
-        setBounds(0, 0, 1140, 640); // IMPORTANTE
+	public LoginVista() {
+		setBackground(new Color(66, 72, 93));
+		setLayout(null); // IMPORTANTE
+		setBounds(0, 0, 1140, 640); // IMPORTANTE
 
-        btnRegistrar = new JButton("REGISTRAR");
-        btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 14));
-        btnRegistrar.setForeground(new Color(255, 255, 255));
-        btnRegistrar.setBackground(new Color(255, 128, 0));
-        btnRegistrar.setBounds(811, 513, 125, 50);
-        add(btnRegistrar);
+		btnRegistrar = new JButton("REGISTRAR");
+		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnRegistrar.setForeground(new Color(255, 255, 255));
+		btnRegistrar.setBackground(new Color(255, 128, 0));
+		btnRegistrar.setBounds(811, 513, 125, 50);
+		add(btnRegistrar);
 
-        btnIngresar = new JButton("INGRESAR");
-        btnIngresar.setFont(new Font("Tahoma", Font.BOLD, 14));
-        btnIngresar.setBackground(new Color(255, 128, 0));
-        btnIngresar.setForeground(new Color(255, 255, 255));
-        btnIngresar.setBounds(920, 433, 125, 50);
-        add(btnIngresar);
+		btnIngresar = new JButton("INGRESAR");
+		btnIngresar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnIngresar.setBackground(new Color(255, 128, 0));
+		btnIngresar.setForeground(new Color(255, 255, 255));
+		btnIngresar.setBounds(920, 433, 125, 50);
+		add(btnIngresar);
 
-        // Campo de usuario con placeholder
-        txtUser = new JTextField("Ingresar usuario");
-        txtUser.setBounds(500, 243, 545, 38);
-        txtUser.setForeground(Color.GRAY); // Texto en gris para simular placeholder
-        add(txtUser);
-        txtUser.setColumns(10);
+		// CAMPO DE USUARIO CON PLACEHOLDER
+		txtUser = new JTextField("Ingresar usuario");
+		txtUser.setBounds(500, 243, 545, 38);
+		txtUser.setForeground(Color.GRAY); // TEXTO EN GRIS PARA SIMULAR PLACEHOLDER
+		add(txtUser);
+		txtUser.setColumns(10);
 
-        // Campo de contraseña con placeholder
-        txtPassword = new JPasswordField("**********");
-        txtPassword.setColumns(10);
-        txtPassword.setBounds(500, 377, 545, 38);
-        txtPassword.setForeground(Color.GRAY); // Texto en gris para simular placeholder
-        add(txtPassword);
+		// CAMPO DE CONTRASEÑA CON PLACEHOLDER
+		txtPassword = new JPasswordField("**********");
+		txtPassword.setColumns(10);
+		txtPassword.setBounds(500, 377, 545, 38);
+		txtPassword.setForeground(Color.GRAY); // TEXTO EN GRIS PARA SIMULAR PLACEHOLDER
+		txtPassword.setEchoChar((char) 0); // ELIMINA EL CARÁCTER DE ECO PARA MOSTRAR EL PLACEHOLDER
+		add(txtPassword);
 
-        // Evento para el campo de usuario
-        txtUser.addFocusListener(new FocusAdapter() {
-            public void focusGained(FocusEvent e) {
-                if (txtUser.getText().equals("Ingresar usuario")) {
-                    txtUser.setText(""); // Elimina el placeholder cuando el usuario hace clic
-                    txtUser.setForeground(Color.WHITE); // Cambia el texto a blanco
-                }
-            }
+		lblFondo = DefaultComponentFactory.getInstance().createLabel("");
+		lblFondo.setBackground(new Color(13, 17, 28));
+		lblFondo.setIcon(new ImageIcon(getClass().getResource("/Images/ImagenAcompañante.png")));
+		lblFondo.setBounds(0, -11, 366, 640);
+		add(lblFondo);
 
-            public void focusLost(FocusEvent e) {
-                if (txtUser.getText().isEmpty()) {
-                    txtUser.setForeground(Color.GRAY);
-                    txtUser.setText("Ingresar usuario"); // Restaura el placeholder si está vacío
-                }
-            }
-        });
+		logoApp = DefaultComponentFactory.getInstance().createLabel("");
+		logoApp.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
+		logoApp.setBounds(602, 51, 285, 69);
+		add(logoApp);
 
-        // Evento para el campo de contraseña
-        txtPassword.addFocusListener(new FocusAdapter() {
-            public void focusGained(FocusEvent e) {
-                String password = new String(txtPassword.getPassword());
-                if (password.equals("**********")) {
-                    txtPassword.setText(""); // Elimina el placeholder cuando el usuario hace clic
-                    txtPassword.setForeground(Color.WHITE); // Cambia el texto a blanco
-                }
-            }
+		lblTitulo = new JLabel("Inicia Sesión en Moviz");
+		lblTitulo.setForeground(Color.WHITE);
+		lblTitulo.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
+		lblTitulo.setBounds(573, 131, 333, 36);
+		add(lblTitulo);
 
-            public void focusLost(FocusEvent e) {
-                String password = new String(txtPassword.getPassword());
-                if (password.isEmpty()) {
-                    txtPassword.setForeground(Color.GRAY);
-                    txtPassword.setText("**********"); // Restaura el placeholder si está vacío
-                }
-            }
-        });
+		lblUsuario = new JLabel("Contraseña");
+		lblUsuario.setForeground(Color.WHITE);
+		lblUsuario.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
+		lblUsuario.setBounds(446, 328, 333, 36);
+		add(lblUsuario);
 
-        lblFondo = DefaultComponentFactory.getInstance().createLabel("");
-        lblFondo.setBackground(new Color(13, 17, 28));
-        lblFondo.setIcon(new ImageIcon(getClass().getResource("/Images/ImagenAcompañante.png")));
-        lblFondo.setBounds(0, -11, 366, 640);
-        add(lblFondo);
+		lblContrasea = new JLabel("Usuario");
+		lblContrasea.setForeground(Color.WHITE);
+		lblContrasea.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
+		lblContrasea.setBounds(446, 189, 213, 43);
+		add(lblContrasea);
 
-        logoApp = DefaultComponentFactory.getInstance().createLabel("");
-        logoApp.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
-        logoApp.setBounds(602, 51, 285, 69);
-        add(logoApp);
+		lblAnNoTienes = new JLabel("Aún no tienes cuenta?");
+		lblAnNoTienes.setForeground(Color.WHITE);
+		lblAnNoTienes.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
+		lblAnNoTienes.setBounds(491, 515, 333, 43);
+		add(lblAnNoTienes);
 
-        lblTitulo = new JLabel("Inicia Sesión en Moviz");
-        lblTitulo.setForeground(Color.WHITE);
-        lblTitulo.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
-        lblTitulo.setBounds(573, 131, 333, 36);
-        add(lblTitulo);
+		lblIconoUsuario = DefaultComponentFactory.getInstance().createTitle("");
+		lblIconoUsuario.setIcon(new ImageIcon(getClass().getResource("/Images/UsuarioIcono.png")));
+		lblIconoUsuario.setBounds(446, 240, 40, 40);
+		add(lblIconoUsuario);
 
-        lblUsuario = new JLabel("Contraseña");
-        lblUsuario.setForeground(Color.WHITE);
-        lblUsuario.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
-        lblUsuario.setBounds(446, 328, 333, 36);
-        add(lblUsuario);
+		lblIconoPassword = DefaultComponentFactory.getInstance().createTitle("");
+		lblIconoPassword.setIcon(new ImageIcon(getClass().getResource("/Images/PasswordIcono.png")));
+		lblIconoPassword.setBounds(446, 373, 40, 40);
+		add(lblIconoPassword);
 
-        lblContrasea = new JLabel("Usuario");
-        lblContrasea.setForeground(Color.WHITE);
-        lblContrasea.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
-        lblContrasea.setBounds(446, 189, 213, 43);
-        add(lblContrasea);
+		initStyles(); // INICIALIZA LOS LISTENERS PARA PLACEHOLDERS
+	}
 
-        lblAnNoTienes = new JLabel("Aún no tienes cuenta?");
-        lblAnNoTienes.setForeground(Color.WHITE);
-        lblAnNoTienes.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
-        lblAnNoTienes.setBounds(491, 515, 333, 43);
-        add(lblAnNoTienes);
+	// MÉTODO PARA INICIALIZAR LOS LISTENERS Y EL COMPORTAMIENTO DE LOS PLACEHOLDERS
+	private void initStyles() {
+		// PLACEHOLDER PARA EL CAMPO DE USUARIO
+		txtUser.addFocusListener(new FocusAdapter() {
+			public void focusGained(FocusEvent e) {
+				if (txtUser.getText().equals("Ingresar usuario")) {
+					txtUser.setText(""); // ELIMINA EL PLACEHOLDER CUANDO EL USUARIO HACE CLIC
+					txtUser.setForeground(Color.WHITE); // CAMBIA EL TEXTO A BLANCO
+				}
+			}
 
-        lblIconoUsuario = DefaultComponentFactory.getInstance().createTitle("");
-        lblIconoUsuario.setIcon(new ImageIcon(getClass().getResource("/Images/UsuarioIcono.png")));
-        lblIconoUsuario.setBounds(446, 240, 40, 40);
-        add(lblIconoUsuario);
+			public void focusLost(FocusEvent e) {
+				if (txtUser.getText().isEmpty()) {
+					txtUser.setForeground(Color.GRAY);
+					txtUser.setText("Ingresar usuario"); // RESTAURA EL PLACEHOLDER SI ESTÁ VACÍO
+				}
+			}
+		});
 
-        lblIconoPassword = DefaultComponentFactory.getInstance().createTitle("");
-        lblIconoPassword.setIcon(new ImageIcon(getClass().getResource("/Images/PasswordIcono.png")));
-        lblIconoPassword.setBounds(446, 373, 40, 40);
-        add(lblIconoPassword);
+		// PLACEHOLDER PARA EL CAMPO DE CONTRASEÑA
+		txtPassword.addFocusListener(new FocusAdapter() {
+			public void focusGained(FocusEvent e) {
+				String password = new String(txtPassword.getPassword());
+				if (password.equals("**********")) {
+					txtPassword.setText(""); // ELIMINA EL PLACEHOLDER CUANDO EL USUARIO HACE CLIC
+					txtPassword.setForeground(Color.WHITE); // CAMBIA EL TEXTO A BLANCO
+					txtPassword.setEchoChar('●'); // ESTABLECE EL CARÁCTER DE ECO CUANDO EL USUARIO EMPIEZA A ESCRIBIR
+				}
+			}
 
-        initStyles();
-    }
-
-    private void initStyles() {
-        // Aquí podrías agregar más personalizaciones si es necesario.
-    }
+			public void focusLost(FocusEvent e) {
+				String password = new String(txtPassword.getPassword());
+				if (password.isEmpty()) {
+					txtPassword.setForeground(Color.GRAY);
+					txtPassword.setText("**********"); // RESTAURA EL PLACEHOLDER SI ESTÁ VACÍO
+					txtPassword.setEchoChar((char) 0); // ELIMINA EL CARÁCTER DE ECO PARA MOSTRAR EL PLACEHOLDER
+				}
+			}
+		});
+	}
 }
