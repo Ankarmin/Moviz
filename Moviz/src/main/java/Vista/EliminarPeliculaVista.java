@@ -10,6 +10,7 @@ public class EliminarPeliculaVista extends JPanel {
 
     // Todos los componentes son públicos según tu convención
     public JButton btnSalir;
+    public JButton btnVolver; // Nuevo botón "Volver"
     public JButton btnEliminarPelicula;
     public JLabel lblTituloSeccion;
     public JTextField txtBuscar;
@@ -36,6 +37,14 @@ public class EliminarPeliculaVista extends JPanel {
         btnSalir.setIcon(new ImageIcon(getClass().getResource("/Images/iconosalida.png")));
         btnSalir.setBounds(1054, 15, 42, 46);
         add(btnSalir);
+        
+        // Botón "Volver" en la esquina superior derecha
+        btnVolver = new JButton("Volver");
+        btnVolver.setFont(new Font("Tahoma", Font.BOLD, 14));
+        btnVolver.setBackground(new Color(255, 128, 0));
+        btnVolver.setForeground(new Color(255, 255, 255));
+        btnVolver.setBounds(966, 102, 120, 35);
+        add(btnVolver);
 
         // Icono del Logo
         lblIconoLogo = DefaultComponentFactory.getInstance().createLabel("");
@@ -112,9 +121,11 @@ public class EliminarPeliculaVista extends JPanel {
         // Botón "Eliminar"
         btnEliminarPelicula = new JButton("Eliminar");
         btnEliminarPelicula.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
-        btnEliminarPelicula.setBackground(new Color(224, 224, 224));
+        btnEliminarPelicula.setBackground(new Color(255, 128, 0));
+        btnEliminarPelicula.setForeground(new Color(255, 255, 255));
         btnEliminarPelicula.setBounds(686, 451, 150, 40);
         add(btnEliminarPelicula);
+       
 
         // Configuración de la tabla
         String[] columnNames = {"Lista Películas"};
@@ -138,6 +149,8 @@ public class EliminarPeliculaVista extends JPanel {
         tblPeliculas.setFillsViewportHeight(true);
         tblPeliculas.setRowHeight(30);  // Ajusta la altura de las filas para que se vea más compacta
         tblPeliculas.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
+        tblPeliculas.setBackground(new Color(70, 76, 90));
+        tblPeliculas.setForeground(Color.WHITE); // Texto en blanco
 
         // Desactiva la edición de las celdas
         tblPeliculas.setDefaultEditor(Object.class, null);
