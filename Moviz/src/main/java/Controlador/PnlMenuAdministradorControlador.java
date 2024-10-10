@@ -29,6 +29,10 @@ public class PnlMenuAdministradorControlador {
 		vista.btnEliminarP.addActionListener((e) -> {
 			eliminarP();
 		});
+
+		vista.btnEliminarC.addActionListener((e) -> {
+			eliminarC();
+		});
 	}
 
 	public void mostrar() {
@@ -45,8 +49,12 @@ public class PnlMenuAdministradorControlador {
 	private void agregarP() {
 		frameControlador.getAgregarPeliculaControlador().mostrar();
 	}
-	
+
 	private void eliminarP() {
 		frameControlador.getEliminarPeliculaControlador().mostrar();
+	}
+
+	private void eliminarC() {
+		frameControlador.getEliminarComentarioControlador().mostrar();
 	}
 }

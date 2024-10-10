@@ -18,11 +18,14 @@ import javax.swing.SwingConstants;
 public class RegistrarVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+
 	public JTextField txtUser;
 	public JTextField txtPassword;
 	public JTextField txtEmail;
+
 	public JButton btnRegistrar;
 	public JButton btnIniciarSesion;
+
 	private JLabel logoApp;
 	private JLabel lblTitulo;
 	private JLabel textocontraseña;

@@ -26,7 +26,10 @@ public class FrameControlador {
 	private final PnlHistorialControlador historialControlador;
 	private final PnlPeliculaControlador peliculaControlador;
 	private final PnlAgregarPeliculaControlador agregarPeliculaControlador;
-	private final PnlEliminarPeliculaControlador eliminarPeliculaControlador;	
+	private final PnlEliminarPeliculaControlador eliminarPeliculaControlador;
+	private final PnlEliminarComentarioControlador eliminarComentarioControlador;
+	private final PnlComentariosControlador comentariosControlador;
+
 	// CONSTRUCTOR DEL CONTROLADOR DEL FRAME LoginVista
 	public FrameControlador() {
 
@@ -46,6 +49,8 @@ public class FrameControlador {
 		agregarPeliculaControlador = new PnlAgregarPeliculaControlador(openConexion, this);
 		eliminarPeliculaControlador = new PnlEliminarPeliculaControlador(openConexion, this);
 		menuAdministradorControlador = new PnlMenuAdministradorControlador(openConexion, this);
+		eliminarComentarioControlador = new PnlEliminarComentarioControlador(openConexion, this);
+		comentariosControlador = new PnlComentariosControlador(openConexion, this);
 	}
 
 	private void Conectar() {
@@ -79,19 +84,19 @@ public class FrameControlador {
 	public PnlAgregarPeliculaControlador getAgregarPeliculaControlador() {
 		return agregarPeliculaControlador;
 	}
-	
+
 	public PnlEliminarPeliculaControlador getEliminarPeliculaControlador() {
 		return eliminarPeliculaControlador;
 	}
-	
+
 	public PnlHistorialControlador getHistorialControlador() {
 		return historialControlador;
 	}
-	
+
 	public PnlPeliculaControlador getPeliculaControlador() {
 		return peliculaControlador;
 	}
-	
+
 	public PnlRegistrarControlador getRegistrarControlador() {
 		return registrarControlador;
 	}
@@ -102,5 +107,13 @@ public class FrameControlador {
 
 	public PnlMenuAdministradorControlador getMenuAdministradorControlador() {
 		return menuAdministradorControlador;
+	}
+
+	public PnlEliminarComentarioControlador getEliminarComentarioControlador() {
+		return eliminarComentarioControlador;
+	}
+
+	public PnlComentariosControlador getComentariosControlador() {
+		return comentariosControlador;
 	}
 }

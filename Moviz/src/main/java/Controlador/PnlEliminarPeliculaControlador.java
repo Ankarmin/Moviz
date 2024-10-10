@@ -18,7 +18,9 @@ public class PnlEliminarPeliculaControlador {
 	}
 
 	public final void setEvents() {
-
+		vista.btnVolver.addActionListener((e) -> {
+			frameControlador.getMenuAdministradorControlador().mostrar();
+		});
 	}
 
 	public void mostrar() {

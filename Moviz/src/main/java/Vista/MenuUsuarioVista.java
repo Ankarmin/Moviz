@@ -24,13 +24,22 @@ public class MenuUsuarioVista extends JPanel {
 	public JButton btnPeliculas;
 	public JButton btnHistorialSecundario;
 	public JButton btnPeliculaSecundario;
+
 	private JTextField txtBuscar;
+
 	private JLabel posterPelicula1;
 	private JLabel posterPelicula2;
 	private JLabel posterPelicula3;
 	private JLabel posterPelicula4;
 	private JLabel posterPelicula5;
 	private JLabel posterPelicula6;
+	private JLabel Busqueda;
+	private JLabel IconoLogo;
+	private JLabel TextoBienvenido;
+	private JLabel lblNewJgoodiesLabel;
+	private JLabel lblNewJgoodiesLabel1;
+	private JLabel lblNewJgoodiesLabel3;
+
 	private JTextArea titulo1_1;
 	private JTextArea titulo2_1;
 	private JTextArea titulo3;
@@ -43,15 +52,11 @@ public class MenuUsuarioVista extends JPanel {
 	private JTextArea tiempoHoras4;
 	private JTextArea tiempoHoras5;
 	private JTextArea tiempoHoras6;
-	private JLabel Busqueda;
-	private JLabel IconoLogo;
-	private JLabel TextoBienvenido;
-	private JLabel lblNewJgoodiesLabel;
-	private JLabel lblNewJgoodiesLabel1;
-	private JLabel lblNewJgoodiesLabel3;
+
 	private JPanel panel;
 	private JPanel LineaBlanca;
 	private JPanel LineaBlanca1;
+
 	private JTextArea textohorassmall1;
 	private JTextArea textohorassmall2;
 	private JTextArea textohorassmall3;
@@ -64,10 +69,11 @@ public class MenuUsuarioVista extends JPanel {
 	private JTextArea textoduracion4;
 	private JTextArea textoduracion5;
 	private JTextArea textoduracion6;
+
 	private ActionListener posterPelicula1Listener;
 
 	public void addPosterPelicula1Listener(ActionListener listener) {
-	    this.posterPelicula1Listener = listener;
+		this.posterPelicula1Listener = listener;
 	}
 
 	public MenuUsuarioVista() {
@@ -187,18 +193,18 @@ public class MenuUsuarioVista extends JPanel {
 		ImageIcon originalIcon = new ImageIcon(MenuUsuarioVista.class.getResource("/Images/ImagenPelicula.png"));
 		Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(140, 176, Image.SCALE_SMOOTH);
 		ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
-		
-		// AQUI AGREGO LA OPCION DE CLICK 
+
+		// AQUI AGREGO LA OPCION DE CLICK
 		posterPelicula1.addMouseListener(new MouseAdapter() {
-		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		        if (posterPelicula1Listener != null) {
-		            posterPelicula1Listener.actionPerformed(new ActionEvent(posterPelicula1, ActionEvent.ACTION_PERFORMED, null));
-		        }
-		    }
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (posterPelicula1Listener != null) {
+					posterPelicula1Listener
+							.actionPerformed(new ActionEvent(posterPelicula1, ActionEvent.ACTION_PERFORMED, null));
+				}
+			}
 		});
 
-		
 		posterPelicula1.setIcon(iconoRedimensionado);
 		posterPelicula1.setBackground(new Color(255, 255, 255));
 		posterPelicula1.setForeground(new Color(255, 255, 255));

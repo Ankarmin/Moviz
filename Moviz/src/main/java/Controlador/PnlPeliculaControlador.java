@@ -18,7 +18,9 @@ public class PnlPeliculaControlador {
 	}
 
 	public final void setEvents() {
-
+		vista.btnComentarios.addActionListener((e) -> {
+			frameControlador.getComentariosControlador().mostrar();
+		});
 	}
 
 	public void mostrar() {

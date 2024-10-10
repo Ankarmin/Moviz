@@ -14,10 +14,13 @@ import java.awt.event.ActionEvent;
 public class LoginVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+
 	public JButton btnRegistrar;
 	public JButton btnIngresar;
+
 	public JTextField txtUser;
 	public JTextField txtPassword;
+
 	private JLabel lblUsuario;
 	private JLabel lblContrasea;
 	private JLabel lblAnNoTienes;
