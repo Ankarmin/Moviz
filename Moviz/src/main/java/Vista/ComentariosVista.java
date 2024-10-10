@@ -1,18 +1,11 @@
 package Vista;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
 public class ComentariosVista extends JPanel {
 
@@ -20,6 +13,7 @@ public class ComentariosVista extends JPanel {
 
     // Parte superior (logo, búsqueda, botones, salir)
     public JButton btnSalir;
+    public JButton btnVolver; // Nuevo botón "Volver"
     public JButton btnHistorial;
     public JButton btnPeliculas;
     private JTextField txtBuscar;
@@ -33,8 +27,8 @@ public class ComentariosVista extends JPanel {
     public JComboBox<String> comboBoxPuntuacion;
     public JTextArea txtNuevoComentario;
     public JButton btnComentar;
-    public JTextArea txtComentarios;
-    public JScrollPane scrollComentarios;
+    public JTable tablaComentarios;
+    public JScrollPane scrollTablaComentarios;
 
     public ComentariosVista() {
         // Configuración del panel
@@ -90,6 +84,14 @@ public class ComentariosVista extends JPanel {
         lblTituloSeccion.setForeground(new Color(255, 255, 255));
         lblTituloSeccion.setBounds(26, 80, 200, 30);
         add(lblTituloSeccion);
+        
+        // Botón "Volver" en la esquina superior derecha
+        btnVolver = new JButton("Volver");
+        btnVolver.setFont(new Font("Tahoma", Font.BOLD, 14));
+        btnVolver.setBackground(new Color(255, 128, 0));
+        btnVolver.setForeground(new Color(255, 255, 255));
+        btnVolver.setBounds(930, 80, 120, 35);
+        add(btnVolver);
 
         // Etiqueta "Agregar comentario"
         lblAgregarComentario = new JLabel("Agregar comentario:");
@@ -115,28 +117,43 @@ public class ComentariosVista extends JPanel {
 
         // Botón "Comentar"
         btnComentar = new JButton("Comentar");
-        btnComentar.setFont(new Font("Microsoft YaHei", Font.PLAIN, 16));
-        btnComentar.setBackground(new Color(224, 224, 224));
+        btnComentar.setFont(new Font("Tahoma", Font.BOLD, 14));
+        btnComentar.setBackground(new Color(255, 128, 0));
+        btnComentar.setForeground(new Color(255, 255, 255));
         btnComentar.setBounds(900, 200, 150, 40);
         add(btnComentar);
 
-        // TextArea para mostrar los comentarios
-        txtComentarios = new JTextArea();
-        txtComentarios.setEditable(false);
-        txtComentarios.setFont(new Font("Microsoft YaHei", Font.PLAIN, 16));
-        txtComentarios.setLineWrap(true);
-        txtComentarios.setWrapStyleWord(true);
-        txtComentarios.setText("Usuario 1 - (3/5) - 18/07/24\n"
-                + "*Lorem ipsum dolor sit amet, consectetur adipiscing elit...\n\n"
-                + "Usuario 1 - (3/5) - 10/03/24\n"
-                + "*Lorem ipsum dolor sit amet, consectetur adipiscing elit...\n\n"
-                + "Usuario 1 - (3/5) - 02/11/23\n"
-                + "*Lorem ipsum dolor sit amet, consectetur adipiscing elit...\n");
+        // Configuración de la tabla de comentarios
+        String[] columnComentarios = {"Comentario"};
+        Object[][] dataComentarios = {
+            {"Usuario 1 - (3/5) - 18/07/24\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate commodo lectus..."},
+            {"Usuario 2 - (3/5) - 10/03/24\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate commodo lectus..."},
+            {"Usuario 3 - (3/5) - 02/11/23\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate commodo lectus..."},
+            {"Usuario 4 - (3/5) - 01/08/23\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate commodo lectus..."},
+            {"Usuario 5 - (3/5) - 15/07/23\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate commodo lectus..."},
+            {"Usuario 6 - (3/5) - 10/06/23\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate commodo lectus..."},
+            {"Usuario 7 - (3/5) - 28/05/23\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate commodo lectus..."}
+        };
 
-        // ScrollPane para los comentarios
-        scrollComentarios = new JScrollPane(txtComentarios);
-        scrollComentarios.setBounds(26, 270, 1020, 300);
-        scrollComentarios.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        add(scrollComentarios);
+        DefaultTableModel model = new DefaultTableModel(dataComentarios, columnComentarios);
+        tablaComentarios = new JTable(model);
+        tablaComentarios.setFont(new Font("Microsoft YaHei", Font.PLAIN, 16));
+        tablaComentarios.setBackground(new Color(66, 72, 93));
+        tablaComentarios.setForeground(Color.WHITE);
+        tablaComentarios.setRowHeight(60);  // Ajusta la altura de las filas
+        tablaComentarios.setShowGrid(false);  // Oculta las líneas de la tabla
+        tablaComentarios.setIntercellSpacing(new Dimension(0, 0));  // Remueve el espacio entre celdas
+        tablaComentarios.setEnabled(false);  // Desactiva la edición de la tabla
+
+        // Ocultar el encabezado de la tabla
+        JTableHeader header = tablaComentarios.getTableHeader();
+        header.setVisible(false);
+        header.setPreferredSize(new Dimension(0, 0));
+
+        // Configuración del JScrollPane que contiene la tabla de comentarios
+        scrollTablaComentarios = new JScrollPane(tablaComentarios);
+        scrollTablaComentarios.setBounds(26, 270, 1020, 300);
+        scrollTablaComentarios.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        add(scrollTablaComentarios);  // Añadimos el JScrollPane (que contiene la JTable) al panel
     }
 }

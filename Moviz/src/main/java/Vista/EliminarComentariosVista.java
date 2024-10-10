@@ -30,7 +30,6 @@ public class EliminarComentariosVista extends JPanel {
         return new ImageIcon(scaledImage);
     }
 
-
     public EliminarComentariosVista() {
         // Configuración del panel
         setBackground(new Color(66, 72, 93));
@@ -121,14 +120,28 @@ public class EliminarComentariosVista extends JPanel {
         // Datos de prueba para la tabla de comentarios (a la derecha)
         String[] columnComentarios = {"Comentario", "Eliminar"};
         Object[][] dataComentarios = {
-        	    {"Usuario 1 - (3/5) - 18/07/24", getScaledIcon("/Images/BasuraIcono.png", 20, 20)},
-        	    {"Usuario 2 - (3/5) - 10/03/24", getScaledIcon("/Images/BasuraIcono.png", 20, 20)},
-        	    {"Usuario 3 - (3/5) - 02/11/23", getScaledIcon("/Images/BasuraIcono.png", 20, 20)},
-        	    {"Usuario 4 - (3/5) - 01/08/23", getScaledIcon("/Images/BasuraIcono.png", 20, 20)},
-        	    {"Usuario 5 - (3/5) - 15/07/23", getScaledIcon("/Images/BasuraIcono.png", 20, 20)},
-        	    {"Usuario 6 - (3/5) - 10/06/23", getScaledIcon("/Images/BasuraIcono.png", 20, 20)},
-        	    {"Usuario 7 - (3/5) - 28/05/23", getScaledIcon("/Images/BasuraIcono.png", 20, 20)}
+            {"Usuario 1 - (3/5) - 18/07/24\n*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.*", 
+             getScaledIcon("/Images/BasuraIcono.png", 20, 20)},
+            
+            {"Usuario 2 - (3/5) - 10/03/24\n*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.*", 
+             getScaledIcon("/Images/BasuraIcono.png", 20, 20)},
+            
+            {"Usuario 3 - (3/5) - 02/11/23\n*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.*", 
+             getScaledIcon("/Images/BasuraIcono.png", 20, 20)},
+            
+            {"Usuario 4 - (3/5) - 01/08/23\n*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.*", 
+             getScaledIcon("/Images/BasuraIcono.png", 20, 20)},
+            
+            {"Usuario 5 - (3/5) - 15/07/23\n*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.*", 
+             getScaledIcon("/Images/BasuraIcono.png", 20, 20)},
+            
+            {"Usuario 6 - (3/5) - 10/06/23\n*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.*", 
+             getScaledIcon("/Images/BasuraIcono.png", 20, 20)},
+            
+            {"Usuario 7 - (3/5) - 28/05/23\n*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.*", 
+             getScaledIcon("/Images/BasuraIcono.png", 20, 20)}
         };
+
 
         // Creación de la tabla con los comentarios
         tblComentarios = new JTable(dataComentarios, columnComentarios);
@@ -141,8 +154,12 @@ public class EliminarComentariosVista extends JPanel {
 
         // Configuración del JScrollPane que contiene la tabla de comentarios
         spTablaComentarios = new JScrollPane(tblComentarios);
-        spTablaComentarios.setBounds(436, 231, 400, 300);  // Ajusta la posición y tamaño
+        spTablaComentarios.setBounds(436, 231, 527, 300);  // Ajusta la posición y tamaño
         add(spTablaComentarios);  // Añadimos el JScrollPane (que contiene la JTable) al panel
+
+        // Ajustar el ancho de las columnas para más espacio en la columna de comentarios
+        tblComentarios.getColumnModel().getColumn(0).setPreferredWidth(400); // Más espacio para el comentario
+        tblComentarios.getColumnModel().getColumn(1).setPreferredWidth(50);  // Menos espacio para el icono
 
         initStyles();
     }
