@@ -60,6 +60,7 @@ public class RegistrarVista extends JPanel {
 
 		// BOTÓN "REGISTRAR"
 		btnRegistrar = new JButton("REGISTRAR");
+		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnRegistrar.setForeground(new Color(255, 255, 255));
 		btnRegistrar.setBackground(new Color(255, 128, 0));
 		btnRegistrar.setBounds(919, 438, 125, 50);
@@ -67,9 +68,10 @@ public class RegistrarVista extends JPanel {
 
 		// BOTÓN "INICIAR SESIÓN"
 		btnIniciarSesion = new JButton("INICIAR SESIÓN");
+		btnIniciarSesion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnIniciarSesion.setForeground(new Color(255, 255, 255));
 		btnIniciarSesion.setBackground(new Color(255, 128, 0));
-		btnIniciarSesion.setBounds(809, 512, 125, 50);
+		btnIniciarSesion.setBounds(783, 512, 160, 50);
 		add(btnIniciarSesion);
 
 		// ICONO DE LA APLICACIÓN
@@ -104,7 +106,7 @@ public class RegistrarVista extends JPanel {
 		yatienescuenta.setHorizontalAlignment(SwingConstants.RIGHT);
 		yatienescuenta.setForeground(Color.WHITE);
 		yatienescuenta.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
-		yatienescuenta.setBounds(489, 514, 304, 43);
+		yatienescuenta.setBounds(463, 514, 304, 43);
 		add(yatienescuenta);
 
 		// ETIQUETA PARA CORREO ELECTRÓNICO

@@ -1,6 +1,9 @@
 package Controlador;
 
+import java.awt.Color;
 import java.sql.Connection;
+
+import javax.swing.JOptionPane;
 
 import DBRepositorio.Cliente;
 import DBRepositorio.ClienteRepositorio;
@@ -45,9 +48,13 @@ public class PnlRegistrarControlador {
 	}
 
 	private void limpiar() {
-		vista.txtUser.setText("");
-		vista.txtPassword.setText("");
-		vista.txtEmail.setText("");
+		vista.txtUser.setForeground(Color.GRAY);
+		vista.txtUser.setText("Ingresar usuario");
+		vista.txtPassword.setForeground(Color.GRAY);
+		vista.txtPassword.setText("**********");
+		vista.txtPassword.setEchoChar((char) 0); // ELIMINAR EL CARÁCTER DE ECO
+		vista.txtEmail.setForeground(Color.GRAY);
+		vista.txtEmail.setText("Ingresar correo electrónico");
 	}
 
 	private void registrar() {
@@ -73,12 +80,13 @@ public class PnlRegistrarControlador {
 			cliente.setIdUsuario(idUsuario);
 			cliente.setEmail(email);
 
-			// INTENTAR AGREGAR EL CLIENTE EN LA BASE DE DATOS
+			// AGREGAR EL CLIENTE EN LA BASE DE DATOS
 			boolean clienteRegistrado = modelo.agregarCliente(cliente);
 
 			if (clienteRegistrado) {
-				System.out.println("Usuario y Cliente registrados con éxito.");
-				limpiar(); // LIMPIAR LOS CAMPOS SI TODO VA BIEN
+				JOptionPane.showMessageDialog(vista, "Cliente registrados con éxito.");
+				limpiar();
+				irALogin();
 			} else {
 				System.out.println("Error al registar el Cliente.");
 			}

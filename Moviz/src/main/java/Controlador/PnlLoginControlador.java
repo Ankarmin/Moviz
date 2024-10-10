@@ -1,5 +1,6 @@
 package Controlador;
 
+import java.awt.Color;
 import java.sql.Connection;
 
 import javax.swing.JOptionPane;
@@ -43,8 +44,11 @@ public class PnlLoginControlador {
 	}
 
 	private void limpiar() {
-		vista.txtUser.setText("");
-		vista.txtPassword.setText("");
+		vista.txtUser.setForeground(Color.GRAY);
+		vista.txtUser.setText("Ingresar usuario");
+		vista.txtPassword.setForeground(Color.GRAY);
+		vista.txtPassword.setText("**********");
+		vista.txtPassword.setEchoChar((char) 0); // ELIMINAR EL CARÁCTER DE ECO
 	}
 
 	private void iniciarSesion() {
