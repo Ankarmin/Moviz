@@ -5,7 +5,6 @@ import java.awt.*;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumnModel;
 
 public class ComentariosVista extends JPanel {
 
@@ -147,8 +146,8 @@ public class ComentariosVista extends JPanel {
 
         // Ocultar el encabezado de la tabla
         JTableHeader header = tablaComentarios.getTableHeader();
-        header.setVisible(false);
-        header.setPreferredSize(new Dimension(0, 0));
+        header.setVisible(false);  // Oculta el encabezado
+        tablaComentarios.setTableHeader(null);  // Remueve completamente el encabezado
 
         // Configuración del JScrollPane que contiene la tabla de comentarios
         scrollTablaComentarios = new JScrollPane(tablaComentarios);
