@@ -63,7 +63,7 @@ public class LoginVista extends JPanel {
             public void focusGained(FocusEvent e) {
                 if (txtUser.getText().equals("Ingresar usuario")) {
                     txtUser.setText(""); // Elimina el placeholder cuando el usuario hace clic
-                    txtUser.setForeground(Color.BLACK); // Cambia el texto a negro
+                    txtUser.setForeground(Color.WHITE); // Cambia el texto a blanco
                 }
             }
 
@@ -81,7 +81,7 @@ public class LoginVista extends JPanel {
                 String password = new String(txtPassword.getPassword());
                 if (password.equals("**********")) {
                     txtPassword.setText(""); // Elimina el placeholder cuando el usuario hace clic
-                    txtPassword.setForeground(Color.BLACK); // Cambia el texto a negro
+                    txtPassword.setForeground(Color.WHITE); // Cambia el texto a blanco
                 }
             }
 

@@ -130,57 +130,57 @@ public class RegistrarVista extends JPanel {
 	}
 
 	private void initStyles() {
-		// Placeholder para el campo de usuario
-		txtUser.addFocusListener(new FocusAdapter() {
-			public void focusGained(FocusEvent e) {
-				if (txtUser.getText().equals("Ingresar usuario")) {
-					txtUser.setText(""); // Elimina el placeholder cuando el usuario hace clic
-					txtUser.setForeground(Color.BLACK); // Cambia el texto a negro
-				}
-			}
+	    // Placeholder para el campo de usuario
+	    txtUser.addFocusListener(new FocusAdapter() {
+	        public void focusGained(FocusEvent e) {
+	            if (txtUser.getText().equals("Ingresar usuario")) {
+	                txtUser.setText(""); // Elimina el placeholder cuando el usuario hace clic
+	                txtUser.setForeground(Color.WHITE); // Cambia el texto a blanco
+	            }
+	        }
 
-			public void focusLost(FocusEvent e) {
-				if (txtUser.getText().isEmpty()) {
-					txtUser.setForeground(Color.GRAY);
-					txtUser.setText("Ingresar usuario"); // Restaura el placeholder si está vacío
-				}
-			}
-		});
+	        public void focusLost(FocusEvent e) {
+	            if (txtUser.getText().isEmpty()) {
+	                txtUser.setForeground(Color.GRAY);
+	                txtUser.setText("Ingresar usuario"); // Restaura el placeholder si está vacío
+	            }
+	        }
+	    });
 
-		// Placeholder para el campo de contraseña
-		txtPassword.addFocusListener(new FocusAdapter() {
-			public void focusGained(FocusEvent e) {
-				String password = new String(txtPassword.getPassword());
-				if (password.equals("**********")) {
-					txtPassword.setText(""); // Elimina el placeholder cuando el usuario hace clic
-					txtPassword.setForeground(Color.BLACK); // Cambia el texto a negro
-				}
-			}
+	    // Placeholder para el campo de contraseña
+	    txtPassword.addFocusListener(new FocusAdapter() {
+	        public void focusGained(FocusEvent e) {
+	            String password = new String(txtPassword.getPassword());
+	            if (password.equals("**********")) {
+	                txtPassword.setText(""); // Elimina el placeholder cuando el usuario hace clic
+	                txtPassword.setForeground(Color.WHITE); // Cambia el texto a blanco
+	            }
+	        }
 
-			public void focusLost(FocusEvent e) {
-				String password = new String(txtPassword.getPassword());
-				if (password.isEmpty()) {
-					txtPassword.setForeground(Color.GRAY);
-					txtPassword.setText("**********"); // Restaura el placeholder si está vacío
-				}
-			}
-		});
+	        public void focusLost(FocusEvent e) {
+	            String password = new String(txtPassword.getPassword());
+	            if (password.isEmpty()) {
+	                txtPassword.setForeground(Color.GRAY);
+	                txtPassword.setText("**********"); // Restaura el placeholder si está vacío
+	            }
+	        }
+	    });
 
-		// Placeholder para el campo de correo electrónico
-		txtEmail.addFocusListener(new FocusAdapter() {
-			public void focusGained(FocusEvent e) {
-				if (txtEmail.getText().equals("Ingresar correo electrónico")) {
-					txtEmail.setText(""); // Elimina el placeholder cuando el usuario hace clic
-					txtEmail.setForeground(Color.BLACK); // Cambia el texto a negro
-				}
-			}
+	    // Placeholder para el campo de correo electrónico
+	    txtEmail.addFocusListener(new FocusAdapter() {
+	        public void focusGained(FocusEvent e) {
+	            if (txtEmail.getText().equals("Ingresar correo electrónico")) {
+	                txtEmail.setText(""); // Elimina el placeholder cuando el usuario hace clic
+	                txtEmail.setForeground(Color.WHITE); // Cambia el texto a blanco
+	            }
+	        }
 
-			public void focusLost(FocusEvent e) {
-				if (txtEmail.getText().isEmpty()) {
-					txtEmail.setForeground(Color.GRAY);
-					txtEmail.setText("Ingresar correo electrónico"); // Restaura el placeholder si está vacío
-				}
-			}
-		});
+	        public void focusLost(FocusEvent e) {
+	            if (txtEmail.getText().isEmpty()) {
+	                txtEmail.setForeground(Color.GRAY);
+	                txtEmail.setText("Ingresar correo electrónico"); // Restaura el placeholder si está vacío
+	            }
+	        }
+	    });
 	}
 }
