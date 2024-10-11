@@ -27,10 +27,10 @@ public class Usuario extends Entidades {
 		return new Object[] { getId(), getUser(), getPassword() };
 	}
 
-	// MÉTODO ESTÁTICO PARA CONVERTIR UN ARRAY DE OBJETOS A ADMIN (UN ARRAY DE
+	// MÉTODO ESTÁTICO PARA CONVERTIR UN ARRAY DE OBJETOS A USUARIO (UN ARRAY DE
 	// OBJETOS ES COMO UN COMODIN, LITERALEMENTE UN OBJETO
 	// OBJECT PUEDE REPRESENTAR CUALQUIER TIPO DE DATO) Y LOS DEVUELVE
-	public static Usuario toAdministrador(List<Object> datos) {
+	public static Usuario toUsuario(List<Object> datos) {
 		return new Usuario((Integer) datos.get(0), (String) datos.get(1), (String) datos.get(2));
 	}
 
