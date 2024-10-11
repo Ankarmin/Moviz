@@ -1,5 +1,6 @@
 package Vista;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,6 +11,7 @@ public class FrameVista extends JFrame {
 	public JPanel pnlContenido;
 
 	public FrameVista() {
+		setIconImage(new ImageIcon(getClass().getResource("/Images/M.png")).getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1140, 640);
 		pnlContenido = new JPanel();
