@@ -21,11 +21,13 @@ El cliente tendrá las siguientes funcionalidades:
 - Puntuar las películas.
 - Dejar comentarios sobre las películas.
 - Alquilar películas de su interés.
+- Acceder al historial de películas alquiladas.
 
 ### *ADMINISTRADOR*
 El administrador tendrá las siguientes funcionalidades:
 - Añadir nuevas películas al catálogo.
 - Eliminar comentarios dejados por los usuarios.
+- Eliminar películas del catálogo.
 
 ## **DETALLES**
 ### ARQUITECTURA
