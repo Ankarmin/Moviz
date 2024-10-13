@@ -1,5 +1,5 @@
 # **MOVIZ**
-Moviz es un software cuya finalidad es que el usuario puedea interactuar con diversos títulos de películas. Los usuario podrán acceder al perfil de cada película, puntuarla y dejar un comentario. Además, tendrá la opción de alquilar alguna película de su interés.
+Moviz fue una idea innovadora pensada para ofrecer a los usuarios una experiencia interactiva con una amplia variedad de títulos de películas, inspirada en la creciente demanda de plataformas digitales de entretenimiento. En Moviz, los clientes pueden acceder al perfil detallado de cada película, puntuarla y dejar comentarios sobre su experiencia. Además de estas interacciones, los usuarios tendrán la opción de alquilar películas de su interés, brindando una solución completa para disfrutar del cine desde la comodidad de su hogar.
 
 ## **INTEGRANTES**
 -	Arancivia Salas, Christian Gabriel
