@@ -14,7 +14,7 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 		this.insertQuery = "INSERT INTO cliente (idUsuario, email) VALUES (?, ?)";
 		this.searchIDQuery = "SELECT * FROM cliente WHERE idCliente = ?";
 		this.searchAllQuery = "SELECT * FROM cliente";
-		this.updateRowQuery = "UPDATE cliente SET idUsuario = ?, email = ? WHERE idCliente = ?";
+		this.updateRowQuery = "UPDATE cliente SET email = ? WHERE idCliente = ?";
 		this.deleteRowQuery = "DELETE FROM cliente WHERE idCliente = ?";
 	}
 
@@ -77,9 +77,8 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 	public boolean actualizar(Cliente filaActualizada) {
 		try {
 			try (PreparedStatement pst = conexion.prepareStatement(updateRowQuery)) {
-				pst.setInt(1, filaActualizada.getIdUsuario());
-				pst.setString(2, filaActualizada.getEmail());
-				pst.setInt(3, filaActualizada.getIdCliente());
+				pst.setString(1, filaActualizada.getEmail());
+				pst.setInt(2, filaActualizada.getIdCliente());
 				pst.executeUpdate();
 			}
 			return true;

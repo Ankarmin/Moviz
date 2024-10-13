@@ -20,7 +20,6 @@ public class UsuarioRepositorio extends IConectar<Usuario, Integer> {
 
 	@Override
 	public boolean agregar(Usuario filaNueva) {
-		String insertQuery = "INSERT INTO usuario (user, password) VALUES (?, ?)";
 		try {
 			try (PreparedStatement pst = conexion.prepareStatement(insertQuery,
 					PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -28,7 +27,7 @@ public class UsuarioRepositorio extends IConectar<Usuario, Integer> {
 				pst.setString(2, filaNueva.getPassword());
 				pst.executeUpdate();
 
-				// OBTENER EL ID GENREADO AUTOMATICAMENTE
+				// OBTENER EL ID GENERADO AUTOMATICAMENTE
 				try (ResultSet generatedKeys = pst.getGeneratedKeys()) {
 					if (generatedKeys.next()) {
 						int generatedId = generatedKeys.getInt(1);
@@ -94,6 +93,7 @@ public class UsuarioRepositorio extends IConectar<Usuario, Integer> {
 			try (PreparedStatement pst = conexion.prepareStatement(updateRowQuery)) {
 				pst.setString(1, filaActualizada.getUser());
 				pst.setString(2, filaActualizada.getPassword());
+				pst.setInt(3, filaActualizada.getId());
 				pst.executeUpdate();
 			}
 			System.out.println("Fila actualizada");
