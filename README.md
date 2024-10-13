@@ -10,6 +10,23 @@ Moviz fue una idea innovadora pensada para ofrecer a los usuarios una experienci
 -	Piñarreta Rojas David Sebastian
 -	Huarcaya Juscamayta Nelson Alejandro
 
+## **FUNCIONALIDADES PRINCIPALES**
+Al iniciar el software, se despliega una ventana donde el usuario debe ingresar la información requerida para acceder a las funcionalidades del programa. Según los datos proporcionados, el sistema identificará si el usuario es un cliente o un administrador, determinando el acceso a diferentes características, las cuales se describirán a continuación.
+
+![image](https://github.com/user-attachments/assets/55353556-a34e-44df-a60e-f2bdc13150cd "Ventana de Login")
+
+### *CLIENTE*
+El cliente tendrá las siguientes funcionalidades:
+- Acceder al perfil de cada película.
+- Puntuar las películas.
+- Dejar comentarios sobre las películas.
+- Alquilar películas de su interés.
+
+### *ADMINISTRADOR*
+El administrador tendrá las siguientes funcionalidades:
+- Añadir nuevas películas al catálogo.
+- Eliminar comentarios dejados por los usuarios.
+
 ## **DETALLES**
 ### ARQUITECTURA
 En este proyecto se utilizó el patrón de diseño de software llamado MVC (Modelo-Vista-Controlador) que organiza el desarrollo de aplicaciones en tres componentes interrelacionados pero independientes. Su principal objetivo es separar las responsabilidades de la aplicación para mejorar la modularidad, la reutilización de código y la facilidad de mantenimiento.
