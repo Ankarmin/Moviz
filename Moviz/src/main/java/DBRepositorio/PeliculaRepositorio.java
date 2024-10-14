@@ -1,6 +1,5 @@
 package DBRepositorio;
 
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -54,7 +53,7 @@ public class PeliculaRepositorio extends IConectar<Pelicula, Integer> {
 					encontrada.setDuracion(rs.getString("duracion"));
 					encontrada.setPuntuacion(rs.getInt("puntuacion"));
 					encontrada.setSinopsis(rs.getString("sinopsis"));
-					encontrada.setImagen((FileInputStream) rs.getBinaryStream("imagen"));
+					encontrada.setImagen(rs.getBinaryStream("imagen"));
 				}
 			}
 			rs.close();
@@ -74,8 +73,7 @@ public class PeliculaRepositorio extends IConectar<Pelicula, Integer> {
 				while (rs.next()) {
 					Pelicula pelicula = new Pelicula(rs.getInt("idPelicula"), rs.getString("nombre"),
 							rs.getInt("añoEstreno"), rs.getString("genero"), rs.getString("duracion"),
-							rs.getInt("puntuacion"), rs.getString("sinopsis"),
-							(FileInputStream) rs.getBinaryStream("imagen"));
+							rs.getInt("puntuacion"), rs.getString("sinopsis"), rs.getBinaryStream("imagen"));
 					peliculas.add(pelicula);
 				}
 			}

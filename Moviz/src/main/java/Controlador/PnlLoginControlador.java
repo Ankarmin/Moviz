@@ -25,14 +25,52 @@ public class PnlLoginControlador {
 		modelo = new LoginModelo(new UsuarioRepositorio(openConexion), new ClienteRepositorio(openConexion),
 				new AdministradorRepositorio(openConexion));
 
+		setEvents();
+	}
+
+	public final void setEvents() {
 		vista.btnIngresar.addActionListener((e) -> {
 			iniciarSesion();
-			limpiar();
 		});
 
 		vista.btnRegistrar.addActionListener((e) -> {
 			irARegistrar();
-			limpiar();
+		});
+
+		vista.txtUser.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusGained(java.awt.event.FocusEvent e) {
+				if (vista.txtUser.getText().equals("Ingresar usuario")) {
+					vista.txtUser.setText("");
+					vista.txtUser.setForeground(Color.WHITE);
+				}
+			}
+
+			public void focusLost(java.awt.event.FocusEvent e) {
+				if (vista.txtUser.getText().isEmpty()) {
+					vista.txtUser.setForeground(Color.GRAY);
+					vista.txtUser.setText("Ingresar usuario");
+				}
+			}
+		});
+
+		vista.txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusGained(java.awt.event.FocusEvent e) {
+				String password = new String(vista.txtPassword.getPassword());
+				if (password.equals("**********")) {
+					vista.txtPassword.setText("");
+					vista.txtPassword.setForeground(Color.WHITE);
+					vista.txtPassword.setEchoChar('●');
+				}
+			}
+
+			public void focusLost(java.awt.event.FocusEvent e) {
+				String password = new String(vista.txtPassword.getPassword());
+				if (password.isEmpty()) {
+					vista.txtPassword.setForeground(Color.GRAY);
+					vista.txtPassword.setText("**********");
+					vista.txtPassword.setEchoChar((char) 0);
+				}
+			}
 		});
 	}
 
@@ -61,8 +99,10 @@ public class PnlLoginControlador {
 		if (rol != null) {
 			if (rol.equals("cliente")) {
 				frameControlador.getMenuUsuarioControlador().mostrar();
+				limpiar();
 			} else if (rol.equals("administrador")) {
 				frameControlador.getMenuAdministradorControlador().mostrar();
+				limpiar();
 			}
 		} else {
 			// SI NO ENCUENTRA USUARIO
@@ -73,6 +113,7 @@ public class PnlLoginControlador {
 
 	private void irARegistrar() {
 		frameControlador.getRegistrarControlador().mostrar();
+		limpiar();
 	}
 
 	public LoginVista getVista() {

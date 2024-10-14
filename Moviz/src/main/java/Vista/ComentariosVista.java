@@ -1,10 +1,22 @@
 package Vista;
 
-import javax.swing.*;
-import java.awt.*;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class ComentariosVista extends JPanel {
 
@@ -16,8 +28,8 @@ public class ComentariosVista extends JPanel {
 	public JButton btnHistorial;
 	public JButton btnPeliculas;
 	private JTextField txtBuscar;
-	private JLabel Busqueda;
-	private JLabel IconoLogo;
+	public JLabel Busqueda;
+	public JLabel IconoLogo;
 	private JPanel panel;
 
 	// SECCIÓN DE COMENTARIOS

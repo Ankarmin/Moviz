@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -22,6 +23,11 @@ public class MenuAdministradorVista extends JPanel {
 	public JButton btnAgregarP;
 
 	private JLabel lblNewLabel_2;
+	private JPanel panel_1;
+	private JPanel LineaBlanca;
+	private JLabel lblNewJgoodiesLabel1;
+	private JPanel LineaBlanca_1;
+	private JPanel LineaBlanca_1_1;
 
 	public MenuAdministradorVista() {
 		setBackground(new Color(66, 72, 93));
@@ -87,28 +93,28 @@ public class MenuAdministradorVista extends JPanel {
 		btnEliminarC.setBounds(697, 322, 283, 38);
 		add(btnEliminarC);
 
-		JPanel panel_1 = new JPanel();
+		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(56, 59, 74));
 		panel_1.setBounds(-85, 0, 1225, 69);
 		add(panel_1);
 
-		JPanel LineaBlanca = new JPanel();
+		LineaBlanca = new JPanel();
 		LineaBlanca.setBackground(Color.WHITE);
 		LineaBlanca.setBounds(26, 143, 1060, 2);
 		add(LineaBlanca);
 
-		JLabel lblNewJgoodiesLabel1 = DefaultComponentFactory.getInstance().createLabel("Menu administrador");
+		lblNewJgoodiesLabel1 = DefaultComponentFactory.getInstance().createLabel("Menu administrador");
 		lblNewJgoodiesLabel1.setFont(new Font("Microsoft YaHei", Font.PLAIN, 13));
 		lblNewJgoodiesLabel1.setForeground(new Color(255, 255, 255));
 		lblNewJgoodiesLabel1.setBounds(26, 123, 135, 14);
 		add(lblNewJgoodiesLabel1);
 
-		JPanel LineaBlanca_1 = new JPanel();
+		LineaBlanca_1 = new JPanel();
 		LineaBlanca_1.setBackground(Color.WHITE);
 		LineaBlanca_1.setBounds(115, 299, 400, 2);
 		add(LineaBlanca_1);
 
-		JPanel LineaBlanca_1_1 = new JPanel();
+		LineaBlanca_1_1 = new JPanel();
 		LineaBlanca_1_1.setBackground(Color.WHITE);
 		LineaBlanca_1_1.setBounds(649, 299, 400, 2);
 		add(LineaBlanca_1_1);

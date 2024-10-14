@@ -18,7 +18,7 @@ public class RegistrarModelo {
 	public boolean agregarUsuario(Usuario usuario) {
 		return usuarioRepositorio.agregar(usuario);
 	}
-	
+
 	public boolean agregarCliente(Cliente cliente) {
 		return clienteRepositorio.agregar(cliente);
 	}

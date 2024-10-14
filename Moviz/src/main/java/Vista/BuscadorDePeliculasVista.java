@@ -1,6 +1,5 @@
 package Vista;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -13,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingConstants;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
@@ -42,7 +40,7 @@ public class BuscadorDePeliculasVista extends JPanel {
 	public JPanel panelItem;
 
 	// VARIABLES JSCROLLPANE
-	public JScrollPane spTablaHistorial;
+	public JScrollPane spTablaBusqueda;
 
 	// VARIABLES RELACIONADAS CON IMÁGENES
 	public ImageIcon originalIcon;
@@ -111,46 +109,15 @@ public class BuscadorDePeliculasVista extends JPanel {
 		add(lblHistorialPeliculas);
 
 		// SCROLLPANE PARA MOSTRAR EL HISTORIAL
-		spTablaHistorial = new JScrollPane();
-		spTablaHistorial.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		spTablaHistorial.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		spTablaHistorial.setBounds(26, 136, 1060, 437);
-		add(spTablaHistorial);
+		spTablaBusqueda = new JScrollPane();
+		spTablaBusqueda.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		spTablaBusqueda.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		spTablaBusqueda.setBounds(26, 136, 1060, 437);
+		add(spTablaBusqueda);
 
 		// CREAR EL PANEL QUE CONTENDRÁ LA CUADRÍCULA
 		pnlGrid = new JPanel();
-		pnlGrid.setLayout(new GridLayout(3, 4, 10, 10)); // 3 FILAS, 4 COLUMNAS, CON 10PX DE ESPACIO ENTRE CELDAS
-		spTablaHistorial.setViewportView(pnlGrid);
-
-		// AÑADIR 12 ELEMENTOS (4 COLUMNAS Y 3 FILAS) CON UNA IMAGEN Y UN TÍTULO EN CADA
-		// CELDA
-		for (int i = 1; i <= 12; i++) {
-			panelItem = new JPanel();
-			panelItem.setLayout(new BorderLayout());
-
-			// LABEL PARA LA IMAGEN
-			lblImagen = new JLabel();
-			originalIcon = new ImageIcon(getClass().getResource("/Images/ImagenPelicula.png"));
-
-			// REDIMENSIONAR LA IMAGEN
-			imagenRedimensionada = originalIcon.getImage().getScaledInstance(140, 176, Image.SCALE_SMOOTH);
-			iconoRedimensionado = new ImageIcon(imagenRedimensionada);
-
-			// ASIGNAR EL ICONO REDIMENSIONADO AL JLABEL
-			lblImagen.setIcon(iconoRedimensionado);
-			lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
-
-			// LABEL PARA EL TÍTULO
-			lblTitulo = new JLabel("Título " + i);
-			lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-			lblTitulo.setForeground(Color.WHITE);
-
-			// AÑADIR IMAGEN Y TÍTULO AL PANELITEM
-			panelItem.add(lblImagen, BorderLayout.CENTER);
-			panelItem.add(lblTitulo, BorderLayout.SOUTH);
-
-			// AÑADIR EL PANELITEM AL PNGRID (EL GRIDLAYOUT)
-			pnlGrid.add(panelItem);
-		}
+		pnlGrid.setLayout(new GridLayout(0, 3, 10, 10)); // 0 filas, 3 columnas, con 10px de espacio entre celdas
+		spTablaBusqueda.setViewportView(pnlGrid);
 	}
 }

@@ -1,28 +1,29 @@
 package Vista;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-import java.awt.Color;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.Image;
-
 public class PeliculaVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JLabel posterPelicula1;
+	public JLabel posterPelicula1;
 	private JLabel LblFavoritos;
 	private JLabel LblEstrellas;
 	private JPanel panel;
-	private JLabel Busqueda;
-	private JLabel IconoLogo;
-	
+	public JLabel Busqueda;
+	public JLabel IconoLogo;
+	public JLabel textPuntuacion;
+
 	public JButton btnAlquilar;
 	public JButton btnAlquilado;
 	public JButton btnComentarios;
@@ -30,42 +31,43 @@ public class PeliculaVista extends JPanel {
 	public JButton btnHistorial;
 	public JButton btnPeliculas;
 
-	private JTextArea titulo1_1;
-	private JTextArea txtrTextoSinopsis;
+	public JTextArea titulo1_1;
+	public JTextArea txtrTextoSinopsis;
 	private JTextArea TxtSinopsis;
-	
+
 	private JTextField txtBuscar;
+	private JTextArea txtrAadirAFavoritos;
 
 	public PeliculaVista() {
 		setBackground(new Color(66, 72, 93));
 		setBounds(0, 0, 1140, 640);
 		setLayout(null);
 		initStyles();
-				
-				Busqueda = DefaultComponentFactory.getInstance().createLabel("");
-				Busqueda.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png")));
-				Busqueda.setBounds(280, 17, 40, 40);
-				add(Busqueda);
-		
-				btnPeliculas = new JButton("PELICULAS");
-				btnPeliculas.setBounds(748, 19, 120, 35);
-				add(btnPeliculas);
-		
+
+		Busqueda = DefaultComponentFactory.getInstance().createLabel("");
+		Busqueda.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png")));
+		Busqueda.setBounds(280, 17, 40, 40);
+		add(Busqueda);
+
+		btnPeliculas = new JButton("PELICULAS");
+		btnPeliculas.setBounds(748, 19, 120, 35);
+		add(btnPeliculas);
+
 		btnHistorial = new JButton("HISTORIAL");
 		btnHistorial.setBounds(878, 19, 120, 35);
 		add(btnHistorial);
-		
+
 		btnSalir = new JButton("");
 		btnSalir.setIcon(new ImageIcon(MenuUsuarioVista.class.getResource("/Images/iconosalida.png")));
 		btnSalir.setBounds(1065, 12, 42, 46);
 		add(btnSalir);
-		
+
 		txtBuscar = new JTextField();
 		txtBuscar.setText("Buscar");
 		txtBuscar.setBounds(322, 21, 407, 32);
 		add(txtBuscar);
 		txtBuscar.setColumns(10);
-		
+
 		IconoLogo = DefaultComponentFactory.getInstance().createLabel("");
 		IconoLogo.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
 		IconoLogo.setBounds(4, 6, 283, 56);
@@ -145,23 +147,22 @@ public class PeliculaVista extends JPanel {
 		LblEstrellas.setIcon(new ImageIcon(getClass().getResource("/Images/estrellas.png")));
 		LblEstrellas.setBounds(73, 467, 40, 40);
 		add(LblEstrellas);
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setForeground(new Color(255, 255, 255));
-		textArea.setBackground(new Color(66, 72, 93));
-		textArea.setFont(new Font("Microsoft YaHei", Font.BOLD, 19));
-		textArea.setText("3.3");
-		textArea.setBounds(128, 467, 157, 32);
-		add(textArea);
-		
-		JTextArea txtrAadirAFavoritos = new JTextArea();
+
+		textPuntuacion = new JLabel();
+		textPuntuacion.setForeground(new Color(255, 255, 255));
+		textPuntuacion.setBackground(new Color(66, 72, 93));
+		textPuntuacion.setFont(new Font("Microsoft YaHei", Font.BOLD, 19));
+		textPuntuacion.setBounds(130, 470, 157, 32);
+		add(textPuntuacion);
+
+		txtrAadirAFavoritos = new JTextArea();
 		txtrAadirAFavoritos.setForeground(new Color(255, 255, 255));
 		txtrAadirAFavoritos.setBackground(new Color(66, 72, 93));
 		txtrAadirAFavoritos.setFont(new Font("Microsoft YaHei", Font.BOLD, 16));
 		txtrAadirAFavoritos.setText("Añadir a favoritos");
 		txtrAadirAFavoritos.setBounds(128, 542, 157, 30);
 		add(txtrAadirAFavoritos);
-		
+
 		panel = new JPanel();
 
 		panel.setBackground(new Color(56, 59, 74));

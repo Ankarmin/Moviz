@@ -1,6 +1,5 @@
 package Vista;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -13,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingConstants;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
@@ -119,38 +117,7 @@ public class HistorialVista extends JPanel {
 
 		// CREAR EL PANEL QUE CONTENDRÁ LA CUADRÍCULA
 		pnlGrid = new JPanel();
-		pnlGrid.setLayout(new GridLayout(3, 4, 10, 10)); // 3 FILAS, 4 COLUMNAS, CON 10PX DE ESPACIO ENTRE CELDAS
+		pnlGrid.setLayout(new GridLayout(0, 3, 10, 10)); // 0 filas, 3 columnas, con 10px de espacio entre celdas
 		spTablaHistorial.setViewportView(pnlGrid);
-
-		// AÑADIR 12 ELEMENTOS (4 COLUMNAS Y 3 FILAS) CON UNA IMAGEN Y UN TÍTULO EN CADA
-		// CELDA
-		for (int i = 1; i <= 12; i++) {
-			panelItem = new JPanel();
-			panelItem.setLayout(new BorderLayout());
-
-			// LABEL PARA LA IMAGEN
-			lblImagen = new JLabel();
-			originalIcon = new ImageIcon(getClass().getResource("/Images/ImagenPelicula.png"));
-
-			// REDIMENSIONAR LA IMAGEN
-			imagenRedimensionada = originalIcon.getImage().getScaledInstance(140, 176, Image.SCALE_SMOOTH);
-			iconoRedimensionado = new ImageIcon(imagenRedimensionada);
-
-			// ASIGNAR EL ICONO REDIMENSIONADO AL JLABEL
-			lblImagen.setIcon(iconoRedimensionado);
-			lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
-
-			// LABEL PARA EL TÍTULO
-			lblTitulo = new JLabel("Título " + i);
-			lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-			lblTitulo.setForeground(Color.WHITE);
-
-			// AÑADIR IMAGEN Y TÍTULO AL PANELITEM
-			panelItem.add(lblImagen, BorderLayout.CENTER);
-			panelItem.add(lblTitulo, BorderLayout.SOUTH);
-
-			// AÑADIR EL PANELITEM AL PNGRID (EL GRIDLAYOUT)
-			pnlGrid.add(panelItem);
-		}
 	}
 }

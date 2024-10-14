@@ -1,20 +1,18 @@
 package Vista;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JButton;
 import java.awt.Color;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.ActionEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class MenuUsuarioVista extends JPanel {
 
@@ -27,14 +25,14 @@ public class MenuUsuarioVista extends JPanel {
 
 	private JTextField txtBuscar;
 
-	private JLabel posterPelicula1;
+	public JLabel posterPelicula1;
 	private JLabel posterPelicula2;
 	private JLabel posterPelicula3;
 	private JLabel posterPelicula4;
 	private JLabel posterPelicula5;
 	private JLabel posterPelicula6;
-	private JLabel Busqueda;
-	private JLabel IconoLogo;
+	public JLabel Busqueda;
+	public JLabel IconoLogo;
 	private JLabel TextoBienvenido;
 	private JLabel lblNewJgoodiesLabel;
 	private JLabel lblNewJgoodiesLabel1;
@@ -69,12 +67,6 @@ public class MenuUsuarioVista extends JPanel {
 	private JTextArea textoduracion4;
 	private JTextArea textoduracion5;
 	private JTextArea textoduracion6;
-
-	private ActionListener posterPelicula1Listener;
-
-	public void addPosterPelicula1Listener(ActionListener listener) {
-		this.posterPelicula1Listener = listener;
-	}
 
 	public MenuUsuarioVista() {
 		setBackground(new Color(66, 72, 93));
@@ -194,17 +186,6 @@ public class MenuUsuarioVista extends JPanel {
 		Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(140, 176, Image.SCALE_SMOOTH);
 		ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
 
-		// AQUI AGREGO LA OPCION DE CLICK
-		posterPelicula1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (posterPelicula1Listener != null) {
-					posterPelicula1Listener
-							.actionPerformed(new ActionEvent(posterPelicula1, ActionEvent.ACTION_PERFORMED, null));
-				}
-			}
-		});
-
 		posterPelicula1.setIcon(iconoRedimensionado);
 		posterPelicula1.setBackground(new Color(255, 255, 255));
 		posterPelicula1.setForeground(new Color(255, 255, 255));
@@ -227,14 +208,6 @@ public class MenuUsuarioVista extends JPanel {
 		posterPelicula4 = DefaultComponentFactory.getInstance().createLabel("");
 		posterPelicula5 = DefaultComponentFactory.getInstance().createLabel("");
 		posterPelicula6 = DefaultComponentFactory.getInstance().createLabel("");
-
-		// ImageIcon originalIcon = new
-		// ImageIcon(MenuUsuarioVista.class.getResource("/Images/ImagenPelicula.png"));
-
-		// Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(140,
-		// 176, Image.SCALE_SMOOTH);
-
-		// ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
 
 		posterPelicula4.setIcon(iconoRedimensionado);
 		posterPelicula4.setBackground(new Color(255, 255, 255));

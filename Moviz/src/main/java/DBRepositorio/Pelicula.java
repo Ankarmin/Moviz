@@ -1,6 +1,6 @@
 package DBRepositorio;
 
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,16 +13,16 @@ public class Pelicula extends Entidades {
 	private String duracion;
 	private int puntuacion;
 	private String sinopsis;
-	private FileInputStream imagen;
+	private InputStream imagen;
 
 	public Pelicula() {
 	}
 
-	public Pelicula(int idPelicula, String nombre, int añoEstreno, String genero, String duracion, int puntuacion,
-			String sinopsis, FileInputStream imagen) {
+	public Pelicula(int idPelicula, String nombre, int anioEstreno, String genero, String duracion, int puntuacion,
+			String sinopsis, InputStream imagen) {
 		this.idPelicula = idPelicula;
 		this.nombre = nombre;
-		this.anioEstreno = añoEstreno;
+		this.anioEstreno = anioEstreno;
 		this.genero = genero;
 		this.duracion = duracion;
 		this.puntuacion = puntuacion;
@@ -39,7 +39,7 @@ public class Pelicula extends Entidades {
 	public static Pelicula toPelicula(List<Object> datos) {
 		return new Pelicula((Integer) datos.get(0), (String) datos.get(1), (Integer) datos.get(2),
 				(String) datos.get(3), (String) datos.get(4), (Integer) datos.get(5), (String) datos.get(6),
-				(FileInputStream) datos.get(7));
+				(InputStream) datos.get(7));
 	}
 
 	public static List<String> getColumnas() {
@@ -75,8 +75,8 @@ public class Pelicula extends Entidades {
 		return anioEstreno;
 	}
 
-	public void setAnioEstreno(int añoEstreno) {
-		this.anioEstreno = añoEstreno;
+	public void setAnioEstreno(int anioEstreno) {
+		this.anioEstreno = anioEstreno;
 	}
 
 	public String getGenero() {
@@ -111,11 +111,11 @@ public class Pelicula extends Entidades {
 		this.sinopsis = sinopsis;
 	}
 
-	public FileInputStream getImagen() {
+	public InputStream getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(FileInputStream imagen) {
+	public void setImagen(InputStream imagen) {
 		this.imagen = imagen;
 	}
 }

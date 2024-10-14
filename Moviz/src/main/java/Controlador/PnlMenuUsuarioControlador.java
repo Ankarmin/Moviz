@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 
 //import Modelo.MenuUsuarioModelo;
@@ -33,10 +35,26 @@ public class PnlMenuUsuarioControlador {
 			irAHistorial();
 		});
 
-		vista.addPosterPelicula1Listener((e) -> {
-			irAPelicula();
+		vista.posterPelicula1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+			}
 		});
 
+		vista.Busqueda.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				irABusqueda();
+			}
+		});
+
+		vista.IconoLogo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				irAMenuUsuario();
+			}
+		});
 	}
 
 	public void mostrar() {
@@ -58,7 +76,11 @@ public class PnlMenuUsuarioControlador {
 		frameControlador.getHistorialControlador().mostrar();
 	}
 
-	private void irAPelicula() {
-		frameControlador.getPeliculaControlador().mostrar();
+	private void irABusqueda() {
+		frameControlador.getBuscadorDePeliculasControlador().mostrar();
+	}
+
+	private void irAMenuUsuario() {
+		frameControlador.getMenuUsuarioControlador().mostrar();
 	}
 }

@@ -22,10 +22,10 @@ public class App {
 		UIManager.put("Component.focusWidth", 0);
 
 		// INSTANCIACION DEL CONTROLADOR MAESTRO
-		FrameControlador controladorLogin = new FrameControlador();
+		FrameControlador frameControlador = new FrameControlador();
 
 		// METODO QUE CARGA EL JFRAME INICIAL (LA VENTANA)
-		controladorLogin.iniciar();
+		frameControlador.iniciar();
 
 	}
 }

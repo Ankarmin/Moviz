@@ -1,7 +1,17 @@
 package Vista;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class EliminarPeliculaVista extends JPanel {

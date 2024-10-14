@@ -1,6 +1,7 @@
 package Controlador;
 
 import java.sql.Connection;
+
 import Vista.EliminarPeliculaVista;
 
 public class PnlEliminarPeliculaControlador {

@@ -1,10 +1,17 @@
 package Vista;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
 public class RegistrarVista extends JPanel {
 
@@ -147,60 +154,6 @@ public class RegistrarVista extends JPanel {
 
 	// MÉTODO PARA INICIALIZAR LOS LISTENERS Y EL COMPORTAMIENTO DE LOS PLACEHOLDERS
 	private void initStyles() {
-		// PLACEHOLDER PARA EL CAMPO DE USUARIO
-		txtUser.addFocusListener(new FocusAdapter() {
-			public void focusGained(FocusEvent e) {
-				if (txtUser.getText().equals("Ingresar usuario")) {
-					txtUser.setText(""); // ELIMINA EL PLACEHOLDER CUANDO EL USUARIO HACE CLIC
-					txtUser.setForeground(Color.WHITE); // CAMBIA EL TEXTO A BLANCO
-				}
-			}
 
-			public void focusLost(FocusEvent e) {
-				if (txtUser.getText().isEmpty()) {
-					txtUser.setForeground(Color.GRAY);
-					txtUser.setText("Ingresar usuario"); // RESTAURA EL PLACEHOLDER SI ESTÁ VACÍO
-				}
-			}
-		});
-
-		// PLACEHOLDER PARA EL CAMPO DE CONTRASEÑA
-		txtPassword.addFocusListener(new FocusAdapter() {
-			public void focusGained(FocusEvent e) {
-				String password = new String(txtPassword.getPassword());
-				if (password.equals("**********")) {
-					txtPassword.setText(""); // ELIMINA EL PLACEHOLDER CUANDO EL USUARIO HACE CLIC
-					txtPassword.setForeground(Color.WHITE); // CAMBIA EL TEXTO A BLANCO
-					txtPassword.setEchoChar('●'); // ESTABLECE EL CARÁCTER DE ECO CUANDO EL USUARIO EMPIEZA A
-													// ESCRIBIR
-				}
-			}
-
-			public void focusLost(FocusEvent e) {
-				String password = new String(txtPassword.getPassword());
-				if (password.isEmpty()) {
-					txtPassword.setForeground(Color.GRAY);
-					txtPassword.setText("**********"); // RESTAURA EL PLACEHOLDER SI ESTÁ VACÍO
-					txtPassword.setEchoChar((char) 0); // ELIMINA EL CARÁCTER DE ECO PARA MOSTRAR EL PLACEHOLDER
-				}
-			}
-		});
-
-		// PLACEHOLDER PARA EL CAMPO DE CORREO ELECTRÓNICO
-		txtEmail.addFocusListener(new FocusAdapter() {
-			public void focusGained(FocusEvent e) {
-				if (txtEmail.getText().equals("Ingresar correo electrónico")) {
-					txtEmail.setText(""); // ELIMINA EL PLACEHOLDER CUANDO EL USUARIO HACE CLIC
-					txtEmail.setForeground(Color.WHITE); // CAMBIA EL TEXTO A BLANCO
-				}
-			}
-
-			public void focusLost(FocusEvent e) {
-				if (txtEmail.getText().isEmpty()) {
-					txtEmail.setForeground(Color.GRAY);
-					txtEmail.setText("Ingresar correo electrónico"); // RESTAURA EL PLACEHOLDER SI ESTÁ VACÍO
-				}
-			}
-		});
 	}
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import DBRepositorio.Pelicula;
 import Vista.FrameVista;
 
 public class FrameControlador {
@@ -24,11 +25,12 @@ public class FrameControlador {
 	private final PnlMenuUsuarioControlador menuUsuarioControlador;
 	private final PnlMenuAdministradorControlador menuAdministradorControlador;
 	private final PnlHistorialControlador historialControlador;
-	private final PnlPeliculaControlador peliculaControlador;
 	private final PnlAgregarPeliculaControlador agregarPeliculaControlador;
 	private final PnlEliminarPeliculaControlador eliminarPeliculaControlador;
 	private final PnlEliminarComentarioControlador eliminarComentarioControlador;
-	private final PnlComentariosControlador comentariosControlador;
+	private final PnlBuscadorDePeliculasControlador buscadorDePeliculasControlador;
+
+	private final Pelicula pelicula;
 
 	// CONSTRUCTOR DEL CONTROLADOR DEL FRAME LoginVista
 	public FrameControlador() {
@@ -39,18 +41,19 @@ public class FrameControlador {
 		// INSTANCIACIÓN DEL FRAME DE BIBLIOTECA
 		frameVista = new FrameVista();
 
+		pelicula = new Pelicula();
+
 		// INSTANCIAMOS LOS DEMAS CONTROLADORES
 		registrarControlador = new PnlRegistrarControlador(openConexion, this);
 		loginControlador = new PnlLoginControlador(openConexion, this);
 		menuPeliculaControlador = new PnlMenuPeliculaControlador(openConexion, this);
 		menuUsuarioControlador = new PnlMenuUsuarioControlador(openConexion, this);
 		historialControlador = new PnlHistorialControlador(openConexion, this);
-		peliculaControlador = new PnlPeliculaControlador(openConexion, this);
 		agregarPeliculaControlador = new PnlAgregarPeliculaControlador(openConexion, this);
 		eliminarPeliculaControlador = new PnlEliminarPeliculaControlador(openConexion, this);
 		menuAdministradorControlador = new PnlMenuAdministradorControlador(openConexion, this);
 		eliminarComentarioControlador = new PnlEliminarComentarioControlador(openConexion, this);
-		comentariosControlador = new PnlComentariosControlador(openConexion, this);
+		buscadorDePeliculasControlador = new PnlBuscadorDePeliculasControlador(openConexion, this);
 	}
 
 	private void Conectar() {
@@ -64,6 +67,10 @@ public class FrameControlador {
 
 	public FrameVista getFrameVista() {
 		return frameVista;
+	}
+
+	public Connection getOpenConexion() {
+		return openConexion;
 	}
 
 	public void iniciar() {
@@ -93,10 +100,6 @@ public class FrameControlador {
 		return historialControlador;
 	}
 
-	public PnlPeliculaControlador getPeliculaControlador() {
-		return peliculaControlador;
-	}
-
 	public PnlRegistrarControlador getRegistrarControlador() {
 		return registrarControlador;
 	}
@@ -113,7 +116,7 @@ public class FrameControlador {
 		return eliminarComentarioControlador;
 	}
 
-	public PnlComentariosControlador getComentariosControlador() {
-		return comentariosControlador;
+	public PnlBuscadorDePeliculasControlador getBuscadorDePeliculasControlador() {
+		return buscadorDePeliculasControlador;
 	}
 }
