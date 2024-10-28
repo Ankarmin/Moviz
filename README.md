@@ -8,7 +8,6 @@ Moviz fue una idea innovadora pensada para ofrecer a los usuarios una experienci
 -	Chavez Cerna, Joshua Nicolas
 -	Ticlla Vento, Esther Noemí
 -	Piñarreta Rojas David Sebastian
--	Huarcaya Juscamayta Nelson Alejandro
 
 ## **FUNCIONALIDADES PRINCIPALES**
 Al iniciar el software, se despliega una ventana donde el usuario debe ingresar la información requerida para acceder a las funcionalidades del programa. Según los datos proporcionados, el sistema identificará si el usuario es un cliente o un administrador, determinando el acceso a diferentes características, las cuales se describirán a continuación.
