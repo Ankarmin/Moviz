@@ -86,6 +86,8 @@ public class PeliculaVista extends JPanel {
 		add(titulo1_1);
 
 		txtrTextoSinopsis = new JTextArea();
+		txtrTextoSinopsis.setLineWrap(true);
+		txtrTextoSinopsis.setWrapStyleWord(true);
 		txtrTextoSinopsis.setFont(new Font("Microsoft YaHei", Font.BOLD, 17));
 		txtrTextoSinopsis.setText(
 				"**Lorem ipsum dolor sit amet, consectetur adipiscing elit. \r\nNulla quam velit, vulputate eu pharetra nec, mattis ac neque. \r\nDuis vulputate commodo lectus, ac blandit elit tincidunt id. \r\nSed rhoncus, tortor sed eleifend tristique, tortor mauris \r\nmolestie elit, et lacinia ipsum quam nec dui. Quisque nec \r\nmauris sit amet elit iaculis pretium sit amet quis magna.  \r\nVivamus varius pretium ligula, a aliquam odio euismod sit \r\namet. Quisque laoreet sem sit amet orci ullamcorper at \r\nultricies metus viverra. Pellentesque arcu mauris, \r\nmalesuada quis ornare accumsan, blandit sed diam.**");
