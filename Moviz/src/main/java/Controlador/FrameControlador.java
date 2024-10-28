@@ -11,9 +11,9 @@ public class FrameControlador {
 
 	// ATRIBUTOS DESTINADOS A CONECTARSE CON LA BASE DE DATOS
 	private Connection openConexion;
-	private static final String URL = "jdbc:mysql://localhost:3306/db_moviz";
+	private static final String URL = "jdbc:mysql://junction.proxy.rlwy.net:22381/db_moviz";
 	private static final String USER = "root";
-	private static final String PASSWORD = "Ankarmin";
+	private static final String PASSWORD = "ShUTTFGcSybgWnDLCZYqwWSlvWMiINBK";
 
 	// VISTA DEL CONTROLADOR AL INICIAR EL PROGRAMA
 	private final FrameVista frameVista;
