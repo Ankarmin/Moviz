@@ -18,7 +18,7 @@ public class FrameVista extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(0, 0, 1140, 640);
 
-        setMinimumSize(new Dimension(840, 440));
+        setMinimumSize(new Dimension(840, 470));
 
         pnlContenido = new JPanel();
         pnlContenido.setBorder(new EmptyBorder(5, 5, 5, 5));
