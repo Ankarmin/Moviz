@@ -1,9 +1,15 @@
 package Vista;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FlowLayout;
 import java.awt.Image;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,196 +24,183 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class EliminarComentariosVista extends JPanel {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	// VARIABLES JBUTTON
-	public JButton btnSalir;
-	public JButton btnVolver;
-	public JButton btnEliminar;
+    public JButton btnSalir;
+    public JButton btnVolver;
+    public JButton btnEliminar;
 
-	// VARIABLES JLABEL
-	public JLabel lblTituloSeccion;
-	public JLabel lblNombrePelicula;
-	public JLabel lblIconoLogo;
-	public JLabel Busqueda;
+    public JLabel lblTituloSeccion;
+    public JLabel lblNombrePelicula;
+    public JLabel lblIconoLogo;
+    public JLabel Busqueda;
 
-	// VARIABLES JTABLE
-	public JTable tblPeliculas;
-	public JTable tblComentarios;
+    public JTable tblPeliculas;
+    public JTable tblComentarios;
 
-	// VARIABLES JSCROLLPANE
-	public JScrollPane spTablaPeliculas;
-	public JScrollPane spTablaComentarios;
+    public JScrollPane spTablaPeliculas;
+    public JScrollPane spTablaComentarios;
 
-	// VARIABLES JTEXTFIELD
-	public JTextField txtBuscar;
+    public JTextField txtBuscar;
 
-	// VARIABLES JPANEL
-	public JPanel pnlLineaBlanca;
-	public JPanel pnlCabecera;
+    public JPanel pnlLineaBlanca;
+    public JPanel pnlCabecera;
 
-	// MODELO DE LA TABLA DE COMENTARIOS
-	public DefaultTableModel comentariosModel;
+    public DefaultTableModel comentariosModel;
 
-	// FUNCIÓN PARA REESCALAR LA IMAGEN
-	public ImageIcon getScaledIcon(String path, int width, int height) {
-		ImageIcon originalIcon = new ImageIcon(getClass().getResource(path));
-		Image scaledImage = originalIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
-		return new ImageIcon(scaledImage);
-	}
+    public EliminarComentariosVista() {
+        setBackground(new Color(66, 72, 93));
+        setBorder(null);
+        setLayout(null);
+        setBounds(0, 0, 1140, 640);
 
-	// CONSTRUCTOR PARA CONFIGURAR LA VISTA
-	public EliminarComentariosVista() {
-		// CONFIGURACIÓN DEL PANEL
-		setBackground(new Color(66, 72, 93));
-		setBorder(null);
-		setLayout(null); // IMPORTANTE
-		setBounds(0, 0, 1140, 640); // IMPORTANTE
+        // Panel superior (cabecera) con logo y botón de salida
+        pnlCabecera = new JPanel(new BorderLayout());
+        pnlCabecera.setBackground(new Color(56, 59, 74));
+        pnlCabecera.setPreferredSize(new Dimension(1140, 70));
+        pnlCabecera.setBounds(0, 0, 1140, 70);
+        add(pnlCabecera);
 
-		// BOTÓN "SALIR" CON ICONO
-		btnSalir = new JButton("");
-		btnSalir.setIcon(new ImageIcon(getClass().getResource("/Images/iconosalida.png")));
-		btnSalir.setBounds(1054, 15, 42, 46);
-		add(btnSalir);
+        JPanel logoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        logoPanel.setOpaque(false);
 
-		// BOTÓN "VOLVER" EN LA ESQUINA SUPERIOR DERECHA
-		btnVolver = new JButton("Volver");
-		btnVolver.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnVolver.setBackground(new Color(255, 128, 0));
-		btnVolver.setForeground(new Color(255, 255, 255));
-		btnVolver.setBounds(966, 102, 120, 35);
-		add(btnVolver);
+        // Mantener el tamaño original del icono del logo
+        lblIconoLogo = DefaultComponentFactory.getInstance().createLabel("");
+        lblIconoLogo.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacionAdministrador.png")));
+        logoPanel.add(lblIconoLogo);
 
-		// ICONO DEL LOGO
-		lblIconoLogo = DefaultComponentFactory.getInstance().createLabel("");
-		lblIconoLogo.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacionAdministrador.png")));
-		lblIconoLogo.setBounds(4, 6, 578, 56);
-		add(lblIconoLogo);
+        JPanel exitPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        exitPanel.setOpaque(false);
 
-		// PANEL DE CABECERA
-		pnlCabecera = new JPanel();
-		pnlCabecera.setBackground(new Color(56, 59, 74));
-		pnlCabecera.setBounds(-85, 0, 1225, 69);
-		add(pnlCabecera);
+        btnSalir = new JButton(new ImageIcon(getClass().getResource("/Images/iconosalida.png")));
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setBorderPainted(false);
+        exitPanel.add(btnSalir);
 
-		// TÍTULO DE LA SECCIÓN "ELIMINAR COMENTARIOS"
-		lblTituloSeccion = new JLabel("Eliminar Comentarios");
-		lblTituloSeccion.setFont(new Font("Microsoft YaHei", Font.BOLD, 21));
-		lblTituloSeccion.setForeground(new Color(255, 255, 255));
-		lblTituloSeccion.setBounds(26, 108, 271, 29);
-		add(lblTituloSeccion);
+        pnlCabecera.add(logoPanel, BorderLayout.WEST);
+        pnlCabecera.add(exitPanel, BorderLayout.EAST);
 
-		// LÍNEA DIVISORIA
-		pnlLineaBlanca = new JPanel();
-		pnlLineaBlanca.setBackground(Color.WHITE);
-		pnlLineaBlanca.setBounds(26, 143, 1060, 2);
-		add(pnlLineaBlanca);
+        // Label para el título de la sección
+        lblTituloSeccion = new JLabel("Eliminar Comentarios");
+        lblTituloSeccion.setFont(new Font("Microsoft YaHei", Font.BOLD, 21));
+        lblTituloSeccion.setForeground(new Color(255, 255, 255));
+        lblTituloSeccion.setBounds(26, 108, 271, 29);
+        add(lblTituloSeccion);
 
-		// CAMPO DE BÚSQUEDA
-		txtBuscar = new JTextField();
-		txtBuscar.setText("Buscar");
-		txtBuscar.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
-		txtBuscar.setBounds(80, 180, 250, 30);
-		txtBuscar.setColumns(10);
-		add(txtBuscar);
+        // Línea divisoria bajo el título
+        pnlLineaBlanca = new JPanel();
+        pnlLineaBlanca.setBackground(Color.WHITE);
+        pnlLineaBlanca.setBounds(26, 143, getWidth() - 80, 2);
+        add(pnlLineaBlanca);
 
-		// ETIQUETA DE ICONO DE BÚSQUEDA
-		Busqueda = DefaultComponentFactory.getInstance().createLabel("");
-		Busqueda.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png"))); // ICONO DE BÚSQUEDA
-		Busqueda.setBounds(37, 180, 42, 30);
-		add(Busqueda);
+        // Campo de búsqueda
+        txtBuscar = new JTextField("Buscar");
+        txtBuscar.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
+        txtBuscar.setBounds(80, 180, 250, 30);
+        txtBuscar.setColumns(10);
+        add(txtBuscar);
 
-		// ETIQUETA PARA EL NOMBRE DE LA PELÍCULA
-		lblNombrePelicula = new JLabel("Nombre película");
-		lblNombrePelicula.setFont(new Font("Microsoft YaHei", Font.BOLD, 24));
-		lblNombrePelicula.setForeground(new Color(255, 140, 0));
-		lblNombrePelicula.setBounds(436, 181, 400, 30);
-		add(lblNombrePelicula);
+        // Icono de búsqueda
+        Busqueda = DefaultComponentFactory.getInstance().createLabel("");
+        Busqueda.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png")));
+        Busqueda.setBounds(37, 180, 42, 30);
+        add(Busqueda);
 
-		// CONFIGURACIÓN DE LA TABLA DE PELÍCULAS (VACÍA INICIALMENTE)
-		String[] columnPeliculas = { "Lista Películas" };
-		Object[][] dataPeliculas = {}; // TABLA VACÍA AL INICIO
+        // Etiqueta para el nombre de la película
+        lblNombrePelicula = new JLabel("Nombre película");
+        lblNombrePelicula.setFont(new Font("Microsoft YaHei", Font.BOLD, 24));
+        lblNombrePelicula.setForeground(new Color(255, 140, 0));
+        lblNombrePelicula.setBounds(436, 181, 400, 30);
+        add(lblNombrePelicula);
 
-		DefaultTableModel peliculasModel = new DefaultTableModel(dataPeliculas, columnPeliculas);
-		tblPeliculas = new JTable(peliculasModel);
-		tblPeliculas.setFillsViewportHeight(true);
-		tblPeliculas.setRowHeight(30); // AJUSTA LA ALTURA DE LAS FILAS
-		tblPeliculas.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
-		tblPeliculas.setBackground(new Color(70, 76, 90));
-		tblPeliculas.setForeground(Color.WHITE); // TEXTO EN BLANCO
-		tblPeliculas.setDefaultEditor(Object.class, null); // DESACTIVA LA EDICIÓN DE CELDAS
+        // Tabla de películas
+        String[] columnPeliculas = { "Lista Películas" };
+        DefaultTableModel peliculasModel = new DefaultTableModel(null, columnPeliculas);
+        tblPeliculas = new JTable(peliculasModel);
+        tblPeliculas.setFillsViewportHeight(true);
+        tblPeliculas.setRowHeight(30);
+        tblPeliculas.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
+        tblPeliculas.setBackground(new Color(70, 76, 90));
+        tblPeliculas.setForeground(Color.WHITE);
+        tblPeliculas.setDefaultEditor(Object.class, null);
 
-		// CONFIGURACIÓN DEL JSCROLLPANE PARA QUE APAREZCA SCROLL SI HAY VARIAS
-		// PELÍCULAS
-		spTablaPeliculas = new JScrollPane(tblPeliculas);
-		spTablaPeliculas.setBounds(50, 231, 300, 300); // AJUSTA LA POSICIÓN Y TAMAÑO
-		spTablaPeliculas.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // FORZAR EL SCROLL SI SE
-																							// EXCEDE EL TAMAÑO
-		add(spTablaPeliculas); // AÑADIMOS EL JSCROLLPANE (QUE CONTIENE LA JTABLE) AL PANEL
+        spTablaPeliculas = new JScrollPane(tblPeliculas);
+        spTablaPeliculas.setBounds(50, 231, 300, 300);
+        spTablaPeliculas.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        add(spTablaPeliculas);
 
-		// DATOS DE PRUEBA PARA LA TABLA DE COMENTARIOS
-		String[] columnComentarios = { "Usuario", "Comentario", "Eliminar" };
-		Object[][] dataComentarios = {
-				{ "Usuario 1 - (3/5) - 18/07/24", "Lorem ipsum dolor sit amet...", Boolean.FALSE },
-				{ "Usuario 2 - (3/5) - 10/03/24", "Lorem ipsum dolor sit amet...", Boolean.FALSE },
-				{ "Usuario 3 - (3/5) - 02/11/23", "Lorem ipsum dolor sit amet...", Boolean.FALSE },
-				{ "Usuario 4 - (3/5) - 01/08/23", "Lorem ipsum dolor sit amet...", Boolean.FALSE },
-				{ "Usuario 5 - (3/5) - 15/07/23", "Lorem ipsum dolor sit amet...", Boolean.FALSE },
-				{ "Usuario 6 - (3/5) - 10/06/23", "Lorem ipsum dolor sit amet...", Boolean.FALSE },
-				{ "Usuario 7 - (3/5) - 28/05/23", "Lorem ipsum dolor sit amet...", Boolean.FALSE } };
+        // Tabla de comentarios
+        String[] columnComentarios = { "Usuario", "Comentario", "Eliminar" };
+        comentariosModel = new DefaultTableModel(null, columnComentarios) {
+            @Override
+            public Class<?> getColumnClass(int column) {
+                return column == 2 ? Boolean.class : String.class;
+            }
+        };
 
-		// CREACIÓN DE LA TABLA CON LOS COMENTARIOS
-		comentariosModel = new DefaultTableModel(dataComentarios, columnComentarios) {
-			private static final long serialVersionUID = 1L;
+        tblComentarios = new JTable(comentariosModel);
+        tblComentarios.setFillsViewportHeight(true);
+        tblComentarios.setRowHeight(60);
+        tblComentarios.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
+        tblComentarios.setBackground(new Color(70, 76, 90));
+        tblComentarios.setForeground(Color.WHITE);
 
-			@Override
-			public Class<?> getColumnClass(int column) {
-				switch (column) {
-				case 0: // USUARIO
-				case 1: // COMENTARIO
-					return String.class;
-				case 2: // ELIMINAR (CHECKBOX)
-					return Boolean.class;
-				default:
-					return Object.class;
-				}
-			}
-		};
+        TableColumnModel columnModel = tblComentarios.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(150);
+        columnModel.getColumn(1).setPreferredWidth(300);
+        columnModel.getColumn(2).setPreferredWidth(50);
 
-		tblComentarios = new JTable(comentariosModel);
-		tblComentarios.setFillsViewportHeight(true);
-		tblComentarios.setRowHeight(60); // AJUSTA LA ALTURA DE LAS FILAS
-		tblComentarios.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
-		tblComentarios.setSelectionBackground(new Color(60, 62, 77)); // GRIS OSCURO
-		tblComentarios.setBackground(new Color(70, 76, 90));
-		tblComentarios.setForeground(Color.WHITE); // TEXTO EN BLANCO
+        spTablaComentarios = new JScrollPane(tblComentarios);
+        spTablaComentarios.setBounds(436, 231, 650, 300);
+        spTablaComentarios.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        add(spTablaComentarios);
 
-		// AJUSTE DEL ANCHO DE COLUMNAS
-		TableColumnModel columnModel = tblComentarios.getColumnModel();
-		columnModel.getColumn(0).setPreferredWidth(150); // USUARIO
-		columnModel.getColumn(1).setPreferredWidth(300); // COMENTARIO
-		columnModel.getColumn(2).setPreferredWidth(50); // CHECKBOX
+        // Botón "Volver"
+        btnVolver = new JButton("Volver");
+        btnVolver.setFont(new Font("Tahoma", Font.BOLD, 14));
+        btnVolver.setBackground(new Color(255, 128, 0));
+        btnVolver.setForeground(Color.WHITE);
+        btnVolver.setBounds(getWidth() - 180, 102, 120, 35);
+        add(btnVolver);
 
-		// CONFIGURACIÓN DEL JSCROLLPANE QUE CONTIENE LA TABLA DE COMENTARIOS
-		spTablaComentarios = new JScrollPane(tblComentarios);
-		spTablaComentarios.setBounds(436, 231, 650, 300); // AJUSTA LA POSICIÓN Y TAMAÑO
-		spTablaComentarios.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // AÑADIR SCROLL VERTICAL
-		add(spTablaComentarios); // AÑADIMOS EL JSCROLLPANE (QUE CONTIENE LA JTABLE) AL PANEL
+        // Botón "Eliminar"
+        btnEliminar = new JButton("Eliminar");
+        btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
+        btnEliminar.setForeground(Color.WHITE);
+        btnEliminar.setBackground(new Color(255, 128, 0));
+        btnEliminar.setBounds(getWidth() - 180, 553, 120, 35);
+        add(btnEliminar);
 
-		// BOTÓN "ELIMINAR" EN LA PARTE INFERIOR DERECHA
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnEliminar.setForeground(Color.WHITE);
-		btnEliminar.setBackground(new Color(255, 128, 0));
-		btnEliminar.setBounds(966, 553, 120, 35); // COLOCACIÓN DEL BOTÓN
-		add(btnEliminar);
+        // Component resizing
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                int panelWidth = getWidth();
+                int panelHeight = getHeight();
 
-		// INICIALIZAR LOS ESTILOS
-		initStyles();
-	}
+                pnlCabecera.setPreferredSize(new Dimension(panelWidth, 70));
+                pnlCabecera.setBounds(0, 0, panelWidth, 70);
 
-	// MÉTODO PARA INICIALIZAR LOS ESTILOS (OPCIONAL)
-	public void initStyles() {
-		// AQUÍ PODRÍAS AGREGAR MÁS PERSONALIZACIONES SI ES NECESARIO.
-	}
+                pnlLineaBlanca.setBounds(26, 143, panelWidth - 80, 2);
+
+                int tableWidth = Math.min(300, panelWidth / 3);
+                spTablaPeliculas.setBounds(50, 231, tableWidth, panelHeight - 330);
+
+                spTablaComentarios.setBounds(panelWidth / 2 - 50, 231, panelWidth - tableWidth - 100, panelHeight - 330);
+
+                btnVolver.setBounds(panelWidth - 180, 102, 120, 35);
+                btnEliminar.setBounds(panelWidth - 180, panelHeight - 80, 120, 35);
+
+                revalidate();
+                repaint();
+            }
+        });
+    }
+
+    // Helper to scale icons
+    public ImageIcon getScaledIcon(String path, int width, int height) {
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource(path));
+        Image scaledImage = originalIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaledImage);
+    }
 }
