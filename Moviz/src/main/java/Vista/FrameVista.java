@@ -16,7 +16,7 @@ public class FrameVista extends JFrame {
     public FrameVista() {
         setIconImage(new ImageIcon(getClass().getResource("/Images/M.png")).getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(0, 0, 1140, 640);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         setMinimumSize(new Dimension(840, 470));
 
