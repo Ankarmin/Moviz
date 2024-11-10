@@ -12,6 +12,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PeliculaVista extends JPanel {
 
@@ -105,6 +107,10 @@ public class PeliculaVista extends JPanel {
 		add(TxtSinopsis);
 
 		btnAlquilar = new JButton("ALQUILAR");
+		btnAlquilar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnAlquilar.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnAlquilar.setBackground(new Color(255, 128, 0));
 		btnAlquilar.setForeground(new Color(255, 255, 255));
@@ -112,6 +118,10 @@ public class PeliculaVista extends JPanel {
 		add(btnAlquilar);
 
 		btnAlquilado = new JButton("ALQUILADO");
+		btnAlquilado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnAlquilado.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnAlquilado.setBackground(new Color(90, 202, 23));
 		btnAlquilado.setForeground(new Color(255, 255, 255));
@@ -119,6 +129,10 @@ public class PeliculaVista extends JPanel {
 		add(btnAlquilado);
 
 		btnComentarios = new JButton("COMENTARIOS");
+		btnComentarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnComentarios.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnComentarios.setBackground(new Color(255, 128, 0));
 		btnComentarios.setForeground(new Color(255, 255, 255));
