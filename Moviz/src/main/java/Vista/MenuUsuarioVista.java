@@ -63,7 +63,7 @@ public class MenuUsuarioVista extends JPanel {
 		pnlSalir.add(lblNewLabel_2, BorderLayout.SOUTH);
 		
 		btnSalir = new JButton("");
-		btnSalir.setIcon(new ImageIcon(BuscadorDePeliculasVista2.class.getResource("/Images/iconosalida.png")));
+		btnSalir.setIcon(new ImageIcon(BuscadorDePeliculasVista.class.getResource("/Images/iconosalida.png")));
 		pnlSalir.add(btnSalir);
 		
 		JLabel lblNewLabel_1 = new JLabel("   ");
