@@ -213,7 +213,6 @@ public class MenuPeliculasVista extends JPanel {
         
         pnlGrid = new JPanel();
         scrollPane.setViewportView(pnlGrid);
-        pnlGrid.setBackground(new Color(66, 72, 93));
-        pnlGrid.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        pnlGrid.setLayout(new GridLayout(0, 3, 10, 10));
     }
 }

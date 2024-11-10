@@ -86,9 +86,9 @@ public class PeliculaVista extends JPanel {
         pnlMenuSuperior.setLayout(new BorderLayout(0, 0));
 
         // Icono de búsqueda
-        JLabel lblSearchIcon = new JLabel("");
-        lblSearchIcon.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png")));
-        pnlMenuSuperior.add(lblSearchIcon, BorderLayout.WEST);
+        Busqueda = new JLabel("");
+        Busqueda.setIcon(new ImageIcon(getClass().getResource("/Images/BuscarIcono.png")));
+        pnlMenuSuperior.add(Busqueda, BorderLayout.WEST);
 
         JPanel pnlContenidoBotones = new JPanel();
         pnlContenidoBotones.setBackground(new Color(56, 59, 74));

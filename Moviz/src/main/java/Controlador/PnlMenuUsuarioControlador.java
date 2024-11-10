@@ -35,12 +35,12 @@ public class PnlMenuUsuarioControlador {
 			irAHistorial();
 		});
 
-		vista.posterPelicula1.addMouseListener(new MouseAdapter() {
+		/* vista.posterPelicula1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
 			}
-		});
+		}); */
 
 		vista.Busqueda.addMouseListener(new MouseAdapter() {
 			@Override
