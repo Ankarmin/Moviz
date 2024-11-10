@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fisi.episw.202402</groupId>
 	<artifactId>Moviz</artifactId>
@@ -12,31 +12,30 @@
 			<artifactId>flatlaf</artifactId>
 			<version>3.5.1</version>
 		</dependency>
+
 		<dependency>
-   			<groupId>com.miglayout</groupId>
-    		<artifactId>miglayout-swing</artifactId>
-    		<version>5.3</version>
+			<groupId>com.miglayout</groupId>
+			<artifactId>miglayout-swing</artifactId>
+			<version>11.4.2</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.formdev</groupId>
 			<artifactId>flatlaf-intellij-themes</artifactId>
 			<version>3.5.1</version>
 		</dependency>
-		<!-- MySQL Connector -->
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.33</version>
 		</dependency>
 
-		<!-- JGoodies Forms -->
-		<!-- https://mvnrepository.com/artifact/com.jgoodies/jgoodies-forms -->
 		<dependency>
 			<groupId>com.jgoodies</groupId>
 			<artifactId>jgoodies-forms</artifactId>
 			<version>1.9.0</version>
 		</dependency>
-
 
 	</dependencies>
 
@@ -45,8 +44,10 @@
 			<resource>
 				<directory>src/main/resources</directory>
 				<includes>
-					<include>**/*.png</include> <!-- Incluir todos los archivos PNG -->
-					<include>**/*.jpg</include> <!-- Incluir todos los archivos JPG (si los tienes) -->
+					<include>**/*.png</include> <!-- Incluir todos los archivos
+					PNG -->
+					<include>**/*.jpg</include> <!-- Incluir todos los archivos
+					JPG (si los tienes) -->
 				</includes>
 			</resource>
 		</resources>
