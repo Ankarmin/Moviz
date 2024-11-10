@@ -16,7 +16,7 @@ public class PeliculaVista2 extends JPanel {
     private JLabel LblEstrellas;
     private JLabel Busqueda;
     private JLabel IconoLogo;
-    private JLabel textPuntuacion;
+    public JLabel textPuntuacion;
 
     public JButton btnAlquilar;
     public JButton btnAlquilado;
@@ -25,12 +25,12 @@ public class PeliculaVista2 extends JPanel {
     public JButton btnHistorial;
     public JButton btnPeliculas;
 
-    private JTextField txtBuscar;
-    private JLabel titulo1_1;
-    private JTextArea txtrTextoSinopsis;
-    private JTextArea txtrAadirAFavoritos;
-    private JScrollPane scrollSinopsis;
-    private JLabel lblSinopsis;
+    public JTextField txtBuscar;
+    public JLabel titulo1_1;
+    public JTextArea txtrTextoSinopsis;
+    public JTextArea txtrAadirAFavoritos;
+    public JScrollPane scrollSinopsis;
+    public JLabel lblSinopsis;
 
     public PeliculaVista2() {
         setPreferredSize(new Dimension(1140, 640));
@@ -63,7 +63,7 @@ public class PeliculaVista2 extends JPanel {
         gbcSearch.gridx = 1;
         gbcSearch.gridy = 0;
         gbcSearch.fill = GridBagConstraints.HORIZONTAL;
-        gbcSearch.weightx = 1.0; // Make the search bar expand horizontally
+        gbcSearch.weightx = 1.0; 
         txtBuscar = new JTextField("Buscar", 20);
         pnlCenter.add(txtBuscar, gbcSearch);
 
@@ -146,7 +146,6 @@ public class PeliculaVista2 extends JPanel {
 
         pnlDetalles.add(scrollSinopsis);
 
-        // Add a ComponentListener to dynamically adjust the scroll pane's size
         pnlDetalles.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
@@ -155,7 +154,6 @@ public class PeliculaVista2 extends JPanel {
                 scrollSinopsis.revalidate();
             }
         });
-        // Constraints for User Options Panel
         GridBagConstraints gbcOpciones = new GridBagConstraints();
         gbcOpciones.insets = new Insets(10, 10, 10, 10);
         gbcOpciones.gridx = 1;
@@ -167,24 +165,35 @@ public class PeliculaVista2 extends JPanel {
         pnlCentral.add(pnlOpciones, gbcOpciones);
 
         btnAlquilar = new JButton("ALQUILAR");
+        btnAlquilar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
         btnAlquilar.setFont(new Font("Tahoma", Font.BOLD, 14));
         btnAlquilar.setBackground(new Color(255, 128, 0));
         btnAlquilar.setForeground(Color.WHITE);
         pnlOpciones.add(btnAlquilar);
         
         btnAlquilado = new JButton("ALQUILADO");
+        btnAlquilado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
         btnAlquilado.setFont(new Font("Tahoma", Font.BOLD, 14));
         btnAlquilado.setBackground(new Color(90, 202, 23));
         btnAlquilado.setForeground(Color.WHITE);
         pnlOpciones.add(btnAlquilado);
 
         btnComentarios = new JButton("COMENTARIOS");
+        btnComentarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
         btnComentarios.setFont(new Font("Tahoma", Font.BOLD, 14));
         btnComentarios.setBackground(new Color(255, 128, 0));
         btnComentarios.setForeground(Color.WHITE);
         pnlOpciones.add(btnComentarios);
 
-        // Bottom panel for "Add to Favorites"
         JPanel pnlBottom = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         pnlBottom.setBackground(new Color(66, 72, 93));
         GridBagConstraints gbcBottom = new GridBagConstraints();
@@ -192,7 +201,7 @@ public class PeliculaVista2 extends JPanel {
         gbcBottom.gridx = 0;
         gbcBottom.gridy = 2;
         gbcBottom.anchor = GridBagConstraints.WEST;
-        gbcBottom.gridwidth = 2;  // Span across two columns for balance
+        gbcBottom.gridwidth = 2;  
         pnlCentral.add(pnlBottom, gbcBottom);
 
         LblFavoritos = DefaultComponentFactory.getInstance().createLabel("");
@@ -217,7 +226,6 @@ public class PeliculaVista2 extends JPanel {
         textPuntuacion.setForeground(Color.WHITE);
         pnlBottom.add(textPuntuacion);
 
-        // ComponentAdapter for dynamic resizing
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
