@@ -13,8 +13,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.SwingConstants;
@@ -33,9 +31,20 @@ public class MenuUsuarioVista2 extends JPanel {
 		setBounds(0, 0, 1140, 640);
 		setLayout(new BorderLayout(0, 0));
 		
+		JPanel panel_43 = new JPanel();
+		add(panel_43, BorderLayout.CENTER);
+		panel_43.setLayout(new BorderLayout(0, 0));
+		
+		
+		
+		JPanel panel_44 = new JPanel();
+		add(panel_44, BorderLayout.NORTH);
+		panel_44.setLayout(new GridLayout(0, 3, 0, 0));
+		
+		
 		JPanel pnlSuperior = new JPanel();
 		pnlSuperior.setBackground(new Color(56, 59, 74));
-		add(pnlSuperior, BorderLayout.NORTH);
+		panel_43.add(pnlSuperior, BorderLayout.NORTH);
 		pnlSuperior.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblIconoLogo = new JLabel("");
@@ -138,7 +147,7 @@ public class MenuUsuarioVista2 extends JPanel {
 		pnlMenuSuperior.add(lblNewLabel_6, BorderLayout.WEST);
 		
 		JPanel pnlCentral = new JPanel();
-		add(pnlCentral, BorderLayout.CENTER);
+		panel_43.add(pnlCentral, BorderLayout.CENTER);
 		pnlCentral.setBackground(new Color(56, 59, 74));
 		pnlCentral.setLayout(new BorderLayout(0, 0));
 		
@@ -154,7 +163,7 @@ public class MenuUsuarioVista2 extends JPanel {
 		JPanel pnlPeliculas = new JPanel();
 		pnlCentral.add(pnlPeliculas, BorderLayout.CENTER);
 		pnlPeliculas.setBackground(new Color(56, 59, 74));
-		pnlPeliculas.setLayout(new GridLayout(2, 0, 0, 0));
+		pnlPeliculas.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanel pnlPeliculasRecientes = new JPanel();
 		pnlPeliculas.add(pnlPeliculasRecientes);
@@ -221,16 +230,17 @@ public class MenuUsuarioVista2 extends JPanel {
 		pnlPelicula1.setLayout(new GridLayout(0, 2, 0, 0));
 		
 	
-//		ImageIcon originalIcon = new ImageIcon(MenuUsuarioVista.class.getResource("/Images/ImagenPelicula.png"));
-//		Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(200, 250, Image.SCALE_SMOOTH);
-//		ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+		ImageIcon originalIcon = new ImageIcon(MenuUsuarioVista.class.getResource("/Images/ImagenPelicula.png"));
+		Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(200, 250, Image.SCALE_SMOOTH);
+		ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
 
-		ImageIcon iconoRedimensionado = redimensionarImagen("/Images/ImagenPelicula.png", 200, 250);
+
 		
 		
 		JPanel panel = new JPanel();
 		pnlPelicula1.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
+		
 		
 		
 		
@@ -574,37 +584,17 @@ public class MenuUsuarioVista2 extends JPanel {
 		lblHoras6.setBounds(10, 61, 190, 14);
 		panel_24.add(lblHoras6);
 		
+		JPanel panel_45 = new JPanel();
+		add(panel_45, BorderLayout.SOUTH);
+		panel_45.setLayout(new GridLayout(0, 3, 0, 0));
 		
-		addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                actualizarImagen(lblPelicula1, "/Images/ImagenPelicula.png", panel);
-                actualizarImagen(lblPelicula2, "/Images/ImagenPelicula.png", panel_1);
-                actualizarImagen(lblPelicula3, "/Images/ImagenPelicula.png", panel_15);
-                actualizarImagen(lblPelicula4, "/Images/ImagenPelicula.png", panel_16);
-                actualizarImagen(lblPelicula5, "/Images/ImagenPelicula.png", panel_17);
-                actualizarImagen(lblPelicula6, "/Images/ImagenPelicula.png", panel_18);
-            }
-        });
-    }
 		
-	
-	private ImageIcon redimensionarImagen(String ruta, int ancho, int alto) {
-        ImageIcon imagenOriginal = new ImageIcon(getClass().getResource(ruta));
-        Image imagen = imagenOriginal.getImage();
-        Image imagenRedimensionada = imagen.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
-        return new ImageIcon(imagenRedimensionada);
-    }
+		
+		initStyles();
+	}
+	private void initStyles() {
 
-    /**
-     * Método para actualizar la imagen de un JLabel según el tamaño del JPanel padre
-     */
-    private void actualizarImagen(JLabel label, String ruta, JPanel panel) {
-        int ancho = panel.getWidth();
-        int alto = panel.getHeight();
-        ImageIcon icono = redimensionarImagen(ruta, ancho, alto);
-        label.setIcon(icono);
-    }
+	}
 }
 	
 
