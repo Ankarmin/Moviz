@@ -2,30 +2,26 @@ package Vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.Font;
-import javax.swing.JSeparator;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.SwingConstants;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.JTextArea;
+import javax.swing.BoxLayout;
 
 public class MenuUsuarioVista2 extends JPanel {
 
@@ -167,24 +163,53 @@ public class MenuUsuarioVista2 extends JPanel {
 		JPanel panel_3 = new JPanel();
 		pnlPeliculasRecientes.add(panel_3, BorderLayout.NORTH);
 		panel_3.setBackground(new Color(56, 59, 74));
-		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel_3.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_35 = new JPanel();
+		panel_35.setBackground(new Color(56, 58, 74));
+		panel_3.add(panel_35, BorderLayout.WEST);
+		panel_35.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_38 = new JPanel();
+		panel_38.setBackground(new Color(56, 58, 74));
+		panel_35.add(panel_38, BorderLayout.EAST);
 		
 		JLabel lblNewLabel_13 = new JLabel("Peliculas Recientes");
+		panel_35.add(lblNewLabel_13, BorderLayout.CENTER);
 		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel_13.setForeground(new Color(255, 255, 255));
-		panel_3.add(lblNewLabel_13);
 		
-		JLabel lblNewLabel_15 = new JLabel("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		lblNewLabel_15.setForeground(new Color(56, 59, 74));
-		panel_3.add(lblNewLabel_15);
+		JPanel panel_39 = new JPanel();
+		panel_39.setBackground(new Color(56, 58, 74));
+		panel_35.add(panel_39, BorderLayout.WEST);
+		
+		JPanel panel_36 = new JPanel();
+		panel_36.setBackground(new Color(56, 58, 74));
+		panel_3.add(panel_36, BorderLayout.CENTER);
+		
+		JPanel panel_37 = new JPanel();
+		panel_3.add(panel_37, BorderLayout.EAST);
+		panel_37.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_40 = new JPanel();
+		panel_40.setBackground(new Color(56, 58, 74));
+		panel_37.add(panel_40, BorderLayout.EAST);
+		
+		JPanel panel_41 = new JPanel();
+		panel_41.setBackground(new Color(56, 58, 74));
+		panel_37.add(panel_41, BorderLayout.WEST);
+		
+		JPanel panel_42 = new JPanel();
+		panel_42.setBackground(new Color(56, 58, 74));
+		panel_37.add(panel_42, BorderLayout.CENTER);
 		
 		JLabel lblNewLabel_14 = new JLabel("Ver lista en:");
+		panel_42.add(lblNewLabel_14);
 		lblNewLabel_14.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel_14.setForeground(new Color(255, 255, 255));
-		panel_3.add(lblNewLabel_14);
 		
 		JButton btnNewButton = new JButton("Historial");
-		panel_3.add(btnNewButton);
+		panel_42.add(btnNewButton);
 		
 		JPanel panel_4 = new JPanel();
 		pnlPeliculasRecientes.add(panel_4, BorderLayout.CENTER);
@@ -196,14 +221,20 @@ public class MenuUsuarioVista2 extends JPanel {
 		pnlPelicula1.setLayout(new GridLayout(0, 2, 0, 0));
 		
 	
-		ImageIcon originalIcon = new ImageIcon(MenuUsuarioVista.class.getResource("/Images/ImagenPelicula.png"));
-		Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(200, 250, Image.SCALE_SMOOTH);
-		ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+//		ImageIcon originalIcon = new ImageIcon(MenuUsuarioVista.class.getResource("/Images/ImagenPelicula.png"));
+//		Image imagenRedimensionada = originalIcon.getImage().getScaledInstance(200, 250, Image.SCALE_SMOOTH);
+//		ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
 
-
+		ImageIcon iconoRedimensionado = redimensionarImagen("/Images/ImagenPelicula.png", 200, 250);
+		
+		
 		JPanel panel = new JPanel();
 		pnlPelicula1.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
+		
+		
+		
+		
 		
 		JLabel lblPelicula1 = new JLabel("");
 		lblPelicula1.setIcon(iconoRedimensionado);
@@ -358,19 +389,44 @@ public class MenuUsuarioVista2 extends JPanel {
 		JPanel panel_5 = new JPanel();
 		pnlPeliculasFavoritas.add(panel_5, BorderLayout.NORTH);
 		panel_5.setBackground(new Color(56, 59, 74));
-		panel_5.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel_5.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_16 = new JLabel("Peliculas Favoritas");
-		lblNewLabel_16.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_16.setForeground(new Color(255, 255, 255));
-		panel_5.add(lblNewLabel_16);
-		
-		JLabel lblNewLabel_17 = new JLabel("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		lblNewLabel_17.setForeground(new Color(56, 59, 74));
-		panel_5.add(lblNewLabel_17);
+		JPanel panel_28 = new JPanel();
+		panel_5.add(panel_28, BorderLayout.EAST);
+		panel_28.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnNewButton_1 = new JButton("Buscar Peliculas");
-		panel_5.add(btnNewButton_1);
+		panel_28.add(btnNewButton_1);
+		
+		JPanel panel_33 = new JPanel();
+		panel_33.setBackground(new Color(56, 58, 74));
+		panel_28.add(panel_33, BorderLayout.WEST);
+		
+		JPanel panel_34 = new JPanel();
+		panel_34.setBackground(new Color(56, 58, 74));
+		panel_28.add(panel_34, BorderLayout.EAST);
+		
+		JPanel panel_29 = new JPanel();
+		panel_29.setBackground(new Color(56, 58, 74));
+		panel_5.add(panel_29, BorderLayout.CENTER);
+		
+		JPanel panel_30 = new JPanel();
+		panel_30.setBackground(new Color(56, 58, 74));
+		panel_5.add(panel_30, BorderLayout.WEST);
+		panel_30.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblNewLabel_16 = new JLabel("Peliculas Favoritas");
+		panel_30.add(lblNewLabel_16);
+		lblNewLabel_16.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_16.setForeground(new Color(255, 255, 255));
+		
+		JPanel panel_31 = new JPanel();
+		panel_31.setBackground(new Color(56, 58, 74));
+		panel_30.add(panel_31, BorderLayout.WEST);
+		
+		JPanel panel_32 = new JPanel();
+		panel_32.setBackground(new Color(56, 58, 74));
+		panel_30.add(panel_32, BorderLayout.EAST);
 		
 		JPanel panel_6 = new JPanel();
 		pnlPeliculasFavoritas.add(panel_6, BorderLayout.CENTER);
@@ -517,5 +573,38 @@ public class MenuUsuarioVista2 extends JPanel {
 		lblHoras6.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
 		lblHoras6.setBounds(10, 61, 190, 14);
 		panel_24.add(lblHoras6);
-	}
+		
+		
+		addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                actualizarImagen(lblPelicula1, "/Images/ImagenPelicula.png", panel);
+                actualizarImagen(lblPelicula2, "/Images/ImagenPelicula.png", panel_1);
+                actualizarImagen(lblPelicula3, "/Images/ImagenPelicula.png", panel_15);
+                actualizarImagen(lblPelicula4, "/Images/ImagenPelicula.png", panel_16);
+                actualizarImagen(lblPelicula5, "/Images/ImagenPelicula.png", panel_17);
+                actualizarImagen(lblPelicula6, "/Images/ImagenPelicula.png", panel_18);
+            }
+        });
+    }
+		
+	
+	private ImageIcon redimensionarImagen(String ruta, int ancho, int alto) {
+        ImageIcon imagenOriginal = new ImageIcon(getClass().getResource(ruta));
+        Image imagen = imagenOriginal.getImage();
+        Image imagenRedimensionada = imagen.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+        return new ImageIcon(imagenRedimensionada);
+    }
+
+    /**
+     * Método para actualizar la imagen de un JLabel según el tamaño del JPanel padre
+     */
+    private void actualizarImagen(JLabel label, String ruta, JPanel panel) {
+        int ancho = panel.getWidth();
+        int alto = panel.getHeight();
+        ImageIcon icono = redimensionarImagen(ruta, ancho, alto);
+        label.setIcon(icono);
+    }
 }
+	
+
