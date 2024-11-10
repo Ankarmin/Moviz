@@ -184,6 +184,7 @@ public class MenuPeliculasVista2 extends JPanel {
 		
 		
 		JSeparator separator_1 = new JSeparator();
+		separator_1.setBackground(new Color(56, 59, 74));
 		pnlContieneSeparador.add(separator_1);
 		
 		String[] año = { "Todos", "2020s", "2010s", "2000s", "1990s", "1980s", "1970s", "1960s", "1950s", "1940s",
@@ -193,6 +194,7 @@ public class MenuPeliculasVista2 extends JPanel {
 		pnlContieneSeparador.add(comboBoxAño);
 		
 		JSeparator separator_2 = new JSeparator();
+		separator_2.setBackground(new Color(56, 59, 74));
 		pnlContieneSeparador.add(separator_2);
 		
 		String[] puntuacion = { "Todos", "5-4", "4-3", "3-2", "2-1", "0-1" };
