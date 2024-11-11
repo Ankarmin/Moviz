@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import DBRepositorio.AdministradorRepositorio;
 import DBRepositorio.ClienteRepositorio;
+import DBRepositorio.Usuario;
 import DBRepositorio.UsuarioRepositorio;
 import Modelo.LoginModelo;
 import Vista.LoginVista;
@@ -14,6 +15,7 @@ import Vista.LoginVista;
 public class PnlLoginControlador {
 
 	private final FrameControlador frameControlador;
+
 	private final LoginVista vista;
 	private final LoginModelo modelo;
 
@@ -86,26 +88,26 @@ public class PnlLoginControlador {
 		vista.txtUser.setText("Ingresar usuario");
 		vista.txtPassword.setForeground(Color.GRAY);
 		vista.txtPassword.setText("**********");
-		vista.txtPassword.setEchoChar((char) 0); // ELIMINAR EL CARÁCTER DE ECO
+		vista.txtPassword.setEchoChar((char) 0);
 	}
 
 	private void iniciarSesion() {
 		String user = vista.txtUser.getText();
 		String password = new String(vista.txtPassword.getPassword());
-
-		// LLAMO A MI MÉTODO LOGIN DEL MODELO PARA SABER EL ROL
 		String rol = modelo.login(user, password);
+		Usuario usuario = modelo.obtenerUsuario(user, password);
 
 		if (rol != null) {
 			if (rol.equals("cliente")) {
-				frameControlador.getMenuUsuarioControlador().mostrar();
+				PnlMenuUsuarioControlador menuUsuarioControalador = new PnlMenuUsuarioControlador(
+						frameControlador.getOpenConexion(), frameControlador, usuario);
+				menuUsuarioControalador.mostrar();
 				limpiar();
 			} else if (rol.equals("administrador")) {
 				frameControlador.getMenuAdministradorControlador().mostrar();
 				limpiar();
 			}
 		} else {
-			// SI NO ENCUENTRA USUARIO
 			JOptionPane.showMessageDialog(vista, "Usuario o contraseña incorrectos", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		}

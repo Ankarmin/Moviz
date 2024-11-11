@@ -75,7 +75,7 @@ public class PnlAgregarPeliculaControlador {
 		boolean peliculaAgregada = modelo.agregarPelicula(pelicula);
 		if (peliculaAgregada) {
 			System.out.println("Pelicula agregada con éxito.");
-			limpiar(); // LIMPIAR LOS CAMPOS SI TODO VA BIEN
+			limpiar();
 		} else {
 			System.out.println("Error al agregar la Película.");
 		}

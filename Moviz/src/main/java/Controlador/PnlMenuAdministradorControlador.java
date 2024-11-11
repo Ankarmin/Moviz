@@ -9,12 +9,11 @@ public class PnlMenuAdministradorControlador {
 
 	private final FrameControlador frameControlador;
 	private final MenuAdministradorVista vista;
-	// private final MenuAdministradorModelo modelo;
 
 	public PnlMenuAdministradorControlador(Connection openConexion, FrameControlador frameControlador) {
 		this.frameControlador = frameControlador;
+
 		vista = new MenuAdministradorVista();
-		// modelo = new MenuAdministradorModelo();
 
 		setEvents();
 	}

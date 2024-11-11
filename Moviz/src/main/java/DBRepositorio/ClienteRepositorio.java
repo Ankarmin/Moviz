@@ -21,7 +21,7 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 	@Override
 	public boolean agregar(Cliente filaNueva) {
 		try {
-			try (PreparedStatement pst = conexion.prepareStatement(insertQuery)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(insertQuery)) {
 				pst.setInt(1, filaNueva.getIdUsuario());
 				pst.setString(2, filaNueva.getEmail());
 				pst.executeUpdate();
@@ -37,7 +37,7 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 		Cliente encontrado = null;
 		try {
 			ResultSet rs;
-			try (PreparedStatement pst = conexion.prepareStatement(searchIDQuery)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(searchIDQuery)) {
 				pst.setInt(1, id);
 				rs = pst.executeQuery();
 				while (rs.next()) {
@@ -59,7 +59,7 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 		List<Cliente> clientes = new ArrayList<>();
 		try {
 			ResultSet rs;
-			try (PreparedStatement pst = conexion.prepareStatement(searchAllQuery)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(searchAllQuery)) {
 				rs = pst.executeQuery();
 				while (rs.next()) {
 					Cliente cliente = new Cliente(rs.getInt("idCliente"), rs.getInt("idUsuario"),
@@ -75,29 +75,12 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 
 	@Override
 	public boolean actualizar(Cliente filaActualizada) {
-		try {
-			try (PreparedStatement pst = conexion.prepareStatement(updateRowQuery)) {
-				pst.setString(1, filaActualizada.getEmail());
-				pst.setInt(2, filaActualizada.getIdCliente());
-				pst.executeUpdate();
-			}
-			return true;
-		} catch (SQLException e) {
-			return false;
-		}
+		throw new UnsupportedOperationException("Método no implementado en ClienteRepositorio.");
 	}
 
 	@Override
 	public boolean eliminar(Integer id) {
-		try {
-			try (PreparedStatement pst = conexion.prepareStatement(deleteRowQuery)) {
-				pst.setInt(1, id);
-				pst.executeUpdate();
-			}
-			return true;
-		} catch (SQLException e) {
-			return false;
-		}
+		throw new UnsupportedOperationException("Método no implementado en ClienteRepositorio.");
 	}
 
 	public Cliente obtenerPorIdUsuario(int idUsuario) {
@@ -105,7 +88,7 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 		String query = "SELECT * FROM cliente WHERE idUsuario = ?";
 		try {
 			ResultSet rs;
-			try (PreparedStatement pst = conexion.prepareStatement(query)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(query)) {
 				pst.setInt(1, idUsuario);
 				rs = pst.executeQuery();
 				if (rs.next()) {
@@ -115,7 +98,6 @@ public class ClienteRepositorio extends IConectar<Cliente, Integer> {
 			rs.close();
 			return encontrado;
 		} catch (SQLException e) {
-			System.out.println("Error al buscar cliente por idUsuario: " + e.getMessage());
 			return null;
 		}
 	}

@@ -11,6 +11,7 @@ public class PnlEliminarComentarioControlador {
 
 	public PnlEliminarComentarioControlador(Connection openConexion, FrameControlador frameControlador) {
 		this.frameControlador = frameControlador;
+
 		vista = new EliminarComentariosVista();
 
 		setEvents();

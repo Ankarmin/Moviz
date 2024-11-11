@@ -4,17 +4,25 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 
+import DBRepositorio.Usuario;
 import Vista.ComentariosVista;
 
 public class PnlComentariosControlador {
 
 	private final FrameControlador frameControlador;
-	private final ComentariosVista vista;
-	private final int id;
+	private final PnlMenuUsuarioControlador pnlMenuUsuarioControlador;
 
-	public PnlComentariosControlador(Connection openConexion, FrameControlador frameControlador, int id) {
+	private final ComentariosVista vista;
+
+	private final int idPelicula;
+	private final Usuario usuario;
+
+	public PnlComentariosControlador(Connection openConexion, FrameControlador frameControlador,
+			PnlMenuUsuarioControlador pnlMenuUsuarioControlador, Usuario usuario, int idPelicula) {
 		this.frameControlador = frameControlador;
-		this.id = id;
+		this.pnlMenuUsuarioControlador = pnlMenuUsuarioControlador;
+		this.idPelicula = idPelicula;
+		this.usuario = usuario;
 		vista = new ComentariosVista();
 
 		setEvents();
@@ -64,24 +72,24 @@ public class PnlComentariosControlador {
 	}
 
 	private void irAHistorial() {
-		frameControlador.getHistorialControlador().mostrar();
+		pnlMenuUsuarioControlador.getHistorialControlador().mostrar();
 	}
 
 	private void irAMenuPeliculas() {
-		frameControlador.getMenuPeliculaControlador().mostrar();
+		pnlMenuUsuarioControlador.getMenuPeliculaControlador().mostrar();
 	}
 
 	private void irABusqueda() {
-		frameControlador.getBuscadorDePeliculasControlador().mostrar();
+		pnlMenuUsuarioControlador.getBuscadorDePeliculasControlador().mostrar();
 	}
 
 	private void irAMenuUsuario() {
-		frameControlador.getMenuUsuarioControlador().mostrar();
+		pnlMenuUsuarioControlador.mostrar();
 	}
 
 	private void irAPelicula() {
 		PnlPeliculaControlador peliculaControlador = new PnlPeliculaControlador(frameControlador.getOpenConexion(),
-				frameControlador, id);
+				frameControlador, pnlMenuUsuarioControlador, usuario, idPelicula);
 		peliculaControlador.mostrar();
 	}
 }

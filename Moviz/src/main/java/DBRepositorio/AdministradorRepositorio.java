@@ -14,27 +14,27 @@ public class AdministradorRepositorio extends IConectar<Administrador, Integer> 
 
 	@Override
 	public boolean agregar(Administrador filaNueva) {
-		return false;
+		throw new UnsupportedOperationException("Método no implementado en AdministradorRepositorio.");
 	}
 
 	@Override
 	public Administrador obtenerPorId(Integer id) {
-		return null;
+		throw new UnsupportedOperationException("Método no implementado en AdministradorRepositorio.");
 	}
 
 	@Override
 	public List<Administrador> obtenerTodos() {
-		return null;
+		throw new UnsupportedOperationException("Método no implementado en AdministradorRepositorio.");
 	}
 
 	@Override
 	public boolean actualizar(Administrador filaActualizada) {
-		return false;
+		throw new UnsupportedOperationException("Método no implementado en AdministradorRepositorio.");
 	}
 
 	@Override
 	public boolean eliminar(Integer id) {
-		return false;
+		throw new UnsupportedOperationException("Método no implementado en AdministradorRepositorio.");
 	}
 
 	public Administrador obtenerPorIdUsuario(int idUsuario) {
@@ -42,7 +42,7 @@ public class AdministradorRepositorio extends IConectar<Administrador, Integer> 
 		String query = "SELECT * FROM administrador WHERE idUsuario = ?";
 		try {
 			ResultSet rs;
-			try (PreparedStatement pst = conexion.prepareStatement(query)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(query)) {
 				pst.setInt(1, idUsuario);
 				rs = pst.executeQuery();
 				if (rs.next()) {

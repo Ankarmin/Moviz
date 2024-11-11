@@ -19,20 +19,30 @@ import javax.swing.SwingConstants;
 
 import DBRepositorio.Pelicula;
 import DBRepositorio.PeliculaRepositorio;
+import DBRepositorio.Usuario;
 import Modelo.MenuPeliculasModelo;
 import Vista.MenuPeliculasVista;
 
 public class PnlMenuPeliculaControlador {
 
 	private final FrameControlador frameControlador;
+	private final PnlMenuUsuarioControlador pnlMenuUsuarioControlador;
+
 	private final MenuPeliculasVista vista;
 	private final MenuPeliculasModelo modelo;
 
-	public PnlMenuPeliculaControlador(Connection openConexion, FrameControlador frameControlador) {
+	private final Usuario usuario;
+
+	public PnlMenuPeliculaControlador(Connection openConexion, FrameControlador frameControlador,
+			PnlMenuUsuarioControlador pnlMenuUsuarioControlador, Usuario usuario) {
 		this.frameControlador = frameControlador;
+		this.pnlMenuUsuarioControlador = pnlMenuUsuarioControlador;
+
+		this.usuario = usuario;
 
 		vista = new MenuPeliculasVista();
 		modelo = new MenuPeliculasModelo(new PeliculaRepositorio(openConexion));
+
 		setEvents();
 	}
 
@@ -90,11 +100,11 @@ public class PnlMenuPeliculaControlador {
 	}
 
 	private void irAHistorial() {
-		frameControlador.getHistorialControlador().mostrar();
+		pnlMenuUsuarioControlador.getHistorialControlador().mostrar();
 	}
 
 	public void mostrarPeliculasEnVista() {
-		List<Pelicula> listaPeliculas = modelo.getPeliculaRepositorio().obtenerTodos();
+		List<Pelicula> listaPeliculas = modelo.obtenerTodos();
 		vista.pnlGrid.removeAll();
 		vista.pnlGrid.revalidate();
 		vista.pnlGrid.repaint();
@@ -139,16 +149,16 @@ public class PnlMenuPeliculaControlador {
 	}
 
 	private void irABusqueda() {
-		frameControlador.getBuscadorDePeliculasControlador().mostrar();
+		pnlMenuUsuarioControlador.getBuscadorDePeliculasControlador().mostrar();
 	}
 
 	private void irAMenuUsuario() {
-		frameControlador.getMenuUsuarioControlador().mostrar();
+		pnlMenuUsuarioControlador.mostrar();
 	}
 
 	private void irAPelicula(int id) {
 		PnlPeliculaControlador peliculaControlador = new PnlPeliculaControlador(frameControlador.getOpenConexion(),
-				frameControlador, id);
+				frameControlador, pnlMenuUsuarioControlador, usuario, id);
 		peliculaControlador.mostrar();
 	}
 }

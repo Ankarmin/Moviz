@@ -30,7 +30,6 @@ public class PnlRegistrarControlador {
 		setEvents();
 	}
 
-	// MÉTODO QUE CONFIGURA LOS EVENTOS DE CLICK DE LOS BOTONES DE BIBLIOTECAVISTA
 	public final void setEvents() {
 		vista.btnRegistrar.addActionListener((e) -> {
 			registrar();
@@ -105,35 +104,29 @@ public class PnlRegistrarControlador {
 		vista.txtUser.setText("Ingresar usuario");
 		vista.txtPassword.setForeground(Color.GRAY);
 		vista.txtPassword.setText("**********");
-		vista.txtPassword.setEchoChar((char) 0); // ELIMINAR EL CARÁCTER DE ECO
+		vista.txtPassword.setEchoChar((char) 0);
 		vista.txtEmail.setForeground(Color.GRAY);
 		vista.txtEmail.setText("Ingresar correo electrónico");
 	}
 
 	private void registrar() {
-		// OBTENER DATOS DE LA VISTA
 		String username = vista.txtUser.getText();
 		String password = new String(vista.txtPassword.getPassword());
 		String email = vista.txtEmail.getText();
 
-		// CREAR EL OBJETO USUARIO
 		Usuario usuario = new Usuario();
 		usuario.setUser(username);
 		usuario.setPassword(password);
 
-		// INTENTAR AGREGAR EL USUARIO EN LA BASE DE DATOS
 		boolean usuarioRegistrado = modelo.agregarUsuario(usuario);
 
 		if (usuarioRegistrado) {
-			// SI EL USUARIO SE REGISTRA CORRECTAMENTE, OBTENEMOS SU ID
-			int idUsuario = usuario.getId(); // ESTE ID DEBE HABER SIDO ASIGNADO EN EL REPOSITORIO AL USUARIO
+			int idUsuario = usuario.getId();
 
-			// CREAR EL OBJETO CLIENTE CON EL ID DEL USUARIO
 			Cliente cliente = new Cliente();
 			cliente.setIdUsuario(idUsuario);
 			cliente.setEmail(email);
 
-			// AGREGAR EL CLIENTE EN LA BASE DE DATOS
 			boolean clienteRegistrado = modelo.agregarCliente(cliente);
 
 			if (clienteRegistrado) {

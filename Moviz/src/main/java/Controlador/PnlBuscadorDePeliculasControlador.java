@@ -18,16 +18,26 @@ import javax.swing.SwingConstants;
 
 import DBRepositorio.Pelicula;
 import DBRepositorio.PeliculaRepositorio;
+import DBRepositorio.Usuario;
 import Modelo.BuscadorDePeliculasModelo;
 import Vista.BuscadorDePeliculasVista;
 
 public class PnlBuscadorDePeliculasControlador {
+
 	private final FrameControlador frameControlador;
+	private final PnlMenuUsuarioControlador pnlMenuUsuarioControlador;
+
 	private final BuscadorDePeliculasVista vista;
 	private final BuscadorDePeliculasModelo modelo;
 
-	public PnlBuscadorDePeliculasControlador(Connection openConexion, FrameControlador frameControlador) {
+	private final Usuario usuario;
+
+	public PnlBuscadorDePeliculasControlador(Connection openConexion, FrameControlador frameControlador,
+			PnlMenuUsuarioControlador pnlMenuUsuarioControlador, Usuario usuario) {
 		this.frameControlador = frameControlador;
+		this.pnlMenuUsuarioControlador = pnlMenuUsuarioControlador;
+
+		this.usuario = usuario;
 
 		vista = new BuscadorDePeliculasVista();
 		modelo = new BuscadorDePeliculasModelo(new PeliculaRepositorio(openConexion));
@@ -72,7 +82,7 @@ public class PnlBuscadorDePeliculasControlador {
 	}
 
 	public void mostrarPeliculasEnVista() {
-		List<Pelicula> listaPeliculas = modelo.getPeliculaRepositorio().obtenerTodos();
+		List<Pelicula> listaPeliculas = modelo.obtenerTodos();
 		vista.pnlGrid.removeAll();
 		vista.pnlGrid.revalidate();
 		vista.pnlGrid.repaint();
@@ -121,24 +131,24 @@ public class PnlBuscadorDePeliculasControlador {
 	}
 
 	private void irAMenuPeliculas() {
-		frameControlador.getMenuPeliculaControlador().mostrar();
+		pnlMenuUsuarioControlador.getMenuPeliculaControlador().mostrar();
 	}
 
 	private void irAHistorial() {
-		frameControlador.getHistorialControlador().mostrar();
+		pnlMenuUsuarioControlador.getHistorialControlador().mostrar();
 	}
 
 	private void irABusqueda() {
-		frameControlador.getBuscadorDePeliculasControlador().mostrar();
+		pnlMenuUsuarioControlador.getBuscadorDePeliculasControlador().mostrar();
 	}
 
 	private void irAMenuUsuario() {
-		frameControlador.getMenuUsuarioControlador().mostrar();
+		pnlMenuUsuarioControlador.mostrar();
 	}
 
 	private void irAPelicula(int id) {
 		PnlPeliculaControlador peliculaControlador = new PnlPeliculaControlador(frameControlador.getOpenConexion(),
-				frameControlador, id);
+				frameControlador, pnlMenuUsuarioControlador, usuario, id);
 		peliculaControlador.mostrar();
 	}
 }

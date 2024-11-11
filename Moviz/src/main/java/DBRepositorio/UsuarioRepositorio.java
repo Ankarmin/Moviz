@@ -21,7 +21,7 @@ public class UsuarioRepositorio extends IConectar<Usuario, Integer> {
 	@Override
 	public boolean agregar(Usuario filaNueva) {
 		try {
-			try (PreparedStatement pst = conexion.prepareStatement(insertQuery,
+			try (PreparedStatement pst = openConexion.prepareStatement(insertQuery,
 					PreparedStatement.RETURN_GENERATED_KEYS)) {
 				pst.setString(1, filaNueva.getUser());
 				pst.setString(2, filaNueva.getPassword());
@@ -48,7 +48,7 @@ public class UsuarioRepositorio extends IConectar<Usuario, Integer> {
 		Usuario encontrado = null;
 		try {
 			ResultSet rs;
-			try (PreparedStatement pst = conexion.prepareStatement(searchIDQuery)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(searchIDQuery)) {
 				pst.setInt(1, id);
 				rs = pst.executeQuery();
 				while (rs.next()) {
@@ -72,7 +72,7 @@ public class UsuarioRepositorio extends IConectar<Usuario, Integer> {
 		List<Usuario> usuarios = new ArrayList<>();
 		try {
 			ResultSet rs;
-			try (PreparedStatement pst = conexion.prepareStatement(searchAllQuery)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(searchAllQuery)) {
 				rs = pst.executeQuery();
 				while (rs.next()) {
 					Usuario usuario = new Usuario(rs.getInt("id"), rs.getString("user"), rs.getString("password"));
@@ -89,34 +89,12 @@ public class UsuarioRepositorio extends IConectar<Usuario, Integer> {
 
 	@Override
 	public boolean actualizar(Usuario filaActualizada) {
-		try {
-			try (PreparedStatement pst = conexion.prepareStatement(updateRowQuery)) {
-				pst.setString(1, filaActualizada.getUser());
-				pst.setString(2, filaActualizada.getPassword());
-				pst.setInt(3, filaActualizada.getId());
-				pst.executeUpdate();
-			}
-			System.out.println("Fila actualizada");
-			return true;
-		} catch (SQLException e) {
-			System.out.println("No se pudo actualizar la fila: " + e.getMessage());
-			return false;
-		}
+		throw new UnsupportedOperationException("Método no implementado en UsuarioRepositorio.");
 	}
 
 	@Override
 	public boolean eliminar(Integer id) {
-		try {
-			try (PreparedStatement pst = conexion.prepareStatement(deleteRowQuery)) {
-				pst.setInt(1, id);
-				pst.executeUpdate();
-				System.out.println("Fila eliminada con exito");
-			}
-			return true;
-		} catch (SQLException e) {
-			System.out.println("No se pudo eliminar la fila: " + e.getMessage());
-			return false;
-		}
+		throw new UnsupportedOperationException("Método no implementado en UsuarioRepositorio.");
 	}
 
 	public Usuario obtenerPorUsuarioYPassword(String username, String password) {
@@ -124,7 +102,7 @@ public class UsuarioRepositorio extends IConectar<Usuario, Integer> {
 		String query = "SELECT * FROM usuario WHERE user = ? AND password = ?";
 		try {
 			ResultSet rs;
-			try (PreparedStatement pst = conexion.prepareStatement(query)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(query)) {
 				pst.setString(1, username);
 				pst.setString(2, password);
 				rs = pst.executeQuery();

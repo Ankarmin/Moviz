@@ -66,6 +66,16 @@ CREATE TABLE peliculaalquilada (
   FOREIGN KEY (idUsuario) REFERENCES usuario (id) ON DELETE CASCADE
 );
 
+-- Tabla peliculaalquilada
+CREATE TABLE peliculafavorita (
+	idPeliculaFavorita INT NOT NULL AUTO_INCREMENT,
+    idPelicula INT NOT NULL,
+    idUsuario INT NOT NULL,
+    PRIMARY KEY (idPeliculaFavorita),
+	FOREIGN KEY (idPelicula) REFERENCES pelicula (idPelicula) ON DELETE CASCADE,
+	FOREIGN KEY (idUsuario) REFERENCES usuario (id) ON DELETE CASCADE
+	);
+    
 -- Habilitar eventos en MySQL
 SET GLOBAL event_scheduler = ON;
 

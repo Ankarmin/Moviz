@@ -38,4 +38,8 @@ public class LoginModelo {
 		}
 		return null; // SI EN CASO NO ENCUENTRA NADA
 	}
+
+	public Usuario obtenerUsuario(String username, String password) {
+		return usuarioRepositorio.obtenerPorUsuarioYPassword(username, password);
+	}
 }

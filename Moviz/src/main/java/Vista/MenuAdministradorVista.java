@@ -3,10 +3,8 @@ package Vista;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Font;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
@@ -147,7 +145,8 @@ public class MenuAdministradorVista extends JPanel {
 				// Adjust the width of the line under the title
 				LineaBlanca.setBounds(26, 143, panelWidth - 80, 2);
 
-				// Define minimum Y position to prevent moving above the "Menu Administrador" line
+				// Define minimum Y position to prevent moving above the "Menu Administrador"
+				// line
 				int minY = 160; // Set this to slightly below the "Menu Administrador" line
 
 				// Calculate Y position with a lower bound
@@ -159,7 +158,8 @@ public class MenuAdministradorVista extends JPanel {
 				int leftMargin = (panelWidth - buttonWidth * 2 - 60) / 2;
 
 				lblPeliculas.setBounds(leftMargin + (buttonWidth - labelWidth) / 2, baseY, labelWidth, 40);
-				lblComentarios.setBounds(leftMargin + buttonWidth + 60 + (buttonWidth - labelWidth) / 2, baseY, labelWidth, 40);
+				lblComentarios.setBounds(leftMargin + buttonWidth + 60 + (buttonWidth - labelWidth) / 2, baseY,
+						labelWidth, 40);
 
 				btnAgregarP.setBounds(leftMargin, baseY + 65, buttonWidth, 38);
 				btnEliminarP.setBounds(leftMargin, baseY + 125, buttonWidth, 38);

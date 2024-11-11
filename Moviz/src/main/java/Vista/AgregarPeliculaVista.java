@@ -3,8 +3,8 @@ package Vista;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class AgregarPeliculaVista extends JPanel {
@@ -98,12 +99,9 @@ public class AgregarPeliculaVista extends JPanel {
 
 		btnGenero = createButton("Género", 100, 240, 200, 30);
 		add(btnGenero);
-		cmbGenero = new JComboBox<>(new String[]{
-			"-Seleccionar-", "Acción", "Aventura", "Animación", "Comedia", "Crimen",
-			"Documental", "Drama", "Familia", "Fantasía", "Historia", "Terror", 
-			"Música", "Misterio", "Romance", "Ciencia Ficción", "Película de TV", 
-			"Suspense", "Bélico", "Western"
-		});
+		cmbGenero = new JComboBox<>(new String[] { "-Seleccionar-", "Acción", "Aventura", "Animación", "Comedia",
+				"Crimen", "Documental", "Drama", "Familia", "Fantasía", "Historia", "Terror", "Música", "Misterio",
+				"Romance", "Ciencia Ficción", "Película de TV", "Suspense", "Bélico", "Western" });
 		cmbGenero.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
 		cmbGenero.setBounds(350, 240, 400, 30);
 		cmbGenero.setBackground(new Color(70, 76, 90));
@@ -158,10 +156,10 @@ public class AgregarPeliculaVista extends JPanel {
 			@Override
 			public void componentResized(ComponentEvent e) {
 				int panelWidth = getWidth();
-				int leftMargin = (panelWidth - 800) / 2; 
+				int leftMargin = (panelWidth - 800) / 2;
 				int inputWidth = 400;
 				int labelWidth = 200;
-				
+
 				// Adjust layout dynamically
 				pnlCabecera.setBounds(0, 0, panelWidth, 70);
 				pnlLineaBlanca.setBounds(26, 143, panelWidth - 80, 2);

@@ -13,7 +13,6 @@ public class PnlEliminarPeliculaControlador {
 		this.frameControlador = frameControlador;
 
 		vista = new EliminarPeliculaVista();
-		// INSTACIA MODELO FUTURO
 
 		setEvents();
 	}

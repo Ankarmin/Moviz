@@ -21,7 +21,7 @@ public class PeliculaRepositorio extends IConectar<Pelicula, Integer> {
 	@Override
 	public boolean agregar(Pelicula filaNueva) {
 		try {
-			try (PreparedStatement pst = conexion.prepareStatement(insertQuery)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(insertQuery)) {
 				pst.setString(1, filaNueva.getNombre());
 				pst.setInt(2, filaNueva.getAnioEstreno());
 				pst.setString(3, filaNueva.getGenero());
@@ -41,7 +41,7 @@ public class PeliculaRepositorio extends IConectar<Pelicula, Integer> {
 		Pelicula encontrada = null;
 		try {
 			ResultSet rs;
-			try (PreparedStatement pst = conexion.prepareStatement(searchIDQuery)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(searchIDQuery)) {
 				pst.setInt(1, id);
 				rs = pst.executeQuery();
 				while (rs.next()) {
@@ -68,7 +68,7 @@ public class PeliculaRepositorio extends IConectar<Pelicula, Integer> {
 		List<Pelicula> peliculas = new ArrayList<>();
 		try {
 			ResultSet rs;
-			try (PreparedStatement pst = conexion.prepareStatement(searchAllQuery)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(searchAllQuery)) {
 				rs = pst.executeQuery();
 				while (rs.next()) {
 					Pelicula pelicula = new Pelicula(rs.getInt("idPelicula"), rs.getString("nombre"),
@@ -86,7 +86,7 @@ public class PeliculaRepositorio extends IConectar<Pelicula, Integer> {
 	@Override
 	public boolean actualizar(Pelicula filaActualizada) {
 		try {
-			try (PreparedStatement pst = conexion.prepareStatement(updateRowQuery)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(updateRowQuery)) {
 				pst.setString(1, filaActualizada.getNombre());
 				pst.setInt(2, filaActualizada.getAnioEstreno());
 				pst.setString(3, filaActualizada.getGenero());
@@ -106,7 +106,7 @@ public class PeliculaRepositorio extends IConectar<Pelicula, Integer> {
 	@Override
 	public boolean eliminar(Integer id) {
 		try {
-			try (PreparedStatement pst = conexion.prepareStatement(deleteRowQuery)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(deleteRowQuery)) {
 				pst.setInt(1, id);
 				pst.executeUpdate();
 			}

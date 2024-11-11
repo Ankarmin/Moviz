@@ -18,17 +18,25 @@ import javax.swing.SwingConstants;
 
 import DBRepositorio.Pelicula;
 import DBRepositorio.PeliculaRepositorio;
+import DBRepositorio.Usuario;
 import Modelo.HistorialModelo;
 import Vista.HistorialVista;
 
 public class PnlHistorialControlador {
 
 	private final FrameControlador frameControlador;
+	private final PnlMenuUsuarioControlador pnlMenuUsuarioControlador;
+
 	private final HistorialVista vista;
 	private final HistorialModelo modelo;
 
-	public PnlHistorialControlador(Connection openConexion, FrameControlador frameControlador) {
+	private final Usuario usuario;
+
+	public PnlHistorialControlador(Connection openConexion, FrameControlador frameControlador,
+			PnlMenuUsuarioControlador pnlMenuUsuarioControlador, Usuario usuario) {
+		this.pnlMenuUsuarioControlador = pnlMenuUsuarioControlador;
 		this.frameControlador = frameControlador;
+		this.usuario = usuario;
 
 		vista = new HistorialVista();
 		modelo = new HistorialModelo(new PeliculaRepositorio(openConexion));
@@ -118,20 +126,20 @@ public class PnlHistorialControlador {
 	}
 
 	private void irAMenuPeliculas() {
-		frameControlador.getMenuPeliculaControlador().mostrar();
+		pnlMenuUsuarioControlador.getMenuPeliculaControlador().mostrar();
 	}
 
 	private void irABusqueda() {
-		frameControlador.getBuscadorDePeliculasControlador().mostrar();
+		pnlMenuUsuarioControlador.getBuscadorDePeliculasControlador().mostrar();
 	}
 
 	private void irAMenuUsuario() {
-		frameControlador.getMenuUsuarioControlador().mostrar();
+		pnlMenuUsuarioControlador.mostrar();
 	}
 
 	private void irAPelicula(int id) {
 		PnlPeliculaControlador peliculaControlador = new PnlPeliculaControlador(frameControlador.getOpenConexion(),
-				frameControlador, id);
+				frameControlador, pnlMenuUsuarioControlador, usuario, id);
 		peliculaControlador.mostrar();
 	}
 }

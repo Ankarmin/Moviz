@@ -1,5 +1,8 @@
 package Modelo;
 
+import java.util.List;
+
+import DBRepositorio.Pelicula;
 import DBRepositorio.PeliculaRepositorio;
 
 public class MenuPeliculasModelo {
@@ -9,7 +12,7 @@ public class MenuPeliculasModelo {
 		this.peliculaRepositorio = peliculaRepositorio;
 	}
 
-	public PeliculaRepositorio getPeliculaRepositorio() {
-		return peliculaRepositorio;
+	public List<Pelicula> obtenerTodos() {
+		return peliculaRepositorio.obtenerTodos();
 	}
 }

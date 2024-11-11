@@ -7,29 +7,29 @@ import java.util.List;
 public class PeliculaAlquilada extends Entidades {
 	private int idPrestamo;
 	private int idPelicula;
-	private String usuario;
+	private int idUsuario;
 	private Date fechaAlquiler;
 	private Date fechaDevolucion;
 
 	public PeliculaAlquilada() {
 	}
 
-	public PeliculaAlquilada(int idPrestamo, int idPelicula, String usuario, Date fechaAlquiler, Date fechaDevolucion) {
+	public PeliculaAlquilada(int idPrestamo, int idPelicula, int idUsuario, Date fechaAlquiler, Date fechaDevolucion) {
 		this.idPrestamo = idPrestamo;
 		this.idPelicula = idPelicula;
-		this.usuario = usuario;
+		this.idUsuario = idUsuario;
 		this.fechaAlquiler = fechaAlquiler;
 		this.fechaDevolucion = fechaDevolucion;
 	}
 
 	@Override
 	public Object[] toArray() {
-		return new Object[] { getIdPrestamo(), getIdPelicula(), getUsuario(), getFechaAlquiler(),
+		return new Object[] { getIdPrestamo(), getIdPelicula(), getIdUsuario(), getFechaAlquiler(),
 				getFechaDevolucion() };
 	}
 
 	public static PeliculaAlquilada toPeliculaAlquilada(List<Object> datos) {
-		return new PeliculaAlquilada((Integer) datos.get(0), (Integer) datos.get(1), (String) datos.get(2),
+		return new PeliculaAlquilada((Integer) datos.get(0), (Integer) datos.get(1), (Integer) datos.get(2),
 				(Date) datos.get(3), (Date) datos.get(4));
 	}
 
@@ -59,12 +59,12 @@ public class PeliculaAlquilada extends Entidades {
 		this.idPelicula = idPelicula;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public int getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public Date getFechaAlquiler() {

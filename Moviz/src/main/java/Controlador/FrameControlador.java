@@ -4,56 +4,37 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import DBRepositorio.Pelicula;
 import Vista.FrameVista;
 
 public class FrameControlador {
 
-	// ATRIBUTOS DESTINADOS A CONECTARSE CON LA BASE DE DATOS
 	private Connection openConexion;
+
 	private static final String URL = "jdbc:mysql://junction.proxy.rlwy.net:22381/db_moviz";
 	private static final String USER = "root";
 	private static final String PASSWORD = "ShUTTFGcSybgWnDLCZYqwWSlvWMiINBK";
 
-	// VISTA DEL CONTROLADOR AL INICIAR EL PROGRAMA
 	private final FrameVista frameVista;
 
-	// TODOS LOS DEMÁS CONTROLADORES
 	private final PnlLoginControlador loginControlador;
-	private final PnlMenuPeliculaControlador menuPeliculaControlador;
 	private final PnlRegistrarControlador registrarControlador;
-	private final PnlMenuUsuarioControlador menuUsuarioControlador;
 	private final PnlMenuAdministradorControlador menuAdministradorControlador;
-	private final PnlHistorialControlador historialControlador;
 	private final PnlAgregarPeliculaControlador agregarPeliculaControlador;
 	private final PnlEliminarPeliculaControlador eliminarPeliculaControlador;
 	private final PnlEliminarComentarioControlador eliminarComentarioControlador;
-	private final PnlBuscadorDePeliculasControlador buscadorDePeliculasControlador;
 
-	private final Pelicula pelicula;
-
-	// CONSTRUCTOR DEL CONTROLADOR DEL FRAME LoginVista
 	public FrameControlador() {
 
-		// INICIALIZA CONEXION
 		Conectar();
 
-		// INSTANCIACIÓN DEL FRAME DE BIBLIOTECA
 		frameVista = new FrameVista();
 
-		pelicula = new Pelicula();
-
-		// INSTANCIAMOS LOS DEMAS CONTROLADORES
 		registrarControlador = new PnlRegistrarControlador(openConexion, this);
 		loginControlador = new PnlLoginControlador(openConexion, this);
-		menuPeliculaControlador = new PnlMenuPeliculaControlador(openConexion, this);
-		menuUsuarioControlador = new PnlMenuUsuarioControlador(openConexion, this);
-		historialControlador = new PnlHistorialControlador(openConexion, this);
 		agregarPeliculaControlador = new PnlAgregarPeliculaControlador(openConexion, this);
 		eliminarPeliculaControlador = new PnlEliminarPeliculaControlador(openConexion, this);
 		menuAdministradorControlador = new PnlMenuAdministradorControlador(openConexion, this);
 		eliminarComentarioControlador = new PnlEliminarComentarioControlador(openConexion, this);
-		buscadorDePeliculasControlador = new PnlBuscadorDePeliculasControlador(openConexion, this);
 	}
 
 	private void Conectar() {
@@ -79,13 +60,8 @@ public class FrameControlador {
 		loginControlador.mostrar();
 	}
 
-	// SE DEBE HACER RETORNOS DE LOS CONTROLADORES
 	public PnlLoginControlador getLoginControlador() {
 		return loginControlador;
-	}
-
-	public PnlMenuPeliculaControlador getMenuPeliculaControlador() {
-		return menuPeliculaControlador;
 	}
 
 	public PnlAgregarPeliculaControlador getAgregarPeliculaControlador() {
@@ -96,16 +72,8 @@ public class FrameControlador {
 		return eliminarPeliculaControlador;
 	}
 
-	public PnlHistorialControlador getHistorialControlador() {
-		return historialControlador;
-	}
-
 	public PnlRegistrarControlador getRegistrarControlador() {
 		return registrarControlador;
-	}
-
-	public PnlMenuUsuarioControlador getMenuUsuarioControlador() {
-		return menuUsuarioControlador;
 	}
 
 	public PnlMenuAdministradorControlador getMenuAdministradorControlador() {
@@ -114,9 +82,5 @@ public class FrameControlador {
 
 	public PnlEliminarComentarioControlador getEliminarComentarioControlador() {
 		return eliminarComentarioControlador;
-	}
-
-	public PnlBuscadorDePeliculasControlador getBuscadorDePeliculasControlador() {
-		return buscadorDePeliculasControlador;
 	}
 }
