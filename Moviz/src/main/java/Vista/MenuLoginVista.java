@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-public class LoginVista extends JPanel {
+public class MenuLoginVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel Fondo;
@@ -46,9 +46,9 @@ public class LoginVista extends JPanel {
 	private GridBagConstraints gbc_4;
 	private GridBagConstraints gbc_5;
 
-	public LoginVista() {
+	public MenuLoginVista() {
 		setBackground(new Color(66, 72, 93));
-		setBounds(0, 0, 1140, 640); // IMPORTANTE
+		setBounds(0, 0, 1140, 640);
 		setLayout(new BorderLayout(0, 0));
 
 		Fondo = new JPanel();
@@ -80,12 +80,10 @@ public class LoginVista extends JPanel {
 					lblFondo.setPreferredSize(new Dimension(nuevoAncho, lblFondo.getHeight()));
 				}
 
-				Fondo.revalidate(); //
+				Fondo.revalidate();
 				Fondo.repaint();
 			}
 		});
-
-		initStyles();
 
 		Cuerpo = new JPanel();
 		Cuerpo.setBackground(new Color(66, 72, 93));
@@ -111,7 +109,6 @@ public class LoginVista extends JPanel {
 
 		GridBagConstraints gbc;
 
-		// Logo de la aplicación
 		logoApp = DefaultComponentFactory.getInstance().createLabel("");
 		logoApp.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
 		gbc = new GridBagConstraints();
@@ -122,7 +119,6 @@ public class LoginVista extends JPanel {
 		gbc.anchor = GridBagConstraints.CENTER;
 		Cuerpo.add(logoApp, gbc);
 
-		// Título
 		lblTitulo = new JLabel("Inicia Sesión en Moviz");
 		lblTitulo.setForeground(Color.WHITE);
 		lblTitulo.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
@@ -133,7 +129,6 @@ public class LoginVista extends JPanel {
 		gbc.gridwidth = 3;
 		Cuerpo.add(lblTitulo, gbc);
 
-		// Icono de usuario
 		lblIconoUsuario = DefaultComponentFactory.getInstance().createTitle("");
 		lblIconoUsuario.setIcon(new ImageIcon(getClass().getResource("/Images/UsuarioIcono.png")));
 		gbc = new GridBagConstraints();
@@ -152,7 +147,6 @@ public class LoginVista extends JPanel {
 		gbc.anchor = GridBagConstraints.WEST;
 		Cuerpo.add(lblEspacioVacio, gbc);
 
-		// Campo de usuario
 		txtUser = new JTextField("Ingresar usuario");
 		txtUser.setForeground(Color.GRAY);
 		txtUser.setColumns(20);
@@ -164,7 +158,6 @@ public class LoginVista extends JPanel {
 		gbc_3.fill = GridBagConstraints.BOTH;
 		Cuerpo.add(txtUser, gbc_3);
 
-		// Icono de contraseña
 		lblIconoPassword = DefaultComponentFactory.getInstance().createTitle("");
 		lblIconoPassword.setIcon(new ImageIcon(getClass().getResource("/Images/PasswordIcono.png")));
 		gbc = new GridBagConstraints();
@@ -174,7 +167,6 @@ public class LoginVista extends JPanel {
 		gbc.anchor = GridBagConstraints.WEST;
 		Cuerpo.add(lblIconoPassword, gbc);
 
-		// Campo de contraseña
 		txtPassword = new JPasswordField("**********");
 		txtPassword.setForeground(Color.GRAY);
 		txtPassword.setColumns(20);
@@ -186,7 +178,6 @@ public class LoginVista extends JPanel {
 		gbc_4.fill = GridBagConstraints.BOTH;
 		Cuerpo.add(txtPassword, gbc_4);
 
-		// Botón "Ingresar"
 		btnIngresar = new JButton(" INGRESAR ");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -202,7 +193,6 @@ public class LoginVista extends JPanel {
 		gbc_1.gridy = 4;
 		Cuerpo.add(btnIngresar, gbc_1);
 
-		// Botón "Registrar"
 		btnRegistrar = new JButton(" REGISTRARSE ");
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnRegistrar.setBackground(new Color(255, 128, 0));
@@ -214,7 +204,6 @@ public class LoginVista extends JPanel {
 		gbc_2.gridy = 6;
 		Cuerpo.add(btnRegistrar, gbc_2);
 
-		// Etiqueta "¿Aún no tienes cuenta?"
 		lblAnNoTienes = new JLabel("Aún no tienes cuenta?");
 		lblAnNoTienes.setForeground(Color.WHITE);
 		lblAnNoTienes.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
@@ -225,16 +214,5 @@ public class LoginVista extends JPanel {
 		gbc_5.gridwidth = 1;
 		gbc_5.anchor = GridBagConstraints.NORTHWEST;
 		Cuerpo.add(lblAnNoTienes, gbc_5);
-
-		initStyles(); // Inicializa los listeners para placeholders
-	}
-
-	public JPanel getCuerpo() {
-		return Cuerpo;
-	}
-
-	// MÉTODO PARA INICIALIZAR LOS LISTENERS Y EL COMPORTAMIENTO DE LOS PLACEHOLDERS
-	private void initStyles() {
-		// Agrega comportamiento específico aquí si es necesario
 	}
 }

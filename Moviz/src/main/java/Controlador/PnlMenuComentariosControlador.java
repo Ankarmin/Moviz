@@ -5,50 +5,50 @@ import java.awt.event.MouseEvent;
 import java.sql.Connection;
 
 import DBRepositorio.Usuario;
-import Vista.ComentariosVista;
+import Vista.MenuComentariosVista;
 
-public class PnlComentariosControlador {
+public class PnlMenuComentariosControlador {
 
 	private final FrameControlador frameControlador;
 	private final PnlMenuUsuarioControlador pnlMenuUsuarioControlador;
 
-	private final ComentariosVista vista;
+	private final MenuComentariosVista vista;
 
 	private final int idPelicula;
 	private final Usuario usuario;
 
-	public PnlComentariosControlador(Connection openConexion, FrameControlador frameControlador,
+	public PnlMenuComentariosControlador(Connection openConexion, FrameControlador frameControlador,
 			PnlMenuUsuarioControlador pnlMenuUsuarioControlador, Usuario usuario, int idPelicula) {
 		this.frameControlador = frameControlador;
 		this.pnlMenuUsuarioControlador = pnlMenuUsuarioControlador;
 		this.idPelicula = idPelicula;
 		this.usuario = usuario;
-		vista = new ComentariosVista();
+		vista = new MenuComentariosVista();
 
 		setEvents();
 	}
 
 	public final void setEvents() {
 		vista.btnVolver.addActionListener((e) -> {
-			irAPelicula();
+			irAMenuPelicula();
 		});
 
 		vista.btnSalir.addActionListener((e) -> {
-			irALogin();
+			irAMenuLogin();
 		});
 
 		vista.btnPeliculas.addActionListener((e) -> {
 			irAMenuPeliculas();
 		});
 
-		vista.btnHistorial.addActionListener((e) -> {
-			irAHistorial();
+		vista.btnFavoritas.addActionListener((e) -> {
+			irAMenuFavoritas();
 		});
 
 		vista.Busqueda.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				irABusqueda();
+				irAMenuBusqueda();
 			}
 		});
 
@@ -67,27 +67,27 @@ public class PnlComentariosControlador {
 		frameControlador.getFrameVista().pnlContenido.repaint();
 	}
 
-	private void irALogin() {
-		frameControlador.getLoginControlador().mostrar();
+	private void irAMenuLogin() {
+		frameControlador.getMenuLoginControlador().mostrar();
 	}
 
-	private void irAHistorial() {
-		pnlMenuUsuarioControlador.getHistorialControlador().mostrar();
+	private void irAMenuFavoritas() {
+		pnlMenuUsuarioControlador.getMenuFavoritasControlador().mostrar();
 	}
 
 	private void irAMenuPeliculas() {
 		pnlMenuUsuarioControlador.getMenuPeliculaControlador().mostrar();
 	}
 
-	private void irABusqueda() {
-		pnlMenuUsuarioControlador.getBuscadorDePeliculasControlador().mostrar();
+	private void irAMenuBusqueda() {
+		pnlMenuUsuarioControlador.getMenuBuscadorControlador().mostrar();
 	}
 
 	private void irAMenuUsuario() {
 		pnlMenuUsuarioControlador.mostrar();
 	}
 
-	private void irAPelicula() {
+	private void irAMenuPelicula() {
 		PnlPeliculaControlador peliculaControlador = new PnlPeliculaControlador(frameControlador.getOpenConexion(),
 				frameControlador, pnlMenuUsuarioControlador, usuario, idPelicula);
 		peliculaControlador.mostrar();

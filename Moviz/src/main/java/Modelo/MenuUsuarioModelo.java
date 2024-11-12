@@ -22,8 +22,8 @@ public class MenuUsuarioModelo {
 		return peliculaRepositorio.obtenerTodos();
 	}
 
-	public List<PeliculaFavorita> obtenerPeliculasFavoritas() {
-		return peliculaFavoritaRepositorio.obtenerTodos();
+	public List<PeliculaFavorita> obtenerPeliculasFavoritas(int id) {
+		return peliculaFavoritaRepositorio.obtenerTodosPorIdUsuario(id);
 	}
 
 	public Pelicula obtenerPelicula(int id) {

@@ -25,7 +25,7 @@ public class MenuPeliculasVista extends JPanel {
 	public JLabel lblBusqueda;
 	public JLabel lblIconoLogo;
 	public JButton btnSalir;
-	public JButton btnHistorial;
+	public JButton btnFavoritas;
 	public JComboBox<String> comboBoxGenero;
 	public JComboBox<String> comboBoxAño;
 	public JComboBox<String> comboBoxPuntuacion;
@@ -107,8 +107,8 @@ public class MenuPeliculasVista extends JPanel {
 		JButton btnPeliculas = new JButton("PELICULAS");
 		pnlBotones.add(btnPeliculas);
 
-		btnHistorial = new JButton("HISTORIAL");
-		pnlBotones.add(btnHistorial);
+		btnFavoritas = new JButton("HISTORIAL");
+		pnlBotones.add(btnFavoritas);
 
 		JLabel lblNewLabel_12 = new JLabel("      ");
 		pnlContenidoBotones.add(lblNewLabel_12, BorderLayout.SOUTH);
@@ -208,6 +208,6 @@ public class MenuPeliculasVista extends JPanel {
 
 		pnlGrid = new JPanel();
 		scrollPane.setViewportView(pnlGrid);
-		pnlGrid.setLayout(new GridLayout(0, 3, 10, 10));
+		pnlGrid.setLayout(new GridLayout(0, 4, 10, 10));
 	}
 }

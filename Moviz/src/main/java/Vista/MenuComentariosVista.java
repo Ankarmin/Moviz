@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.TableModel;
 
-public class ComentariosVista extends JPanel {
+public class MenuComentariosVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtBuscar;
@@ -27,11 +27,11 @@ public class ComentariosVista extends JPanel {
 	public JButton btnVolver;
 	public JButton btnSalir;
 	public JButton btnPeliculas;
-	public JButton btnHistorial;
+	public JButton btnFavoritas;
 	public JLabel Busqueda;
 	public JLabel IconoLogo;
 
-	public ComentariosVista() {
+	public MenuComentariosVista() {
 		setBounds(0, 0, 1140, 640);
 		setLayout(new BorderLayout(0, 0));
 
@@ -57,7 +57,7 @@ public class ComentariosVista extends JPanel {
 		pnlSalir.add(lblNewLabel_2, BorderLayout.SOUTH);
 
 		btnSalir = new JButton("");
-		btnSalir.setIcon(new ImageIcon(ComentariosVista.class.getResource("/Images/iconosalida.png")));
+		btnSalir.setIcon(new ImageIcon(MenuComentariosVista.class.getResource("/Images/iconosalida.png")));
 		pnlSalir.add(btnSalir);
 
 		JLabel lblNewLabel_1 = new JLabel("   ");
@@ -107,8 +107,8 @@ public class ComentariosVista extends JPanel {
 		btnPeliculas = new JButton("PELICULAS");
 		pnlBotones.add(btnPeliculas);
 
-		btnHistorial = new JButton("HISTORIAL");
-		pnlBotones.add(btnHistorial);
+		btnFavoritas = new JButton("FAVORITAS");
+		pnlBotones.add(btnFavoritas);
 
 		JLabel lblNewLabel_12 = new JLabel("      ");
 		pnlContenidoBotones.add(lblNewLabel_12, BorderLayout.SOUTH);

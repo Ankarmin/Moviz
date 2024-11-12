@@ -11,18 +11,18 @@ import javax.swing.JOptionPane;
 import DBRepositorio.Pelicula;
 import DBRepositorio.PeliculaRepositorio;
 import Modelo.AgregarPeliculaModelo;
-import Vista.AgregarPeliculaVista;
+import Vista.MenuAgregarPeliculaVista;
 
-public class PnlAgregarPeliculaControlador {
+public class PnlMenuAgregarPeliculaControlador {
 
 	private final FrameControlador frameControlador;
-	private final AgregarPeliculaVista vista;
+	private final MenuAgregarPeliculaVista vista;
 	private final AgregarPeliculaModelo modelo;
 
-	public PnlAgregarPeliculaControlador(Connection openConexion, FrameControlador frameControlador) {
+	public PnlMenuAgregarPeliculaControlador(Connection openConexion, FrameControlador frameControlador) {
 		this.frameControlador = frameControlador;
 
-		vista = new AgregarPeliculaVista();
+		vista = new MenuAgregarPeliculaVista();
 		modelo = new AgregarPeliculaModelo(new PeliculaRepositorio(openConexion));
 
 		setEvents();
@@ -32,17 +32,14 @@ public class PnlAgregarPeliculaControlador {
 		vista.btnVolver.addActionListener((e) -> {
 			irAMenuAdministrador();
 		});
-
+		vista.btnSalir.addActionListener((e) -> {
+			irAMenuLogin();
+		});
 		vista.btnAñadirPelicula.addActionListener((e) -> {
 			añadirPelicula();
 		});
-
 		vista.btnSubirImagen.addActionListener((e) -> {
 			subirImagen();
-		});
-
-		vista.btnSalir.addActionListener((e) -> {
-			irALogin();
 		});
 	}
 
@@ -106,8 +103,8 @@ public class PnlAgregarPeliculaControlador {
 		frameControlador.getFrameVista().pnlContenido.repaint();
 	}
 
-	private void irALogin() {
-		frameControlador.getLoginControlador().mostrar();
+	private void irAMenuLogin() {
+		frameControlador.getMenuLoginControlador().mostrar();
 	}
 
 	private void irAMenuAdministrador() {

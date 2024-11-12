@@ -17,7 +17,7 @@ public class MenuUsuarioVista extends JPanel {
 	private JTextField txtBuscar;
 	public JButton btnSalir;
 	public JButton btnPeliculas;
-	public JButton btnHistorial;
+	public JButton btnFavoritas;
 	public JLabel Busqueda;
 	public JLabel IconoLogo;
 	public JLabel lbTextoDeBienvenido;
@@ -59,7 +59,7 @@ public class MenuUsuarioVista extends JPanel {
 		pnlSalir.add(lblNewLabel_2, BorderLayout.SOUTH);
 
 		btnSalir = new JButton("");
-		btnSalir.setIcon(new ImageIcon(BuscadorDePeliculasVista.class.getResource("/Images/iconosalida.png")));
+		btnSalir.setIcon(new ImageIcon(MenuBuscadorVista.class.getResource("/Images/iconosalida.png")));
 		pnlSalir.add(btnSalir);
 
 		JLabel lblNewLabel_1 = new JLabel("   ");
@@ -109,8 +109,8 @@ public class MenuUsuarioVista extends JPanel {
 		btnPeliculas = new JButton("PELICULAS");
 		pnlBotones.add(btnPeliculas);
 
-		btnHistorial = new JButton("HISTORIAL");
-		pnlBotones.add(btnHistorial);
+		btnFavoritas = new JButton("FAVORITAS");
+		pnlBotones.add(btnFavoritas);
 
 		JLabel lblNewLabel_12 = new JLabel("      ");
 		pnlContenidoBotones.add(lblNewLabel_12, BorderLayout.SOUTH);
@@ -177,7 +177,7 @@ public class MenuUsuarioVista extends JPanel {
 		panel_38.setBackground(new Color(56, 58, 74));
 		panel_35.add(panel_38, BorderLayout.EAST);
 
-		JLabel lblNewLabel_13 = new JLabel("Peliculas Recientes");
+		JLabel lblNewLabel_13 = new JLabel("Algunas de nuestras películass");
 		panel_35.add(lblNewLabel_13, BorderLayout.CENTER);
 		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel_13.setForeground(new Color(255, 255, 255));
@@ -252,7 +252,7 @@ public class MenuUsuarioVista extends JPanel {
 		panel_5.add(panel_30, BorderLayout.WEST);
 		panel_30.setLayout(new BorderLayout(0, 0));
 
-		JLabel lblNewLabel_16 = new JLabel("Peliculas Favoritas");
+		JLabel lblNewLabel_16 = new JLabel("Peliculas favoritas");
 		panel_30.add(lblNewLabel_16);
 		lblNewLabel_16.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel_16.setForeground(new Color(255, 255, 255));
@@ -273,11 +273,5 @@ public class MenuUsuarioVista extends JPanel {
 		JPanel panel_45 = new JPanel();
 		add(panel_45, BorderLayout.SOUTH);
 		panel_45.setLayout(new GridLayout(0, 3, 0, 0));
-
-		initStyles();
-	}
-
-	private void initStyles() {
-
 	}
 }

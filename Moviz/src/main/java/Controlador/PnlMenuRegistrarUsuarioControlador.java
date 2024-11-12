@@ -12,19 +12,19 @@ import DBRepositorio.ClienteRepositorio;
 import DBRepositorio.Usuario;
 import DBRepositorio.UsuarioRepositorio;
 import Modelo.RegistrarModelo;
-import Vista.RegistrarVista;
+import Vista.MenuRegistrarUsuarioVista;
 
-public class PnlRegistrarControlador {
+public class PnlMenuRegistrarUsuarioControlador {
 
 	private final FrameControlador frameControlador;
-	private final RegistrarVista vista;
+	private final MenuRegistrarUsuarioVista vista;
 	private final RegistrarModelo modelo;
 
-	public PnlRegistrarControlador(Connection openConexion, FrameControlador frameControlador) {
+	public PnlMenuRegistrarUsuarioControlador(Connection openConexion, FrameControlador frameControlador) {
 
 		this.frameControlador = frameControlador;
 
-		vista = new RegistrarVista();
+		vista = new MenuRegistrarUsuarioVista();
 		modelo = new RegistrarModelo(new UsuarioRepositorio(openConexion), new ClienteRepositorio(openConexion));
 
 		setEvents();
@@ -36,7 +36,7 @@ public class PnlRegistrarControlador {
 		});
 
 		vista.btnIniciarSesion.addActionListener((e) -> {
-			irALogin();
+			irAMenuLogin();
 		});
 
 		vista.txtUser.addFocusListener(new FocusAdapter() {
@@ -132,7 +132,7 @@ public class PnlRegistrarControlador {
 			if (clienteRegistrado) {
 				JOptionPane.showMessageDialog(vista, "Cliente registrados con éxito.");
 				limpiar();
-				irALogin();
+				irAMenuLogin();
 			} else {
 				System.out.println("Error al registar el Cliente.");
 			}
@@ -141,12 +141,12 @@ public class PnlRegistrarControlador {
 		}
 	}
 
-	private void irALogin() {
-		frameControlador.getLoginControlador().mostrar();
+	private void irAMenuLogin() {
+		frameControlador.getMenuLoginControlador().mostrar();
 		limpiar();
 	}
 
-	public RegistrarVista getVista() {
+	public MenuRegistrarUsuarioVista getVista() {
 		return vista;
 	}
 }

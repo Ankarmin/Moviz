@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-public class AgregarPeliculaVista extends JPanel {
+public class MenuAgregarPeliculaVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,27 +47,24 @@ public class AgregarPeliculaVista extends JPanel {
 
 	public JComboBox<String> cmbGenero;
 
-	public AgregarPeliculaVista() {
+	public MenuAgregarPeliculaVista() {
 		setBackground(new Color(66, 72, 93));
 		setBorder(null);
 		setLayout(null);
 		setBounds(0, 0, 1140, 640);
 
-		// Header panel
 		pnlCabecera = new JPanel(new BorderLayout());
 		pnlCabecera.setBackground(new Color(56, 59, 74));
 		pnlCabecera.setPreferredSize(new Dimension(1140, 70));
 		pnlCabecera.setBounds(0, 0, 1140, 70);
 		add(pnlCabecera);
 
-		// Logo panel
 		JPanel logoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		logoPanel.setOpaque(false);
 		JLabel IconoLogo = DefaultComponentFactory.getInstance().createLabel("");
 		IconoLogo.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacionAdministrador.png")));
 		logoPanel.add(IconoLogo);
 
-		// Exit button panel
 		JPanel exitPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		exitPanel.setOpaque(false);
 		btnSalir = new JButton(new ImageIcon(getClass().getResource("/Images/iconosalida.png")));
@@ -78,20 +75,17 @@ public class AgregarPeliculaVista extends JPanel {
 		pnlCabecera.add(logoPanel, BorderLayout.WEST);
 		pnlCabecera.add(exitPanel, BorderLayout.EAST);
 
-		// Section title
 		lblTituloSeccion = new JLabel("Añadir Películas");
 		lblTituloSeccion.setFont(new Font("Microsoft YaHei", Font.BOLD, 21));
 		lblTituloSeccion.setForeground(new Color(255, 255, 255));
 		lblTituloSeccion.setBounds(26, 108, 227, 29);
 		add(lblTituloSeccion);
 
-		// Divider line
 		pnlLineaBlanca = new JPanel();
 		pnlLineaBlanca.setBackground(Color.WHITE);
 		pnlLineaBlanca.setBounds(26, 143, getWidth() - 80, 2);
 		add(pnlLineaBlanca);
 
-		// Labels and fields
 		btnTitulo = createButton("Título", 100, 180, 200, 30);
 		add(btnTitulo);
 		txtTitulo = createTextField(350, 180, 400, 30);
@@ -136,7 +130,6 @@ public class AgregarPeliculaVista extends JPanel {
 		txtRutaImagen = createTextField(350, 540, 400, 30);
 		add(txtRutaImagen);
 
-		// Responsive buttons
 		btnVolver = new JButton("Volver");
 		btnVolver.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnVolver.setBackground(new Color(255, 128, 0));
@@ -151,7 +144,6 @@ public class AgregarPeliculaVista extends JPanel {
 		btnAñadirPelicula.setBounds(961, 520, 125, 50);
 		add(btnAñadirPelicula);
 
-		// Resizing behavior
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
@@ -160,7 +152,6 @@ public class AgregarPeliculaVista extends JPanel {
 				int inputWidth = 400;
 				int labelWidth = 200;
 
-				// Adjust layout dynamically
 				pnlCabecera.setBounds(0, 0, panelWidth, 70);
 				pnlLineaBlanca.setBounds(26, 143, panelWidth - 80, 2);
 
@@ -184,7 +175,6 @@ public class AgregarPeliculaVista extends JPanel {
 				btnSubirImagen.setBounds(leftMargin, baseY + 380, labelWidth, 30);
 				txtRutaImagen.setBounds(leftMargin + labelWidth + 20, baseY + 380, inputWidth, 30);
 
-				// Volver and Añadir buttons
 				btnVolver.setBounds(panelWidth - 160, baseY, 120, 35);
 				btnAñadirPelicula.setBounds(panelWidth - 160, baseY + 400, 125, 50);
 

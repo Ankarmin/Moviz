@@ -20,25 +20,25 @@ import DBRepositorio.Pelicula;
 import DBRepositorio.PeliculaRepositorio;
 import DBRepositorio.Usuario;
 import Modelo.HistorialModelo;
-import Vista.HistorialVista;
+import Vista.MenuFavoritasVista;
 
-public class PnlHistorialControlador {
+public class PnlMenuFavoritasControlador {
 
 	private final FrameControlador frameControlador;
 	private final PnlMenuUsuarioControlador pnlMenuUsuarioControlador;
 
-	private final HistorialVista vista;
+	private final MenuFavoritasVista vista;
 	private final HistorialModelo modelo;
 
 	private final Usuario usuario;
 
-	public PnlHistorialControlador(Connection openConexion, FrameControlador frameControlador,
+	public PnlMenuFavoritasControlador(Connection openConexion, FrameControlador frameControlador,
 			PnlMenuUsuarioControlador pnlMenuUsuarioControlador, Usuario usuario) {
 		this.pnlMenuUsuarioControlador = pnlMenuUsuarioControlador;
 		this.frameControlador = frameControlador;
 		this.usuario = usuario;
 
-		vista = new HistorialVista();
+		vista = new MenuFavoritasVista();
 		modelo = new HistorialModelo(new PeliculaRepositorio(openConexion));
 
 		setEvents();
@@ -50,13 +50,13 @@ public class PnlHistorialControlador {
 		});
 
 		vista.btnSalir.addActionListener((e) -> {
-			irALogin();
+			irAMenuLogin();
 		});
 
 		vista.lblBusqueda.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				irABusqueda();
+				irAMenuBusqueda();
 			}
 		});
 
@@ -121,16 +121,16 @@ public class PnlHistorialControlador {
 		vista.pnlGrid.repaint();
 	}
 
-	private void irALogin() {
-		frameControlador.getLoginControlador().mostrar();
+	private void irAMenuLogin() {
+		frameControlador.getMenuLoginControlador().mostrar();
 	}
 
 	private void irAMenuPeliculas() {
 		pnlMenuUsuarioControlador.getMenuPeliculaControlador().mostrar();
 	}
 
-	private void irABusqueda() {
-		pnlMenuUsuarioControlador.getBuscadorDePeliculasControlador().mostrar();
+	private void irAMenuBusqueda() {
+		pnlMenuUsuarioControlador.getMenuBuscadorControlador().mostrar();
 	}
 
 	private void irAMenuUsuario() {

@@ -10,20 +10,20 @@ import DBRepositorio.ClienteRepositorio;
 import DBRepositorio.Usuario;
 import DBRepositorio.UsuarioRepositorio;
 import Modelo.LoginModelo;
-import Vista.LoginVista;
+import Vista.MenuLoginVista;
 
-public class PnlLoginControlador {
+public class PnlMenuLoginControlador {
 
 	private final FrameControlador frameControlador;
 
-	private final LoginVista vista;
+	private final MenuLoginVista vista;
 	private final LoginModelo modelo;
 
-	public PnlLoginControlador(Connection openConexion, FrameControlador frameControlador) {
+	public PnlMenuLoginControlador(Connection openConexion, FrameControlador frameControlador) {
 
 		this.frameControlador = frameControlador;
 
-		vista = new LoginVista();
+		vista = new MenuLoginVista();
 		modelo = new LoginModelo(new UsuarioRepositorio(openConexion), new ClienteRepositorio(openConexion),
 				new AdministradorRepositorio(openConexion));
 
@@ -36,7 +36,7 @@ public class PnlLoginControlador {
 		});
 
 		vista.btnRegistrar.addActionListener((e) -> {
-			irARegistrar();
+			irAMenuRegistrar();
 		});
 
 		vista.txtUser.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -113,12 +113,12 @@ public class PnlLoginControlador {
 		}
 	}
 
-	private void irARegistrar() {
-		frameControlador.getRegistrarControlador().mostrar();
+	private void irAMenuRegistrar() {
+		frameControlador.getMenuRegistrarControlador().mostrar();
 		limpiar();
 	}
 
-	public LoginVista getVista() {
+	public MenuLoginVista getVista() {
 		return vista;
 	}
 }

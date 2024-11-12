@@ -47,12 +47,12 @@ public class PnlMenuPeliculaControlador {
 	}
 
 	public final void setEvents() {
-		vista.btnHistorial.addActionListener((e) -> {
-			irAHistorial();
+		vista.btnFavoritas.addActionListener((e) -> {
+			irAMenuFavoritas();
 		});
 
 		vista.btnSalir.addActionListener((e) -> {
-			irALogin();
+			irAMenuLogin();
 		});
 
 		vista.comboBoxGenero.addActionListener(e -> {
@@ -75,7 +75,7 @@ public class PnlMenuPeliculaControlador {
 		vista.lblBusqueda.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				irABusqueda();
+				irAMenuBusqueda();
 			}
 		});
 
@@ -95,12 +95,12 @@ public class PnlMenuPeliculaControlador {
 		frameControlador.getFrameVista().pnlContenido.repaint();
 	}
 
-	private void irALogin() {
-		frameControlador.getLoginControlador().mostrar();
+	private void irAMenuLogin() {
+		frameControlador.getMenuLoginControlador().mostrar();
 	}
 
-	private void irAHistorial() {
-		pnlMenuUsuarioControlador.getHistorialControlador().mostrar();
+	private void irAMenuFavoritas() {
+		pnlMenuUsuarioControlador.getMenuFavoritasControlador().mostrar();
 	}
 
 	public void mostrarPeliculasEnVista() {
@@ -148,8 +148,8 @@ public class PnlMenuPeliculaControlador {
 		vista.pnlGrid.repaint();
 	}
 
-	private void irABusqueda() {
-		pnlMenuUsuarioControlador.getBuscadorDePeliculasControlador().mostrar();
+	private void irAMenuBusqueda() {
+		pnlMenuUsuarioControlador.getMenuBuscadorControlador().mostrar();
 	}
 
 	private void irAMenuUsuario() {

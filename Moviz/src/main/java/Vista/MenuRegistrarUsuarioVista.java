@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-public class RegistrarVista extends JPanel {
+public class MenuRegistrarUsuarioVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel Fondo;
@@ -45,7 +45,7 @@ public class RegistrarVista extends JPanel {
 	public JLabel iconoCorreo;
 	public JLabel lblEspacioVacio;
 
-	public RegistrarVista() {
+	public MenuRegistrarUsuarioVista() {
 		setBackground(new Color(66, 72, 93));
 		setBounds(0, 0, 1140, 640);
 		setLayout(new BorderLayout(0, 0));
@@ -84,8 +84,6 @@ public class RegistrarVista extends JPanel {
 			}
 		});
 
-		initStyles();
-
 		Cuerpo = new JPanel();
 		Cuerpo.setBackground(new Color(66, 72, 93));
 		Cuerpo.setLayout(new GridBagLayout());
@@ -110,7 +108,6 @@ public class RegistrarVista extends JPanel {
 
 		GridBagConstraints gbc;
 
-		// Logo de la aplicación
 		logoApp = DefaultComponentFactory.getInstance().createLabel("");
 		logoApp.setIcon(new ImageIcon(getClass().getResource("/Images/IconoAplicacion.png")));
 		gbc = new GridBagConstraints();
@@ -130,7 +127,6 @@ public class RegistrarVista extends JPanel {
 		gbc.anchor = GridBagConstraints.WEST;
 		Cuerpo.add(lblEspacioVacio, gbc);
 
-		// Título
 		lblTitulo = new JLabel("Crea tu cuenta en Moviz");
 		lblTitulo.setForeground(Color.WHITE);
 		lblTitulo.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
@@ -141,7 +137,6 @@ public class RegistrarVista extends JPanel {
 		gbc.gridwidth = 3;
 		Cuerpo.add(lblTitulo, gbc);
 
-		// Icono de usuario
 		lblIconoUsuario = DefaultComponentFactory.getInstance().createTitle("");
 		lblIconoUsuario.setIcon(new ImageIcon(getClass().getResource("/Images/UsuarioIcono.png")));
 		gbc = new GridBagConstraints();
@@ -151,7 +146,6 @@ public class RegistrarVista extends JPanel {
 		gbc.anchor = GridBagConstraints.WEST;
 		Cuerpo.add(lblIconoUsuario, gbc);
 
-		// Campo de usuario
 		txtUser = new JTextField("Ingresar usuario");
 		txtUser.setForeground(Color.GRAY);
 		txtUser.setColumns(20);
@@ -163,7 +157,6 @@ public class RegistrarVista extends JPanel {
 		gbc.fill = GridBagConstraints.BOTH;
 		Cuerpo.add(txtUser, gbc);
 
-		// Icono de contraseña
 		lblIconoPassword = DefaultComponentFactory.getInstance().createTitle("");
 		lblIconoPassword.setIcon(new ImageIcon(getClass().getResource("/Images/PasswordIcono.png")));
 		gbc = new GridBagConstraints();
@@ -173,7 +166,6 @@ public class RegistrarVista extends JPanel {
 		gbc.anchor = GridBagConstraints.WEST;
 		Cuerpo.add(lblIconoPassword, gbc);
 
-		// Campo de contraseña
 		txtPassword = new JPasswordField("**********");
 		txtPassword.setForeground(Color.GRAY);
 		txtPassword.setColumns(20);
@@ -185,7 +177,6 @@ public class RegistrarVista extends JPanel {
 		gbc.fill = GridBagConstraints.BOTH;
 		Cuerpo.add(txtPassword, gbc);
 
-		// Icono de correo electrónico
 		iconoCorreo = DefaultComponentFactory.getInstance().createTitle("");
 		iconoCorreo.setIcon(new ImageIcon(getClass().getResource("/Images/CorreoIcono.png")));
 		gbc = new GridBagConstraints();
@@ -195,7 +186,6 @@ public class RegistrarVista extends JPanel {
 		gbc.anchor = GridBagConstraints.WEST;
 		Cuerpo.add(iconoCorreo, gbc);
 
-		// Campo de correo electrónico
 		txtEmail = new JTextField("Ingresar correo electrónico");
 		txtEmail.setForeground(Color.GRAY);
 		txtEmail.setColumns(20);
@@ -207,7 +197,6 @@ public class RegistrarVista extends JPanel {
 		gbc.fill = GridBagConstraints.BOTH;
 		Cuerpo.add(txtEmail, gbc);
 
-		// Botón "Registrar"
 		btnRegistrar = new JButton("       REGISTRAR       ");
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -223,7 +212,6 @@ public class RegistrarVista extends JPanel {
 		gbc.gridy = 5;
 		Cuerpo.add(btnRegistrar, gbc);
 
-		// Botón "Iniciar Sesión"
 		btnIniciarSesion = new JButton("INICIAR SESIÓN");
 		btnIniciarSesion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnIniciarSesion.setForeground(Color.WHITE);
@@ -235,7 +223,6 @@ public class RegistrarVista extends JPanel {
 		gbc.gridy = 6;
 		Cuerpo.add(btnIniciarSesion, gbc);
 
-		// Etiqueta "Ya tienes cuenta?"
 		yatienescuenta = new JLabel("Ya tienes cuenta?");
 		yatienescuenta.setForeground(Color.WHITE);
 		yatienescuenta.setFont(new Font("Microsoft YaHei", Font.BOLD, 27));
@@ -246,11 +233,5 @@ public class RegistrarVista extends JPanel {
 		gbc.gridwidth = 1;
 		gbc.anchor = GridBagConstraints.NORTHWEST;
 		Cuerpo.add(yatienescuenta, gbc);
-
-		initStyles();
-	}
-
-	private void initStyles() {
-		// Implementa los listeners para placeholders si es necesario
 	}
 }

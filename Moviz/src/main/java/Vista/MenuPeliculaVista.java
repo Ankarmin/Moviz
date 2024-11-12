@@ -26,7 +26,7 @@ import javax.swing.JTextField;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-public class PeliculaVista extends JPanel {
+public class MenuPeliculaVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public JLabel posterPelicula1;
@@ -40,7 +40,7 @@ public class PeliculaVista extends JPanel {
 	public JButton btnAlquilado;
 	public JButton btnComentarios;
 	public JButton btnSalir;
-	public JButton btnHistorial;
+	public JButton btnFavoritas;
 	public JButton btnPeliculas;
 
 	public JTextField txtBuscar;
@@ -50,7 +50,7 @@ public class PeliculaVista extends JPanel {
 	public JScrollPane scrollSinopsis;
 	public JLabel lblSinopsis;
 
-	public PeliculaVista() {
+	public MenuPeliculaVista() {
 		setPreferredSize(new Dimension(1140, 640));
 		setBackground(new Color(66, 72, 93));
 		setLayout(new BorderLayout());
@@ -116,8 +116,8 @@ public class PeliculaVista extends JPanel {
 		btnPeliculas = new JButton("PELICULAS");
 		pnlBotones.add(btnPeliculas);
 
-		btnHistorial = new JButton("HISTORIAL");
-		pnlBotones.add(btnHistorial);
+		btnFavoritas = new JButton("FAVORITAS");
+		pnlBotones.add(btnFavoritas);
 
 		JLabel lblNewLabel_12 = new JLabel("      ");
 		pnlContenidoBotones.add(lblNewLabel_12, BorderLayout.SOUTH);

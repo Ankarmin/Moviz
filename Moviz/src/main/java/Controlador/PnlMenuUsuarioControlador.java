@@ -33,8 +33,8 @@ public class PnlMenuUsuarioControlador {
 	private final MenuUsuarioModelo modelo;
 
 	private final PnlMenuPeliculaControlador menuPeliculaControlador;
-	private final PnlBuscadorDePeliculasControlador buscadorDePeliculasControlador;
-	private final PnlHistorialControlador historialControlador;
+	private final PnlMenuBuscadorControlador menuBuscadorControlador;
+	private final PnlMenuFavoritasControlador menuFavoritasControlador;
 
 	private final Usuario usuario;
 
@@ -47,9 +47,8 @@ public class PnlMenuUsuarioControlador {
 				new PeliculaFavoritaRepositorio(openConexion));
 
 		menuPeliculaControlador = new PnlMenuPeliculaControlador(openConexion, frameControlador, this, usuario);
-		historialControlador = new PnlHistorialControlador(openConexion, frameControlador, this, usuario);
-		buscadorDePeliculasControlador = new PnlBuscadorDePeliculasControlador(openConexion, frameControlador, this,
-				usuario);
+		menuBuscadorControlador = new PnlMenuBuscadorControlador(openConexion, frameControlador, this, usuario);
+		menuFavoritasControlador = new PnlMenuFavoritasControlador(openConexion, frameControlador, this, usuario);
 
 		setEvents();
 		setSaludo();
@@ -59,21 +58,21 @@ public class PnlMenuUsuarioControlador {
 
 	public final void setEvents() {
 		vista.btnSalir.addActionListener((e) -> {
-			irALogin();
+			irAMenuLogin();
 		});
 
 		vista.btnPeliculas.addActionListener((e) -> {
 			irAMenuPeliculas();
 		});
 
-		vista.btnHistorial.addActionListener((e) -> {
-			irAHistorial();
+		vista.btnFavoritas.addActionListener((e) -> {
+			irAMenuFavoritas();
 		});
 
 		vista.Busqueda.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				irABusqueda();
+				irAMenuBusqueda();
 			}
 		});
 	}
@@ -87,20 +86,20 @@ public class PnlMenuUsuarioControlador {
 		mostrarPeliculasEnFavoritos();
 	}
 
-	private void irALogin() {
-		frameControlador.getLoginControlador().mostrar();
+	private void irAMenuLogin() {
+		frameControlador.getMenuLoginControlador().mostrar();
 	}
 
 	private void irAMenuPeliculas() {
 		menuPeliculaControlador.mostrar();
 	}
 
-	private void irAHistorial() {
-		historialControlador.mostrar();
+	private void irAMenuFavoritas() {
+		menuFavoritasControlador.mostrar();
 	}
 
-	private void irABusqueda() {
-		buscadorDePeliculasControlador.mostrar();
+	private void irAMenuBusqueda() {
+		menuBuscadorControlador.mostrar();
 	}
 
 	public FrameControlador getFrameControlador() {
@@ -111,12 +110,12 @@ public class PnlMenuUsuarioControlador {
 		return menuPeliculaControlador;
 	}
 
-	public PnlBuscadorDePeliculasControlador getBuscadorDePeliculasControlador() {
-		return buscadorDePeliculasControlador;
+	public PnlMenuBuscadorControlador getMenuBuscadorControlador() {
+		return menuBuscadorControlador;
 	}
 
-	public PnlHistorialControlador getHistorialControlador() {
-		return historialControlador;
+	public PnlMenuFavoritasControlador getMenuFavoritasControlador() {
+		return menuFavoritasControlador;
 	}
 
 	private void setSaludo() {
@@ -124,11 +123,11 @@ public class PnlMenuUsuarioControlador {
 		String saludo;
 
 		if (currentTime.isBefore(LocalTime.NOON)) {
-			saludo = "Buenos días " + usuario.getUser() + ", esto es lo que estuviste viendo...";
+			saludo = "Buenos días " + usuario.getUser() + ", estas son algunas de las películas que peudes ver...";
 		} else if (currentTime.isBefore(LocalTime.of(18, 0))) {
-			saludo = "Buenas tardes " + usuario.getUser() + ", esto es lo que estuviste viendo...";
+			saludo = "Buenas tardes " + usuario.getUser() + ", estas son algunas de las películas que peudes ver...";
 		} else {
-			saludo = "Buenas noches " + usuario.getUser() + ", esto es lo que estuviste viendo...";
+			saludo = "Buenas noches " + usuario.getUser() + ", estas son algunas de las películas que peudes ver...";
 		}
 		vista.lbTextoDeBienvenido.setText(saludo);
 	}
@@ -177,7 +176,7 @@ public class PnlMenuUsuarioControlador {
 	}
 
 	public void mostrarPeliculasEnFavoritos() {
-		List<PeliculaFavorita> listaPeliculasFavoritas = modelo.obtenerPeliculasFavoritas();
+		List<PeliculaFavorita> listaPeliculasFavoritas = modelo.obtenerPeliculasFavoritas(usuario.getId());
 		vista.panel_6.removeAll();
 		vista.panel_6.revalidate();
 		vista.panel_6.repaint();

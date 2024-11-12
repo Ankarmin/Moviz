@@ -16,18 +16,18 @@ import javax.swing.ScrollPaneConstants;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-public class BuscadorDePeliculasVista extends JPanel {
+public class MenuFavoritasVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtBuscar;
 	public JButton btnPeliculas;
 	public JButton btnSalir;
-	public JButton btnHistorial;
+	public JButton btnFavoritas;
 	public JLabel lblBusqueda;
 	public JLabel lblIconoLogo;
 	public JPanel pnlGrid;
 
-	public BuscadorDePeliculasVista() {
+	public MenuFavoritasVista() {
 		setBounds(0, 0, 1140, 640);
 		setLayout(new BorderLayout(0, 0));
 
@@ -53,7 +53,7 @@ public class BuscadorDePeliculasVista extends JPanel {
 		pnlSalir.add(lblNewLabel_2, BorderLayout.SOUTH);
 
 		btnSalir = new JButton("");
-		btnSalir.setIcon(new ImageIcon(BuscadorDePeliculasVista.class.getResource("/Images/iconosalida.png")));
+		btnSalir.setIcon(new ImageIcon(MenuFavoritasVista.class.getResource("/Images/iconosalida.png")));
 		pnlSalir.add(btnSalir);
 
 		JLabel lblNewLabel_1 = new JLabel("   ");
@@ -103,8 +103,8 @@ public class BuscadorDePeliculasVista extends JPanel {
 		btnPeliculas = new JButton("PELICULAS");
 		pnlBotones.add(btnPeliculas);
 
-		btnHistorial = new JButton("HISTORIAL");
-		pnlBotones.add(btnHistorial);
+		btnFavoritas = new JButton("FAVORITAS");
+		pnlBotones.add(btnFavoritas);
 
 		JLabel lblNewLabel_12 = new JLabel("      ");
 		pnlContenidoBotones.add(lblNewLabel_12, BorderLayout.SOUTH);
@@ -165,7 +165,7 @@ public class BuscadorDePeliculasVista extends JPanel {
 		pnlTexto.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblHistorialPeliculas = new JLabel("New label");
-		lblHistorialPeliculas = DefaultComponentFactory.getInstance().createLabel("Coincidencias de Busqueda");
+		lblHistorialPeliculas = DefaultComponentFactory.getInstance().createLabel("Tus películas favoritas");
 		lblHistorialPeliculas.setFont(new Font("Microsoft YaHei", Font.PLAIN, 13));
 		lblHistorialPeliculas.setForeground(new Color(255, 255, 255));
 		pnlTexto.add(lblHistorialPeliculas, BorderLayout.WEST);
@@ -189,14 +189,14 @@ public class BuscadorDePeliculasVista extends JPanel {
 		JLabel lblNewLabel_19 = new JLabel("     ");
 		panel.add(lblNewLabel_19, BorderLayout.NORTH);
 
-		JScrollPane spTablaBusqueda = new JScrollPane();
-		spTablaBusqueda.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		spTablaBusqueda.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		panel.add(spTablaBusqueda, BorderLayout.CENTER);
+		JScrollPane spTablaHistorial = new JScrollPane();
+		spTablaHistorial.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		spTablaHistorial.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		panel.add(spTablaHistorial, BorderLayout.CENTER);
 
 		pnlGrid = new JPanel();
-		spTablaBusqueda.setViewportView(pnlGrid);
-		pnlGrid.setLayout(new GridLayout(0, 3, 10, 10));
+		spTablaHistorial.setViewportView(pnlGrid);
+		pnlGrid.setLayout(new GridLayout(0, 4, 10, 10));
 
 	}
 

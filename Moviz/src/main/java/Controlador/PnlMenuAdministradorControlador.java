@@ -20,17 +20,16 @@ public class PnlMenuAdministradorControlador {
 
 	public final void setEvents() {
 		vista.btnSalir.addActionListener((e) -> {
-			irALogin();
+			irAMenuLogin();
 		});
 		vista.btnAgregarP.addActionListener((e) -> {
-			agregarP();
+			irAMenuAgregarPelicula();
 		});
 		vista.btnEliminarP.addActionListener((e) -> {
-			eliminarP();
+			irAMenuEliminarPeliculas();
 		});
-
 		vista.btnEliminarC.addActionListener((e) -> {
-			eliminarC();
+			irAMenuEliminarComentarios();
 		});
 	}
 
@@ -41,19 +40,19 @@ public class PnlMenuAdministradorControlador {
 		frameControlador.getFrameVista().pnlContenido.repaint();
 	}
 
-	private void irALogin() {
-		frameControlador.getLoginControlador().mostrar();
+	private void irAMenuLogin() {
+		frameControlador.getMenuLoginControlador().mostrar();
 	}
 
-	private void agregarP() {
-		frameControlador.getAgregarPeliculaControlador().mostrar();
+	private void irAMenuAgregarPelicula() {
+		frameControlador.getMenuAgregarPeliculaControlador().mostrar();
 	}
 
-	private void eliminarP() {
-		frameControlador.getEliminarPeliculaControlador().mostrar();
+	private void irAMenuEliminarPeliculas() {
+		frameControlador.getMenuEliminarPeliculasControlador().mostrar();
 	}
 
-	private void eliminarC() {
-		frameControlador.getEliminarComentarioControlador().mostrar();
+	private void irAMenuEliminarComentarios() {
+		frameControlador.getMenuEliminarComentariosControlador().mostrar();
 	}
 }

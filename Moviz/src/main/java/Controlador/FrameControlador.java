@@ -16,12 +16,12 @@ public class FrameControlador {
 
 	private final FrameVista frameVista;
 
-	private final PnlLoginControlador loginControlador;
-	private final PnlRegistrarControlador registrarControlador;
+	private final PnlMenuLoginControlador menuLoginControlador;
+	private final PnlMenuRegistrarUsuarioControlador menuRegistrarControlador;
 	private final PnlMenuAdministradorControlador menuAdministradorControlador;
-	private final PnlAgregarPeliculaControlador agregarPeliculaControlador;
-	private final PnlEliminarPeliculaControlador eliminarPeliculaControlador;
-	private final PnlEliminarComentarioControlador eliminarComentarioControlador;
+	private final PnlMenuAgregarPeliculaControlador menuAgregarPeliculaControlador;
+	private final PnlMenuEliminarPeliculasControlador menuEliminarPeliculasControlador;
+	private final PnlMenuEliminarComentariosControlador menuEliminarComentariosControlador;
 
 	public FrameControlador() {
 
@@ -29,12 +29,12 @@ public class FrameControlador {
 
 		frameVista = new FrameVista();
 
-		registrarControlador = new PnlRegistrarControlador(openConexion, this);
-		loginControlador = new PnlLoginControlador(openConexion, this);
-		agregarPeliculaControlador = new PnlAgregarPeliculaControlador(openConexion, this);
-		eliminarPeliculaControlador = new PnlEliminarPeliculaControlador(openConexion, this);
+		menuRegistrarControlador = new PnlMenuRegistrarUsuarioControlador(openConexion, this);
+		menuLoginControlador = new PnlMenuLoginControlador(openConexion, this);
+		menuAgregarPeliculaControlador = new PnlMenuAgregarPeliculaControlador(openConexion, this);
+		menuEliminarPeliculasControlador = new PnlMenuEliminarPeliculasControlador(openConexion, this);
 		menuAdministradorControlador = new PnlMenuAdministradorControlador(openConexion, this);
-		eliminarComentarioControlador = new PnlEliminarComentarioControlador(openConexion, this);
+		menuEliminarComentariosControlador = new PnlMenuEliminarComentariosControlador(openConexion, this);
 	}
 
 	private void Conectar() {
@@ -46,41 +46,41 @@ public class FrameControlador {
 		}
 	}
 
-	public FrameVista getFrameVista() {
-		return frameVista;
+	public void iniciar() {
+		frameVista.setLocationRelativeTo(null);
+		frameVista.setVisible(true);
+		menuLoginControlador.mostrar();
 	}
 
 	public Connection getOpenConexion() {
 		return openConexion;
 	}
 
-	public void iniciar() {
-		frameVista.setLocationRelativeTo(null);
-		frameVista.setVisible(true);
-		loginControlador.mostrar();
+	public FrameVista getFrameVista() {
+		return frameVista;
 	}
 
-	public PnlLoginControlador getLoginControlador() {
-		return loginControlador;
+	public PnlMenuLoginControlador getMenuLoginControlador() {
+		return menuLoginControlador;
 	}
 
-	public PnlAgregarPeliculaControlador getAgregarPeliculaControlador() {
-		return agregarPeliculaControlador;
-	}
-
-	public PnlEliminarPeliculaControlador getEliminarPeliculaControlador() {
-		return eliminarPeliculaControlador;
-	}
-
-	public PnlRegistrarControlador getRegistrarControlador() {
-		return registrarControlador;
+	public PnlMenuRegistrarUsuarioControlador getMenuRegistrarControlador() {
+		return menuRegistrarControlador;
 	}
 
 	public PnlMenuAdministradorControlador getMenuAdministradorControlador() {
 		return menuAdministradorControlador;
 	}
 
-	public PnlEliminarComentarioControlador getEliminarComentarioControlador() {
-		return eliminarComentarioControlador;
+	public PnlMenuAgregarPeliculaControlador getMenuAgregarPeliculaControlador() {
+		return menuAgregarPeliculaControlador;
+	}
+
+	public PnlMenuEliminarPeliculasControlador getMenuEliminarPeliculasControlador() {
+		return menuEliminarPeliculasControlador;
+	}
+
+	public PnlMenuEliminarComentariosControlador getMenuEliminarComentariosControlador() {
+		return menuEliminarComentariosControlador;
 	}
 }

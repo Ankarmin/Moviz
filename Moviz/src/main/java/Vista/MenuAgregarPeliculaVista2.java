@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class AgregarPeliculaVista2 extends JPanel {
+public class MenuAgregarPeliculaVista2 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtTitulo;
@@ -24,7 +24,7 @@ public class AgregarPeliculaVista2 extends JPanel {
 	private JTextField txtDuracionAprox;
 	private JTextField txtRutaImagen;
 
-	public AgregarPeliculaVista2() {
+	public MenuAgregarPeliculaVista2() {
 		setBackground(new Color(66, 72, 93));
 		setBounds(0, 0, 1140, 640);
 		setLayout(new BorderLayout(0, 0));

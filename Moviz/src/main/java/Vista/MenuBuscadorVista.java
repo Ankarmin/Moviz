@@ -16,7 +16,7 @@ import javax.swing.ScrollPaneConstants;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-public class HistorialVista extends JPanel {
+public class MenuBuscadorVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtBuscar;
@@ -27,7 +27,7 @@ public class HistorialVista extends JPanel {
 	public JLabel lblIconoLogo;
 	public JPanel pnlGrid;
 
-	public HistorialVista() {
+	public MenuBuscadorVista() {
 		setBounds(0, 0, 1140, 640);
 		setLayout(new BorderLayout(0, 0));
 
@@ -53,7 +53,7 @@ public class HistorialVista extends JPanel {
 		pnlSalir.add(lblNewLabel_2, BorderLayout.SOUTH);
 
 		btnSalir = new JButton("");
-		btnSalir.setIcon(new ImageIcon(HistorialVista.class.getResource("/Images/iconosalida.png")));
+		btnSalir.setIcon(new ImageIcon(MenuBuscadorVista.class.getResource("/Images/iconosalida.png")));
 		pnlSalir.add(btnSalir);
 
 		JLabel lblNewLabel_1 = new JLabel("   ");
@@ -165,7 +165,7 @@ public class HistorialVista extends JPanel {
 		pnlTexto.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblHistorialPeliculas = new JLabel("New label");
-		lblHistorialPeliculas = DefaultComponentFactory.getInstance().createLabel("Historial Películas");
+		lblHistorialPeliculas = DefaultComponentFactory.getInstance().createLabel("Coincidencias de Busqueda");
 		lblHistorialPeliculas.setFont(new Font("Microsoft YaHei", Font.PLAIN, 13));
 		lblHistorialPeliculas.setForeground(new Color(255, 255, 255));
 		pnlTexto.add(lblHistorialPeliculas, BorderLayout.WEST);
@@ -189,14 +189,14 @@ public class HistorialVista extends JPanel {
 		JLabel lblNewLabel_19 = new JLabel("     ");
 		panel.add(lblNewLabel_19, BorderLayout.NORTH);
 
-		JScrollPane spTablaHistorial = new JScrollPane();
-		spTablaHistorial.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		spTablaHistorial.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		panel.add(spTablaHistorial, BorderLayout.CENTER);
+		JScrollPane spTablaBusqueda = new JScrollPane();
+		spTablaBusqueda.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		spTablaBusqueda.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		panel.add(spTablaBusqueda, BorderLayout.CENTER);
 
 		pnlGrid = new JPanel();
-		spTablaHistorial.setViewportView(pnlGrid);
-		pnlGrid.setLayout(new GridLayout(0, 3, 10, 10));
+		spTablaBusqueda.setViewportView(pnlGrid);
+		pnlGrid.setLayout(new GridLayout(0, 4, 10, 10));
 
 	}
 

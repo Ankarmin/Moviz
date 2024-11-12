@@ -2,17 +2,17 @@ package Controlador;
 
 import java.sql.Connection;
 
-import Vista.EliminarComentariosVista;
+import Vista.MenuEliminarComentariosVista;
 
-public class PnlEliminarComentarioControlador {
+public class PnlMenuEliminarComentariosControlador {
 
 	private final FrameControlador frameControlador;
-	private final EliminarComentariosVista vista;
+	private final MenuEliminarComentariosVista vista;
 
-	public PnlEliminarComentarioControlador(Connection openConexion, FrameControlador frameControlador) {
+	public PnlMenuEliminarComentariosControlador(Connection openConexion, FrameControlador frameControlador) {
 		this.frameControlador = frameControlador;
 
-		vista = new EliminarComentariosVista();
+		vista = new MenuEliminarComentariosVista();
 
 		setEvents();
 	}
@@ -23,7 +23,7 @@ public class PnlEliminarComentarioControlador {
 		});
 
 		vista.btnSalir.addActionListener((e) -> {
-			irALogin();
+			irAMenuLogin();
 		});
 	}
 
@@ -34,8 +34,8 @@ public class PnlEliminarComentarioControlador {
 		frameControlador.getFrameVista().pnlContenido.repaint();
 	}
 
-	private void irALogin() {
-		frameControlador.getLoginControlador().mostrar();
+	private void irAMenuLogin() {
+		frameControlador.getMenuLoginControlador().mostrar();
 	}
 
 	private void irAMenuAdministrador() {

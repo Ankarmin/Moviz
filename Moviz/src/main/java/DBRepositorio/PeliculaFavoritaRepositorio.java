@@ -34,43 +34,12 @@ public class PeliculaFavoritaRepositorio extends IConectar<PeliculaFavorita, Int
 
 	@Override
 	public PeliculaFavorita obtenerPorId(Integer id) {
-		PeliculaFavorita encontrada = null;
-		try {
-			ResultSet rs;
-			try (PreparedStatement pst = openConexion.prepareStatement(searchIDQuery)) {
-				pst.setInt(1, id);
-				rs = pst.executeQuery();
-				while (rs.next()) {
-					encontrada = new PeliculaFavorita();
-					encontrada.setIdPeliculaFavorita(rs.getInt("idPeliculaFavorita"));
-					encontrada.setIdPelicula(rs.getInt("idPelicula"));
-					encontrada.setIdUsuario(rs.getInt("idUsuario"));
-				}
-			}
-			rs.close();
-			return encontrada;
-		} catch (SQLException e) {
-			return encontrada;
-		}
+		throw new UnsupportedOperationException("Método no implementado en PeliculaFavoritaRepositorio.");
 	}
 
 	@Override
 	public List<PeliculaFavorita> obtenerTodos() {
-		List<PeliculaFavorita> PeliculaFavoritas = new ArrayList<>();
-		try {
-			ResultSet rs;
-			try (PreparedStatement pst = openConexion.prepareStatement(searchAllQuery)) {
-				rs = pst.executeQuery();
-				while (rs.next()) {
-					PeliculaFavorita PeliculaFavorita = new PeliculaFavorita(rs.getInt("idPeliculaFavorita"),
-							rs.getInt("idPelicula"), rs.getInt("idUsuario"));
-					PeliculaFavoritas.add(PeliculaFavorita);
-				}
-			}
-			rs.close();
-		} catch (SQLException e) {
-		}
-		return PeliculaFavoritas.isEmpty() ? new ArrayList<>() : PeliculaFavoritas;
+		throw new UnsupportedOperationException("Método no implementado en PeliculaFavoritaRepositorio.");
 	}
 
 	@Override
@@ -150,5 +119,25 @@ public class PeliculaFavoritaRepositorio extends IConectar<PeliculaFavorita, Int
 		} catch (SQLException e) {
 			return encontrada;
 		}
+	}
+
+	public List<PeliculaFavorita> obtenerTodosPorIdUsuario(int id) {
+		List<PeliculaFavorita> PeliculaFavoritas = new ArrayList<>();
+		String searchAllForIdQuery = "SELECT * FROM peliculafavorita WHERE idUsuario = ?";
+		try {
+			ResultSet rs;
+			try (PreparedStatement pst = openConexion.prepareStatement(searchAllForIdQuery)) {
+				pst.setInt(1, id);
+				rs = pst.executeQuery();
+				while (rs.next()) {
+					PeliculaFavorita PeliculaFavorita = new PeliculaFavorita(rs.getInt("idPeliculaFavorita"),
+							rs.getInt("idPelicula"), rs.getInt("idUsuario"));
+					PeliculaFavoritas.add(PeliculaFavorita);
+				}
+			}
+			rs.close();
+		} catch (SQLException e) {
+		}
+		return PeliculaFavoritas.isEmpty() ? new ArrayList<>() : PeliculaFavoritas;
 	}
 }
