@@ -18,7 +18,9 @@ public class PeliculaRepositorio {
 	private final String yearsIntervalQuery = "SELECT * FROM pelicula WHERE añoEstreno BETWEEN ? AND ?";
 	private final String searchGenreQuery = "SELECT * FROM pelicula WHERE genero = ?";
 	private final String searchRatingIntervalQuery = "SELECT * FROM pelicula WHERE puntuacion BETWEEN ? AND ?";
-	private final String searchMovies = "SELECT * FROM pelicula WHERE nombre LIKE ?";
+	private final String searchMoviesQuery = "SELECT * FROM pelicula WHERE nombre LIKE ?";
+	private final String searchTitlesQuery = "SELECT idPelicula, nombre FROM pelicula";
+	private final String searchTitlesSimilaryQuery = "SELECT idPelicula, nombre FROM pelicula WHERE nombre LIKE ?";
 
 	public PeliculaRepositorio(Connection openConexion) {
 		this.openConexion = openConexion;
@@ -186,7 +188,7 @@ public class PeliculaRepositorio {
 		List<Pelicula> peliculas = new ArrayList<>();
 		try {
 			ResultSet rs;
-			try (PreparedStatement pst = openConexion.prepareStatement(searchMovies)) {
+			try (PreparedStatement pst = openConexion.prepareStatement(searchMoviesQuery)) {
 				pst.setString(1, "%" + busqueda + "%");
 				rs = pst.executeQuery();
 				while (rs.next()) {
@@ -203,4 +205,44 @@ public class PeliculaRepositorio {
 		return peliculas;
 	}
 
+	public List<Pelicula> listaTitulos() {
+		List<Pelicula> peliculas = new ArrayList<>();
+		try {
+			ResultSet rs;
+			try (PreparedStatement pst = openConexion.prepareStatement(searchTitlesQuery)) {
+				rs = pst.executeQuery();
+				while (rs.next()) {
+					Pelicula pelicula = new Pelicula();
+					pelicula.setIdPelicula(rs.getInt("idPelicula"));
+					pelicula.setNombre(rs.getString("nombre"));
+					peliculas.add(pelicula);
+				}
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return peliculas;
+	}
+
+	public List<Pelicula> listaTituloBusqueda(String busqueda) {
+		List<Pelicula> peliculas = new ArrayList<>();
+		try {
+			ResultSet rs;
+			try (PreparedStatement pst = openConexion.prepareStatement(searchTitlesSimilaryQuery)) {
+				pst.setString(1, "%" + busqueda + "%");
+				rs = pst.executeQuery();
+				while (rs.next()) {
+					Pelicula pelicula = new Pelicula();
+					pelicula.setIdPelicula(rs.getInt("idPelicula"));
+					pelicula.setNombre(rs.getString("nombre"));
+					peliculas.add(pelicula);
+				}
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return peliculas;
+	}
 }

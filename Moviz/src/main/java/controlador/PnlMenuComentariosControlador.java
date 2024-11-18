@@ -98,6 +98,16 @@ public class PnlMenuComentariosControlador {
 				}
 			}
 		});
+		
+		vista.txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+			@Override
+			public void keyPressed(java.awt.event.KeyEvent e) {
+				if (e.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+					String busqueda = vista.txtBuscar.getText();
+					irAMenuBusqueda(busqueda);
+				}
+			}
+		});
 	}
 
 	public void mostrar() {
@@ -116,7 +126,7 @@ public class PnlMenuComentariosControlador {
 	}
 
 	private void irAMenuPeliculas() {
-		pnlMenuUsuarioControlador.getMenuPeliculaControlador().mostrar();
+		pnlMenuUsuarioControlador.getMenuPeliculasControlador().mostrar();
 	}
 
 	private void irAMenuBusqueda(String busqueda) {
@@ -128,8 +138,8 @@ public class PnlMenuComentariosControlador {
 	}
 
 	private void irAMenuPelicula() {
-		PnlPeliculaControlador peliculaControlador = new PnlPeliculaControlador(frameControlador.getOpenConexion(),
-				frameControlador, pnlMenuUsuarioControlador, usuario, idPelicula);
+		PnlMenuPeliculaControlador peliculaControlador = new PnlMenuPeliculaControlador(
+				frameControlador.getOpenConexion(), frameControlador, pnlMenuUsuarioControlador, usuario, idPelicula);
 		peliculaControlador.mostrar();
 	}
 

@@ -9,10 +9,20 @@ public class PnlMenuAdministradorControlador {
 	private final FrameControlador frameControlador;
 	private final MenuAdministradorVista vista;
 
+	private final PnlMenuAgregarPeliculaControlador menuAgregarPeliculaControlador;
+	private final PnlMenuEliminarPeliculasControlador menuEliminarPeliculasControlador;
+	private final PnlMenuEliminarComentariosControlador menuEliminarComentariosControlador;
+
 	public PnlMenuAdministradorControlador(Connection openConexion, FrameControlador frameControlador) {
 		this.frameControlador = frameControlador;
 
 		vista = new MenuAdministradorVista();
+
+		menuAgregarPeliculaControlador = new PnlMenuAgregarPeliculaControlador(openConexion, frameControlador, this);
+		menuEliminarPeliculasControlador = new PnlMenuEliminarPeliculasControlador(openConexion, frameControlador,
+				this);
+		menuEliminarComentariosControlador = new PnlMenuEliminarComentariosControlador(openConexion, frameControlador,
+				this);
 
 		setEvents();
 	}
@@ -44,14 +54,14 @@ public class PnlMenuAdministradorControlador {
 	}
 
 	private void irAMenuAgregarPelicula() {
-		frameControlador.getMenuAgregarPeliculaControlador().mostrar();
+		menuAgregarPeliculaControlador.mostrar();
 	}
 
 	private void irAMenuEliminarPeliculas() {
-		frameControlador.getMenuEliminarPeliculasControlador().mostrar();
+		menuEliminarPeliculasControlador.mostrar();
 	}
 
 	private void irAMenuEliminarComentarios() {
-		frameControlador.getMenuEliminarComentariosControlador().mostrar();
+		menuEliminarComentariosControlador.mostrar();
 	}
 }

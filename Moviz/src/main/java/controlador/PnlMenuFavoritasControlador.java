@@ -70,23 +70,33 @@ public class PnlMenuFavoritasControlador {
 				irAMenuUsuario();
 			}
 		});
-		
-		vista.txtBuscar.addFocusListener(new FocusAdapter() {
-		    @Override
-		    public void focusGained(FocusEvent e) {
-		        if (vista.txtBuscar.getText().equals("Buscar")) {
-		            vista.txtBuscar.setText("");
-		            vista.txtBuscar.setForeground(Color.WHITE);
-		        }
-		    }
 
-		    @Override
-		    public void focusLost(FocusEvent e) {
-		        if (vista.txtBuscar.getText().isEmpty()) {
-		            vista.txtBuscar.setForeground(Color.GRAY);
-		            vista.txtBuscar.setText("Buscar");
-		        }
-		    }
+		vista.txtBuscar.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (vista.txtBuscar.getText().equals("Buscar")) {
+					vista.txtBuscar.setText("");
+					vista.txtBuscar.setForeground(Color.WHITE);
+				}
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (vista.txtBuscar.getText().isEmpty()) {
+					vista.txtBuscar.setForeground(Color.GRAY);
+					vista.txtBuscar.setText("Buscar");
+				}
+			}
+		});
+
+		vista.txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+			@Override
+			public void keyPressed(java.awt.event.KeyEvent e) {
+				if (e.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+					String busqueda = vista.txtBuscar.getText();
+					irAMenuBusqueda(busqueda);
+				}
+			}
 		});
 	}
 
@@ -146,7 +156,7 @@ public class PnlMenuFavoritasControlador {
 	}
 
 	private void irAMenuPeliculas() {
-		pnlMenuUsuarioControlador.getMenuPeliculaControlador().mostrar();
+		pnlMenuUsuarioControlador.getMenuPeliculasControlador().mostrar();
 	}
 
 	private void irAMenuBusqueda(String busqueda) {
@@ -158,8 +168,8 @@ public class PnlMenuFavoritasControlador {
 	}
 
 	private void irAPelicula(int id) {
-		PnlPeliculaControlador peliculaControlador = new PnlPeliculaControlador(frameControlador.getOpenConexion(),
-				frameControlador, pnlMenuUsuarioControlador, usuario, id);
-		peliculaControlador.mostrar();
+		PnlMenuPeliculaControlador menuPeliculaControlador = new PnlMenuPeliculaControlador(
+				frameControlador.getOpenConexion(), frameControlador, pnlMenuUsuarioControlador, usuario, id);
+		menuPeliculaControlador.mostrar();
 	}
 }

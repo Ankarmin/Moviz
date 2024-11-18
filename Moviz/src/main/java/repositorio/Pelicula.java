@@ -31,28 +31,24 @@ public class Pelicula extends Entidades {
 		this.imagen = imagen;
 	}
 
+	public Pelicula(int idPelicula, String nombre) {
+		this.idPelicula = idPelicula;
+		this.nombre = nombre;
+	}
+
 	@Override
 	public Object[] toArray() {
-	    return new Object[] { getIdPelicula(), getNombre(), getAnioEstreno(), getGenero(), getDuracion(),
-	            getPuntuacion().toPlainString(), getSinopsis(), getImagen() };
+		return new Object[] { getIdPelicula(), getNombre() };
 	}
 
 	public static Pelicula toPelicula(List<Object> datos) {
-	    return new Pelicula((Integer) datos.get(0), (String) datos.get(1), (Integer) datos.get(2),
-	            (String) datos.get(3), (String) datos.get(4), (BigDecimal) datos.get(5), (String) datos.get(6),
-	            (InputStream) datos.get(7));
+		return new Pelicula((Integer) datos.get(0), (String) datos.get(1));
 	}
 
-	public static List<String> getColumnas() {
+	public static List<String> getTitulos() {
 		List<String> columnas = new ArrayList<>();
 		columnas.add("Id Pelicula");
 		columnas.add("Nombre");
-		columnas.add("Año Estreno");
-		columnas.add("Género");
-		columnas.add("Duración");
-		columnas.add("Puntuación");
-		columnas.add("Sinopsis");
-		columnas.add("Imagen");
 		return columnas;
 	}
 

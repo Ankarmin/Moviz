@@ -1,20 +1,15 @@
--- CREAR UN ADMINISTRADOR
-INSERT INTO usuario (user, password)
-VALUES ('piña', 'piña');
+-- CREAR EL EVENTO PARA ELIMINAR REGISTROS PASADA LA FECHA DE DEVOLUCIÓN
+SET GLOBAL event_scheduler = ON;
 
-INSERT INTO administrador (idUsuario)
-VALUES (LAST_INSERT_ID());
-
-select * from usuario;
-select * from administrador;
-select * from cliente;
-select * from comentario;
-select * from pelicula;
-select * from peliculaalquilada;
-select * from peliculafavorita;
-
-DELETE FROM pelicula WHERE idPelicula BETWEEN 308 AND 327;
-DELETE FROM pelicula WHERE idPelicula = 328;
+CREATE EVENT eliminar_peliculas_vencidas
+ON SCHEDULE EVERY 1 DAY
+DO
+  DELETE FROM peliculaalquilada
+  WHERE fechaDevolucion < CURDATE();
+  
+-- VERIFICAR SI EL EVENTO ESTÁ CREADO
+SHOW VARIABLES LIKE 'event_scheduler';
+SHOW EVENTS;
 
 -- SIMULAR EVENTO DE ELIMINAR UN ALQUILER AUTOMATICAMENTE
 INSERT INTO peliculaalquilada (idPelicula, idUsuario, fechaAlquiler, fechaDevolucion)

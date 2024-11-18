@@ -122,7 +122,9 @@ public class PnlMenuLoginControlador {
 				menuUsuarioControalador.mostrar();
 				limpiar();
 			} else if (rol.equals("administrador")) {
-				frameControlador.getMenuAdministradorControlador().mostrar();
+				PnlMenuAdministradorControlador menuAdministradorControlador = new PnlMenuAdministradorControlador(
+						frameControlador.getOpenConexion(), frameControlador);
+				menuAdministradorControlador.mostrar();
 				limpiar();
 			}
 		} else {

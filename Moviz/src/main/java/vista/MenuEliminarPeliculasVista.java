@@ -98,13 +98,13 @@ public class MenuEliminarPeliculasVista extends JPanel {
 		lblNombrePelicula = new JLabel("Nombre película");
 		lblNombrePelicula.setFont(new Font("Microsoft YaHei", Font.BOLD, 24));
 		lblNombrePelicula.setForeground(new Color(255, 140, 0));
-		lblNombrePelicula.setBounds(436, 181, 400, 30);
+		lblNombrePelicula.setBounds(502, 180, 519, 30);
 		add(lblNombrePelicula);
 
 		lblImagenPelicula = new JLabel("");
 		lblImagenPelicula.setOpaque(true);
 		lblImagenPelicula.setBackground(Color.LIGHT_GRAY);
-		lblImagenPelicula.setBounds(436, 231, 200, 300);
+		lblImagenPelicula.setBounds(434, 231, 200, 300);
 		add(lblImagenPelicula);
 
 		lblSinopsis = new JLabel("Sinopsis:");
@@ -120,7 +120,6 @@ public class MenuEliminarPeliculasVista extends JPanel {
 		txtSinopsis.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
 		txtSinopsis.setForeground(Color.WHITE);
 		txtSinopsis.setBackground(new Color(66, 72, 93));
-		txtSinopsis.setText("**Lorem ipsum dolor sit amet, consectetur adipiscing elit...");
 		txtSinopsis.setBounds(686, 271, 400, 150);
 		add(txtSinopsis);
 

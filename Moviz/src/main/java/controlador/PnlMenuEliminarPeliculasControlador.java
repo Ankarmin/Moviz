@@ -1,20 +1,45 @@
 package controlador;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+
+import modelo.MenuEliminarPeliculaModelo;
+import repositorio.Pelicula;
+import repositorio.PeliculaRepositorio;
 import vista.MenuEliminarPeliculasVista;
 
 public class PnlMenuEliminarPeliculasControlador {
 
 	private final FrameControlador frameControlador;
 	private final MenuEliminarPeliculasVista vista;
+	private final MenuEliminarPeliculaModelo modelo;
+	private final PnlMenuAdministradorControlador menuAdministradorControlador;
+	private Pelicula peliculaSeleccionada;
 
-	public PnlMenuEliminarPeliculasControlador(Connection openConexion, FrameControlador frameControlador) {
+	public PnlMenuEliminarPeliculasControlador(Connection openConexion, FrameControlador frameControlador,
+			PnlMenuAdministradorControlador menuAdministradorControlador) {
 		this.frameControlador = frameControlador;
+		this.menuAdministradorControlador = menuAdministradorControlador;
 
 		vista = new MenuEliminarPeliculasVista();
+		modelo = new MenuEliminarPeliculaModelo(new PeliculaRepositorio(openConexion));
+		modelo.generarModeloTitulos(vista.tblPeliculas, "");
+		modelo.cargarModeloTitulos(vista.tblPeliculas);
 
 		setEvents();
+		setClickPelicula();
 	}
 
 	public final void setEvents() {
@@ -24,6 +49,48 @@ public class PnlMenuEliminarPeliculasControlador {
 
 		vista.btnSalir.addActionListener((e) -> {
 			irAMenuLogin();
+		});
+
+		vista.btnEliminarPelicula.addActionListener((e) -> {
+			eliminarPelicula();
+		});
+
+		vista.txtBuscar.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (vista.txtBuscar.getText().equals("Buscar")) {
+					vista.txtBuscar.setText("");
+					vista.txtBuscar.setForeground(Color.WHITE);
+				}
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (vista.txtBuscar.getText().isEmpty()) {
+					vista.txtBuscar.setForeground(Color.GRAY);
+					vista.txtBuscar.setText("Buscar");
+				}
+			}
+		});
+
+		vista.Busqueda.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String busqueda = vista.txtBuscar.getText();
+				modelo.generarModeloTitulos(vista.tblPeliculas, busqueda);
+				modelo.cargarModeloTitulos(vista.tblPeliculas);
+			}
+		});
+
+		vista.txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+			@Override
+			public void keyPressed(java.awt.event.KeyEvent e) {
+				if (e.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+					String busqueda = vista.txtBuscar.getText();
+					modelo.generarModeloTitulos(vista.tblPeliculas, busqueda);
+					modelo.cargarModeloTitulos(vista.tblPeliculas);
+				}
+			}
 		});
 	}
 
@@ -39,6 +106,55 @@ public class PnlMenuEliminarPeliculasControlador {
 	}
 
 	private void irAMenuAdministrador() {
-		frameControlador.getMenuAdministradorControlador().mostrar();
+		menuAdministradorControlador.mostrar();
+	}
+
+	private void setClickPelicula() {
+		vista.tblPeliculas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				List<Object> datos = new ArrayList<>();
+				int filaSeleccionada = vista.tblPeliculas.getSelectedRow();
+
+				if (filaSeleccionada != -1) {
+					for (int i = 0; i < vista.tblPeliculas.getColumnCount(); i++) {
+						datos.add(vista.tblPeliculas.getValueAt(filaSeleccionada, i));
+					}
+				}
+
+				peliculaSeleccionada = Pelicula.toPelicula(datos);
+				llenarCamposPelicula();
+			}
+		});
+	}
+
+	private void llenarCamposPelicula() {
+		Pelicula pelicula = modelo.obtenerPorId(peliculaSeleccionada.getIdPelicula());
+		vista.lblNombrePelicula.setText(pelicula.getNombre());
+		vista.txtSinopsis.setText(pelicula.getSinopsis());
+		ImageIcon iconoRedimensionado;
+
+		try {
+			Image imagenRedimensionada = ImageIO.read(pelicula.getImagen()).getScaledInstance(200, 300,
+					Image.SCALE_SMOOTH);
+			iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+		} catch (IOException e) {
+			iconoRedimensionado = new ImageIcon(getClass().getResource("/Images/ImagenPelicula.png"));
+		}
+		vista.lblImagenPelicula.setIcon(iconoRedimensionado);
+		vista.lblImagenPelicula.setHorizontalAlignment(SwingConstants.CENTER);
+	}
+
+	private void eliminarPelicula() {
+		boolean eliminarPelicula = modelo.eliminarPelicula(peliculaSeleccionada.getIdPelicula());
+
+		if (eliminarPelicula) {
+			System.out.println("Pelicula eliminada con éxito.");
+			modelo.generarModeloTitulos(vista.tblPeliculas, "");
+			modelo.cargarModeloTitulos(vista.tblPeliculas);
+		} else {
+			System.out.println("Error al eliminar la Película.");
+		}
 	}
 }

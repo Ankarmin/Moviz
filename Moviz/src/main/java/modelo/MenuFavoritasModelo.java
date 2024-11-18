@@ -18,7 +18,7 @@ public class MenuFavoritasModelo {
 		return peliculaFavoritaRepositorio.obtenerTodosPorIdUsuario(id);
 	}
 
-	public Pelicula obtenerPelicula(int id) {
+	public Pelicula obtenerPelicula(Integer id) {
 		return peliculaFavoritaRepositorio.obtenerPeliculaPorId(id);
 	}
 }

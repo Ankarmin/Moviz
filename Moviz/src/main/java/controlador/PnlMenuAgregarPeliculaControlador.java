@@ -18,9 +18,12 @@ public class PnlMenuAgregarPeliculaControlador {
 	private final FrameControlador frameControlador;
 	private final MenuAgregarPeliculaVista vista;
 	private final MenuAgregarPeliculaModelo modelo;
+	private final PnlMenuAdministradorControlador menuAdministradorControlador;
 
-	public PnlMenuAgregarPeliculaControlador(Connection openConexion, FrameControlador frameControlador) {
+	public PnlMenuAgregarPeliculaControlador(Connection openConexion, FrameControlador frameControlador,
+			PnlMenuAdministradorControlador menuAdministradorControlador) {
 		this.frameControlador = frameControlador;
+		this.menuAdministradorControlador = menuAdministradorControlador;
 
 		vista = new MenuAgregarPeliculaVista();
 		modelo = new MenuAgregarPeliculaModelo(new PeliculaRepositorio(openConexion));
@@ -108,6 +111,6 @@ public class PnlMenuAgregarPeliculaControlador {
 	}
 
 	private void irAMenuAdministrador() {
-		frameControlador.getMenuAdministradorControlador().mostrar();
+		menuAdministradorControlador.mostrar();
 	}
 }

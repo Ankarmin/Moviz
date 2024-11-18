@@ -26,10 +26,6 @@ public class MenuComentarioModelo {
 		return comentarioRepositorio.agregar(comentario);
 	}
 
-	public boolean eliminarComentario(Integer id) {
-		return comentarioRepositorio.eliminar(id);
-	}
-
 	public void generarModeloComentarios(JTable tblComentarios, Integer idPelicula) {
 		comentarios = comentarioRepositorio.obtenerComentariosPelicula(idPelicula);
 		CommonFunctions.llenarTabla(tblComentarios, Comentario.getColumnas(), comentarios);

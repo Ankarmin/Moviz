@@ -17,7 +17,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
@@ -33,6 +32,7 @@ public class MenuEliminarComentariosVista extends JPanel {
 	public JLabel lblNombrePelicula;
 	public JLabel lblIconoLogo;
 	public JLabel Busqueda;
+	public JLabel lblImagenPelicula;
 
 	public JTable tblPeliculas;
 	public JTable tblComentarios;
@@ -102,7 +102,7 @@ public class MenuEliminarComentariosVista extends JPanel {
 		lblNombrePelicula = new JLabel("Nombre película");
 		lblNombrePelicula.setFont(new Font("Microsoft YaHei", Font.BOLD, 24));
 		lblNombrePelicula.setForeground(new Color(255, 140, 0));
-		lblNombrePelicula.setBounds(436, 181, 400, 30);
+		lblNombrePelicula.setBounds(448, 175, 400, 30);
 		add(lblNombrePelicula);
 
 		String[] columnPeliculas = { "Lista Películas" };
@@ -120,16 +120,7 @@ public class MenuEliminarComentariosVista extends JPanel {
 		spTablaPeliculas.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		add(spTablaPeliculas);
 
-		String[] columnComentarios = { "Usuario", "Comentario", "Eliminar" };
-		comentariosModel = new DefaultTableModel(null, columnComentarios) {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public Class<?> getColumnClass(int column) {
-				return column == 2 ? Boolean.class : String.class;
-			}
-		};
-
+		comentariosModel = new DefaultTableModel(); // Modelo vacío
 		tblComentarios = new JTable(comentariosModel);
 		tblComentarios.setFillsViewportHeight(true);
 		tblComentarios.setRowHeight(60);
@@ -137,13 +128,8 @@ public class MenuEliminarComentariosVista extends JPanel {
 		tblComentarios.setBackground(new Color(70, 76, 90));
 		tblComentarios.setForeground(Color.WHITE);
 
-		TableColumnModel columnModel = tblComentarios.getColumnModel();
-		columnModel.getColumn(0).setPreferredWidth(150);
-		columnModel.getColumn(1).setPreferredWidth(300);
-		columnModel.getColumn(2).setPreferredWidth(50);
-
 		spTablaComentarios = new JScrollPane(tblComentarios);
-		spTablaComentarios.setBounds(436, 231, 650, 300);
+		spTablaComentarios.setBounds(565, 231, 300, 300);
 		spTablaComentarios.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		add(spTablaComentarios);
 
@@ -160,6 +146,12 @@ public class MenuEliminarComentariosVista extends JPanel {
 		btnEliminar.setBackground(new Color(255, 128, 0));
 		btnEliminar.setBounds(getWidth() - 180, 553, 120, 35);
 		add(btnEliminar);
+
+		lblImagenPelicula = new JLabel("");
+		lblImagenPelicula.setOpaque(true);
+		lblImagenPelicula.setBackground(Color.LIGHT_GRAY);
+		lblImagenPelicula.setBounds(421, 231, 250, 360);
+		add(lblImagenPelicula);
 
 		addComponentListener(new ComponentAdapter() {
 			@Override

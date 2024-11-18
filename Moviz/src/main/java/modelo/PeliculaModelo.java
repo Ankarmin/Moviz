@@ -22,8 +22,7 @@ public class PeliculaModelo {
 	}
 
 	public Pelicula obtenerPorId(Integer id) {
-		Pelicula pelicula = peliculaRepositorio.obtenerPorId(id);
-		return pelicula;
+		return peliculaRepositorio.obtenerPorId(id);
 	}
 
 	public boolean agregarFavorita(PeliculaFavorita peliculaFavorita) {
