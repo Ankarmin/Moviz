@@ -12,4 +12,3 @@ select * from comentario;
 select * from pelicula;
 select * from peliculaalquilada;
 select * from peliculafavorita;
-
