@@ -5,7 +5,7 @@ import java.sql.Connection;
 
 import javax.swing.JOptionPane;
 
-import modelo.LoginModelo;
+import modelo.MenuLoginModelo;
 import repositorio.AdministradorRepositorio;
 import repositorio.ClienteRepositorio;
 import repositorio.Usuario;
@@ -17,14 +17,14 @@ public class PnlMenuLoginControlador {
 	private final FrameControlador frameControlador;
 
 	private final MenuLoginVista vista;
-	private final LoginModelo modelo;
+	private final MenuLoginModelo modelo;
 
 	public PnlMenuLoginControlador(Connection openConexion, FrameControlador frameControlador) {
 
 		this.frameControlador = frameControlador;
 
 		vista = new MenuLoginVista();
-		modelo = new LoginModelo(new UsuarioRepositorio(openConexion), new ClienteRepositorio(openConexion),
+		modelo = new MenuLoginModelo(new UsuarioRepositorio(openConexion), new ClienteRepositorio(openConexion),
 				new AdministradorRepositorio(openConexion));
 
 		setEvents();

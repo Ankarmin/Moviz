@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -16,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import modelo.BuscadorDePeliculasModelo;
+import modelo.MenuBuscadorModelo;
 import repositorio.Pelicula;
 import repositorio.PeliculaRepositorio;
 import repositorio.Usuario;
@@ -28,7 +30,7 @@ public class PnlMenuBuscadorControlador {
 	private final PnlMenuUsuarioControlador pnlMenuUsuarioControlador;
 
 	private final MenuBuscadorVista vista;
-	private final BuscadorDePeliculasModelo modelo;
+	private final MenuBuscadorModelo modelo;
 
 	private final Usuario usuario;
 
@@ -40,7 +42,7 @@ public class PnlMenuBuscadorControlador {
 		this.usuario = usuario;
 
 		vista = new MenuBuscadorVista();
-		modelo = new BuscadorDePeliculasModelo(new PeliculaRepositorio(openConexion));
+		modelo = new MenuBuscadorModelo(new PeliculaRepositorio(openConexion));
 
 		setEvents();
 	}
@@ -61,7 +63,8 @@ public class PnlMenuBuscadorControlador {
 		vista.lblBusqueda.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				irAMenuBusqueda();
+				String busqueda = vista.txtBuscar.getText();
+				irAMenuBusqueda(busqueda);
 			}
 		});
 
@@ -71,18 +74,36 @@ public class PnlMenuBuscadorControlador {
 				irAMenuUsuario();
 			}
 		});
+
+		vista.txtBuscar.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (vista.txtBuscar.getText().equals("Buscar")) {
+					vista.txtBuscar.setText("");
+					vista.txtBuscar.setForeground(Color.WHITE);
+				}
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (vista.txtBuscar.getText().isEmpty()) {
+					vista.txtBuscar.setForeground(Color.GRAY);
+					vista.txtBuscar.setText("Buscar");
+				}
+			}
+		});
 	}
 
-	public void mostrar() {
-		mostrarPeliculasEnVista();
+	public void mostrar(String busqueda) {
+		mostrarPeliculasEnVista(busqueda);
 		frameControlador.getFrameVista().pnlContenido.removeAll();
 		frameControlador.getFrameVista().pnlContenido.add(vista);
 		frameControlador.getFrameVista().pnlContenido.revalidate();
 		frameControlador.getFrameVista().pnlContenido.repaint();
 	}
 
-	public void mostrarPeliculasEnVista() {
-		List<Pelicula> listaPeliculas = modelo.obtenerTodos();
+	public void mostrarPeliculasEnVista(String busqueda) {
+		List<Pelicula> listaPeliculas = modelo.busquedaPeliculas(busqueda);
 		vista.pnlGrid.removeAll();
 		vista.pnlGrid.revalidate();
 		vista.pnlGrid.repaint();
@@ -138,8 +159,8 @@ public class PnlMenuBuscadorControlador {
 		pnlMenuUsuarioControlador.getMenuFavoritasControlador().mostrar();
 	}
 
-	private void irAMenuBusqueda() {
-		pnlMenuUsuarioControlador.getMenuBuscadorControlador().mostrar();
+	private void irAMenuBusqueda(String busqueda) {
+		pnlMenuUsuarioControlador.getMenuBuscadorControlador().mostrar(busqueda);
 	}
 
 	private void irAMenuUsuario() {

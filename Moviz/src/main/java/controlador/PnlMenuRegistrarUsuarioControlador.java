@@ -7,7 +7,7 @@ import java.sql.Connection;
 
 import javax.swing.JOptionPane;
 
-import modelo.RegistrarModelo;
+import modelo.MenuRegistrarUsuarioModelo;
 import repositorio.Cliente;
 import repositorio.ClienteRepositorio;
 import repositorio.Usuario;
@@ -18,14 +18,14 @@ public class PnlMenuRegistrarUsuarioControlador {
 
 	private final FrameControlador frameControlador;
 	private final MenuRegistrarUsuarioVista vista;
-	private final RegistrarModelo modelo;
+	private final MenuRegistrarUsuarioModelo modelo;
 
 	public PnlMenuRegistrarUsuarioControlador(Connection openConexion, FrameControlador frameControlador) {
 
 		this.frameControlador = frameControlador;
 
 		vista = new MenuRegistrarUsuarioVista();
-		modelo = new RegistrarModelo(new UsuarioRepositorio(openConexion), new ClienteRepositorio(openConexion));
+		modelo = new MenuRegistrarUsuarioModelo(new UsuarioRepositorio(openConexion), new ClienteRepositorio(openConexion));
 
 		setEvents();
 	}

@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 public class MenuUsuarioVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField txtBuscar;
+	public JTextField txtBuscar;
 	public JButton btnSalir;
 	public JButton btnPeliculas;
 	public JButton btnFavoritas;

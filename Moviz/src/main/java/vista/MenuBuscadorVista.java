@@ -19,7 +19,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 public class MenuBuscadorVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField txtBuscar;
+	public JTextField txtBuscar;
 	public JButton btnPeliculas;
 	public JButton btnSalir;
 	public JButton btnHistorial;

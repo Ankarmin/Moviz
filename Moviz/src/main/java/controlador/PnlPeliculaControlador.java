@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -73,7 +75,8 @@ public class PnlPeliculaControlador {
 		vista.Busqueda.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				irAMenuBusqueda();
+				String busqueda = vista.txtBuscar.getText();
+				irAMenuBusqueda(busqueda);
 			}
 		});
 
@@ -100,6 +103,24 @@ public class PnlPeliculaControlador {
 
 		vista.btnAlquilar.addActionListener((e) -> {
 			alquilarPelicula();
+		});
+
+		vista.txtBuscar.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (vista.txtBuscar.getText().equals("Buscar")) {
+					vista.txtBuscar.setText("");
+					vista.txtBuscar.setForeground(Color.WHITE);
+				}
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (vista.txtBuscar.getText().isEmpty()) {
+					vista.txtBuscar.setForeground(Color.GRAY);
+					vista.txtBuscar.setText("Buscar");
+				}
+			}
 		});
 	}
 
@@ -128,8 +149,8 @@ public class PnlPeliculaControlador {
 		comentarioControlador.mostrar();
 	}
 
-	private void irAMenuBusqueda() {
-		pnlMenuUsuarioControlador.getMenuBuscadorControlador().mostrar();
+	private void irAMenuBusqueda(String busqueda) {
+		pnlMenuUsuarioControlador.getMenuBuscadorControlador().mostrar(busqueda);
 	}
 
 	private void irAMenuUsuario() {

@@ -5,15 +5,15 @@ import java.util.List;
 import repositorio.Pelicula;
 import repositorio.PeliculaRepositorio;
 
-public class BuscadorDePeliculasModelo {
+public class MenuBuscadorModelo {
 
 	private PeliculaRepositorio peliculaRepositorio;
 
-	public BuscadorDePeliculasModelo(PeliculaRepositorio peliculaRepositorio) {
+	public MenuBuscadorModelo(PeliculaRepositorio peliculaRepositorio) {
 		this.peliculaRepositorio = peliculaRepositorio;
 	}
 
-	public List<Pelicula> obtenerTodos() {
-		return peliculaRepositorio.obtenerTodos();
+	public List<Pelicula> busquedaPeliculas(String busqueda) {
+		return peliculaRepositorio.busquedaPeliculas(busqueda);
 	}
 }

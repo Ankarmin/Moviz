@@ -85,6 +85,10 @@ DO
   DELETE FROM peliculaalquilada
   WHERE fechaDevolucion < CURDATE();
   
+-- VERIFICAR SI EL EVENTO ESTÁ CREADO
+SHOW VARIABLES LIKE 'event_scheduler';
+SHOW EVENTS;
+  
 -- TRIGGER PARA ACTUALIZA PUNTUACIÓN DESPUÉS DE INSERTAR UN COMENTARIO
 DELIMITER $$
 CREATE TRIGGER actualizar_puntuacion_pelicula
@@ -123,5 +127,6 @@ BEGIN
 END$$
 DELIMITER ;
 
+-- VERIFICAR SI LOS TRIGGERS ESTÁN CREADOS
 SHOW TRIGGERS WHERE `Trigger` LIKE 'actualizar_puntuacion_pelicula';
 SHOW TRIGGERS WHERE `Trigger` LIKE 'actualizar_puntuacion_pelicula_delete';

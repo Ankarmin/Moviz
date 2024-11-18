@@ -5,12 +5,12 @@ import repositorio.ClienteRepositorio;
 import repositorio.Usuario;
 import repositorio.UsuarioRepositorio;
 
-public class RegistrarModelo {
+public class MenuRegistrarUsuarioModelo {
 
 	private final UsuarioRepositorio usuarioRepositorio;
 	private final ClienteRepositorio clienteRepositorio;
 
-	public RegistrarModelo(UsuarioRepositorio usuarioRepositorio, ClienteRepositorio clienteRepositorio) {
+	public MenuRegistrarUsuarioModelo(UsuarioRepositorio usuarioRepositorio, ClienteRepositorio clienteRepositorio) {
 		this.usuarioRepositorio = usuarioRepositorio;
 		this.clienteRepositorio = clienteRepositorio;
 	}

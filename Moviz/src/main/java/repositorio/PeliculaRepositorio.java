@@ -18,6 +18,7 @@ public class PeliculaRepositorio {
 	private final String yearsIntervalQuery = "SELECT * FROM pelicula WHERE añoEstreno BETWEEN ? AND ?";
 	private final String searchGenreQuery = "SELECT * FROM pelicula WHERE genero = ?";
 	private final String searchRatingIntervalQuery = "SELECT * FROM pelicula WHERE puntuacion BETWEEN ? AND ?";
+	private final String searchMovies = "SELECT * FROM pelicula WHERE nombre LIKE ?";
 
 	public PeliculaRepositorio(Connection openConexion) {
 		this.openConexion = openConexion;
@@ -180,4 +181,26 @@ public class PeliculaRepositorio {
 		}
 		return peliculas;
 	}
+
+	public List<Pelicula> busquedaPeliculas(String busqueda) {
+		List<Pelicula> peliculas = new ArrayList<>();
+		try {
+			ResultSet rs;
+			try (PreparedStatement pst = openConexion.prepareStatement(searchMovies)) {
+				pst.setString(1, "%" + busqueda + "%");
+				rs = pst.executeQuery();
+				while (rs.next()) {
+					Pelicula pelicula = new Pelicula(rs.getInt("idPelicula"), rs.getString("nombre"),
+							rs.getInt("añoEstreno"), rs.getString("genero"), rs.getString("duracion"),
+							rs.getBigDecimal("puntuacion"), rs.getString("sinopsis"), rs.getBinaryStream("imagen"));
+					peliculas.add(pelicula);
+				}
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return peliculas;
+	}
+
 }

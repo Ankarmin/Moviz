@@ -7,13 +7,13 @@ import repositorio.ClienteRepositorio;
 import repositorio.Usuario;
 import repositorio.UsuarioRepositorio;
 
-public class LoginModelo {
+public class MenuLoginModelo {
 
 	private final UsuarioRepositorio usuarioRepositorio;
 	private final ClienteRepositorio clienteRepositorio;
 	private final AdministradorRepositorio administradorRepositorio;
 
-	public LoginModelo(UsuarioRepositorio usuarioRepositorio, ClienteRepositorio clienteRepositorio,
+	public MenuLoginModelo(UsuarioRepositorio usuarioRepositorio, ClienteRepositorio clienteRepositorio,
 			AdministradorRepositorio administradorRepositorio) {
 		this.usuarioRepositorio = usuarioRepositorio;
 		this.clienteRepositorio = clienteRepositorio;

@@ -2,8 +2,9 @@ package controlador;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Image;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -12,12 +13,10 @@ import java.time.LocalTime;
 import java.util.List;
 
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import modelo.MenuUsuarioModelo;
 import repositorio.Pelicula;
@@ -74,7 +73,26 @@ public class PnlMenuUsuarioControlador {
 		vista.Busqueda.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				irAMenuBusqueda();
+				String busqueda = vista.txtBuscar.getText();
+				irAMenuBusqueda(busqueda);
+			}
+		});
+
+		vista.txtBuscar.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (vista.txtBuscar.getText().equals("Buscar")) {
+					vista.txtBuscar.setText("");
+					vista.txtBuscar.setForeground(Color.WHITE);
+				}
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (vista.txtBuscar.getText().isEmpty()) {
+					vista.txtBuscar.setForeground(Color.GRAY);
+					vista.txtBuscar.setText("Buscar");
+				}
 			}
 		});
 	}
@@ -100,8 +118,8 @@ public class PnlMenuUsuarioControlador {
 		menuFavoritasControlador.mostrar();
 	}
 
-	private void irAMenuBusqueda() {
-		menuBuscadorControlador.mostrar();
+	private void irAMenuBusqueda(String busqueda) {
+		menuBuscadorControlador.mostrar(busqueda);
 	}
 
 	public FrameControlador getFrameControlador() {
@@ -135,92 +153,92 @@ public class PnlMenuUsuarioControlador {
 	}
 
 	public void mostrarPeliculasEnHistorial() {
-	    List<Pelicula> listaPeliculas = modelo.obtenerPeliculas();
-	    vista.panel_4.removeAll();
-	    vista.panel_4.revalidate();
-	    vista.panel_4.repaint();
+		List<Pelicula> listaPeliculas = modelo.obtenerPeliculas();
+		vista.panel_4.removeAll();
+		vista.panel_4.revalidate();
+		vista.panel_4.repaint();
 
-	    for (int i = 0; i < Math.min(listaPeliculas.size(), 5); i++) {
-	        Pelicula pelicula = listaPeliculas.get(i);
+		for (int i = 0; i < Math.min(listaPeliculas.size(), 5); i++) {
+			Pelicula pelicula = listaPeliculas.get(i);
 
-	        JPanel panelItem = new JPanel();
-	        panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.Y_AXIS));
+			JPanel panelItem = new JPanel();
+			panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.Y_AXIS));
 
-	        JLabel lblImagen = new JLabel();
-	        ImageIcon iconoRedimensionado;
+			JLabel lblImagen = new JLabel();
+			ImageIcon iconoRedimensionado;
 
-	        try {
-	            Image imagen = ImageIO.read(pelicula.getImagen()).getScaledInstance(160, 200, Image.SCALE_SMOOTH);
-	            iconoRedimensionado = new ImageIcon(imagen);
-	        } catch (IOException e) {
-	            iconoRedimensionado = new ImageIcon(getClass().getResource("/Images/ImagenPelicula.png"));
-	        }
+			try {
+				Image imagen = ImageIO.read(pelicula.getImagen()).getScaledInstance(160, 200, Image.SCALE_SMOOTH);
+				iconoRedimensionado = new ImageIcon(imagen);
+			} catch (IOException e) {
+				iconoRedimensionado = new ImageIcon(getClass().getResource("/Images/ImagenPelicula.png"));
+			}
 
-	        lblImagen.setIcon(iconoRedimensionado);
-	        lblImagen.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+			lblImagen.setIcon(iconoRedimensionado);
+			lblImagen.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 
-	        lblImagen.addMouseListener(new MouseAdapter() {
-	            @Override
-	            public void mouseClicked(MouseEvent e) {
-	                irAPelicula(pelicula.getIdPelicula());
-	            }
-	        });
+			lblImagen.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					irAPelicula(pelicula.getIdPelicula());
+				}
+			});
 
-	        JLabel lblTitulo = new JLabel(pelicula.getNombre());
-	        lblTitulo.setForeground(Color.WHITE);
-	        lblTitulo.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+			JLabel lblTitulo = new JLabel(pelicula.getNombre());
+			lblTitulo.setForeground(Color.WHITE);
+			lblTitulo.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 
-	        panelItem.add(lblImagen);
-	        panelItem.add(lblTitulo);
+			panelItem.add(lblImagen);
+			panelItem.add(lblTitulo);
 
-	        panelItem.setPreferredSize(new Dimension(160, 240));
-	        vista.panel_4.add(panelItem);
-	    }
+			panelItem.setPreferredSize(new Dimension(160, 240));
+			vista.panel_4.add(panelItem);
+		}
 	}
 
 	public void mostrarPeliculasEnFavoritos() {
-	    List<PeliculaFavorita> listaPeliculasFavoritas = modelo.obtenerPeliculasFavoritas(usuario.getId());
-	    vista.panel_6.removeAll();
-	    vista.panel_6.revalidate();
-	    vista.panel_6.repaint();
+		List<PeliculaFavorita> listaPeliculasFavoritas = modelo.obtenerPeliculasFavoritas(usuario.getId());
+		vista.panel_6.removeAll();
+		vista.panel_6.revalidate();
+		vista.panel_6.repaint();
 
-	    for (int i = 0; i < Math.min(listaPeliculasFavoritas.size(), 5); i++) {
-	        PeliculaFavorita peliculaFavorita = listaPeliculasFavoritas.get(i);
-	        Pelicula pelicula = modelo.obtenerPelicula(peliculaFavorita.getIdPelicula());
+		for (int i = 0; i < Math.min(listaPeliculasFavoritas.size(), 5); i++) {
+			PeliculaFavorita peliculaFavorita = listaPeliculasFavoritas.get(i);
+			Pelicula pelicula = modelo.obtenerPelicula(peliculaFavorita.getIdPelicula());
 
-	        JPanel panelItem = new JPanel();
-	        panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.Y_AXIS));
+			JPanel panelItem = new JPanel();
+			panelItem.setLayout(new BoxLayout(panelItem, BoxLayout.Y_AXIS));
 
-	        JLabel lblImagen = new JLabel();
-	        ImageIcon iconoRedimensionado;
+			JLabel lblImagen = new JLabel();
+			ImageIcon iconoRedimensionado;
 
-	        try {
-	            Image imagen = ImageIO.read(pelicula.getImagen()).getScaledInstance(160, 200, Image.SCALE_SMOOTH);
-	            iconoRedimensionado = new ImageIcon(imagen);
-	        } catch (IOException e) {
-	            iconoRedimensionado = new ImageIcon(getClass().getResource("/Images/ImagenPelicula.png"));
-	        }
+			try {
+				Image imagen = ImageIO.read(pelicula.getImagen()).getScaledInstance(160, 200, Image.SCALE_SMOOTH);
+				iconoRedimensionado = new ImageIcon(imagen);
+			} catch (IOException e) {
+				iconoRedimensionado = new ImageIcon(getClass().getResource("/Images/ImagenPelicula.png"));
+			}
 
-	        lblImagen.setIcon(iconoRedimensionado);
-	        lblImagen.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+			lblImagen.setIcon(iconoRedimensionado);
+			lblImagen.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 
-	        lblImagen.addMouseListener(new MouseAdapter() {
-	            @Override
-	            public void mouseClicked(MouseEvent e) {
-	                irAPelicula(pelicula.getIdPelicula());
-	            }
-	        });
+			lblImagen.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					irAPelicula(pelicula.getIdPelicula());
+				}
+			});
 
-	        JLabel lblTitulo = new JLabel(pelicula.getNombre());
-	        lblTitulo.setForeground(Color.WHITE);
-	        lblTitulo.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+			JLabel lblTitulo = new JLabel(pelicula.getNombre());
+			lblTitulo.setForeground(Color.WHITE);
+			lblTitulo.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 
-	        panelItem.add(lblImagen);
-	        panelItem.add(lblTitulo);
+			panelItem.add(lblImagen);
+			panelItem.add(lblTitulo);
 
-	        panelItem.setPreferredSize(new Dimension(160, 240));
-	        vista.panel_6.add(panelItem);
-	    }
+			panelItem.setPreferredSize(new Dimension(160, 240));
+			vista.panel_6.add(panelItem);
+		}
 	}
 
 	private void irAPelicula(int id) {

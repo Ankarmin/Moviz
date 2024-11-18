@@ -8,7 +8,7 @@ import java.sql.Connection;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import modelo.AgregarPeliculaModelo;
+import modelo.MenuAgregarPeliculaModelo;
 import repositorio.Pelicula;
 import repositorio.PeliculaRepositorio;
 import vista.MenuAgregarPeliculaVista;
@@ -17,13 +17,13 @@ public class PnlMenuAgregarPeliculaControlador {
 
 	private final FrameControlador frameControlador;
 	private final MenuAgregarPeliculaVista vista;
-	private final AgregarPeliculaModelo modelo;
+	private final MenuAgregarPeliculaModelo modelo;
 
 	public PnlMenuAgregarPeliculaControlador(Connection openConexion, FrameControlador frameControlador) {
 		this.frameControlador = frameControlador;
 
 		vista = new MenuAgregarPeliculaVista();
-		modelo = new AgregarPeliculaModelo(new PeliculaRepositorio(openConexion));
+		modelo = new MenuAgregarPeliculaModelo(new PeliculaRepositorio(openConexion));
 
 		setEvents();
 	}

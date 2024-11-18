@@ -126,6 +126,10 @@ public class MenuAgregarPeliculaVista extends JPanel {
 		add(scrollSinopsis);
 
 		btnSubirImagen = createButton("Subir Imagen", 100, 540, 200, 30);
+		btnSubirImagen.setBackground(new Color(56, 60, 74));
+		btnSubirImagen.setForeground(new Color(192, 192, 192));
+		btnSubirImagen.setEnabled(true);
+		btnSubirImagen.setBorder(BorderFactory.createLineBorder(new Color(38, 42, 58)));
 		add(btnSubirImagen);
 		txtRutaImagen = createTextField(350, 540, 400, 30);
 		add(txtRutaImagen);

@@ -3,11 +3,11 @@ package modelo;
 import repositorio.Pelicula;
 import repositorio.PeliculaRepositorio;
 
-public class AgregarPeliculaModelo {
+public class MenuAgregarPeliculaModelo {
 
 	private final PeliculaRepositorio peliculaRepositorio;
 
-	public AgregarPeliculaModelo(PeliculaRepositorio peliculaRepositorio) {
+	public MenuAgregarPeliculaModelo(PeliculaRepositorio peliculaRepositorio) {
 		this.peliculaRepositorio = peliculaRepositorio;
 	}
 

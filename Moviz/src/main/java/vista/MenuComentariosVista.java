@@ -21,7 +21,7 @@ import javax.swing.table.TableModel;
 public class MenuComentariosVista extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField txtBuscar;
+	public JTextField txtBuscar;
 
 	public JTable tablaComentarios;
 
